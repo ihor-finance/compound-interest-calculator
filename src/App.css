@@ -1110,13 +1110,6 @@ tbody tr:last-child td {
   align-items: center;
 }
 
-.donut-container canvas {
-  width: 100% !important;
-  max-width: 220px;
-  height: auto !important;
-  aspect-ratio: 1 / 1;
-}
-
 .legend-container {
   display: flex;
   flex-direction: column;
@@ -1183,9 +1176,7 @@ tbody tr:last-child td {
 
 /* Responsive Overrides */
 @media (min-width: 768px) and (max-width: 1023px) {
-  .donut-container canvas {
-    max-width: 180px;
-  }
+  /* Removed canvas override */
   .legend-row {
     font-size: 13px;
   }
@@ -1199,9 +1190,7 @@ tbody tr:last-child td {
     grid-template-columns: 1fr;
     gap: 16px;
   }
-  .donut-container canvas {
-    max-width: 180px;
-  }
+  /* Removed canvas override */
   .structure-header {
     flex-direction: column;
     align-items: flex-start;

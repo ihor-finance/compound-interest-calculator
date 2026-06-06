@@ -384,8 +384,10 @@ export const ChartsSection = React.memo(({ results, theme  }: Props) => {
         </div>
         
         <div className="structure-content">
-          <div className="donut-container">
-            <Doughnut key={`donut-${theme}`} options={doughnutOptions} data={doughnutData} />
+          <div className="donut-container" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+            <div style={{ position: 'relative', width: '100%', maxWidth: '280px', aspectRatio: '1/1' }}>
+              <Doughnut key={`donut-${theme}`} options={doughnutOptions} data={doughnutData} />
+            </div>
           </div>
 
           <div className="legend-container">
