@@ -1546,6 +1546,7 @@ tbody tr:last-child td {
   bottom: calc(100% + 8px);
   right: 0;
   width: 320px;
+  max-width: none !important;
   padding: 14px 16px;
   background: white;
   color: #1f2937;
