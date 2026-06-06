@@ -1,0 +1,421 @@
+import { useTranslation } from '../i18n/useTranslation';
+import { LegalPageLayout } from './LegalPageLayout';
+
+interface Props {
+  
+}
+
+const content = {
+  uk: {
+    title: "Публічна оферта",
+    updated: "Останнє оновлення: червень 2026",
+    h1: "1. Загальні положення",
+    p1: "Цей документ є публічною пропозицією (офертою) Redempsly (далі — Виконавець) укласти договір про надання доступу до функціоналу веб-додатку «Складний відсоток» (далі — Сервіс) з будь-якою особою, яка прийме цю пропозицію (далі — Користувач).",
+    p2: "Використання Сервісу означає повний та беззастережний акцепт (прийняття) умов цієї Оферти.",
+    h2: "2. Предмет договору",
+    p3: "Виконавець надає Користувачу безоплатний доступ до Сервісу для здійснення розрахунків складного відсотка. Усі функції Сервісу на даний момент надаються «як є» (as is).",
+    h3: "3. Права та обов'язки сторін",
+    h4_1: "3.1. Виконавець має право:",
+    l3_1_1: "змінювати функціонал Сервісу без попереднього повідомлення;",
+    l3_1_2: "тимчасово зупиняти роботу Сервісу для проведення технічних робіт;",
+    l3_1_3: "змінювати умови цієї Оферти в односторонньому порядку.",
+    h4_2: "3.2. Користувач зобов'язується:",
+    l3_2_1: "використовувати Сервіс добросовісно та відповідно до чинного законодавства;",
+    l3_2_2: "не використовувати програмне забезпечення, що може зашкодити роботі Сервісу.",
+    h4_3: "4. Фінансові умови",
+    p4: "На даний момент Сервіс є повністю безкоштовним для кінцевих користувачів. Виконавець не вимагає плати за реєстрацію, використання базового чи розширеного функціоналу.",
+    h5: "5. Відповідальність сторін",
+    p5: "Виконавець не несе відповідальності за наслідки рішень, прийнятих Користувачем на основі результатів розрахунків у Сервісі.",
+    h6: "6. Вирішення спорів",
+    p6: "Усі спори, що виникають з цього Договору, вирішуються шляхом переговорів. У разі недосягнення згоди спір підлягає розгляду в суді за місцезнаходженням Виконавця.",
+    h7: "7. Реквізити Виконавця",
+    p7_1: "Розробник: Redempsly",
+    p7_2: "Email: pokhyton.i@gmail.com"
+  },
+  en: {
+    title: "Public Offer",
+    updated: "Last updated: June 2026",
+    h1: "1. General Provisions",
+    p1: "This document is a public offer from Redempsly (hereinafter - Contractor) to conclude an agreement on providing access to the functionality of the \"Compound Interest\" web application (hereinafter - Service) with any person who accepts this offer (hereinafter - User).",
+    p2: "Using the Service constitutes full and unconditional acceptance of the terms of this Offer.",
+    h2: "2. Subject of the Agreement",
+    p3: "The Contractor provides the User with free access to the Service for calculating compound interest. All functions of the Service are currently provided \"as is\".",
+    h3: "3. Rights and Obligations of the Parties",
+    h4_1: "3.1. The Contractor has the right to:",
+    l3_1_1: "change the functionality of the Service without prior notice;",
+    l3_1_2: "temporarily suspend the Service for technical maintenance;",
+    l3_1_3: "unilaterally change the terms of this Offer.",
+    h4_2: "3.2. The User is obliged to:",
+    l3_2_1: "use the Service in good faith and in accordance with current legislation;",
+    l3_2_2: "not use software that may harm the operation of the Service.",
+    h4_3: "4. Financial Terms",
+    p4: "Currently, the Service is completely free for end users. The Contractor does not require payment for registration or use of basic or advanced functionality.",
+    h5: "5. Liability of the Parties",
+    p5: "The Contractor is not responsible for the consequences of decisions made by the User based on the results of calculations in the Service.",
+    h6: "6. Dispute Resolution",
+    p6: "All disputes arising from this Agreement shall be resolved through negotiations. If an agreement cannot be reached, the dispute shall be subject to consideration in court at the Contractor's location.",
+    h7: "7. Details of the Contractor",
+    p7_1: "Developer: Redempsly",
+    p7_2: "Email: pokhyton.i@gmail.com"
+  },
+  pl: {
+    title: "Oferta Publiczna",
+    updated: "Ostatnia aktualizacja: Czerwiec 2026",
+    h1: "1. Postanowienia ogólne",
+    p1: "Niniejszy dokument jest ofertą publiczną firmy Redempsly (dalej - Wykonawca) zawarcia umowy o udostępnienie funkcjonalności aplikacji internetowej \"Procent składany\" (dalej - Serwis) z każdą osobą, która zaakceptuje tę ofertę (dalej - Użytkownik).",
+    p2: "Korzystanie z Serwisu oznacza pełną i bezwarunkową akceptację warunków niniejszej Oferty.",
+    h2: "2. Przedmiot umowy",
+    p3: "Wykonawca zapewnia Użytkownikowi bezpłatny dostęp do Serwisu w celu obliczania procentu składanego. Wszystkie funkcje Serwisu są obecnie udostępniane w stanie \"takim, w jakim są\" (as is).",
+    h3: "3. Prawa i obowiązki stron",
+    h4_1: "3.1. Wykonawca ma prawo:",
+    l3_1_1: "zmiany funkcjonalności Serwisu bez uprzedniego powiadomienia;",
+    l3_1_2: "tymczasowego zawieszenia działania Serwisu w celach konserwacyjnych;",
+    l3_1_3: "jednostronnej zmiany warunków niniejszej Oferty.",
+    h4_2: "3.2. Użytkownik zobowiązany jest do:",
+    l3_2_1: "korzystania z Serwisu w dobrej wierze i zgodnie z obowiązującym prawem;",
+    l3_2_2: "nieużywania oprogramowania, które może zakłócać działanie Serwisu.",
+    h4_3: "4. Warunki finansowe",
+    p4: "Obecnie Serwis jest całkowicie darmowy dla użytkowników końcowych. Wykonawca nie pobiera opłat za rejestrację ani za korzystanie z podstawowych lub zaawansowanych funkcji.",
+    h5: "5. Odpowiedzialność stron",
+    p5: "Wykonawca nie ponosi odpowiedzialności za konsekwencje decyzji podjętych przez Użytkownika na podstawie wyników obliczeń w Serwisie.",
+    h6: "6. Rozwiązywanie sporów",
+    p6: "Wszelkie spory wynikające z niniejszej Umowy będą rozwiązywane w drodze negocjacji. W przypadku braku porozumienia spór podlega rozpatrzeniu przez sąd właściwy dla siedziby Wykonawcy.",
+    h7: "7. Dane Wykonawcy",
+    p7_1: "Deweloper: Redempsly",
+    p7_2: "Email: pokhyton.i@gmail.com"
+  },
+  de: {
+    title: "Öffentliches Angebot",
+    updated: "Zuletzt aktualisiert: Juni 2026",
+    h1: "1. Allgemeine Bestimmungen",
+    p1: "Dieses Dokument ist ein öffentliches Angebot von Redempsly (im Folgenden - Auftragnehmer) zum Abschluss einer Vereinbarung über die Bereitstellung des Zugangs zur Funktionalität der Webanwendung \"Zinseszins\" (im Folgenden - Dienst) mit jeder Person, die dieses Angebot annimmt (im Folgenden - Benutzer).",
+    p2: "Die Nutzung des Dienstes stellt die vollständige und bedingungslose Annahme der Bedingungen dieses Angebots dar.",
+    h2: "2. Vertragsgegenstand",
+    p3: "Der Auftragnehmer gewährt dem Benutzer kostenlosen Zugang zum Dienst zur Berechnung von Zinseszinsen. Alle Funktionen des Dienstes werden derzeit \"wie besehen\" bereitgestellt.",
+    h3: "3. Rechte und Pflichten der Parteien",
+    h4_1: "3.1. Der Auftragnehmer hat das Recht:",
+    l3_1_1: "die Funktionalität des Dienstes ohne vorherige Ankündigung zu ändern;",
+    l3_1_2: "den Dienst zu Wartungszwecken vorübergehend auszusetzen;",
+    l3_1_3: "die Bedingungen dieses Angebots einseitig zu ändern.",
+    h4_2: "3.2. Der Benutzer ist verpflichtet:",
+    l3_2_1: "den Dienst in gutem Glauben und in Übereinstimmung mit der geltenden Gesetzgebung zu nutzen;",
+    l3_2_2: "keine Software zu verwenden, die den Betrieb des Dienstes beeinträchtigen könnte.",
+    h4_3: "4. Finanzielle Bedingungen",
+    p4: "Derzeit ist der Dienst für Endbenutzer völlig kostenlos. Der Auftragnehmer verlangt keine Zahlung für die Registrierung oder die Nutzung grundlegender oder erweiterter Funktionen.",
+    h5: "5. Haftung der Parteien",
+    p5: "Der Auftragnehmer haftet nicht für die Folgen von Entscheidungen, die der Benutzer auf der Grundlage der Berechnungsergebnisse im Dienst trifft.",
+    h6: "6. Streitbeilegung",
+    p6: "Alle Streitigkeiten aus dieser Vereinbarung werden durch Verhandlungen beigelegt. Kann keine Einigung erzielt werden, wird der Streitfall vor dem für den Standort des Auftragnehmers zuständigen Gericht verhandelt.",
+    h7: "7. Angaben zum Auftragnehmer",
+    p7_1: "Entwickler: Redempsly",
+    p7_2: "E-Mail: pokhyton.i@gmail.com"
+  },
+  fr: {
+    title: "Offre publique",
+    updated: "Dernière mise à jour : Juin 2026",
+    h1: "1. Dispositions générales",
+    p1: "Ce document est une offre publique de Redempsly (ci-après - Entrepreneur) de conclure un accord sur la fourniture de l'accès aux fonctionnalités de l'application Web « Intérêts composés » (ci-après - Service) avec toute personne qui accepte cette offre (ci-après - Utilisateur).",
+    p2: "L'utilisation du Service constitue une acceptation pleine et inconditionnelle des termes de cette Offre.",
+    h2: "2. Objet de l'accord",
+    p3: "L'Entrepreneur fournit à l'Utilisateur un accès gratuit au Service pour le calcul des intérêts composés. Toutes les fonctions du Service sont actuellement fournies \"en l'état\".",
+    h3: "3. Droits et obligations des parties",
+    h4_1: "3.1. L'Entrepreneur a le droit de :",
+    l3_1_1: "modifier la fonctionnalité du Service sans préavis ;",
+    l3_1_2: "suspendre temporairement le Service pour la maintenance technique ;",
+    l3_1_3: "modifier unilatéralement les termes de cette Offre.",
+    h4_2: "3.2. L'Utilisateur est obligé de :",
+    l3_2_1: "utiliser le Service de bonne foi et conformément à la législation en vigueur ;",
+    l3_2_2: "ne pas utiliser de logiciels susceptibles de nuire au fonctionnement du Service.",
+    h4_3: "4. Conditions financières",
+    p4: "Actuellement, le Service est entièrement gratuit pour les utilisateurs finaux. L'Entrepreneur n'exige aucun paiement pour l'inscription ou l'utilisation de fonctionnalités de base ou avancées.",
+    h5: "5. Responsabilité des parties",
+    p5: "L'Entrepreneur n'est pas responsable des conséquences des décisions prises par l'Utilisateur sur la base des résultats des calculs dans le Service.",
+    h6: "6. Résolution des litiges",
+    p6: "Tous les litiges découlant de cet Accord seront résolus par la négociation. Si aucun accord n'est trouvé, le litige sera soumis à l'examen d'un tribunal sur le lieu de l'Entrepreneur.",
+    h7: "7. Coordonnées de l'Entrepreneur",
+    p7_1: "Développeur : Redempsly",
+    p7_2: "E-mail : pokhyton.i@gmail.com"
+  },
+  es: {
+    title: "Oferta Pública",
+    updated: "Última actualización: Junio de 2026",
+    h1: "1. Disposiciones Generales",
+    p1: "Este documento es una oferta pública de Redempsly (en adelante - Contratista) para concluir un acuerdo sobre proporcionar acceso a la funcionalidad de la aplicación web \"Interés Compuesto\" (en adelante - Servicio) con cualquier persona que acepte esta oferta (en adelante - Usuario).",
+    p2: "El uso del Servicio constituye la aceptación total e incondicional de los términos de esta Oferta.",
+    h2: "2. Objeto del Acuerdo",
+    p3: "El Contratista proporciona al Usuario acceso gratuito al Servicio para calcular el interés compuesto. Todas las funciones del Servicio se proporcionan actualmente \"tal cual\".",
+    h3: "3. Derechos y Obligaciones de las Partes",
+    h4_1: "3.1. El Contratista tiene derecho a:",
+    l3_1_1: "cambiar la funcionalidad del Servicio sin previo aviso;",
+    l3_1_2: "suspender temporalmente el Servicio por mantenimiento técnico;",
+    l3_1_3: "cambiar unilateralmente los términos de esta Oferta.",
+    h4_2: "3.2. El Usuario está obligado a:",
+    l3_2_1: "utilizar el Servicio de buena fe y de acuerdo con la legislación vigente;",
+    l3_2_2: "no usar software que pueda dañar el funcionamiento del Servicio.",
+    h4_3: "4. Condiciones Financieras",
+    p4: "Actualmente, el Servicio es completamente gratuito para los usuarios finales. El Contratista no requiere pago por el registro ni por el uso de funciones básicas o avanzadas.",
+    h5: "5. Responsabilidad de las Partes",
+    p5: "El Contratista no se hace responsable de las consecuencias de las decisiones tomadas por el Usuario en base a los resultados de los cálculos en el Servicio.",
+    h6: "6. Resolución de Disputas",
+    p6: "Todas las disputas que surjan de este Acuerdo se resolverán mediante negociaciones. Si no se puede llegar a un acuerdo, la disputa estará sujeta a consideración en el tribunal en la ubicación del Contratista.",
+    h7: "7. Datos del Contratista",
+    p7_1: "Desarrollador: Redempsly",
+    p7_2: "Correo electrónico: pokhyton.i@gmail.com"
+  },
+  it: {
+    title: "Offerta Pubblica",
+    updated: "Ultimo aggiornamento: Giugno 2026",
+    h1: "1. Disposizioni generali",
+    p1: "Il presente documento è un'offerta pubblica di Redempsly (di seguito - Appaltatore) per concludere un accordo sulla fornitura dell'accesso alle funzionalità dell'applicazione web \"Interesse Composto\" (di seguito - Servizio) con chiunque accetti tale offerta (di seguito - Utente).",
+    p2: "L'utilizzo del Servizio costituisce accettazione piena e incondizionata dei termini della presente Offerta.",
+    h2: "2. Oggetto dell'Accordo",
+    p3: "L'Appaltatore fornisce all'Utente l'accesso gratuito al Servizio per il calcolo dell'interesse composto. Tutte le funzioni del Servizio sono attualmente fornite \"così come sono\".",
+    h3: "3. Diritti e obblighi delle parti",
+    h4_1: "3.1. L'Appaltatore ha il diritto di:",
+    l3_1_1: "modificare la funzionalità del Servizio senza preavviso;",
+    l3_1_2: "sospendere temporaneamente il Servizio per manutenzione tecnica;",
+    l3_1_3: "modificare unilateralmente i termini della presente Offerta.",
+    h4_2: "3.2. L'Utente è obbligato a:",
+    l3_2_1: "utilizzare il Servizio in buona fede e in conformità alla legislazione vigente;",
+    l3_2_2: "non utilizzare software che possa danneggiare il funzionamento del Servizio.",
+    h4_3: "4. Termini finanziari",
+    p4: "Attualmente, il Servizio è completamente gratuito per gli utenti finali. L'Appaltatore non richiede pagamenti per la registrazione o l'uso di funzionalità di base o avanzate.",
+    h5: "5. Responsabilità delle parti",
+    p5: "L'Appaltatore non è responsabile delle conseguenze delle decisioni prese dall'Utente in base ai risultati dei calcoli nel Servizio.",
+    h6: "6. Risoluzione delle controversie",
+    p6: "Tutte le controversie derivanti dal presente Accordo saranno risolte attraverso negoziazioni. Qualora non si raggiunga un accordo, la controversia sarà soggetta a esame in tribunale presso la sede dell'Appaltatore.",
+    h7: "7. Dettagli dell'Appaltatore",
+    p7_1: "Sviluppatore: Redempsly",
+    p7_2: "E-mail: pokhyton.i@gmail.com"
+  },
+  pt: {
+    title: "Oferta Pública",
+    updated: "Última atualização: Junho de 2026",
+    h1: "1. Disposições Gerais",
+    p1: "Este documento é uma oferta pública da Redempsly (doravante - Contratada) para celebrar um acordo sobre o fornecimento de acesso à funcionalidade da aplicação web \"Juros Compostos\" (doravante - Serviço) com qualquer pessoa que aceite esta oferta (doravante - Usuário).",
+    p2: "O uso do Serviço constitui a aceitação total e incondicional dos termos desta Oferta.",
+    h2: "2. Objeto do Acordo",
+    p3: "A Contratada fornece ao Usuário acesso gratuito ao Serviço para calcular juros compostos. Todas as funções do Serviço são atualmente fornecidas \"como estão\".",
+    h3: "3. Direitos e Obrigações das Partes",
+    h4_1: "3.1. A Contratada tem o direito de:",
+    l3_1_1: "alterar a funcionalidade do Serviço sem aviso prévio;",
+    l3_1_2: "suspender temporariamente o Serviço para manutenção técnica;",
+    l3_1_3: "alterar unilateralmente os termos desta Oferta.",
+    h4_2: "3.2. O Usuário é obrigado a:",
+    l3_2_1: "usar o Serviço de boa fé e de acordo com a legislação em vigor;",
+    l3_2_2: "não usar software que possa prejudicar a operação do Serviço.",
+    h4_3: "4. Termos Financeiros",
+    p4: "Atualmente, o Serviço é totalmente gratuito para usuários finais. A Contratada não exige pagamento para registro ou uso de funcionalidade básica ou avançada.",
+    h5: "5. Responsabilidade das Partes",
+    p5: "A Contratada não é responsável pelas consequências das decisões tomadas pelo Usuário com base nos resultados dos cálculos no Serviço.",
+    h6: "6. Resolução de Disputas",
+    p6: "Todas as disputas decorrentes deste Acordo devem ser resolvidas por meio de negociações. Se não for possível chegar a um acordo, a disputa estará sujeita a consideração em tribunal na localidade da Contratada.",
+    h7: "7. Dados da Contratada",
+    p7_1: "Desenvolvedor: Redempsly",
+    p7_2: "E-mail: pokhyton.i@gmail.com"
+  },
+  tr: {
+    title: "Halka Açık Teklif",
+    updated: "Son güncelleme: Haziran 2026",
+    h1: "1. Genel Hükümler",
+    p1: "Bu belge, bu teklifi kabul eden herhangi bir kişiyle (bundan böyle - Kullanıcı) \"Bileşik Faiz\" web uygulamasının (bundan böyle - Hizmet) işlevselliğine erişim sağlanması konusunda bir anlaşma yapmak için Redempsly'nin (bundan böyle - Yüklenici) halka açık bir teklifidir.",
+    p2: "Hizmetin kullanımı, bu Teklifin şartlarının tam ve koşulsuz olarak kabul edildiği anlamına gelir.",
+    h2: "2. Sözleşmenin Konusu",
+    p3: "Yüklenici, bileşik faizi hesaplamak için Kullanıcıya Hizmete ücretsiz erişim sağlar. Hizmetin tüm işlevleri şu anda \"olduğu gibi\" sağlanmaktadır.",
+    h3: "3. Tarafların Hak ve Yükümlülükleri",
+    h4_1: "3.1. Yüklenicinin aşağıdaki hakları vardır:",
+    l3_1_1: "Önceden bildirimde bulunmaksızın Hizmetin işlevselliğini değiştirmek;",
+    l3_1_2: "Teknik bakım için Hizmeti geçici olarak askıya almak;",
+    l3_1_3: "Bu Teklifin koşullarını tek taraflı olarak değiştirmek.",
+    h4_2: "3.2. Kullanıcı şunları yapmakla yükümlüdür:",
+    l3_2_1: "Hizmeti iyi niyetle ve yürürlükteki mevzuata uygun olarak kullanmak;",
+    l3_2_2: "Hizmetin çalışmasına zarar verebilecek yazılımlar kullanmamak.",
+    h4_3: "4. Mali Şartlar",
+    p4: "Şu anda, Hizmet son kullanıcılar için tamamen ücretsizdir. Yüklenici kayıt olmak veya temel ya da gelişmiş işlevleri kullanmak için ödeme talep etmez.",
+    h5: "5. Tarafların Sorumluluğu",
+    p5: "Yüklenici, Kullanıcının Hizmetteki hesaplamaların sonuçlarına dayanarak verdiği kararların sonuçlarından sorumlu değildir.",
+    h6: "6. Uyuşmazlıkların Çözümü",
+    p6: "Bu Sözleşmeden doğan tüm anlaşmazlıklar müzakereler yoluyla çözülecektir. Anlaşmaya varılamazsa, anlaşmazlık Yüklenicinin bulunduğu yerdeki mahkemede değerlendirilecektir.",
+    h7: "7. Yüklenicinin Bilgileri",
+    p7_1: "Geliştirici: Redempsly",
+    p7_2: "E-posta: pokhyton.i@gmail.com"
+  },
+  zh: {
+    title: "公开要约",
+    updated: "最后更新：2026年6月",
+    h1: "1. 一般规定",
+    p1: "本文件是Redempsly（以下简称 - 承包商）向任何接受此要约的人（以下简称 - 用户）发出的关于提供对“复利”Web应用程序（以下简称 - 服务）功能访问的协议的公开要约。",
+    p2: "使用服务即构成对本要约条款的完全无条件接受。",
+    h2: "2. 协议标的",
+    p3: "承包商为用户提供免费访问服务的权限，用于计算复利。服务的所有功能目前按“原样”提供。",
+    h3: "3. 双方权利和义务",
+    h4_1: "3.1. 承包商有权：",
+    l3_1_1: "更改服务的功能，恕不另行通知；",
+    l3_1_2: "为进行技术维护暂时中止服务；",
+    l3_1_3: "单方面更改本要约的条款。",
+    h4_2: "3.2. 用户有义务：",
+    l3_2_1: "真诚并根据现行法律使用服务；",
+    l3_2_2: "不使用可能损害服务运行的软件。",
+    h4_3: "4. 财务条款",
+    p4: "目前，该服务对最终用户完全免费。承包商不要求注册或使用基本或高级功能付费。",
+    h5: "5. 双方责任",
+    p5: "承包商对用户根据服务中的计算结果做出的决定的后果概不负责。",
+    h6: "6. 争议解决",
+    p6: "由本协议引起的所有争议应通过协商解决。如果无法达成协议，该争议将由承包商所在地的法院审理。",
+    h7: "7. 承包商详情",
+    p7_1: "开发者：Redempsly",
+    p7_2: "电子邮件：pokhyton.i@gmail.com"
+  },
+  ja: {
+    title: "公開オファー",
+    updated: "最終更新日：2026年6月",
+    h1: "1. 一般規定",
+    p1: "このドキュメントは、Redempsly（以下、請負業者）が、このオファーを受け入れる者（以下、ユーザー）との間で、「複利」Webアプリケーション（以下、サービス）の機能へのアクセス提供に関する契約を締結するための公開オファーです。",
+    p2: "サービスを使用することにより、このオファーの条件を完全かつ無条件に受け入れたものとみなされます。",
+    h2: "2. 契約の目的",
+    p3: "請負業者は、ユーザーが複利を計算するためのサービスへの無料アクセスを提供します。現在、サービスのすべての機能は「現状のまま」提供されています。",
+    h3: "3. 当事者の権利と義務",
+    h4_1: "3.1. 請負業者は以下の権利を有します：",
+    l3_1_1: "事前の通知なしにサービスの機能を変更すること。",
+    l3_1_2: "技術的なメンテナンスのためにサービスを一時的に停止すること。",
+    l3_1_3: "このオファーの条件を一方的に変更すること。",
+    h4_2: "3.2. ユーザーは以下の義務を負います：",
+    l3_2_1: "誠実に、現行の法律に従ってサービスを使用すること。",
+    l3_2_2: "サービスの運用に損害を与える可能性のあるソフトウェアを使用しないこと。",
+    h4_3: "4. 財務条件",
+    p4: "現在、サービスはエンドユーザーにとって完全に無料です。請負業者は、登録、または基本機能や高度な機能の使用に対して支払いを求めません。",
+    h5: "5. 当事者の責任",
+    p5: "請負業者は、サービスでの計算結果に基づいてユーザーが行った決定の結果について責任を負いません。",
+    h6: "6. 紛争解決",
+    p6: "この契約から生じるすべての紛争は、交渉を通じて解決されるものとします。合意に達しない場合、紛争は請負業者の所在地の裁判所で審理されるものとします。",
+    h7: "7. 請負業者の詳細",
+    p7_1: "開発者：Redempsly",
+    p7_2: "電子メール：pokhyton.i@gmail.com"
+  },
+  ko: {
+    title: "공개 제안",
+    updated: "최근 업데이트: 2026년 6월",
+    h1: "1. 일반 규정",
+    p1: "본 문서는 본 제안을 수락하는 모든 개인(이하 사용자)과 \"복리\" 웹 애플리케이션(이하 서비스)의 기능에 대한 액세스 제공에 관한 계약을 체결하기 위한 Redempsly(이하 계약자)의 공개 제안입니다.",
+    p2: "서비스를 사용하는 것은 본 제안의 조건에 대한 완전하고 무조건적인 수락을 구성합니다.",
+    h2: "2. 계약의 목적",
+    p3: "계약자는 사용자에게 복리 계산을 위한 서비스에 대한 무료 액세스를 제공합니다. 서비스의 모든 기능은 현재 \"있는 그대로\" 제공됩니다.",
+    h3: "3. 당사자의 권리와 의무",
+    h4_1: "3.1. 계약자는 다음과 같은 권리를 가집니다:",
+    l3_1_1: "사전 통지 없이 서비스의 기능을 변경할 권리;",
+    l3_1_2: "기술적 유지 관리를 위해 서비스를 일시적으로 중단할 권리;",
+    l3_1_3: "본 제안의 조건을 일방적으로 변경할 권리.",
+    h4_2: "3.2. 사용자는 다음과 같은 의무가 있습니다:",
+    l3_2_1: "선의로 그리고 현행 법률에 따라 서비스를 사용할 의무;",
+    l3_2_2: "서비스의 운영에 해를 끼칠 수 있는 소프트웨어를 사용하지 않을 의무.",
+    h4_3: "4. 재무 조건",
+    p4: "현재 서비스는 최종 사용자에게 완전히 무료입니다. 계약자는 등록이나 기본 또는 고급 기능 사용에 대한 지불을 요구하지 않습니다.",
+    h5: "5. 당사자의 책임",
+    p5: "계약자는 서비스에서의 계산 결과를 바탕으로 사용자가 내린 결정의 결과에 대해 책임지지 않습니다.",
+    h6: "6. 분쟁 해결",
+    p6: "본 계약과 관련하여 발생하는 모든 분쟁은 협상을 통해 해결합니다. 합의에 도달하지 못한 경우, 분쟁은 계약자 소재지의 법원에서 심리 대상이 됩니다.",
+    h7: "7. 계약자 세부 정보",
+    p7_1: "개발자: Redempsly",
+    p7_2: "이메일: pokhyton.i@gmail.com"
+  },
+  hi: {
+    title: "सार्वजनिक प्रस्ताव",
+    updated: "अंतिम अद्यतन: जून 2026",
+    h1: "1. सामान्य प्रावधान",
+    p1: "यह दस्तावेज़ Redempsly (इसके बाद - ठेकेदार) की ओर से किसी भी व्यक्ति (इसके बाद - उपयोगकर्ता) के साथ \"चक्रवृद्धि ब्याज\" वेब एप्लिकेशन (इसके बाद - सेवा) की कार्यक्षमता तक पहुंच प्रदान करने पर एक समझौते को समाप्त करने का सार्वजनिक प्रस्ताव है।",
+    p2: "सेवा का उपयोग करने से इस प्रस्ताव की शर्तों की पूर्ण और बिना शर्त स्वीकृति होती है।",
+    h2: "2. समझौते का विषय",
+    p3: "ठेकेदार उपयोगकर्ता को चक्रवृद्धि ब्याज की गणना के लिए सेवा तक मुफ्त पहुंच प्रदान करता है। सेवा के सभी कार्य वर्तमान में \"जैसा है\" प्रदान किए जाते हैं।",
+    h3: "3. पार्टियों के अधिकार और दायित्व",
+    h4_1: "3.1. ठेकेदार को अधिकार है:",
+    l3_1_1: "पूर्व सूचना के बिना सेवा की कार्यक्षमता बदलें;",
+    l3_1_2: "तकनीकी रखरखाव के लिए सेवा को अस्थायी रूप से निलंबित करें;",
+    l3_1_3: "एकतरफा इस प्रस्ताव की शर्तों को बदलें।",
+    h4_2: "3.2. उपयोगकर्ता के लिए यह अनिवार्य है:",
+    l3_2_1: "सेवा का उपयोग सद्भावना और वर्तमान कानून के अनुसार करें;",
+    l3_2_2: "ऐसे सॉफ़्टवेयर का उपयोग न करें जो सेवा के संचालन को नुकसान पहुंचा सकता है।",
+    h4_3: "4. वित्तीय शर्तें",
+    p4: "वर्तमान में, सेवा अंतिम उपयोगकर्ताओं के लिए पूरी तरह से मुफ़्त है। ठेकेदार पंजीकरण या बुनियादी या उन्नत कार्यक्षमता के उपयोग के लिए भुगतान की मांग नहीं करता है।",
+    h5: "5. पार्टियों का दायित्व",
+    p5: "सेवा में गणना के परिणामों के आधार पर उपयोगकर्ता द्वारा किए गए निर्णयों के परिणामों के लिए ठेकेदार जिम्मेदार नहीं है।",
+    h6: "6. विवाद समाधान",
+    p6: "इस समझौते से उत्पन्न होने वाले सभी विवादों का समाधान बातचीत के माध्यम से किया जाएगा। यदि समझौता नहीं हो पाता है, तो विवाद ठेकेदार के स्थान पर अदालत में विचार के अधीन होगा।",
+    h7: "7. ठेकेदार का विवरण",
+    p7_1: "डेवलपर: Redempsly",
+    p7_2: "ईमेल: pokhyton.i@gmail.com"
+  },
+  ar: {
+    title: "عرض عام",
+    updated: "آخر تحديث: يونيو 2026",
+    h1: "1. أحكام عامة",
+    p1: "هذا المستند عبارة عن عرض عام من Redempsly (المشار إليه فيما يلي - المقاول) لإبرام اتفاقية بشأن توفير الوصول إلى وظائف تطبيق الويب \"الفائدة المركبة\" (المشار إليه فيما يلي - الخدمة) مع أي شخص يقبل هذا العرض (المشار إليه فيما يلي - المستخدم).",
+    p2: "يشكل استخدام الخدمة قبولًا كاملاً وغير مشروط لشروط هذا العرض.",
+    h2: "2. موضوع الاتفاقية",
+    p3: "يوفر المقاول للمستخدم وصولاً مجانيًا إلى الخدمة لحساب الفائدة المركبة. يتم توفير جميع وظائف الخدمة حاليًا \"كما هي\".",
+    h3: "3. حقوق والتزامات الأطراف",
+    h4_1: "3.1. يحق للمقاول:",
+    l3_1_1: "تغيير وظائف الخدمة دون إشعار مسبق؛",
+    l3_1_2: "تعليق الخدمة مؤقتًا للصيانة الفنية؛",
+    l3_1_3: "تغيير شروط هذا العرض من جانب واحد.",
+    h4_2: "3.2. يلتزم المستخدم بما يلي:",
+    l3_2_1: "استخدام الخدمة بحسن نية ووفقًا للتشريعات الحالية؛",
+    l3_2_2: "عدم استخدام البرامج التي قد تضر بعمل الخدمة.",
+    h4_3: "4. الشروط المالية",
+    p4: "حاليًا، الخدمة مجانية تمامًا للمستخدمين النهائيين. لا يطلب المقاول دفع مقابل التسجيل أو استخدام الوظائف الأساسية أو المتقدمة.",
+    h5: "5. مسؤولية الأطراف",
+    p5: "المقاول غير مسؤول عن عواقب القرارات التي يتخذها المستخدم بناءً على نتائج الحسابات في الخدمة.",
+    h6: "6. حل النزاعات",
+    p6: "يجب حل جميع النزاعات الناشئة عن هذه الاتفاقية من خلال المفاوضات. في حالة عدم التوصل إلى اتفاق، يخضع النزاع للنظر في المحكمة في موقع المقاول.",
+    h7: "7. تفاصيل المقاول",
+    p7_1: "المطور: Redempsly",
+    p7_2: "البريد الإلكتروني: pokhyton.i@gmail.com"
+  }
+};
+
+export const PublicOffer = ({}: Props) => {
+  const { locale: lang } = useTranslation();
+
+  const t = (content as any)[lang] || content.en;
+  
+  return (
+    <LegalPageLayout>
+      <div dir={lang === 'ar' ? 'rtl' : 'ltr'}>
+        <h1>{t.title}</h1>
+        <p className="last-updated">{t.updated}</p>
+
+        <h2>{t.h1}</h2>
+        <p>{t.p1}</p>
+        <p>{t.p2}</p>
+
+        <h2>{t.h2}</h2>
+        <p>{t.p3}</p>
+
+        <h2>{t.h3}</h2>
+        <h3>{t.h4_1}</h3>
+        <ul>
+          <li>{t.l3_1_1}</li>
+          <li>{t.l3_1_2}</li>
+          <li>{t.l3_1_3}</li>
+        </ul>
+        
+        <h3>{t.h4_2}</h3>
+        <ul>
+          <li>{t.l3_2_1}</li>
+          <li>{t.l3_2_2}</li>
+        </ul>
+
+        <h2>{t.h4_3}</h2>
+        <p>{t.p4}</p>
+
+        <h2>{t.h5}</h2>
+        <p>{t.p5}</p>
+
+        <h2>{t.h6}</h2>
+        <p>{t.p6}</p>
+
+        <h2>{t.h7}</h2>
+        <p>{t.p7_1}<br />{t.p7_2}</p>
+      </div>
+    </LegalPageLayout>
+  );
+};

@@ -1,0 +1,2966 @@
+<html lang="en" data-theme="light"><head>
+    <script type="module">import { injectIntoGlobalHook } from "/@react-refresh";
+injectIntoGlobalHook(window);
+window.$RefreshReg$ = () => {};
+window.$RefreshSig$ = () => (type) => type;</script>
+
+    <script type="module" src="/@vite/client"></script>
+
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compound Interest Calculator</title>
+  <style type="text/css" data-vite-dev-id="C:/Users/igore/OneDrive/1_MacBook Air/Antogravity Projects/Compound Interest Calculator/src/index.css">@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap');
+
+:root {
+  /* Colors - Light Theme */
+  --bg: #F4F6F8;
+  --surface: #FFFFFF;
+  --surface-muted: #F8FAFB;
+  
+  --primary: #16A34A;
+  --primary-dark: #0F7A38;
+  --primary-soft: #E7F5EC;
+  --primary-accent: #86C95E;
+  
+  --secondary: #4F8FE0;
+  --neutral-400: #9AA3AE;
+  
+  --text-primary: #0F1B2D;
+  --text-secondary: #5B6776;
+  --text-muted: #8A95A3;
+  
+  --border: #E5E9EE;
+  --success-bg: #EAF7EE;
+  --danger: #E5484D;
+  
+  /* Typography */
+  --font-primary: 'Roboto', sans-serif;
+  
+  /* Shadows */
+  --shadow-card: 0 1px 2px rgba(15,23,45,0.04), 0 1px 3px rgba(15,23,45,0.06);
+  --shadow-elevated: 0 4px 12px rgba(15,23,45,0.08);
+  --shadow-focus: 0 0 0 3px rgba(22,163,74,0.18);
+}
+
+[data-theme="dark"] {
+  --bg: #0E1419;
+  --surface: #161D25;
+  --surface-muted: #1C242E;
+  
+  --text-primary: #F2F4F7;
+  --text-secondary: #A6B0BC;
+  --text-muted: #6E7884;
+  
+  --border: #2A333E;
+  --success-bg: #1A2E22;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-primary);
+  background-color: var(--bg);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: background-color 0.2s, opacity 0.2s;
+}
+
+button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+input, select {
+  font-family: inherit;
+  outline: none;
+}
+
+.numbers {
+  font-variant-numeric: tabular-nums;
+}
+
+.text-muted { color: var(--text-muted); }
+
+.text-secondary { color: var(--text-secondary); }
+
+.text-sm { font-size: 14px; line-height: 20px; }
+
+.text-xs { font-size: 12px; line-height: 16px; }
+
+/* Focus Visible */
+
+*:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+}
+</style><style type="text/css" data-vite-dev-id="C:/Users/igore/OneDrive/1_MacBook Air/Antogravity Projects/Compound Interest Calculator/src/App.css">/* App.css */
+/* Layout Updates */
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.top-header {
+  height: 70px;
+  background-color: var(--surface);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo-section {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo-title {
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: 600;
+}
+
+.logo-subtitle {
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--text-muted);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.selector-wrapper {
+  position: relative;
+}
+
+.selector-trigger {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bg);
+  padding: 4px 8px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--text-primary);
+}
+
+.selector-trigger svg {
+  border-radius: 4px;
+}
+
+.selector-dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: var(--shadow-elevated);
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 140px;
+  z-index: 200;
+}
+
+.selector-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  background: transparent;
+  width: 100%;
+  text-align: left;
+  font-size: 14px;
+  color: var(--text-primary);
+}
+
+.selector-item:hover {
+  background: var(--surface-muted);
+}
+
+.selector-item.active {
+  font-weight: 600;
+  color: var(--primary-dark);
+}
+
+.theme-toggle-group {
+  display: flex;
+  background: var(--bg);
+  padding: 2px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+}
+
+.theme-btn {
+  background: transparent;
+  padding: 4px 10px;
+  border-radius: 10px;
+  font-size: 14px;
+  transition: all 0.2s;
+  color: var(--text-muted);
+}
+
+.theme-btn.active {
+  background: var(--surface);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  color: var(--text-primary);
+}
+
+.main-content {
+  flex: 1;
+  padding: 24px;
+}
+
+.dashboard {
+  display: grid;
+  grid-template-columns: 320px minmax(0, 1fr);
+  gap: 24px;
+  max-width: 1600px;
+  margin: 0 auto;
+  width: 100%;
+  align-items: start;
+}
+
+.sidebar-left {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: var(--surface);
+  border-radius: 24px;
+  padding: 24px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-card);
+  position: sticky;
+  top: 94px;
+  height: fit-content;
+}
+
+.main-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 0;
+}
+@media (min-width: 480px) {
+  .main-panel { gap: 24px; }
+}
+@media (min-width: 768px) {
+  .main-panel { gap: 32px; }
+}
+.main-panel > * {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.section-title {
+  font-size: 28px;
+  line-height: 36px;
+  font-weight: 700;
+  margin-bottom: -10px;
+}
+
+.card {
+  background-color: var(--surface);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--border);
+}
+
+/* Inputs Section */
+.presets-group {
+  margin-bottom: 20px;
+}
+.presets-group label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+  display: block;
+}
+
+.presets-buttons {
+  display: flex;
+  background: var(--surface-muted);
+  border-radius: 12px;
+  padding: 4px;
+  border: 1px solid var(--border);
+}
+.tax-mode-toggle {
+  display: inline-flex;
+  background: var(--surface-muted);
+  border-radius: 12px;
+  padding: 4px;
+  border: 1px solid var(--border);
+}
+
+.preset-btn, .tax-mode-btn {
+  flex: 1;
+  background: transparent;
+  padding: 8px;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.preset-btn.active, .tax-mode-btn.active {
+  background: var(--primary);
+  color: white;
+}
+
+.tax-mode-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: -8px;
+  margin-bottom: 16px;
+}
+.tax-mode-section label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.input-group label {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.input-field-wrapper {
+  display: flex;
+  align-items: center;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  height: 40px;
+  padding: 0 12px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  position: relative;
+}
+
+.input-field-wrapper:focus-within {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-focus);
+}
+
+.input-field-wrapper.error {
+  border-color: var(--danger);
+}
+
+.input-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: var(--primary-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-dark);
+  margin-left: -8px;
+  margin-right: 8px;
+}
+
+.input-field-wrapper input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-size: 14px;
+  color: var(--text-primary);
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  width: 100%;
+}
+
+.input-field-wrapper .prefix, .input-field-wrapper .suffix {
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.input-field-wrapper .prefix {
+  margin-right: 4px;
+}
+.input-field-wrapper .suffix {
+  margin-left: 4px;
+}
+
+.error-caption {
+  font-size: 12px;
+  color: var(--danger);
+  margin-top: 4px;
+}
+
+/* Tooltip */
+.info-icon-btn {
+  background: transparent;
+  border: none;
+  padding: 0;
+  display: flex;
+  color: var(--text-muted);
+  border-radius: 50%;
+  cursor: help;
+}
+.info-icon-btn:hover {
+  color: var(--text-secondary);
+}
+
+/* Calculate CTA */
+.cta-button {
+  width: 100%;
+  height: 56px;
+  border-radius: 16px;
+  background-color: var(--primary);
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 16px;
+  position: relative;
+}
+
+.cta-button:hover {
+  background-color: var(--primary-dark);
+}
+
+.cta-icon-wrapper {
+  background-color: rgba(255,255,255,0.16);
+  padding: 6px;
+  border-radius: 8px;
+  display: flex;
+}
+
+/* Results Section */
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.result-card {
+  background-color: var(--surface);
+  border-radius: 16px;
+  padding: 24px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-card);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.result-card.highlight {
+  border-color: var(--primary);
+  border-width: 2px;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+
+.result-card .label {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.result-card .value {
+  font-size: 26px;
+  line-height: 32px;
+  font-weight: 700;
+  color: var(--text-primary);
+  word-wrap: break-word;
+  word-break: break-word;
+}
+
+.card-footnote {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 12px;
+  line-height: 1.4;
+}
+
+.result-card.highlight .value {
+  color: var(--primary);
+}
+
+.primary-badge {
+  background-color: var(--primary-soft);
+  color: var(--primary-dark);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 999px;
+  display: inline-block;
+  margin-top: 8px;
+}
+
+.side-stats {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.stat-label {
+  font-size: 14px;
+  color: var(--text-secondary);
+  flex-shrink: 0;
+}
+
+.stat-value {
+  font-size: 16px;
+  font-weight: 600;
+  text-align: right;
+  word-wrap: break-word;
+  word-break: break-word;
+  flex: 1;
+  min-width: 0;
+}
+
+.stat-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 12px 0;
+}
+
+/* Charts */
+.charts-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: 20px;
+}
+
+/* .chart-card replaced */
+
+.chart-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.doughnut-center-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  pointer-events: none;
+}
+.doughnut-center-text .value {
+  font-size: 20px;
+  font-weight: 700;
+}
+.doughnut-center-text .label {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* Table */
+.table-wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.table-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.table-toggle {
+  display: flex;
+  background-color: var(--surface-muted);
+  border-radius: 12px;
+  padding: 4px;
+  border: 1px solid var(--border);
+}
+
+.table-toggle button {
+  background: transparent;
+  padding: 6px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+.table-toggle button.active {
+  background-color: var(--surface);
+  color: var(--primary-dark);
+  box-shadow: var(--shadow-card);
+}
+.table-toggle button.tax-mode-btn.active {
+  background-color: var(--primary);
+  color: white;
+  border-color: var(--primary);
+  box-shadow: 0 1px 2px rgba(15,122,56,0.2);
+}
+
+/* Switch Toggle */
+.switch-toggle {
+  width: 44px;
+  height: 24px;
+  background-color: var(--border);
+  border-radius: 999px;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.switch-toggle.on {
+  background-color: var(--primary);
+}
+
+.switch-knob {
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  border-radius: 50%;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.switch-toggle.on .switch-knob {
+  transform: translateX(20px);
+}
+
+.expand-btn {
+  background: transparent;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 14px;
+  font-weight: 500;
+}
+.expand-btn:hover {
+  color: var(--text-primary);
+}
+
+.table-container {
+  overflow-x: auto;
+  max-height: 350px;
+  transition: max-height 0.3s ease;
+}
+.table-container.expanded {
+  max-height: none;
+  overflow-y: visible;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  text-align: left;
+  padding: 12px 16px;
+  border-bottom: 2px solid var(--border);
+  color: var(--text-secondary);
+  font-weight: 600;
+  font-size: 14px;
+  position: sticky;
+  top: 0;
+  background: var(--surface);
+  z-index: 10;
+}
+
+td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
+  color: var(--text-primary);
+}
+
+tbody tr:hover {
+  background-color: rgba(231, 245, 236, 0.6); /* --primary-soft with opacity */
+}
+
+tbody tr:last-child {
+  background-color: var(--primary-soft);
+}
+tbody tr:last-child td {
+  color: var(--primary-dark);
+  font-weight: 600;
+  border-bottom: none;
+}
+
+/* About Results */
+.about-results {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.about-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.about-header h4 {
+  font-size: 16px;
+}
+
+.disclaimer-box {
+  background: var(--success-bg);
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  color: var(--primary-dark);
+  font-size: 14px;
+}
+.disclaimer-box strong {
+  display: block;
+  margin-bottom: 4px;
+}
+
+/* Bottom Nav */
+.bottom-nav {
+  display: none;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  padding: 12px 24px;
+  border-radius: 24px 24px 0 0;
+  justify-content: space-around;
+  position: sticky;
+  bottom: 0;
+  z-index: 100;
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  color: var(--text-secondary);
+  font-size: 12px;
+  background: transparent;
+  position: relative;
+}
+.nav-item.active {
+  color: var(--primary-dark);
+}
+.nav-item.active::before {
+  content: '';
+  position: absolute;
+  top: -12px;
+  width: 60px;
+  height: 3px;
+  background: var(--primary);
+  border-radius: 2px;
+}
+
+/* Responsive */
+
+
+
+
+/* Hero + Satellites Layout */
+/* .hero-card replaced by fix_layout */
+
+
+.hero-value {
+  font-size: 38px;
+  font-weight: 700;
+  color: var(--primary);
+  margin: 12px 0;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.1;
+}
+
+
+.hero-description {
+  font-size: 16px;
+  color: var(--text-secondary);
+}
+
+/* .satellite-grid replaced */
+
+.satellite-tile {
+  padding: 16px;
+  background-color: var(--surface);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+}
+
+.satellite-label {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.satellite-value {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+
+
+
+/* ==========================================================================
+   Global Responsive Breakpoints System
+   ========================================================================== */
+
+/* Max Width Container & Global Fixes */
+.app-container {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.table-container {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: 24px;
+}
+
+.table-container table {
+  min-width: 600px;
+}
+
+/* .donut-chart-container replaced */
+
+/* Base styles for new Hero elements */
+.hero-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.hero-main-group {
+  margin-bottom: 12px;
+}
+.hero-subtitle {
+  font-size: 16px;
+  color: var(--text-primary);
+  font-weight: 500;
+  margin-top: 4px;
+}
+.hero-narrative {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+.hero-divider {
+  border: 0;
+  height: 1px;
+  background: var(--border);
+  margin: 16px 0;
+}
+.hero-inline-metrics {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 14px;
+}
+.inline-metric {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 500;
+}
+.metric-separator {
+  color: var(--border);
+}
+.metric-label {
+  color: var(--text-secondary);
+  font-weight: 400;
+}
+
+/* Base Inputs Height Fix */
+.input-field-wrapper, .form-input, .selector-trigger, .theme-btn {
+  height: 40px !important;
+}
+
+/* ==========================================================================
+   ≥1280px (Desktop)
+   ========================================================================== */
+@media (min-width: 1280px) {
+  .satellite-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ==========================================================================
+   1024px - 1279px (Tablet Landscape)
+   ========================================================================== */
+@media (max-width: 1279px) and (min-width: 1024px) {
+  .dashboard {
+    grid-template-columns: 280px minmax(0, 1fr);
+  }
+  .satellite-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .satellite-tile {
+    padding: 12px;
+  }
+  .satellite-value {
+    font-size: 18px;
+  }
+}
+
+/* ==========================================================================
+   768px - 1023px (Tablet Portrait)
+   ========================================================================== */
+@media (max-width: 1023px) and (min-width: 768px) {
+  .dashboard {
+    grid-template-columns: 240px minmax(0, 1fr);
+  }
+  .satellite-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .chart-container-row {
+    flex-direction: column;
+  }
+}
+
+/* ==========================================================================
+   <768px (Mobile & Small Tablet)
+   ========================================================================== */
+@media (max-width: 767px) {
+  .dashboard {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .sidebar-left {
+    position: relative;
+    top: 0;
+    width: 100%;
+    margin-bottom: 24px;
+  }
+  
+  .main-content {
+    padding: 16px;
+  }
+  
+  .hero-card {
+    padding: 20px;
+  }
+  
+  .hero-value {
+    font-size: 36px;
+  }
+  
+  .satellite-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  
+  .donut-chart-container {
+    max-width: 220px;
+  }
+  
+  .chart-container-row {
+    flex-direction: column;
+  }
+}
+
+/* ==========================================================================
+   <480px (Small Mobile)
+   ========================================================================== */
+@media (max-width: 479px) {
+  .hero-card {
+    padding: 16px;
+  }
+  
+  .hero-value {
+    font-size: 32px;
+  }
+  
+  .hero-inline-metrics {
+    gap: 8px;
+  }
+}
+
+
+/* Hero 2-column layout */
+.hero-card {
+  display: grid;
+  grid-template-columns: 1.8fr 1fr;
+  gap: 32px;
+  padding: 24px 32px;
+  border: 2px solid var(--primary);
+  border-radius: 16px;
+  background: linear-gradient(135deg, var(--surface) 0%, rgba(16, 185, 129, 0.05) 100%);
+  margin-bottom: 0;
+}
+.hero-left {
+  display: flex;
+  flex-direction: column;
+}
+.hero-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+  border-left: 1px solid var(--border);
+  padding-left: 32px;
+}
+.hero-metric-box {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.hero-metric-box .metric-label {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+.hero-metric-box .metric-value {
+  font-size: 18px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+@media (max-width: 767px) {
+  .hero-card {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 20px;
+  }
+  .hero-right {
+    border-left: none;
+    border-top: 1px solid var(--border);
+    padding-left: 0;
+    padding-top: 16px;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+}
+@media (max-width: 479px) {
+  .hero-card {
+    padding: 16px;
+  }
+}
+
+
+/* main-panel definition unified above */
+.satellite-value-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.growth-badge {
+  font-size: 13px;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 8px;
+  white-space: nowrap;
+}
+
+.growth-badge.positive {
+  color: #10B981;
+  background-color: rgba(16, 185, 129, 0.1);
+}
+
+.growth-badge.negative {
+  color: #EF4444;
+  background-color: rgba(239, 68, 68, 0.1);
+}
+
+.results-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.satellite-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 0;
+}
+.charts-section {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 16px;
+}
+
+
+.chart-card {
+  padding: 20px;
+  background-color: var(--surface);
+  border-radius: 16px;
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--border);
+}
+.chart-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+.donut-chart-container {
+  width: 100%;
+  max-width: 240px;
+  aspect-ratio: 1 / 1;
+  margin: 0 auto;
+}
+
+
+/* Structure Box Refactor */
+.structure-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.structure-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.structure-header h3 {
+  margin: 0;
+}
+
+.structure-header .tax-mode-toggle {
+  margin: 0 !important; /* override inline if any */
+}
+
+.structure-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: center;
+  flex: 1;
+  margin-bottom: 16px;
+}
+
+.donut-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.donut-container canvas {
+  width: 100% !important;
+  max-width: 220px;
+  height: auto !important;
+  aspect-ratio: 1 / 1;
+}
+
+.legend-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+}
+
+.legend-row {
+  display: grid;
+  grid-template-columns: 12px 1fr auto;
+  gap: 10px;
+  align-items: center;
+  font-size: 14px;
+}
+
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.legend-label {
+  color: var(--text-primary);
+}
+
+.legend-value {
+  font-weight: 600;
+  color: var(--text-primary);
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+.structure-disclaimer {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-style: italic;
+  line-height: 1.4;
+  margin-top: auto;
+  margin-bottom: 0;
+}
+
+.chart-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.chart-box .chart-container,
+.structure-box .structure-content {
+  flex: 1;
+}
+
+.chart-box .disclaimer,
+.structure-box .structure-disclaimer {
+  margin-top: auto;
+}
+
+/* Override existing charts-section to stretch items */
+.charts-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  align-items: stretch;
+}
+
+/* Responsive Overrides */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .donut-container canvas {
+    max-width: 180px;
+  }
+  .legend-row {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 767px) {
+  .charts-section {
+    grid-template-columns: 1fr;
+  }
+  .structure-content {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .donut-container canvas {
+    max-width: 180px;
+  }
+  .structure-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .structure-header .structure-toggle {
+    width: 100%;
+  }
+  .structure-header .tax-mode-toggle {
+    width: 100%;
+    display: flex;
+  }
+  .structure-header .tax-mode-toggle button {
+    flex: 1;
+  }
+}
+
+
+/* Line Chart Refactor */
+.chart-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.chart-header h3 {
+  margin: 0 0 20px 0;
+}
+
+.chart-content {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 20px;
+  flex: 1;
+  margin-bottom: 16px;
+  min-height: 280px;
+}
+
+.chart-container {
+  display: flex;
+  align-items: stretch;
+  min-width: 0;
+}
+
+.chart-container canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.chart-legend-side {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  font-size: 13px;
+}
+
+.legend-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.legend-section-title {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.line-legend-marker {
+  width: 16px;
+  height: 3px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.chart-disclaimer {
+  margin-top: auto;
+  margin-bottom: 0;
+  font-size: 12px;
+  color: var(--text-muted);
+  font-style: italic;
+  line-height: 1.4;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-light);
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .chart-content {
+    grid-template-columns: 4fr 1fr;
+  }
+  .chart-legend-side {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 767px) {
+  .chart-content {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .chart-container {
+    min-height: 240px;
+  }
+  
+  .chart-legend-side {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 16px;
+  }
+  
+  .legend-section {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .legend-section-title {
+    margin-bottom: 0;
+    margin-right: 4px;
+  }
+}
+
+/* Additional styles for satellite tiles and tooltips */
+
+/* Rate Range Info */
+.rate-range-info {
+  display: flex;
+  gap: 8px;
+  padding: 10px 12px;
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  border-radius: 8px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #78350f;
+}
+
+.rate-range-info__icon {
+  color: #d97706;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* Tooltip and metrics */
+.metric-with-tooltip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.cagr-negative-hint {
+  font-size: 11px;
+  color: #991b1b;
+  line-height: 1.4;
+  margin-top: 4px;
+  max-width: 220px;
+}
+
+/* Satellite Tiles */
+.satellite-tile {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 140px;
+}
+
+.satellite-tile__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.satellite-tile__label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 14px;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.satellite-tile__delta {
+  font-size: 13px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+
+.satellite-tile__delta--positive {
+  background: #d1fae5;
+  color: #047857;
+}
+
+.satellite-tile__delta--cost {
+  background: #f3f4f6;
+  color: #4b5563;
+}
+
+.satellite-tile__value {
+  font-size: 28px;
+  font-weight: 700;
+  color: #111827;
+  line-height: 1.2;
+  margin-top: 4px;
+}
+
+.satellite-tile__subtitle {
+  font-size: 12px;
+  font-style: italic;
+  color: #9ca3af;
+  line-height: 1.4;
+  margin-top: auto;
+}
+
+/* Warning banner — compact */
+.warning-banner {
+  padding: 14px 18px;
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  border-radius: 10px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #78350f;
+}
+
+@media (max-width: 479px) {
+  .satellite-tile__header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+  .satellite-grid {
+    grid-template-columns: 1fr;
+  }
+  .hero-card {
+    grid-template-columns: 1fr;
+  }
+  .hero-right {
+    border-left: none;
+    border-top: 1px solid var(--border);
+    padding-left: 0;
+    padding-top: 16px;
+  }
+}
+
+/* ==========================================================================
+   ≥1920px (Ultra-Wide / 4K / 8K)
+   ========================================================================== */
+@media (min-width: 1920px) {
+  .dashboard {
+    max-width: 1800px;
+    gap: 48px;
+  }
+  .sidebar-left {
+    grid-template-columns: 400px;
+  }
+  .dashboard {
+    grid-template-columns: 400px minmax(0, 1fr);
+  }
+  html {
+    font-size: 18px; /* scale everything slightly up */
+  }
+  .hero-value {
+    font-size: 56px;
+  }
+  .satellite-tile__value {
+    font-size: 36px;
+  }
+}
+
+@media (min-width: 2560px) {
+  .dashboard {
+    max-width: 2400px;
+    gap: 64px;
+  }
+  .dashboard {
+    grid-template-columns: 480px minmax(0, 1fr);
+  }
+  html {
+    font-size: 20px; /* scale up for 8K/ultra-huge monitors */
+  }
+  .hero-value {
+    font-size: 72px;
+  }
+  .satellite-tile__value {
+    font-size: 48px;
+  }
+}
+
+/* ==========================================================================
+   Tooltips for Delta Badges
+   ========================================================================== */
+.delta-badge-wrapper {
+  position: relative;
+  display: inline-flex;
+}
+
+.delta-badge {
+  font-size: 13px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 8px;
+  white-space: nowrap;
+  cursor: help;
+  transition: opacity 0.15s;
+  border-bottom: 1px dashed currentColor;
+}
+
+.delta-badge--positive {
+  background: #d1fae5;
+  color: #047857;
+}
+
+.delta-badge--cost {
+  background: #f3f4f6;
+  color: #4b5563;
+}
+
+.delta-tooltip {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  right: 0;
+  width: 320px;
+  padding: 14px 16px;
+  background: #1f2937;
+  color: #f9fafb;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(4px);
+  transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
+  z-index: 50;
+  pointer-events: none;
+}
+
+.delta-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  right: 16px;
+  border: 6px solid transparent;
+  border-top-color: #1f2937;
+}
+
+.delta-badge-wrapper:hover .delta-tooltip,
+.delta-badge:focus + .delta-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.delta-tooltip__explanation {
+  font-size: 13px;
+  line-height: 1.5;
+  margin: 0 0 10px 0;
+  color: #e5e7eb;
+}
+
+.delta-tooltip__formula {
+  font-size: 12px;
+  font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+  line-height: 1.6;
+  margin: 0;
+  padding: 8px 10px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  color: #fbbf24;
+  word-break: break-word;
+}
+
+@media (max-width: 767px) {
+  .delta-tooltip {
+    width: 280px;
+    right: -10px;
+  }
+  
+  .delta-tooltip::after {
+    right: 26px;
+  }
+}
+
+@media (hover: none) {
+  .delta-badge-wrapper:hover .delta-tooltip {
+    opacity: 0;
+    visibility: hidden;
+  }
+  
+  .delta-badge:focus + .delta-tooltip,
+  .delta-badge:focus-within + .delta-tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+}
+
+
+/* =========================================
+   RESPONSIVE FIXES (Mobile & Narrow Screens)
+   ========================================= */
+
+/* 1. Global Overflow Protection */
+body {
+  overflow-x: hidden;
+}
+
+.hero-card,
+.warning-banner,
+.satellite-tile,
+.chart-box,
+.donut-box {
+  overflow: visible !important;
+}
+
+/* 2. Warning Banner */
+.warning-banner {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+/* 3. Hero Card & CAGR Hint */
+.cagr-negative-hint {
+  word-wrap: break-word;
+}
+
+@media (max-width: 767px) {
+  .hero-card {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .hero-metrics-sidebar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 24px;
+  }
+  
+  .hero-metrics-sidebar .metric-item {
+    flex: 1 1 auto;
+    min-width: 120px;
+  }
+  
+  .cagr-negative-hint {
+    max-width: none;
+  }
+}
+
+/* 4. Satellites Grid */
+@media (max-width: 1023px) {
+  .satellites-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+}
+
+@media (max-width: 479px) {
+  .satellites-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  
+  .satellite-tile {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 14px 16px;
+    min-height: auto;
+  }
+  
+  .satellite-tile__value {
+    font-size: 22px;
+    order: 2;
+    text-align: right;
+  }
+  
+  .satellite-tile__label-group {
+    order: 1;
+    flex: 1;
+  }
+  
+  .satellite-tile__subtitle {
+    display: none;
+  }
+  
+  .satellite-tile__delta {
+    order: 3;
+  }
+}
+
+/* 5. Chart Container & Legend */
+.chart-box {
+  width: 100%;
+}
+
+.chart-container {
+  width: 100%;
+}
+
+@media (max-width: 767px) {
+  .chart-container {
+    height: 300px;
+    max-height: 50vh;
+  }
+  
+  .chart-container canvas,
+  .chart-container svg {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain;
+  }
+  
+  .chart-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 16px;
+    font-size: 11px;
+    margin-top: 8px;
+  }
+}
+
+/* 6. Donut Chart Section */
+.donut-section {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+@media (max-width: 767px) {
+  .donut-section {
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .donut-chart {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+  }
+  
+  .donut-legend {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .donut-legend-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+  }
+  
+  .donut-legend-item__value {
+    font-weight: 600;
+  }
+}
+
+/* 7. Table Container Scroll Shadow */
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  position: relative;
+}
+
+.table-container::after {
+  content: '';
+  position: fixed; /* Using fixed relative to viewport or absolute if container is relative */
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 24px;
+  background: linear-gradient(to right, transparent, var(--surface));
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+
+.table-container.scrolled-end::after {
+  opacity: 0;
+}
+
+.table-container table {
+  min-width: 700px;
+  width: 100%;
+}
+
+@media (max-width: 767px) {
+  .table-container th,
+  .table-container td {
+    padding: 8px 10px;
+    font-size: 13px;
+    white-space: nowrap;
+  }
+  
+  .table-container th:first-child,
+  .table-container td:first-child {
+    position: sticky;
+    left: 0;
+    background: var(--surface);
+    z-index: 2;
+    box-shadow: 2px 0 4px rgba(0,0,0,0.05);
+  }
+}
+
+/* 8. Table Controls */
+.table-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media (max-width: 479px) {
+  .table-controls {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+  
+  .table-controls__toggle-group {
+    display: flex;
+    width: 100%;
+  }
+  
+  .table-controls__toggle-group button {
+    flex: 1;
+    font-size: 13px;
+    padding: 8px 4px;
+  }
+}
+
+
+/* =========================================
+   REVISED RESPONSIVE FIXES (Chart & Donut)
+   ========================================= */
+
+@media (max-width: 767px) {
+  /* Line Chart Legend */
+  .chart-content {
+    flex-direction: column;
+  }
+  .chart-legend-side {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    margin-top: 16px;
+  }
+  .legend-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 12px;
+    width: 100%;
+  }
+  .legend-section-title {
+    width: 100%;
+    margin-bottom: 4px;
+  }
+  
+  /* Donut Structure Chart */
+  .structure-content {
+    flex-direction: column;
+    gap: 24px;
+  }
+  .donut-container {
+    width: 220px !important;
+    height: 220px !important;
+    margin: 0 auto;
+    position: relative;
+  }
+  .legend-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .legend-row {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    font-size: 14px;
+  }
+  .legend-label {
+    flex: 1;
+  }
+  .legend-value {
+    font-weight: 600;
+  }
+}
+\n
+/* =========================================
+   FOOTER
+   ========================================= */
+.site-footer {
+  margin-top: 64px;
+  padding: 48px 24px 32px;
+  background-color: var(--surface);
+  border-top: 1px solid var(--border);
+}
+
+.footer-content {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--text-primary);
+}
+
+.footer-developer {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+}
+
+.dev-label {
+  color: var(--text-secondary);
+}
+
+.dev-link {
+  color: var(--text-primary);
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.dev-link:hover {
+  color: var(--primary);
+  text-decoration: underline;
+}
+
+.footer-divider {
+  height: 1px;
+  background-color: var(--border);
+  margin: 24px 0;
+}
+
+.footer-bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 24px;
+}
+
+.footer-links a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.2s;
+}
+
+.footer-links a:hover {
+  color: var(--text-primary);
+}
+
+.footer-legal {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer-legal p {
+  margin: 0;
+  font-size: 13px;
+  color: var(--text-tertiary, #9AA3AE);
+  line-height: 1.5;
+}
+
+@media (min-width: 768px) {
+  .footer-bottom {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  
+  .footer-legal {
+    text-align: right;
+    max-width: 400px;
+  }
+}
+\n
+/* =========================================
+   LEGAL PAGES
+   ========================================= */
+.legal-page-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff; /* White background as requested */
+  color: #1a202c;
+  font-family: 'Roboto', sans-serif;
+}
+
+.legal-header {
+  border-bottom: 1px solid #e2e8f0;
+  padding: 16px 24px;
+  background-color: #ffffff;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.legal-header-content {
+  max-width: 720px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.back-button {
+  color: #4a5568;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.2s;
+  padding: 8px 0;
+}
+
+.back-button:hover {
+  color: #000000;
+}
+
+.legal-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 16px;
+  color: #1a202c;
+}
+
+.legal-main {
+  flex: 1;
+  padding: 48px 24px;
+}
+
+.legal-content-wrapper {
+  max-width: 720px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.legal-content-wrapper h1 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
+.legal-content-wrapper h2 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 32px;
+  margin-bottom: 16px;
+  color: #2d3748;
+}
+
+.legal-content-wrapper h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-top: 24px;
+  margin-bottom: 12px;
+  color: #4a5568;
+}
+
+.legal-content-wrapper p {
+  margin-bottom: 16px;
+  color: #4a5568;
+}
+
+.legal-content-wrapper ul {
+  margin-bottom: 16px;
+  padding-left: 24px;
+  color: #4a5568;
+}
+
+.legal-content-wrapper li {
+  margin-bottom: 8px;
+}
+
+.legal-content-wrapper table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 16px;
+  margin-bottom: 24px;
+}
+
+.legal-content-wrapper th,
+.legal-content-wrapper td {
+  border: 1px solid #e2e8f0;
+  padding: 12px;
+  text-align: left;
+}
+
+.legal-content-wrapper th {
+  background-color: #f7fafc;
+  font-weight: 600;
+  color: #2d3748;
+}
+
+.legal-content-wrapper strong {
+  font-weight: 600;
+  color: #2d3748;
+}
+
+.last-updated {
+  color: #718096;
+  font-size: 14px;
+  margin-bottom: 32px !important;
+}
+</style></head>
+  <body>
+    <div id="error-display" style="color: red; padding: 20px; font-family: monospace; z-index: 9999; position: absolute; background: white;"></div>
+    <script>
+      window.onerror = function(message, source, lineno, colno, error) {
+        document.getElementById('error-display').innerText += message + '\\n' + (error ? error.stack : '') + '\\n\\n';
+      };
+      window.addEventListener('unhandledrejection', function(event) {
+        document.getElementById('error-display').innerText += 'Unhandled Rejection: ' + event.reason + '\\n\\n';
+      });
+    </script>
+    <div id="root"><div class="layout"><header class="top-header"><div class="logo-section"><img alt="Compound Interest Calculator" width="48" height="48" src="/apple-touch-icon.png" style="border-radius: 12px;"><div><h1 class="logo-title">Compound Interest</h1><p class="logo-subtitle">Calculator</p></div></div><div class="header-actions"><div class="selector-wrapper"><div class="selector-trigger"><span class="flag-container"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 513 342" class="flag-icon"><title>English</title><g fill="#FFF"><path d="M0 0h513v341.3H0V0z"></path><path d="M311.7 230 513 341.3v-31.5L369.3 230h-57.6zM200.3 111.3 0 0v31.5l143.7 79.8h56.6z"></path></g><path d="M393.8 230 513 295.7V230H393.8zm-82.1 0L513 341.3v-31.5L369.3 230h-57.6zm146.9 111.3-147-81.7v81.7h147zM90.3 230 0 280.2V230h90.3zm110 14.2v97.2H25.5l174.8-97.2zm-82.1-132.9L0 45.6v65.7h118.2zm82.1 0L0 0v31.5l143.7 79.8h56.6zM53.4 0l147 81.7V0h-147zm368.3 111.3L513 61.1v50.2h-91.3zm-110-14.2V0h174.9L311.7 97.1z" fill="#012169"></path><g fill="#c8102e"><path d="M288 0h-64v138.7H0v64h224v138.7h64V202.7h224v-64H288V0z"></path><path d="M311.7 230 513 341.3v-31.5L369.3 230h-57.6zm-168 0L0 309.9v31.5L200.3 230h-56.6zm56.6-118.7L0 0v31.5l143.7 79.8h56.6zm168 0L513 31.5V0L311.7 111.3h56.6z"></path></g></svg></span><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down text-muted" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></div><select style="position: absolute; opacity: 0; inset: 0px; cursor: pointer;"><option value="en">English</option><option value="uk">Українська</option><option value="pl">Polski</option><option value="de">Deutsch</option><option value="fr">Français</option><option value="es">Español</option><option value="it">Italiano</option><option value="pt">Português</option><option value="tr">Türkçe</option><option value="zh-CN">简体中文</option><option value="ja">日本語</option><option value="ko">한국어</option><option value="hi">हिन्दी</option><option value="ar">العربية</option></select></div><div class="theme-toggle-group"><button class="theme-btn active">☀️</button><button class="theme-btn ">🌙</button></div></div></header><main class="main-content"><div class="dashboard"><aside class="sidebar-left"><div class="input-section"><div class="input-group"><label>Initial Deposit<div class="tooltip-container relative inline-flex items-center"><button type="button" aria-label="More info" class="info-icon-btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-info" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg></button><style>
+        .tooltip-container {
+          position: relative;
+          display: inline-flex;
+          margin-left: 4px;
+        }
+        .tooltip-popup {
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+          background-color: var(--surface);
+          color: var(--text-primary);
+          padding: 12px 14px;
+          border-radius: 12px;
+          box-shadow: var(--shadow-elevated);
+          font-size: 12px;
+          line-height: 16px;
+          width: max-content;
+          max-width: 380px;
+          z-index: 1000;
+          border: 1px solid var(--border);
+          text-align: left;
+          font-weight: 400;
+        }
+        .tooltip-popup.top {
+          bottom: calc(100% + 8px);
+        }
+        .tooltip-popup.bottom {
+          top: calc(100% + 8px);
+        }
+        .tooltip-arrow {
+          position: absolute;
+          left: 50%;
+          margin-left: -5px;
+          border-width: 5px;
+          border-style: solid;
+        }
+        .tooltip-arrow.top {
+          top: 100%;
+          border-color: var(--surface) transparent transparent transparent;
+        }
+        .tooltip-arrow.bottom {
+          bottom: 100%;
+          border-color: transparent transparent var(--surface) transparent;
+        }
+      </style></div></label><div class="input-field-wrapper "><div class="input-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-dollar-sign" aria-hidden="true"><line x1="12" x2="12" y1="2" y2="22"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg></div><input inputmode="decimal" type="text" value="10000"></div></div><div class="input-group"><label>Investment Period<div class="tooltip-container relative inline-flex items-center"><button type="button" aria-label="More info" class="info-icon-btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-info" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg></button><style>
+        .tooltip-container {
+          position: relative;
+          display: inline-flex;
+          margin-left: 4px;
+        }
+        .tooltip-popup {
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+          background-color: var(--surface);
+          color: var(--text-primary);
+          padding: 12px 14px;
+          border-radius: 12px;
+          box-shadow: var(--shadow-elevated);
+          font-size: 12px;
+          line-height: 16px;
+          width: max-content;
+          max-width: 380px;
+          z-index: 1000;
+          border: 1px solid var(--border);
+          text-align: left;
+          font-weight: 400;
+        }
+        .tooltip-popup.top {
+          bottom: calc(100% + 8px);
+        }
+        .tooltip-popup.bottom {
+          top: calc(100% + 8px);
+        }
+        .tooltip-arrow {
+          position: absolute;
+          left: 50%;
+          margin-left: -5px;
+          border-width: 5px;
+          border-style: solid;
+        }
+        .tooltip-arrow.top {
+          top: 100%;
+          border-color: var(--surface) transparent transparent transparent;
+        }
+        .tooltip-arrow.bottom {
+          bottom: 100%;
+          border-color: transparent transparent var(--surface) transparent;
+        }
+      </style></div></label><div class="input-field-wrapper "><div class="input-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar" aria-hidden="true"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path></svg></div><input inputmode="numeric" type="text" value="15"><span class="suffix">years</span></div></div><div class="input-group"><label>Annual Return<div class="tooltip-container relative inline-flex items-center"><button type="button" aria-label="More info" class="info-icon-btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-info" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg></button><style>
+        .tooltip-container {
+          position: relative;
+          display: inline-flex;
+          margin-left: 4px;
+        }
+        .tooltip-popup {
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+          background-color: var(--surface);
+          color: var(--text-primary);
+          padding: 12px 14px;
+          border-radius: 12px;
+          box-shadow: var(--shadow-elevated);
+          font-size: 12px;
+          line-height: 16px;
+          width: max-content;
+          max-width: 380px;
+          z-index: 1000;
+          border: 1px solid var(--border);
+          text-align: left;
+          font-weight: 400;
+        }
+        .tooltip-popup.top {
+          bottom: calc(100% + 8px);
+        }
+        .tooltip-popup.bottom {
+          top: calc(100% + 8px);
+        }
+        .tooltip-arrow {
+          position: absolute;
+          left: 50%;
+          margin-left: -5px;
+          border-width: 5px;
+          border-style: solid;
+        }
+        .tooltip-arrow.top {
+          top: 100%;
+          border-color: var(--surface) transparent transparent transparent;
+        }
+        .tooltip-arrow.bottom {
+          bottom: 100%;
+          border-color: transparent transparent var(--surface) transparent;
+        }
+      </style></div></label><div class="input-field-wrapper "><div class="input-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trending-up" aria-hidden="true"><path d="M16 7h6v6"></path><path d="m22 7-8.5 8.5-5-5L2 17"></path></svg></div><input inputmode="decimal" type="text" value="8"><span class="suffix">%</span></div></div><div class="variance-toggle-group" style="margin-bottom: 16px;"><label style="display: flex; align-items: center; justify-content: space-between; font-size: 14px; font-weight: 500; color: var(--text-secondary);"><div style="display: flex; align-items: center; gap: 6px;">Variance Range<div class="tooltip-container relative inline-flex items-center"><button type="button" aria-label="More info" class="info-icon-btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-info" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg></button><style>
+        .tooltip-container {
+          position: relative;
+          display: inline-flex;
+          margin-left: 4px;
+        }
+        .tooltip-popup {
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+          background-color: var(--surface);
+          color: var(--text-primary);
+          padding: 12px 14px;
+          border-radius: 12px;
+          box-shadow: var(--shadow-elevated);
+          font-size: 12px;
+          line-height: 16px;
+          width: max-content;
+          max-width: 380px;
+          z-index: 1000;
+          border: 1px solid var(--border);
+          text-align: left;
+          font-weight: 400;
+        }
+        .tooltip-popup.top {
+          bottom: calc(100% + 8px);
+        }
+        .tooltip-popup.bottom {
+          top: calc(100% + 8px);
+        }
+        .tooltip-arrow {
+          position: absolute;
+          left: 50%;
+          margin-left: -5px;
+          border-width: 5px;
+          border-style: solid;
+        }
+        .tooltip-arrow.top {
+          top: 100%;
+          border-color: var(--surface) transparent transparent transparent;
+        }
+        .tooltip-arrow.bottom {
+          bottom: 100%;
+          border-color: transparent transparent var(--surface) transparent;
+        }
+      </style></div></div><div class="switch-toggle off"><div class="switch-knob"></div></div></label></div><div class="input-group"><label>Compounding Frequency<div class="tooltip-container relative inline-flex items-center"><button type="button" aria-label="More info" class="info-icon-btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-info" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg></button><style>
+        .tooltip-container {
+          position: relative;
+          display: inline-flex;
+          margin-left: 4px;
+        }
+        .tooltip-popup {
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+          background-color: var(--surface);
+          color: var(--text-primary);
+          padding: 12px 14px;
+          border-radius: 12px;
+          box-shadow: var(--shadow-elevated);
+          font-size: 12px;
+          line-height: 16px;
+          width: max-content;
+          max-width: 380px;
+          z-index: 1000;
+          border: 1px solid var(--border);
+          text-align: left;
+          font-weight: 400;
+        }
+        .tooltip-popup.top {
+          bottom: calc(100% + 8px);
+        }
+        .tooltip-popup.bottom {
+          top: calc(100% + 8px);
+        }
+        .tooltip-arrow {
+          position: absolute;
+          left: 50%;
+          margin-left: -5px;
+          border-width: 5px;
+          border-style: solid;
+        }
+        .tooltip-arrow.top {
+          top: 100%;
+          border-color: var(--surface) transparent transparent transparent;
+        }
+        .tooltip-arrow.bottom {
+          bottom: 100%;
+          border-color: transparent transparent var(--surface) transparent;
+        }
+      </style></div></label><div class="selector-wrapper" style="width: 100%;"><select class="input-field-wrapper" style="width: 100%; appearance: none; background-color: var(--surface); color: var(--text-primary); background-image: url(&quot;data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%239AA3AE%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E&quot;); background-repeat: no-repeat; background-position: right 12px center; background-size: 16px; padding-right: 36px;"><option value="daily">Daily</option><option value="monthly">Monthly</option><option value="quarterly">Quarterly</option><option value="semiannual">Semi-annual</option><option value="annual">Annual</option></select></div></div><div class="input-group"><label>Contributions<div class="tooltip-container relative inline-flex items-center"><button type="button" aria-label="More info" class="info-icon-btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-info" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg></button><style>
+        .tooltip-container {
+          position: relative;
+          display: inline-flex;
+          margin-left: 4px;
+        }
+        .tooltip-popup {
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+          background-color: var(--surface);
+          color: var(--text-primary);
+          padding: 12px 14px;
+          border-radius: 12px;
+          box-shadow: var(--shadow-elevated);
+          font-size: 12px;
+          line-height: 16px;
+          width: max-content;
+          max-width: 380px;
+          z-index: 1000;
+          border: 1px solid var(--border);
+          text-align: left;
+          font-weight: 400;
+        }
+        .tooltip-popup.top {
+          bottom: calc(100% + 8px);
+        }
+        .tooltip-popup.bottom {
+          top: calc(100% + 8px);
+        }
+        .tooltip-arrow {
+          position: absolute;
+          left: 50%;
+          margin-left: -5px;
+          border-width: 5px;
+          border-style: solid;
+        }
+        .tooltip-arrow.top {
+          top: 100%;
+          border-color: var(--surface) transparent transparent transparent;
+        }
+        .tooltip-arrow.bottom {
+          bottom: 100%;
+          border-color: transparent transparent var(--surface) transparent;
+        }
+      </style></div></label><div style="display: flex; gap: 8px;"><div class="input-field-wrapper  " style="flex: 1 1 0%; opacity: 1; pointer-events: auto;"><div class="input-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-piggy-bank" aria-hidden="true"><path d="M11 17h3v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-3a3.16 3.16 0 0 0 2-2h1a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1h-1a5 5 0 0 0-2-4V3a4 4 0 0 0-3.2 1.6l-.3.4H11a6 6 0 0 0-6 6v1a5 5 0 0 0 2 4v3a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1z"></path><path d="M16 10h.01"></path><path d="M2 8v1a2 2 0 0 0 2 2h1"></path></svg></div><input inputmode="decimal" type="text" value="500"></div><div class="selector-wrapper" style="width: 140px; flex-shrink: 0;"><select class="input-field-wrapper" style="width: 100%; height: 100%; appearance: none; background-color: var(--surface); color: var(--text-primary); background-image: url(&quot;data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%239AA3AE%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E&quot;); background-repeat: no-repeat; background-position: right 12px center; background-size: 16px; padding-right: 36px;"><option value="none">No contribution</option><option value="daily">Daily</option><option value="weekly">Weekly</option><option value="monthly">Monthly</option><option value="quarterly">Quarterly</option><option value="semiannual">Semi-annual</option><option value="annual">Annual</option></select></div></div></div><div class="input-group"><label>Inflation Rate<div class="tooltip-container relative inline-flex items-center"><button type="button" aria-label="More info" class="info-icon-btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-info" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg></button><style>
+        .tooltip-container {
+          position: relative;
+          display: inline-flex;
+          margin-left: 4px;
+        }
+        .tooltip-popup {
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+          background-color: var(--surface);
+          color: var(--text-primary);
+          padding: 12px 14px;
+          border-radius: 12px;
+          box-shadow: var(--shadow-elevated);
+          font-size: 12px;
+          line-height: 16px;
+          width: max-content;
+          max-width: 380px;
+          z-index: 1000;
+          border: 1px solid var(--border);
+          text-align: left;
+          font-weight: 400;
+        }
+        .tooltip-popup.top {
+          bottom: calc(100% + 8px);
+        }
+        .tooltip-popup.bottom {
+          top: calc(100% + 8px);
+        }
+        .tooltip-arrow {
+          position: absolute;
+          left: 50%;
+          margin-left: -5px;
+          border-width: 5px;
+          border-style: solid;
+        }
+        .tooltip-arrow.top {
+          top: 100%;
+          border-color: var(--surface) transparent transparent transparent;
+        }
+        .tooltip-arrow.bottom {
+          bottom: 100%;
+          border-color: transparent transparent var(--surface) transparent;
+        }
+      </style></div></label><div class="input-field-wrapper "><div class="input-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-percent" aria-hidden="true"><line x1="19" x2="5" y1="5" y2="19"></line><circle cx="6.5" cy="6.5" r="2.5"></circle><circle cx="17.5" cy="17.5" r="2.5"></circle></svg></div><input inputmode="decimal" type="text" value="2"><span class="suffix">%</span></div></div><div class="input-group"><label>Tax Rate<div class="tooltip-container relative inline-flex items-center"><button type="button" aria-label="More info" class="info-icon-btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-info" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg></button><style>
+        .tooltip-container {
+          position: relative;
+          display: inline-flex;
+          margin-left: 4px;
+        }
+        .tooltip-popup {
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+          background-color: var(--surface);
+          color: var(--text-primary);
+          padding: 12px 14px;
+          border-radius: 12px;
+          box-shadow: var(--shadow-elevated);
+          font-size: 12px;
+          line-height: 16px;
+          width: max-content;
+          max-width: 380px;
+          z-index: 1000;
+          border: 1px solid var(--border);
+          text-align: left;
+          font-weight: 400;
+        }
+        .tooltip-popup.top {
+          bottom: calc(100% + 8px);
+        }
+        .tooltip-popup.bottom {
+          top: calc(100% + 8px);
+        }
+        .tooltip-arrow {
+          position: absolute;
+          left: 50%;
+          margin-left: -5px;
+          border-width: 5px;
+          border-style: solid;
+        }
+        .tooltip-arrow.top {
+          top: 100%;
+          border-color: var(--surface) transparent transparent transparent;
+        }
+        .tooltip-arrow.bottom {
+          bottom: 100%;
+          border-color: transparent transparent var(--surface) transparent;
+        }
+      </style></div></label><div class="input-field-wrapper "><div class="input-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-landmark" aria-hidden="true"><path d="M10 18v-7"></path><path d="M11.119 2.205a2 2 0 0 1 1.762 0l7.84 3.846A.5.5 0 0 1 20.5 7h-17a.5.5 0 0 1-.22-.949z"></path><path d="M14 18v-7"></path><path d="M18 18v-7"></path><path d="M3 22h18"></path><path d="M6 18v-7"></path></svg></div><input inputmode="decimal" type="text" value="15"><span class="suffix">%</span></div></div><div class="input-group"><label>Taxation<div class="tooltip-container relative inline-flex items-center"><button type="button" aria-label="More info" class="info-icon-btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-info" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg></button><style>
+        .tooltip-container {
+          position: relative;
+          display: inline-flex;
+          margin-left: 4px;
+        }
+        .tooltip-popup {
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+          background-color: var(--surface);
+          color: var(--text-primary);
+          padding: 12px 14px;
+          border-radius: 12px;
+          box-shadow: var(--shadow-elevated);
+          font-size: 12px;
+          line-height: 16px;
+          width: max-content;
+          max-width: 380px;
+          z-index: 1000;
+          border: 1px solid var(--border);
+          text-align: left;
+          font-weight: 400;
+        }
+        .tooltip-popup.top {
+          bottom: calc(100% + 8px);
+        }
+        .tooltip-popup.bottom {
+          top: calc(100% + 8px);
+        }
+        .tooltip-arrow {
+          position: absolute;
+          left: 50%;
+          margin-left: -5px;
+          border-width: 5px;
+          border-style: solid;
+        }
+        .tooltip-arrow.top {
+          top: 100%;
+          border-color: var(--surface) transparent transparent transparent;
+        }
+        .tooltip-arrow.bottom {
+          bottom: 100%;
+          border-color: transparent transparent var(--surface) transparent;
+        }
+      </style></div></label><div class="tax-mode-toggle" style="display: flex; width: 100%;"><button class="tax-mode-btn active" style="white-space: nowrap;">Annual</button><button class="tax-mode-btn " style="white-space: nowrap;">On exit</button></div></div></div></aside><div class="main-panel"><div class="results-section"><div class="hero-card"><div class="hero-left"><div class="hero-header" style="display: flex; align-items: center; margin-bottom: 8px;"><span class="primary-badge">★ Primary Result</span></div><div class="hero-main-group"><div class="hero-value numbers">133,640</div><div class="hero-subtitle">Real purchasing power in 15 years</div></div><div class="hero-narrative">From your 100,000 in contributions, you will have the equivalent of 133,640 in today's money — that's 33,640 more than you invested, even after accounting for taxes and inflation.</div></div><div class="hero-right"><div class="hero-metric-box"><div class="metric-label"><div class="metric-with-tooltip">Return (CAGR)<div class="tooltip-container relative inline-flex items-center"><button type="button" aria-label="More info" class="info-icon-btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-info" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg></button><style>
+        .tooltip-container {
+          position: relative;
+          display: inline-flex;
+          margin-left: 4px;
+        }
+        .tooltip-popup {
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+          background-color: var(--surface);
+          color: var(--text-primary);
+          padding: 12px 14px;
+          border-radius: 12px;
+          box-shadow: var(--shadow-elevated);
+          font-size: 12px;
+          line-height: 16px;
+          width: max-content;
+          max-width: 380px;
+          z-index: 1000;
+          border: 1px solid var(--border);
+          text-align: left;
+          font-weight: 400;
+        }
+        .tooltip-popup.top {
+          bottom: calc(100% + 8px);
+        }
+        .tooltip-popup.bottom {
+          top: calc(100% + 8px);
+        }
+        .tooltip-arrow {
+          position: absolute;
+          left: 50%;
+          margin-left: -5px;
+          border-width: 5px;
+          border-style: solid;
+        }
+        .tooltip-arrow.top {
+          top: 100%;
+          border-color: var(--surface) transparent transparent transparent;
+        }
+        .tooltip-arrow.bottom {
+          bottom: 100%;
+          border-color: transparent transparent var(--surface) transparent;
+        }
+      </style></div></div></div><div class="metric-value numbers" style="color: rgb(15, 122, 56);"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trending-up" aria-hidden="true"><path d="M16 7h6v6"></path><path d="m22 7-8.5 8.5-5-5L2 17"></path></svg><span>+1.95%</span></div></div><div class="hero-metric-box"><div class="metric-label"><div class="metric-with-tooltip">net effect<div class="tooltip-container relative inline-flex items-center"><button type="button" aria-label="More info" class="info-icon-btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-info" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg></button><style>
+        .tooltip-container {
+          position: relative;
+          display: inline-flex;
+          margin-left: 4px;
+        }
+        .tooltip-popup {
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+          background-color: var(--surface);
+          color: var(--text-primary);
+          padding: 12px 14px;
+          border-radius: 12px;
+          box-shadow: var(--shadow-elevated);
+          font-size: 12px;
+          line-height: 16px;
+          width: max-content;
+          max-width: 380px;
+          z-index: 1000;
+          border: 1px solid var(--border);
+          text-align: left;
+          font-weight: 400;
+        }
+        .tooltip-popup.top {
+          bottom: calc(100% + 8px);
+        }
+        .tooltip-popup.bottom {
+          top: calc(100% + 8px);
+        }
+        .tooltip-arrow {
+          position: absolute;
+          left: 50%;
+          margin-left: -5px;
+          border-width: 5px;
+          border-style: solid;
+        }
+        .tooltip-arrow.top {
+          top: 100%;
+          border-color: var(--surface) transparent transparent transparent;
+        }
+        .tooltip-arrow.bottom {
+          bottom: 100%;
+          border-color: transparent transparent var(--surface) transparent;
+        }
+      </style></div></div></div><div class="metric-value numbers" style="color: rgb(15, 122, 56);">+33,640</div></div></div></div><section class="satellite-grid"><div class="satellite-tile"><div class="satellite-tile__header"><span class="satellite-tile__label">Total Contributions<div class="tooltip-container relative inline-flex items-center"><button type="button" aria-label="More info" class="info-icon-btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-info" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg></button><style>
+        .tooltip-container {
+          position: relative;
+          display: inline-flex;
+          margin-left: 4px;
+        }
+        .tooltip-popup {
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+          background-color: var(--surface);
+          color: var(--text-primary);
+          padding: 12px 14px;
+          border-radius: 12px;
+          box-shadow: var(--shadow-elevated);
+          font-size: 12px;
+          line-height: 16px;
+          width: max-content;
+          max-width: 380px;
+          z-index: 1000;
+          border: 1px solid var(--border);
+          text-align: left;
+          font-weight: 400;
+        }
+        .tooltip-popup.top {
+          bottom: calc(100% + 8px);
+        }
+        .tooltip-popup.bottom {
+          top: calc(100% + 8px);
+        }
+        .tooltip-arrow {
+          position: absolute;
+          left: 50%;
+          margin-left: -5px;
+          border-width: 5px;
+          border-style: solid;
+        }
+        .tooltip-arrow.top {
+          top: 100%;
+          border-color: var(--surface) transparent transparent transparent;
+        }
+        .tooltip-arrow.bottom {
+          bottom: 100%;
+          border-color: transparent transparent var(--surface) transparent;
+        }
+      </style></div></span></div><div class="satellite-tile__value numbers">100,000</div><div class="satellite-tile__subtitle">Total amount contributed over the period — initial deposit plus all additions.</div></div><div class="satellite-tile"><div class="satellite-tile__header"><span class="satellite-tile__label">End Value (Nominal)<div class="tooltip-container relative inline-flex items-center"><button type="button" aria-label="More info" class="info-icon-btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-info" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg></button><style>
+        .tooltip-container {
+          position: relative;
+          display: inline-flex;
+          margin-left: 4px;
+        }
+        .tooltip-popup {
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+          background-color: var(--surface);
+          color: var(--text-primary);
+          padding: 12px 14px;
+          border-radius: 12px;
+          box-shadow: var(--shadow-elevated);
+          font-size: 12px;
+          line-height: 16px;
+          width: max-content;
+          max-width: 380px;
+          z-index: 1000;
+          border: 1px solid var(--border);
+          text-align: left;
+          font-weight: 400;
+        }
+        .tooltip-popup.top {
+          bottom: calc(100% + 8px);
+        }
+        .tooltip-popup.bottom {
+          top: calc(100% + 8px);
+        }
+        .tooltip-arrow {
+          position: absolute;
+          left: 50%;
+          margin-left: -5px;
+          border-width: 5px;
+          border-style: solid;
+        }
+        .tooltip-arrow.top {
+          top: 100%;
+          border-color: var(--surface) transparent transparent transparent;
+        }
+        .tooltip-arrow.bottom {
+          bottom: 100%;
+          border-color: transparent transparent var(--surface) transparent;
+        }
+      </style></div></span><div class="delta-badge-wrapper"><span class="delta-badge delta-badge--positive" tabindex="0" role="button" aria-label="Investment profit: your money earned 100,525 above what you invested.">+100,525</span><div class="delta-tooltip" role="tooltip"><p class="delta-tooltip__explanation">Investment profit: your money earned 100,525 above what you invested.</p><p class="delta-tooltip__formula">200,525 (Nominal) − 100,000 (Contributions) = + 100,525</p></div></div></div><div class="satellite-tile__value numbers">200,525</div><div class="satellite-tile__subtitle">Investment earnings before taxes, in nominal money.</div></div><div class="satellite-tile"><div class="satellite-tile__header"><span class="satellite-tile__label">Nominal After Taxes<div class="tooltip-container relative inline-flex items-center"><button type="button" aria-label="More info" class="info-icon-btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-info" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg></button><style>
+        .tooltip-container {
+          position: relative;
+          display: inline-flex;
+          margin-left: 4px;
+        }
+        .tooltip-popup {
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+          background-color: var(--surface);
+          color: var(--text-primary);
+          padding: 12px 14px;
+          border-radius: 12px;
+          box-shadow: var(--shadow-elevated);
+          font-size: 12px;
+          line-height: 16px;
+          width: max-content;
+          max-width: 380px;
+          z-index: 1000;
+          border: 1px solid var(--border);
+          text-align: left;
+          font-weight: 400;
+        }
+        .tooltip-popup.top {
+          bottom: calc(100% + 8px);
+        }
+        .tooltip-popup.bottom {
+          top: calc(100% + 8px);
+        }
+        .tooltip-arrow {
+          position: absolute;
+          left: 50%;
+          margin-left: -5px;
+          border-width: 5px;
+          border-style: solid;
+        }
+        .tooltip-arrow.top {
+          top: 100%;
+          border-color: var(--surface) transparent transparent transparent;
+        }
+        .tooltip-arrow.bottom {
+          bottom: 100%;
+          border-color: transparent transparent var(--surface) transparent;
+        }
+      </style></div></span><div class="delta-badge-wrapper"><span class="delta-badge delta-badge--cost" tabindex="0" role="button" aria-label="Tax impact: 20,663 in taxes was withheld from nominal profit, reducing the total by 20,663.">−20,663</span><div class="delta-tooltip" role="tooltip"><p class="delta-tooltip__explanation">Tax impact: 20,663 in taxes was withheld from nominal profit, reducing the total by 20,663.</p><p class="delta-tooltip__formula">179,862 (after tax) − 200,525 (before tax) = − 20,663</p></div></div></div><div class="satellite-tile__value numbers">179,862</div><div class="satellite-tile__subtitle">Net profit (Nominal minus taxes).</div></div><div class="satellite-tile"><div class="satellite-tile__header"><span class="satellite-tile__label">Adjusted for Inflation<div class="tooltip-container relative inline-flex items-center"><button type="button" aria-label="More info" class="info-icon-btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-info" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg></button><style>
+        .tooltip-container {
+          position: relative;
+          display: inline-flex;
+          margin-left: 4px;
+        }
+        .tooltip-popup {
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+          background-color: var(--surface);
+          color: var(--text-primary);
+          padding: 12px 14px;
+          border-radius: 12px;
+          box-shadow: var(--shadow-elevated);
+          font-size: 12px;
+          line-height: 16px;
+          width: max-content;
+          max-width: 380px;
+          z-index: 1000;
+          border: 1px solid var(--border);
+          text-align: left;
+          font-weight: 400;
+        }
+        .tooltip-popup.top {
+          bottom: calc(100% + 8px);
+        }
+        .tooltip-popup.bottom {
+          top: calc(100% + 8px);
+        }
+        .tooltip-arrow {
+          position: absolute;
+          left: 50%;
+          margin-left: -5px;
+          border-width: 5px;
+          border-style: solid;
+        }
+        .tooltip-arrow.top {
+          top: 100%;
+          border-color: var(--surface) transparent transparent transparent;
+        }
+        .tooltip-arrow.bottom {
+          bottom: 100%;
+          border-color: transparent transparent var(--surface) transparent;
+        }
+      </style></div></span><div class="delta-badge-wrapper"><span class="delta-badge delta-badge--cost" tabindex="0" role="button" aria-label="Inflation impact: over 15 years at 2% inflation, money lost part of its purchasing power.">−51,532</span><div class="delta-tooltip" role="tooltip"><p class="delta-tooltip__explanation">Inflation impact: over 15 years at 2% inflation, money lost part of its purchasing power.</p><p class="delta-tooltip__formula">148,993 (real value) − 200,525 (Nominal Value) = − 51,532</p></div></div></div><div class="satellite-tile__value numbers">148,993</div><div class="satellite-tile__subtitle">Your future amount expressed in today's money. Shows what your investment will be worth in current purchasing power.</div></div></section></div><div class="charts-section"><div class="chart-box chart-card line-chart card"><header class="chart-header"><h3 class="chart-title">Growth Over Time</h3></header><div class="chart-content"><div class="chart-container"><canvas role="img" height="280" width="0" style="box-sizing: border-box; display: block; height: 280px; width: 0px;"></canvas></div><div class="chart-legend-side"><div class="legend-section"><div class="legend-section-title">СЦЕНАРІЇ</div><div class="legend-item" style="cursor: pointer; opacity: 1; text-decoration: none;"><span class="dot" style="background-color: rgb(15, 122, 56);"></span><span>Nominal</span></div><div class="legend-item" style="cursor: pointer; opacity: 1; text-decoration: none;"><span class="dot" style="background-color: rgb(79, 143, 224);"></span><span>Adjusted for Inflation</span></div><div class="legend-item" style="cursor: pointer; opacity: 1; text-decoration: none;"><span class="dot" style="background-color: rgb(134, 201, 94);"></span><span>After Tax &amp; Inflation</span></div><div class="legend-item" style="cursor: pointer; opacity: 1; text-decoration: none;"><span class="dot" style="background-color: rgb(154, 163, 174);"></span><span>Contributions</span></div></div></div></div><footer class="chart-disclaimer">Calculations are approximate and for illustrative purposes. Actual performance may vary due to changes in interest rates, inflation, tax laws, management fees, and other market factors.</footer></div><div class="structure-box chart-card card"><div class="structure-header"><h3 class="chart-title" style="margin-bottom: 0px;">Investment Breakdown</h3><div class="structure-toggle"><div class="tax-mode-toggle" style="padding: 2px;"><button class="tax-mode-btn " style="padding: 4px 8px; font-size: 13px;">Percentage</button><button class="tax-mode-btn active" style="padding: 4px 8px; font-size: 13px;">Amount</button></div></div></div><div class="structure-content"><div class="donut-container"><canvas role="img" height="66" width="66" style="box-sizing: border-box; display: block; height: 66.6px; width: 66.6px;"></canvas></div><div class="legend-container"><div class="legend-row"><span class="legend-dot" style="background-color: rgb(15, 122, 56);"></span><span class="legend-label">Initial Deposit</span><span class="legend-value numbers">10,000</span></div><div class="legend-row"><span class="legend-dot" style="background-color: rgb(79, 143, 224);"></span><span class="legend-label">Contributions</span><span class="legend-value numbers">90,000</span></div><div class="legend-row"><span class="legend-dot" style="background-color: rgb(134, 201, 94);"></span><span class="legend-label">Net Profit (After Tax)</span><span class="legend-value numbers">79,862</span></div><div class="legend-row" style="border-top: 1px solid var(--border); padding-top: 8px; margin-top: 4px;"><span class="legend-dot" style="background-color: rgb(154, 163, 174);"></span><span class="legend-label">Taxes Paid</span><span class="legend-value numbers">14,093</span></div></div></div><footer class="structure-disclaimer">Indicative distribution. Actual values depend on the chosen instrument, tax rates, and conditions.</footer></div></div><div class="table-wrapper"><div class="table-section card"><div class="table-header"><h3 style="font-size: 18px; font-weight: 600;">Projection Table</h3><div class="table-controls"><div class="table-controls__toggle-group table-toggle"><button class="">Monthly</button><button class="active">Yearly</button></div><button class="expand-btn">Expand <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-maximize2 lucide-maximize-2" aria-hidden="true" style="transform: none;"><path d="M15 3h6v6"></path><path d="m21 3-7 7"></path><path d="m3 21 7-7"></path><path d="M9 21H3v-6"></path></svg></button></div></div><div class="table-container  "><table><thead><tr><th>Period</th><th>Contributions</th><th>End Value (Nominal)</th><th>Adjusted for Inflation</th><th>Nominal After Taxes</th><th>After Tax &amp; Inflation</th><th>Taxes Paid</th></tr></thead><tbody><tr><td>Year 1</td><td class="numbers">16,000</td><td class="numbers">17,017</td><td class="numbers text-secondary">16,683</td><td class="numbers" style="font-weight: 500;">16,864</td><td class="numbers text-primary" style="font-weight: 600;">16,534</td><td class="numbers text-secondary">153</td></tr><tr><td>Year 2</td><td class="numbers">22,000</td><td class="numbers">24,595</td><td class="numbers text-secondary">23,640</td><td class="numbers" style="font-weight: 500;">24,196</td><td class="numbers text-primary" style="font-weight: 600;">23,256</td><td class="numbers text-secondary">387</td></tr><tr><td>Year 3</td><td class="numbers">28,000</td><td class="numbers">32,780</td><td class="numbers text-secondary">30,889</td><td class="numbers" style="font-weight: 500;">32,025</td><td class="numbers text-primary" style="font-weight: 600;">30,178</td><td class="numbers text-secondary">710</td></tr><tr><td>Year 4</td><td class="numbers">34,000</td><td class="numbers">41,619</td><td class="numbers text-secondary">38,450</td><td class="numbers" style="font-weight: 500;">40,387</td><td class="numbers text-primary" style="font-weight: 600;">37,312</td><td class="numbers text-secondary">1,127</td></tr><tr><td>Year 5</td><td class="numbers">40,000</td><td class="numbers">51,166</td><td class="numbers text-secondary">46,342</td><td class="numbers" style="font-weight: 500;">49,318</td><td class="numbers text-primary" style="font-weight: 600;">44,669</td><td class="numbers text-secondary">1,644</td></tr><tr><td>Year 6</td><td class="numbers">46,000</td><td class="numbers">61,476</td><td class="numbers text-secondary">54,589</td><td class="numbers" style="font-weight: 500;">58,856</td><td class="numbers text-primary" style="font-weight: 600;">52,263</td><td class="numbers text-secondary">2,269</td></tr><tr><td>Year 7</td><td class="numbers">52,000</td><td class="numbers">72,611</td><td class="numbers text-secondary">63,212</td><td class="numbers" style="font-weight: 500;">69,043</td><td class="numbers text-primary" style="font-weight: 600;">60,106</td><td class="numbers text-secondary">3,008</td></tr><tr><td>Year 8</td><td class="numbers">58,000</td><td class="numbers">84,637</td><td class="numbers text-secondary">72,237</td><td class="numbers" style="font-weight: 500;">79,922</td><td class="numbers text-primary" style="font-weight: 600;">68,213</td><td class="numbers text-secondary">3,869</td></tr><tr><td>Year 9</td><td class="numbers">64,000</td><td class="numbers">97,624</td><td class="numbers text-secondary">81,688</td><td class="numbers" style="font-weight: 500;">91,541</td><td class="numbers text-primary" style="font-weight: 600;">76,598</td><td class="numbers text-secondary">4,860</td></tr><tr><td>Year 10</td><td class="numbers">70,000</td><td class="numbers">111,651</td><td class="numbers text-secondary">91,593</td><td class="numbers" style="font-weight: 500;">103,950</td><td class="numbers text-primary" style="font-weight: 600;">85,276</td><td class="numbers text-secondary">5,991</td></tr><tr><td>Year 11</td><td class="numbers">76,000</td><td class="numbers">126,800</td><td class="numbers text-secondary">101,981</td><td class="numbers" style="font-weight: 500;">117,203</td><td class="numbers text-primary" style="font-weight: 600;">94,262</td><td class="numbers text-secondary">7,271</td></tr><tr><td>Year 12</td><td class="numbers">82,000</td><td class="numbers">143,161</td><td class="numbers text-secondary">112,882</td><td class="numbers" style="font-weight: 500;">131,358</td><td class="numbers text-primary" style="font-weight: 600;">103,575</td><td class="numbers text-secondary">8,710</td></tr><tr><td>Year 13</td><td class="numbers">88,000</td><td class="numbers">160,831</td><td class="numbers text-secondary">124,328</td><td class="numbers" style="font-weight: 500;">146,474</td><td class="numbers text-primary" style="font-weight: 600;">113,229</td><td class="numbers text-secondary">10,319</td></tr><tr><td>Year 14</td><td class="numbers">94,000</td><td class="numbers">179,915</td><td class="numbers text-secondary">136,353</td><td class="numbers" style="font-weight: 500;">162,619</td><td class="numbers text-primary" style="font-weight: 600;">123,245</td><td class="numbers text-secondary">12,109</td></tr><tr><td>Year 15</td><td class="numbers">100,000</td><td class="numbers">200,525</td><td class="numbers text-secondary">148,993</td><td class="numbers" style="font-weight: 500;">179,862</td><td class="numbers text-primary" style="font-weight: 600;">133,640</td><td class="numbers text-secondary">14,093</td></tr></tbody></table></div></div><div class="about-results card"><div class="about-header"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-check text-primary" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg><h4 style="font-weight: 600; color: var(--text-primary);">About the Results</h4></div><p class="text-secondary text-sm">The figures listed above reflect the <strong>approximate</strong> real purchasing power of your investment after income tax. These calculations are for informational purposes only, do not constitute financial advice, and do not account for potential changes in market conditions, interest rates, or legislation.</p><div class="disclaimer-box"><div style="flex: 1 1 0%;"><strong>This is not investment advice.</strong><p>Past performance does not guarantee future results.</p></div></div></div></div></div></div><footer class="site-footer"><div class="footer-content"><div class="footer-top"><div class="footer-brand"><span class="brand-icon">✨</span><span class="brand-name">Compound Interest</span></div><div class="footer-developer"><span class="dev-label">Developed by</span><a href="https://redempsly.com" target="_blank" rel="noopener noreferrer" class="dev-link">Redempsly</a></div></div><div class="footer-divider"></div><div class="footer-bottom"><div class="footer-links"><a href="/privacy" data-discover="true">Privacy Policy</a><a href="/terms" data-discover="true">Terms of Use</a><a href="/cookies" data-discover="true">Cookie Policy</a><a href="/offer" data-discover="true">Public Offer</a></div><div class="footer-legal"><p class="copyright">© 2026 All rights reserved.</p><p class="disclaimer">This calculator is for informational purposes only and does not constitute financial advice.</p></div></div></div></footer></main><nav class="bottom-nav"><button class="nav-item active"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calculator" aria-hidden="true"><rect width="16" height="20" x="4" y="2" rx="2"></rect><line x1="8" x2="16" y1="6" y2="6"></line><line x1="16" x2="16" y1="14" y2="18"></line><path d="M16 10h.01"></path><path d="M12 10h.01"></path><path d="M8 10h.01"></path><path d="M12 14h.01"></path><path d="M8 14h.01"></path><path d="M12 18h.01"></path><path d="M8 18h.01"></path></svg><span>Calculator</span></button><button class="nav-item"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-folder-open" aria-hidden="true"><path d="m6 14 1.5-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.54 6a2 2 0 0 1-1.95 1.5H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H18a2 2 0 0 1 2 2v2"></path></svg><span>Scenarios</span></button><button class="nav-item"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-settings" aria-hidden="true"><path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915"></path><circle cx="12" cy="12" r="3"></circle></svg><span>Settings</span></button></nav><style>
+        .flag-icon { width: 24px; height: 16px; display: block; border-radius: 2px; }
+        .flag-container { display: flex; align-items: center; justify-content: center; width: 32px; height: 24px; border-radius: 6px; overflow: hidden; }
+      </style></div></div>
+    <script type="module" src="/src/main.tsx?t=1780150239373"></script>
+  
+
+</body></html>

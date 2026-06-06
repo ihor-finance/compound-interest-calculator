@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap');
+
+:root {
+  /* Colors - Light Theme */
+  --bg: #F4F6F8;
+  --surface: #FFFFFF;
+  --surface-muted: #F8FAFB;
+  
+  --primary: #16A34A;
+  --primary-dark: #0F7A38;
+  --primary-soft: #E7F5EC;
+  --primary-accent: #86C95E;
+  
+  --secondary: #4F8FE0;
+  --neutral-400: #9AA3AE;
+  
+  --text-primary: #0F1B2D;
+  --text-secondary: #5B6776;
+  --text-muted: #8A95A3;
+  
+  --border: #E5E9EE;
+  --success-bg: #EAF7EE;
+  --danger: #E5484D;
+  
+  /* Typography */
+  --font-primary: 'Roboto', sans-serif;
+  
+  /* Shadows */
+  --shadow-card: 0 1px 2px rgba(15,23,45,0.04), 0 1px 3px rgba(15,23,45,0.06);
+  --shadow-elevated: 0 4px 12px rgba(15,23,45,0.08);
+  --shadow-focus: 0 0 0 3px rgba(22,163,74,0.18);
+}
+
+[data-theme="dark"] {
+  --bg: #0E1419;
+  --surface: #161D25;
+  --surface-muted: #1C242E;
+  
+  --text-primary: #F2F4F7;
+  --text-secondary: #A6B0BC;
+  --text-muted: #6E7884;
+  
+  --border: #2A333E;
+  --success-bg: #1A2E22;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-primary);
+  background-color: var(--bg);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: background-color 0.2s, opacity 0.2s;
+}
+
+button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+input, select {
+  font-family: inherit;
+  outline: none;
+}
+
+.numbers {
+  font-variant-numeric: tabular-nums;
+}
+
+.text-muted { color: var(--text-muted); }
+.text-secondary { color: var(--text-secondary); }
+.text-sm { font-size: 14px; line-height: 20px; }
+.text-xs { font-size: 12px; line-height: 16px; }
+
+/* Focus Visible */
+*:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+}
+
+/* Remove debug elements */
+#error-display:empty {
+  display: none !important;
+}
+
+#bottomBar {
+  display: none !important;
+}
+
+
+/* RTL Support */
+[dir="rtl"] {
+  text-align: right;
+}
+
+[dir="rtl"] .hero-result-row,
+[dir="rtl"] .satellite-tile__header,
+[dir="rtl"] .footer-top {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .input-icon {
+  left: auto;
+  right: 12px;
+}
+
+[dir="rtl"] .input-field-wrapper input {
+  padding-left: 12px;
+  padding-right: 36px;
+}
