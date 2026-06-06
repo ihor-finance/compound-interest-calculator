@@ -1,5 +1,5 @@
 import { useState, useEffect, Suspense, lazy } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { useTranslation } from './i18n/useTranslation';
 import { Layout } from './components/Layout';
 import { useCalculatorForm } from './hooks/useCalculatorForm';
@@ -105,6 +105,7 @@ function App() {
       <Route path="/terms" element={<><TermsOfUse /><Footer variant="legal" /></>} />
       <Route path="/cookies" element={<><CookiesPage /><Footer variant="legal" /></>} />
       <Route path="/offer" element={<><PublicOffer /><Footer variant="legal" /></>} />
+      <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
 }
