@@ -9,7 +9,7 @@ import App from './App.tsx'
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <ErrorBoundary>
-      <BrowserRouter>
+      <BrowserRouter basename="/compound-interest-calculator">
         <I18nProvider>
           <App />
         </I18nProvider>
