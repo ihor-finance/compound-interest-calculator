@@ -1884,6 +1884,10 @@ body {
     font-size: 13px;
     padding: 8px 4px;
   }
+  
+  .expand-btn {
+    align-self: flex-end;
+  }
 }
 
 
@@ -2410,8 +2414,9 @@ body {
 
   /* Header compact */
   .top-header {
-    height: 56px !important;
-    padding: 0 12px !important;
+    height: auto !important;
+    min-height: 56px !important;
+    padding: 8px 12px !important;
   }
   .logo-title { font-size: 15px !important; }
   .logo-subtitle { font-size: 11px !important; }
