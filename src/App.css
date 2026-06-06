@@ -515,6 +515,10 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: 20px;
+  min-width: 0;
+}
+.table-wrapper > * {
+  min-width: 0;
 }
 
 .table-header {
