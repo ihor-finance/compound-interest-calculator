@@ -27,10 +27,16 @@ export const TableSection = React.memo(({ results}: Props) => {
   
   const currentScenarioResult = results[scenario] || results.expected;
   
-  const dataToDisplay = periodType === 'yearly' 
-    ? currentScenarioResult.yearlyData 
+  const dataToDisplay = periodType === 'yearly'
+    ? currentScenarioResult.yearlyData
     : currentScenarioResult.monthlyData;
   const filteredData = periodType === 'monthly' ? dataToDisplay.filter((d: PeriodResult) => d.month !== 0) : dataToDisplay;
+
+  // A 100-year monthly projection is 1200 rows × 7 cells. Rendering all of them
+  // up front visibly stalls a mid-range phone, so hold back the tail until asked.
+  const ROW_LIMIT = 120;
+  const isTruncated = !expanded && filteredData.length > ROW_LIMIT;
+  const visibleData = isTruncated ? filteredData.slice(0, ROW_LIMIT) : filteredData;
 
   return (
     <div className="table-wrapper">
@@ -82,7 +88,7 @@ export const TableSection = React.memo(({ results}: Props) => {
               </tr>
             </thead>
             <tbody>
-              {filteredData.map((row: PeriodResult) => {
+              {visibleData.map((row: PeriodResult) => {
                 const key = periodType === 'monthly' ? `m_${row.month}` : `y_${row.year}`;
 
                 return (
@@ -100,6 +106,12 @@ export const TableSection = React.memo(({ results}: Props) => {
             </tbody>
           </table>
         </div>
+
+        {isTruncated && (
+          <button className="table-show-all" onClick={() => setExpanded(true)}>
+            {(t.table.showAll || 'Show all {n} rows').replace('{n}', filteredData.length.toString())}
+          </button>
+        )}
       </div>
       
       <div className="about-results card">

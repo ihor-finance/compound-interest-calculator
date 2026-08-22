@@ -148,6 +148,7 @@ export const zh: TranslationKeys = {
     monthly: '每月',
     yearly: '每年',
     expand: '展开',
+    showAll: '显示全部 {n} 行',
     collapse: '收起',
     period: '期间',
     contributions: '投入',

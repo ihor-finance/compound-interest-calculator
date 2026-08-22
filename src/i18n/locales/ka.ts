@@ -148,6 +148,7 @@ export const ka: TranslationKeys = {
     monthly: 'თვეში',
     yearly: 'წელიწადში',
     expand: 'გაშლა',
+    showAll: 'ყველა {n} მწკრივის ჩვენება',
     collapse: 'აკეცვა',
     period: 'პერიოდი',
     contributions: 'შენატანები',

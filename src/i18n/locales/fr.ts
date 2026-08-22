@@ -148,6 +148,7 @@ export const fr: TranslationKeys = {
     monthly: 'Mensuel',
     yearly: 'Annuel',
     expand: 'Développer',
+    showAll: 'Afficher les {n} lignes',
     collapse: 'Réduire',
     period: 'Période',
     contributions: 'Versements',

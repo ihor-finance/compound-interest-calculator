@@ -106,6 +106,7 @@ export const hu: TranslationKeys = {
     monthly: 'Havi',
     yearly: 'Éves',
     expand: 'Kinyit',
+    showAll: 'Mind a {n} sor megjelenítése',
     collapse: 'Összecsuk',
     period: 'Időszak',
     contributions: 'Befizetések',

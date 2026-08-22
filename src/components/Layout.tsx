@@ -1,7 +1,8 @@
 import { useState, useRef, useEffect } from 'react';
 import type { ReactNode } from 'react';
-import { Settings, FolderOpen, Calculator, ChevronDown } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
 import { LogoIcon } from './LogoIcon';
+import { AdSlot } from './AdSlot';
 import { useTranslation } from '../i18n/useTranslation';
 import type { Locale } from '../i18n/types';
 import '../App.css';
@@ -111,22 +112,9 @@ export const Layout = ({ children, theme, toggleTheme }: LayoutProps) => {
         {children}
       </main>
 
-      <nav className="bottom-nav">
-        <button className="nav-item active">
-          <Calculator size={20} />
-          <span>{t.app.calculator}</span>
-        </button>
-        <button className="nav-item">
-          <FolderOpen size={20} />
-          <span>{t.app.scenarios}</span>
-        </button>
-        <button className="nav-item">
-          <Settings size={20} />
-          <span>{t.app.settings}</span>
-        </button>
-      </nav>
-      
-      
+      {/* Anchored ad shelf. Renders nothing until ads are configured — see docs/ADS.md */}
+      <AdSlot placement="bottom-anchor" />
+
       <style>{`
         .flag-icon { width: 24px !important; height: 16px !important; min-width: 24px !important; display: block; border-radius: 2px; }
         .flag-container { display: flex; align-items: center; justify-content: center; width: 32px; height: 24px; border-radius: 6px; overflow: hidden; flex-shrink: 0; }

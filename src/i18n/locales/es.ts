@@ -148,6 +148,7 @@ export const es: TranslationKeys = {
     monthly: 'Mensual',
     yearly: 'Anual',
     expand: 'Expandir',
+    showAll: 'Mostrar las {n} filas',
     collapse: 'Contraer',
     period: 'Período',
     contributions: 'Aportaciones',

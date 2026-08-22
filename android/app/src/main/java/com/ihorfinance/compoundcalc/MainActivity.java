@@ -1,4 +1,4 @@
-package com.antigravity.compoundinterest;
+package com.ihorfinance.compoundcalc;
 
 import com.getcapacitor.BridgeActivity;
 

@@ -1,10 +1,6 @@
 import { useTranslation } from '../i18n/useTranslation';
 import { LegalPageLayout } from './LegalPageLayout';
 
-interface Props {
-  
-}
-
 const content = {
   uk: {
     title: "Політика конфіденційності",
@@ -386,7 +382,7 @@ const content = {
   }
 };
 
-export const PrivacyPolicy = ({}: Props) => {
+export const PrivacyPolicy = () => {
   const { locale: lang } = useTranslation();
 
   const t = (content as any)[lang] || content.en;

@@ -106,6 +106,7 @@ export const ro: TranslationKeys = {
     monthly: 'Lunar',
     yearly: 'Anual',
     expand: 'Extinde',
+    showAll: 'Afișează toate cele {n} rânduri',
     collapse: 'Restrânge',
     period: 'Perioadă',
     contributions: 'Contribuții',

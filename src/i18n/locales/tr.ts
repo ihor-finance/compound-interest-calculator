@@ -106,6 +106,7 @@ export const tr: TranslationKeys = {
     monthly: 'Aylık',
     yearly: 'Yıllık',
     expand: 'Genişlet',
+    showAll: 'Tüm {n} satırı göster',
     collapse: 'Daralt',
     period: 'Dönem',
     contributions: 'Katkılar',

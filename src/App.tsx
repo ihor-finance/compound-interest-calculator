@@ -1,10 +1,12 @@
 import { useState, useEffect, Suspense, lazy } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { useTranslation } from './i18n/useTranslation';
+import type { CalculatorInput, CalculationResult } from './types';
 import { Layout } from './components/Layout';
 import { useCalculatorForm } from './hooks/useCalculatorForm';
 import { InputSection } from './components/InputSection';
 import { ResultsSection } from './components/ResultsSection';
+import { AdSlot } from './components/AdSlot';
 import { Footer } from './components/Footer';
 import { PrivacyPolicy } from './pages/PrivacyPolicy';
 import { TermsOfUse } from './pages/TermsOfUse';
@@ -15,7 +17,15 @@ import './App.css';
 const ChartsSection = lazy(() => import('./components/ChartsSection').then(module => ({ default: module.ChartsSection })));
 const TableSection = lazy(() => import('./components/TableSection').then(module => ({ default: module.TableSection })));
 
-function CalculatorApp({ theme, toggleTheme, input, updateInput, results }: any) {
+interface CalculatorAppProps {
+  theme: 'light' | 'dark';
+  toggleTheme: () => void;
+  input: CalculatorInput;
+  updateInput: (key: keyof CalculatorInput, value: number | string | boolean) => void;
+  results: CalculationResult;
+}
+
+function CalculatorApp({ theme, toggleTheme, input, updateInput, results }: CalculatorAppProps) {
   return (
     <Layout theme={theme} toggleTheme={toggleTheme}>
       <div className="dashboard">
@@ -28,6 +38,7 @@ function CalculatorApp({ theme, toggleTheme, input, updateInput, results }: any)
           <Suspense fallback={<div className="loading-placeholder">Loading charts...</div>}>
             <ChartsSection results={results} theme={theme} />
           </Suspense>
+          <AdSlot placement="inline-card" />
           <Suspense fallback={<div className="loading-placeholder">Loading tables...</div>}>
             <TableSection results={results} />
           </Suspense>
@@ -39,18 +50,14 @@ function CalculatorApp({ theme, toggleTheme, input, updateInput, results }: any)
 }
 
 function App() {
-  useEffect(() => {
-    localStorage.removeItem('calc_lang');
-    localStorage.removeItem('southKoreaProDialog');
-    localStorage.removeItem('LabsBanner');
-    localStorage.removeItem('cookieNotice');
-    localStorage.removeItem('appBannerNotice');
-  }, []);
-  const [theme, setTheme] = useState<'light' | 'dark'>('light');
+  const [theme, setTheme] = useState<'light' | 'dark'>(
+    () => (localStorage.getItem('theme') as 'light' | 'dark') || 'light'
+  );
   const { locale: lang } = useTranslation();
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
   }, [theme]);
 
   const toggleTheme = () => {

@@ -106,6 +106,7 @@ export const de: TranslationKeys = {
     monthly: 'Monatlich',
     yearly: 'Jährlich',
     expand: 'Erweitern',
+    showAll: 'Alle {n} Zeilen anzeigen',
     collapse: 'Einklappen',
     period: 'Zeitraum',
     contributions: 'Einzahlungen',

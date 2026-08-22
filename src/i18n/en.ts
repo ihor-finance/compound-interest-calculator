@@ -146,6 +146,7 @@ export const en = {
     monthly: 'Monthly',
     yearly: 'Yearly',
     expand: 'Expand',
+    showAll: 'Show all {n} rows',
     collapse: 'Collapse',
     period: 'Period',
     contributions: 'Contributions',

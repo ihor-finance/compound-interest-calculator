@@ -1,10 +1,6 @@
 import { useTranslation } from '../i18n/useTranslation';
 import { LegalPageLayout } from './LegalPageLayout';
 
-interface Props {
-  
-}
-
 const content = {
   uk: {
     title: "Політика Cookie",
@@ -470,7 +466,7 @@ const content = {
   }
 };
 
-export const CookiesPage = ({}: Props) => {
+export const CookiesPage = () => {
   const { locale: lang } = useTranslation();
 
   const t = (content as any)[lang] || content.en;

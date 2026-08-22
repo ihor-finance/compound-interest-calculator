@@ -106,6 +106,7 @@ export const sk: TranslationKeys = {
     monthly: 'Mesačne',
     yearly: 'Ročne',
     expand: 'Rozbaliť',
+    showAll: 'Zobraziť všetkých {n} riadkov',
     collapse: 'Zbaliť',
     period: 'Obdobie',
     contributions: 'Vklady',

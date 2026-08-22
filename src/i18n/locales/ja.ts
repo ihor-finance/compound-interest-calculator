@@ -106,6 +106,7 @@ export const ja: TranslationKeys = {
     monthly: '月次',
     yearly: '年次',
     expand: '展開',
+    showAll: '{n}行すべてを表示',
     collapse: '折りたたむ',
     period: '期間',
     contributions: '投資額',

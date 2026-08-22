@@ -106,6 +106,7 @@ export const bg: TranslationKeys = {
     monthly: 'Месечно',
     yearly: 'Годишно',
     expand: 'Разгъване',
+    showAll: 'Покажи всички редове ({n})',
     collapse: 'Сгъване',
     period: 'Период',
     contributions: 'Вноски',

@@ -5,7 +5,7 @@ export const formatCurrency = (value: number, locale: string = 'en-US') => {
       minimumFractionDigits: 0,
       maximumFractionDigits: 0,
     }).format(value);
-  } catch (e) {
+  } catch {
     return value.toLocaleString();
   }
 };
@@ -16,7 +16,7 @@ export const formatNumber = (value: number, locale: string = 'en-US', maxDecimal
       style: 'decimal',
       maximumFractionDigits: maxDecimals,
     }).format(value);
-  } catch (e) {
+  } catch {
     return value.toString();
   }
 };

@@ -148,6 +148,7 @@ export const hi: TranslationKeys = {
     monthly: 'मासिक',
     yearly: 'वार्षिक',
     expand: 'विस्तार करें',
+    showAll: 'सभी {n} पंक्तियाँ दिखाएँ',
     collapse: 'संक्षिप्त करें',
     period: 'अवधि',
     contributions: 'योगदान',

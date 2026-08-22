@@ -106,6 +106,7 @@ export const nl: TranslationKeys = {
     monthly: 'Maandelijks',
     yearly: 'Jaarlijks',
     expand: 'Uitvouwen',
+    showAll: 'Alle {n} rijen tonen',
     collapse: 'Inklappen',
     period: 'Periode',
     contributions: 'Inleg',

@@ -1,10 +1,6 @@
 import { useTranslation } from '../i18n/useTranslation';
 import { LegalPageLayout } from './LegalPageLayout';
 
-interface Props {
-  
-}
-
 const content = {
   uk: {
     title: "Умови використання",
@@ -470,7 +466,7 @@ const content = {
   }
 };
 
-export const TermsOfUse = ({}: Props) => {
+export const TermsOfUse = () => {
   const { locale: lang } = useTranslation();
 
   const t = (content as any)[lang] || content.en;

@@ -106,6 +106,7 @@ export const cs: TranslationKeys = {
     monthly: 'Měsíčně',
     yearly: 'Ročně',
     expand: 'Rozbalit',
+    showAll: 'Zobrazit všech {n} řádků',
     collapse: 'Sbalit',
     period: 'Období',
     contributions: 'Vklady',

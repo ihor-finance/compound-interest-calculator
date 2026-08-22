@@ -22,3 +22,24 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Scratch / one-off scripts
+scratch/
+
+# IDE
+android/.idea/
+.idea/
+
+# Android signing — NEVER commit these
+*.keystore
+*.jks
+keystore.properties
+android/keystore.properties
+
+# Build outputs
+android/app/build/
+android/build/
+android/.gradle/
+
+# Local build artifacts
+release/

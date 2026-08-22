@@ -25,6 +25,10 @@
   /* Typography */
   --font-primary: 'Roboto', sans-serif;
   
+  /* Height reserved for the anchored ad shelf. Stays 0 while ads are off; a
+     native AdMob banner would set this to its measured height. See docs/ADS.md */
+  --ad-slot-h: 0px;
+
   /* Shadows */
   --shadow-card: 0 1px 2px rgba(15,23,45,0.04), 0 1px 3px rgba(15,23,45,0.06);
   --shadow-elevated: 0 4px 12px rgba(15,23,45,0.08);
@@ -126,4 +130,41 @@ input, select {
 [dir="rtl"] .input-field-wrapper input {
   padding-left: 12px;
   padding-right: 36px;
+}
+
+/* Error boundary fallback */
+.app-error {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 32px 24px;
+  text-align: center;
+  background: var(--bg);
+  color: var(--text-primary);
+}
+.app-error__title { font-size: 20px; }
+.app-error__text {
+  max-width: 420px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+.app-error__btn {
+  padding: 10px 20px;
+  border-radius: 10px;
+  background: var(--primary);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+}
+.app-error__stack {
+  max-width: 100%;
+  overflow: auto;
+  font-size: 11px;
+  text-align: left;
+  color: var(--text-muted);
+  white-space: pre-wrap;
 }

@@ -148,6 +148,7 @@ export const lt: TranslationKeys = {
     monthly: 'Kas mėnesį',
     yearly: 'Kasmet',
     expand: 'Išskleisti',
+    showAll: 'Rodyti visas {n} eilutes',
     collapse: 'Suskleisti',
     period: 'Laikotarpis',
     contributions: 'Įmokos',

@@ -1,16 +1,14 @@
 import { useTranslation } from '../i18n/useTranslation';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { LogoIcon } from './LogoIcon';
 import '../App.css';
 
 interface Props {
-  
   variant?: 'calculator' | 'legal';
 }
 
-import { LogoIcon } from './LogoIcon';
-
-const LegalPageFooter = ({}: { }) => {
+const LegalPageFooter = () => {
   const { t } = useTranslation();
   const year = new Date().getFullYear();
   const copyStr = t.footer.copyright?.replace('{year}', year.toString()) || `© ${year} All rights reserved.`;
@@ -49,7 +47,7 @@ const LegalPageFooter = ({}: { }) => {
   );
 };
 
-const CalcFooter = ({}: { }) => {
+const CalcFooter = () => {
   const { t } = useTranslation();
   const year = new Date().getFullYear();
   

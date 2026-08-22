@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name"> Compound Interest</string>
-    <string name="title_activity_main"> Compound Interest</string>
-    <string name="package_name">com.antigravity.compoundinterest</string>
-    <string name="custom_url_scheme">com.antigravity.compoundinterest</string>
+    <string name="app_name">Compound Interest</string>
+    <string name="title_activity_main">Compound Interest</string>
+    <string name="package_name">com.ihorfinance.compoundcalc</string>
+    <string name="custom_url_scheme">com.ihorfinance.compoundcalc</string>
 </resources>

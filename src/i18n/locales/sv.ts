@@ -106,6 +106,7 @@ export const sv: TranslationKeys = {
     monthly: 'Månadsvis',
     yearly: 'Årligen',
     expand: 'Expandera',
+    showAll: 'Visa alla {n} rader',
     collapse: 'Fäll ihop',
     period: 'Period',
     contributions: 'Insättningar',

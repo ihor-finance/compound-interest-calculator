@@ -118,6 +118,7 @@ export const uk: TranslationKeys = {
     monthly: 'Помісячно',
     yearly: 'Щорічно',
     expand: 'Розгорнути',
+    showAll: 'Показати всі рядки ({n})',
     collapse: 'Згорнути',
     period: 'Період',
     contributions: 'Внески',

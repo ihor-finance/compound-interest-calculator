@@ -114,7 +114,7 @@ export const ResultsSection = React.memo(({ results}: Props) => {
   const absDiff = Math.abs(diff);
   const diffRatio = diff / expected.totalContributions;
   
-  let narrativeText = '';
+  let narrativeText: string;
   if (diffRatio > 0.01) narrativeText = t.hero.descriptionPositive;
   else if (diffRatio < -0.01) narrativeText = t.hero.descriptionNegative;
   else narrativeText = t.hero.descriptionNeutral;
@@ -154,7 +154,7 @@ export const ResultsSection = React.memo(({ results}: Props) => {
                 const totalReturnPct = expected.totalContributions > 0 
                   ? ((expected.afterTaxAndInflation - expected.totalContributions) / expected.totalContributions) * 100
                   : 0;
-                let heroReturnBadgeTooltip = '';
+                let heroReturnBadgeTooltip: string;
                 if (totalReturnPct > 0) {
                   heroReturnBadgeTooltip = (t.heroReturn.positive || '').replace('{contributions}', formatLocal(expected.totalContributions)).replace('{result}', formatLocal(expected.afterTaxAndInflation)).replace('{pct}', '+' + totalReturnPct.toFixed(1) + '%');
                 } else if (totalReturnPct < 0) {

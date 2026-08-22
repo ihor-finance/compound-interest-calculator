@@ -106,6 +106,7 @@ export const da: TranslationKeys = {
     monthly: 'Månedligt',
     yearly: 'Årligt',
     expand: 'Udvid',
+    showAll: 'Vis alle {n} rækker',
     collapse: 'Fold sammen',
     period: 'Periode',
     contributions: 'Indbetalinger',

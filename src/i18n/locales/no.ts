@@ -148,6 +148,7 @@ export const no: TranslationKeys = {
     monthly: 'Månedlig',
     yearly: 'Årlig',
     expand: 'Utvid',
+    showAll: 'Vis alle {n} rader',
     collapse: 'Skjul',
     period: 'Periode',
     contributions: 'Innskudd',

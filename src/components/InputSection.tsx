@@ -172,7 +172,7 @@ export const InputSection = ({ input, updateInput }: Props) => {
             <option value="monthly">{t.form.compoundingMonthly}</option>
             <option value="quarterly">{t.form.compoundingQuarterly}</option>
             <option value="semiannual">{t.form.compoundingSemiannual}</option>
-            <option value="annual">{t.form.taxAnnual}</option>
+            <option value="annual">{t.form.compoundingAnnually}</option>
           </select>
         </div>
       </div>
@@ -205,7 +205,7 @@ export const InputSection = ({ input, updateInput }: Props) => {
               <option value="monthly">{t.form.compoundingMonthly}</option>
               <option value="quarterly">{t.form.compoundingQuarterly}</option>
               <option value="semiannual">{t.form.compoundingSemiannual}</option>
-              <option value="annual">{t.form.taxAnnual}</option>
+              <option value="annual">{t.form.compoundingAnnually}</option>
             </select>
           </div>
         </div>

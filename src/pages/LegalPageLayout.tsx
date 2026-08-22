@@ -7,10 +7,9 @@ import { LogoIcon } from '../components/LogoIcon';
 
 interface Props {
   children: React.ReactNode;
-  
 }
 
-export const LegalPageLayout = ({ children}: Props) => {
+export const LegalPageLayout = ({ children }: Props) => {
   // Scroll to top when loading the page
   useEffect(() => {
     window.scrollTo(0, 0);

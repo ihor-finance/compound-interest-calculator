@@ -1,10 +1,20 @@
 apply plugin: 'com.android.application'
 
+// Release signing is driven by android/keystore.properties, which is gitignored
+// and never leaves this machine. Without that file the release build still runs
+// and produces an unsigned artifact, so CI and clean checkouts keep working.
+def keystorePropertiesFile = rootProject.file("keystore.properties")
+def keystoreProperties = new Properties()
+def hasReleaseKeystore = keystorePropertiesFile.exists()
+if (hasReleaseKeystore) {
+    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+}
+
 android {
-    namespace = "com.antigravity.compoundinterest"
+    namespace = "com.ihorfinance.compoundcalc"
     compileSdk = rootProject.ext.compileSdkVersion
     defaultConfig {
-        applicationId "com.antigravity.compoundinterest"
+        applicationId "com.ihorfinance.compoundcalc"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
@@ -16,10 +26,26 @@ android {
             ignoreAssetsPattern = '!.svn:!.git:!.ds_store:!*.scc:.*:!CVS:!thumbs.db:!picasa.ini:!*~'
         }
     }
+    signingConfigs {
+        if (hasReleaseKeystore) {
+            release {
+                storeFile rootProject.file(keystoreProperties['storeFile'])
+                storePassword keystoreProperties['storePassword']
+                keyAlias keystoreProperties['keyAlias']
+                keyPassword keystoreProperties['keyPassword']
+            }
+        }
+    }
     buildTypes {
         release {
+            // Left off deliberately: R8 needs extra keep rules for the Capacitor
+            // JS bridge, and a stripped bridge fails only at runtime. Revisit once
+            // there is a device test pass to catch it.
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            if (hasReleaseKeystore) {
+                signingConfig signingConfigs.release
+            }
         }
     }
 }

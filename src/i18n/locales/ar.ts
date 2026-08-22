@@ -148,6 +148,7 @@ export const ar: TranslationKeys = {
     monthly: 'شهري',
     yearly: 'سنوي',
     expand: 'توسيع',
+    showAll: 'عرض كل الصفوف ({n})',
     collapse: 'طي',
     period: 'الفترة',
     contributions: 'المساهمات',

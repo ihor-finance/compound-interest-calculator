@@ -106,6 +106,7 @@ export const fi: TranslationKeys = {
     monthly: 'Kuukausittain',
     yearly: 'Vuosittain',
     expand: 'Laajenna',
+    showAll: 'Näytä kaikki {n} riviä',
     collapse: 'Pienennä',
     period: 'Aika',
     contributions: 'Sijoitukset',

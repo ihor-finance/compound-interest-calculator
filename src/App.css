@@ -478,13 +478,6 @@
   margin: 12px 0;
 }
 
-/* Charts */
-.charts-section {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
-  gap: 20px;
-}
-
 /* .chart-card replaced */
 
 .chart-title {
@@ -1051,12 +1044,6 @@ tbody tr:last-child td {
   gap: 16px;
   margin-bottom: 0;
 }
-.charts-section {
-  display: grid;
-  grid-template-columns: 1.5fr 1fr;
-  gap: 16px;
-}
-
 
 .chart-card {
   padding: 20px;
@@ -1101,7 +1088,7 @@ tbody tr:last-child td {
 
 .structure-content {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 24px;
   align-items: center;
   flex: 1;
@@ -1170,13 +1157,6 @@ tbody tr:last-child td {
   margin-top: auto;
 }
 
-/* Override existing charts-section to stretch items */
-.charts-section {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  align-items: stretch;
-}
 
 /* Responsive Overrides */
 @media (min-width: 768px) and (max-width: 1023px) {
@@ -1225,7 +1205,7 @@ tbody tr:last-child td {
 
 .chart-content {
   display: grid;
-  grid-template-columns: 3fr 1fr;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 1fr);
   gap: 20px;
   flex: 1;
   margin-bottom: 16px;
@@ -1270,7 +1250,7 @@ tbody tr:last-child td {
   display: flex;
   align-items: center;
   gap: 8px;
-  white-space: nowrap;
+  white-space: normal;
 }
 
 .dot {
@@ -1300,7 +1280,7 @@ tbody tr:last-child td {
 
 @media (min-width: 768px) and (max-width: 1024px) {
   .chart-content {
-    grid-template-columns: 4fr 1fr;
+    grid-template-columns: minmax(0, 4fr) minmax(0, 1fr);
   }
   .chart-legend-side {
     font-size: 12px;
@@ -2338,258 +2318,442 @@ body {
   font-size: 0.9em;
 }
 
+
 /* ==========================================================================
-   ANDROID APK / MOBILE GLOBAL FIX
+   RESPONSIVE SYSTEM — single source of truth.
+   Must stay LAST in this file: it wins ties in the cascade, which is why almost
+   nothing here needs !important.
+
+   Breakpoints are width-only, on purpose. The previous version keyed the layout
+   off `orientation`, which put an 800px-wide tablet held upright into the phone
+   layout and clipped chart legends whenever any device was turned sideways.
+   Width is what actually decides how many columns fit; height only decides how
+   much vertical padding we can afford (see the max-height block at the end).
+
+     < 768px    phone upright                      1 column
+     >= 768px   phone sideways, tablet upright     2 columns, charts stacked
+     >= 1024px  tablet sideways, laptop            2 columns, charts side by side
+     >= 1280px  desktop                            same, roomier
    ========================================================================== */
 
-/* Viewport overflow protection & text sizing */
+/* --- 1. No horizontal page scrolling, ever -------------------------------- */
+
 html, body {
-  overflow-x: hidden !important;
-  width: 100% !important;
-  max-width: 100vw !important;
+  overflow-x: hidden;
+  width: 100%;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
 }
 
 body {
-  padding-top: env(safe-area-inset-top, 0);
-  padding-bottom: env(safe-area-inset-bottom, 0);
-  padding-left: env(safe-area-inset-left, 0);
-  padding-right: env(safe-area-inset-right, 0);
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-left: env(safe-area-inset-left, 0px);
+  padding-right: env(safe-area-inset-right, 0px);
+  /* Reserve the anchored ad shelf so a native banner never covers content. */
+  padding-bottom: calc(env(safe-area-inset-bottom, 0px) + var(--ad-slot-h, 0px));
 }
 
-/* Universal box-sizing & max-width */
-*, *::before, *::after {
-  box-sizing: border-box;
-}
-
-* {
+/* Replaces the old `* { max-width: 100% }`, which also squashed absolutely
+   positioned tooltips and dropdowns. Only replaced elements need the cap. */
+img, svg, canvas, video, iframe {
   max-width: 100%;
 }
 
-/* Exclude table from max-width 100% */
-.table-wrapper table,
-.table-container table {
-  max-width: none !important;
-  min-width: 650px !important;
+/* A grid/flex child defaults to min-width:auto, so one long unbreakable number
+   or label can push the whole row wider than the screen. */
+.dashboard > *,
+.main-panel > *,
+.results-section > *,
+.charts-section > *,
+.chart-content > *,
+.structure-content > *,
+.hero-card > *,
+.satellite-grid > *,
+.table-wrapper > * {
+  min-width: 0;
 }
 
-/* Canvas background transparent for dark mode */
-[data-theme="dark"] .chart-wrapper canvas,
-[data-theme="dark"] .chart-container canvas,
-.dark .chart-wrapper canvas {
-  background: transparent !important;
+.satellite-tile__value,
+.hero-value,
+.metric-value,
+.legend-label {
+  overflow-wrap: anywhere;
 }
 
-/* ── <768px PORTRAIT (Mobile & Small Tablet) ─────────────────────────── */
-@media (max-width: 767px) {
-  /* 1-column layout */
-  .calculator-layout,
-  .dashboard {
-    grid-template-columns: 1fr !important;
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 16px !important;
-  }
-  
-  /* Form — full width */
-  .calculator-sidebar,
-  .input-section,
-  .sidebar-left,
-  [class*="sidebar"],
-  [class*="input-form"] {
-    width: 100% !important;
-    min-width: 0 !important;
-    max-width: 100% !important;
-    position: relative !important;
-    top: 0 !important;
-    padding: 12px !important;
-  }
-  
-  .main-panel,
-  .calculator-content,
-  main {
-    padding: 12px !important;
-    gap: 16px !important;
-  }
+/* --- 2. Page frame -------------------------------------------------------- */
 
-  /* Header compact */
-  .top-header {
-    height: auto !important;
-    min-height: 56px !important;
-    padding: 8px 12px !important;
-  }
-  .logo-title { font-size: 15px !important; }
-  .logo-subtitle { font-size: 11px !important; }
+.main-content {
+  padding: 16px;
+}
 
-  /* Hero — stack sidebar */
+.dashboard {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 16px;
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  align-items: start;
+}
+
+@media (min-width: 768px) {
+  .main-content { padding: 20px; }
+  .dashboard { grid-template-columns: 260px minmax(0, 1fr); gap: 20px; }
+}
+
+@media (min-width: 1024px) {
+  .main-content { padding: 24px; }
+  .dashboard { grid-template-columns: 300px minmax(0, 1fr); gap: 24px; }
+  /* Keep the form in view while the results scroll. */
+  .sidebar-left {
+    position: sticky;
+    top: 94px;
+    max-height: calc(100vh - 118px);
+    overflow-y: auto;
+  }
+}
+
+@media (min-width: 1280px) {
+  .dashboard { grid-template-columns: 320px minmax(0, 1fr); }
+}
+
+/* --- 3. Input form -------------------------------------------------------- */
+
+/* Between 600 and 768 the sidebar spans the full width, so a single column of
+   inputs would stretch each field across the screen. Pair them up instead. */
+@media (min-width: 600px) and (max-width: 767px) {
+  .input-section {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0 16px;
+    align-items: start;
+  }
+  .input-section > .presets-group,
+  .input-section > .variance-toggle-group {
+    grid-column: 1 / -1;
+  }
+}
+
+/* --- 4. Hero card --------------------------------------------------------- */
+
+.hero-card {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 16px;
+  padding: 20px;
+}
+
+.hero-right {
+  border-left: none;
+  border-top: 1px solid var(--border);
+  padding-left: 0;
+  padding-top: 16px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 12px 28px;
+}
+
+@media (min-width: 1024px) {
   .hero-card {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 12px !important;
-    padding: 16px !important;
+    grid-template-columns: minmax(0, 1.8fr) minmax(0, 1fr);
+    gap: 32px;
+    padding: 24px 32px;
   }
-  
-  .hero-metrics-sidebar,
   .hero-right {
-    width: 100% !important;
-    display: flex !important;
-    flex-direction: row !important;
-    flex-wrap: wrap !important;
-    gap: 8px 20px !important;
-    border-top: 1px solid var(--border) !important;
-    border-left: none !important;
-    padding-top: 12px !important;
-    padding-left: 0 !important;
+    border-left: 1px solid var(--border);
+    border-top: none;
+    padding-left: 32px;
+    padding-top: 0;
+    flex-direction: column;
+    justify-content: center;
+    gap: 16px;
   }
+}
 
-  /* Satellites — 1 column on portrait */
-  .satellites-grid,
+/* --- 5. Result tiles ------------------------------------------------------ */
+
+.satellite-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+@media (max-width: 479px) {
+  .satellite-tile__value { font-size: 22px; }
+}
+
+@media (min-width: 1024px) {
   .satellite-grid {
-    display: grid !important;
-    grid-template-columns: 1fr !important;
-    gap: 10px !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
   }
+}
 
-  /* Contributions — wrap to 2 rows */
-  .contributions-row,
-  [class*="contribution-input"] {
-    flex-direction: column !important;
-    align-items: stretch !important;
-    gap: 6px !important;
+/* --- 6. Charts ------------------------------------------------------------ */
+
+/* Stacked until there is genuinely room for two charts. A 400px-wide chart on a
+   sideways phone is unreadable, so width alone decides — not orientation. */
+.charts-section {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 20px;
+  align-items: stretch;
+  /* Never clip: the previous rule hid tooltips and the ends of legend labels. */
+  overflow: visible;
+}
+
+@media (min-width: 1024px) {
+  .charts-section { grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); }
+}
+
+/* Line chart: canvas on top, legend wrapping underneath; side by side only when
+   the chart card itself is wide enough. */
+.chart-content {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: auto auto;
+  gap: 16px;
+  min-height: 0;
+  margin-bottom: 16px;
+}
+
+.chart-container {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  height: 260px;
+}
+
+.chart-legend-side {
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 8px 20px;
+}
+
+.legend-section {
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 14px;
+}
+
+@media (min-width: 768px) {
+  .chart-container { height: 300px; }
+}
+
+@media (min-width: 1024px) {
+  .chart-content {
+    grid-template-columns: minmax(0, 3fr) minmax(0, 1fr);
+    grid-template-rows: auto;
+    gap: 20px;
   }
-  
-  .contributions-row input,
-  .contributions-row select,
-  .contributions-row .input-field-wrapper,
-  .contributions-row .selector-wrapper {
-    width: 100% !important;
+  .chart-container { height: 360px; }
+  .chart-legend-side {
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
   }
-  
-  /* Charts — stack */
-  .charts-row,
-  .charts-section,
-  .chart-content,
+  .legend-section {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+}
+
+/* Donut: stacked on narrow screens, beside its legend once there is room. */
+.structure-content {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.donut-container {
+  width: 100%;
+  min-width: 0;
+}
+
+@media (min-width: 600px) {
   .structure-content {
-    grid-template-columns: 1fr !important;
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 16px !important;
+    grid-template-columns: minmax(0, 240px) minmax(0, 1fr);
+    gap: 24px;
   }
-  
-  /* Chart — fixed height to prevent infinite growth */
-  .chart-wrapper,
-  .chart-container {
-    height: 280px !important;
-    min-height: 280px !important;
-    max-height: 280px !important;
-    width: 100% !important;
-    position: relative !important;
-  }
-  
-  .donut-wrapper,
-  .donut-container {
-    height: 250px !important;
-    min-height: 250px !important;
-    max-height: 250px !important;
-    width: 100% !important;
-    position: relative !important;
-  }
-  
-  /* Table — scrollable with sticky first col */
-  .table-wrapper,
-  .table-container {
-    overflow-x: auto !important;
-    -webkit-overflow-scrolling: touch !important;
-  }
-  
-  .table-wrapper th:first-child,
-  .table-wrapper td:first-child,
-  .table-container th:first-child,
-  .table-container td:first-child {
-    position: sticky !important;
-    left: 0 !important;
-    background: var(--surface) !important;
-    z-index: 2 !important;
-    box-shadow: 2px 0 4px rgba(0, 0, 0, 0.06) !important;
-  }
-  
-  .table-wrapper th,
-  .table-wrapper td,
+}
+
+/* --- 7. Projection table -------------------------------------------------- */
+
+/* The one element allowed to scroll sideways. overscroll-behavior-x: contain
+   stops a swipe across the table from dragging the page with it. */
+.table-container {
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+  max-height: 420px;
+  transition: max-height 0.3s ease;
+}
+
+.table-container.expanded {
+  max-height: none;
+}
+
+.table-container table {
+  min-width: 640px;
+}
+
+@media (max-width: 767px) {
   .table-container th,
   .table-container td {
-    font-size: 12px !important;
-    padding: 8px 6px !important;
-    white-space: nowrap !important;
+    font-size: 12px;
+    padding: 8px 6px;
+    white-space: nowrap;
   }
+  /* Keep the period column pinned so a scrolled row is still identifiable. */
+  .table-container th:first-child,
+  .table-container td:first-child {
+    position: sticky;
+    left: 0;
+    background: var(--surface);
+    z-index: 2;
+    box-shadow: 2px 0 4px rgba(0, 0, 0, 0.06);
+  }
+  .table-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+  .table-controls {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+}
 
-  /* Disclaimer — do not truncate */
-  .disclaimer-section,
-  .chart-disclaimer,
-  .structure-disclaimer {
-    overflow: visible !important;
-    max-height: none !important;
-    word-wrap: break-word !important;
-    overflow-wrap: break-word !important;
-    font-size: 11px !important;
-    line-height: 1.5 !important;
-    white-space: normal !important;
-  }
-  
-  /* Footer — full width */
-  .calc-footer,
-  .site-footer {
-    padding: 20px 16px !important;
-    text-align: center !important;
-    width: 100% !important;
-  }
-  
+/* --- 8. Disclaimers and footer ------------------------------------------- */
+
+.chart-disclaimer,
+.structure-disclaimer,
+.disclaimer-box,
+.about-results {
+  overflow: visible;
+  max-height: none;
+  overflow-wrap: break-word;
+  white-space: normal;
+}
+
+@media (max-width: 767px) {
   .calc-footer__main,
   .calc-footer__links {
-    flex-direction: column !important;
-    gap: 6px !important;
-  }
-  
-  .calc-footer__sep {
-    display: none !important;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 }
 
-/* ── 768-1023px TABLET LANDSCAPE ──────────────────────────────── */
-@media (min-width: 768px) and (max-width: 1023px) {
-  .calculator-layout,
-  .dashboard {
-    grid-template-columns: 280px 1fr !important;
-    gap: 16px !important;
+/* --- 9. Short viewports (phone held sideways) ----------------------------- */
+
+/* Structure stays as the width rules decided; only vertical space is rationed.
+   A 70px sticky header eats a fifth of a 360px-tall screen, so it stops sticking. */
+@media (max-height: 520px) and (min-width: 600px) {
+  .top-header {
+    position: static;
+    height: 52px;
+    padding: 0 12px;
   }
-  
-  .satellites-grid,
-  .satellite-grid {
-    grid-template-columns: 1fr 1fr !important;
+  .logo-title { font-size: 15px; }
+  .logo-subtitle { display: none; }
+  .main-content { padding: 12px; }
+  .main-panel { gap: 14px; }
+  .card,
+  .sidebar-left,
+  .chart-card {
+    padding: 14px;
   }
-  
-  .chart-wrapper,
-  .chart-container {
-    height: 320px !important;
-    min-height: 320px !important;
-    position: relative !important;
+  .hero-card { padding: 14px 16px; }
+  .chart-container { height: 210px; }
+  .table-container { max-height: 240px; }
+  .sidebar-left {
+    position: static;
+    max-height: none;
+    overflow: visible;
   }
 }
 
-/* ── ≥1024px DESKTOP ──────────────────────────────────────────── */
-@media (min-width: 1024px) {
-  .chart-wrapper,
-  .chart-container {
-    height: 400px;
-    min-height: 400px;
-    position: relative;
+/* --- 10. Reserved ad shelf ------------------------------------------------ */
+
+/* Rendered only once ads are switched on; see src/components/AdSlot.tsx. */
+.ad-slot--anchor {
+  height: var(--ad-slot-h, 0px);
+}
+
+.ad-slot--card {
+  min-height: 90px;
+}
+
+.table-show-all {
+  display: block;
+  width: 100%;
+  margin-top: 12px;
+  padding: 10px 16px;
+  border-radius: 10px;
+  background: var(--surface-muted);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.table-show-all:hover {
+  color: var(--text-primary);
+  border-color: var(--primary);
+}
+
+/* --- 11. Delta tooltip on narrow screens ---------------------------------- */
+
+/* The delta tooltip is anchored to its badge, so a badge sitting near the left
+   edge pushed a 280px popup ~170px off-screen on a 360px phone. Below 600px it
+   detaches from the badge and docks to the bottom of the viewport instead, which
+   is always fully readable. On touch devices it opens on tap (see the
+   `hover: none` block above), so this is the common case, not an edge case. */
+@media (max-width: 599px) {
+  .delta-tooltip {
+    position: fixed;
+    left: 12px;
+    right: 12px;
+    bottom: 16px;
+    top: auto;
+    width: auto;
+    max-width: none;
+    z-index: 200;
   }
-  
-  .donut-wrapper,
-  .donut-container {
-    height: 300px;
-    min-height: 300px;
-    position: relative;
+  .delta-tooltip::after {
+    display: none;
   }
 }
 
+/* --- 12. Donut legend ----------------------------------------------------- */
+
+/* `1fr` is really `minmax(auto, 1fr)`, so the label column refused to shrink
+   below its longest word and pushed the amount column past the card edge once
+   the donut sits beside its legend on a laptop. */
+.legend-row {
+  grid-template-columns: 12px minmax(0, 1fr) auto;
+}
+
+.legend-label {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.legend-value {
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* Proportional columns so the donut gives space back to the legend on the
+   narrower card it gets when both charts sit side by side. */
+@media (min-width: 600px) {
+  .structure-content {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: 20px;
+  }
+}
