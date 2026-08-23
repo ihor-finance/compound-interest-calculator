@@ -1,5 +1,5 @@
 import { useTranslation } from '../i18n/useTranslation';
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -53,6 +53,28 @@ export const ChartsSection = React.memo(({ results, theme  }: Props) => {
   
   const [donutMode, setDonutMode] = useState<'amount' | 'percentage'>('amount');
   const [hiddenDatasets, setHiddenDatasets] = useState<Record<number, boolean>>({});
+
+  const lineChartRef = useRef<any>(null);
+  const donutChartRef = useRef<any>(null);
+
+  // A touch screen never fires mouseout, so a tooltip opened by a tap stays on
+  // screen with no way to close it — and on a phone in landscape it covers the
+  // whole chart. Dismiss it when the next tap lands anywhere else.
+  useEffect(() => {
+    const dismiss = (event: Event) => {
+      for (const ref of [lineChartRef, donutChartRef]) {
+        const chart = ref.current;
+        if (!chart || !chart.canvas) continue;
+        if (chart.canvas.contains(event.target as Node)) continue;
+        if (!chart.tooltip?.getActiveElements()?.length) continue;
+        chart.setActiveElements([]);
+        chart.tooltip.setActiveElements([], { x: 0, y: 0 });
+        chart.update('none');
+      }
+    };
+    document.addEventListener('pointerdown', dismiss, true);
+    return () => document.removeEventListener('pointerdown', dismiss, true);
+  }, []);
 
   const toggleDataset = (index: number) => {
     setHiddenDatasets(prev => ({
@@ -194,7 +216,8 @@ export const ChartsSection = React.memo(({ results, theme  }: Props) => {
         bodyFont: { family: "'Roboto', sans-serif", size: 13 },
         callbacks: {
           title: function(context: any) {
-            return `Year ${context[0].label}`;
+            // Was hardcoded English while the rest of the chart is translated.
+            return (t.table.yearLabel || 'Year {n}').replace('{n}', String(context[0].label));
           },
           label: function(context: any) {
             let label = context.dataset.label || '';
@@ -295,7 +318,7 @@ export const ChartsSection = React.memo(({ results, theme  }: Props) => {
         
         <div className="chart-content">
           <div className="chart-container">
-            <Line key={`line-${theme}`} options={lineChartOptions as any} data={lineChartData} plugins={[]} />
+            <Line ref={lineChartRef} key={`line-${theme}`} options={lineChartOptions as any} data={lineChartData} plugins={[]} />
           </div>
           
           <div className="chart-legend-side">
@@ -386,7 +409,7 @@ export const ChartsSection = React.memo(({ results, theme  }: Props) => {
         <div className="structure-content">
           <div className="donut-container" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
             <div style={{ position: 'relative', width: '100%', maxWidth: '280px', aspectRatio: '1/1' }}>
-              <Doughnut key={`donut-${theme}`} options={doughnutOptions} data={doughnutData} />
+              <Doughnut ref={donutChartRef} key={`donut-${theme}`} options={doughnutOptions} data={doughnutData} />
             </div>
           </div>
 

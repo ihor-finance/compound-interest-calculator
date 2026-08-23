@@ -2373,10 +2373,10 @@ img, svg, canvas, video, iframe {
   min-width: 0;
 }
 
-.satellite-tile__value,
-.hero-value,
-.metric-value,
-.legend-label {
+/* Only real prose may break mid-word. A formatted amount has no sensible break
+   point, and allowing one turns "100,000" into seven stacked characters. */
+.legend-label,
+.satellite-tile__subtitle {
   overflow-wrap: anywhere;
 }
 
@@ -2478,8 +2478,46 @@ img, svg, canvas, video, iframe {
   gap: 12px;
 }
 
+/* Below 480px: one full-width tile per row, keeping the same vertical shape as
+   every wider breakpoint. Two columns leave ~128px per tile, and an amount with
+   its percentage ("200,525 (+100.5%)") needs about 160px on its own.
+
+   This also overrides an older rule that flipped the tile on its side at this
+   width. That rule targets `.satellites-grid` and `.satellite-tile__label-group`
+   — neither of which the markup uses — so its single-column half never applied
+   and the sideways tile ended up inside a two-column grid with no room for
+   either the amount or the delta badge. */
 @media (max-width: 479px) {
-  .satellite-tile__value { font-size: 22px; }
+  .satellite-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
+  }
+  .satellite-tile {
+    flex-direction: column;
+    align-items: stretch;
+    min-height: 0;
+    padding: 14px 16px;
+  }
+  .satellite-tile__header {
+    order: 0;
+    flex-direction: row;
+    align-items: center;
+    min-width: 0;
+  }
+  .satellite-tile__label {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+  .satellite-tile__value {
+    order: 0;
+    font-size: 26px;
+    text-align: left;
+    margin-top: 0;
+  }
+  .satellite-tile__subtitle {
+    order: 0;
+    display: block;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -2755,5 +2793,45 @@ img, svg, canvas, video, iframe {
   .structure-content {
     grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
     gap: 20px;
+  }
+}
+
+/* --- 13. Compact header on narrow screens --------------------------------- */
+
+/* "Compound Interest" wrapped to two lines on a 300px viewport and, with the
+   subtitle underneath, the header ate ~120px before any content appeared. */
+@media (max-width: 479px) {
+  .top-header {
+    height: auto;
+    min-height: 56px;
+    padding: 8px 10px;
+    gap: 8px;
+  }
+  .logo-section {
+    min-width: 0;
+    gap: 6px;
+  }
+  .logo-section > div {
+    min-width: 0;
+  }
+  /* Two tight lines beat an ellipsised brand name: at 300px the title only gets
+     ~70px of width once the flag and theme toggle have taken theirs. */
+  .logo-title {
+    font-size: 15px;
+    line-height: 18px;
+  }
+  .logo-subtitle {
+    display: none;
+  }
+  .logo-section img {
+    width: 32px;
+    height: 32px;
+  }
+  .header-actions {
+    gap: 8px;
+    flex-shrink: 0;
+  }
+  .theme-btn {
+    padding: 4px 8px;
   }
 }
