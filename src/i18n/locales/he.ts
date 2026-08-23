@@ -1,0 +1,194 @@
+import type { TranslationKeys } from '../types';
+
+export const he: TranslationKeys = {
+  app: {
+    title: 'ריבית דריבית',
+    subtitle: 'מחשבון',
+    calculator: 'מחשבון',
+    scenarios: 'תרחישים',
+    settings: 'הגדרות',
+    theme: 'ערכת נושא',
+    themeLight: 'ערכה בהירה',
+    themeDark: 'ערכה כהה',
+    presets: 'הגדרות מוכנות',
+    conservative: 'שמרני',
+    balanced: 'מאוזן',
+    aggressive: 'אגרסיבי',
+  },
+
+  form: {
+    noContribution: 'ללא הפקדות שוטפות',
+    initialDeposit: 'הפקדה ראשונית',
+    period: 'תקופת ההשקעה',
+    years: 'שנים',
+    annualReturn: 'תשואה שנתית',
+    rateRange: 'טווח תשואה',
+    minReturn: 'תשואה מינימלית',
+    maxReturn: 'תשואה מקסימלית',
+    compounding: 'תדירות צבירת הריבית',
+    compoundingDaily: 'יומי',
+    compoundingWeekly: 'שבועי',
+    compoundingMonthly: 'חודשי',
+    compoundingQuarterly: 'רבעוני',
+    compoundingSemiannual: 'חצי שנתי',
+    compoundingAnnually: 'שנתי',
+    contributions: 'הפקדות שוטפות',
+    contributionsMonthly: 'חודשי',
+    inflation: 'אינפלציה',
+    taxRate: 'שיעור מס',
+    taxation: 'מיסוי',
+    taxAnnual: 'שנתי',
+    taxOnExit: 'בעת המשיכה',
+  },
+
+  hero: {
+    badge: 'התוצאה המרכזית',
+    badgeWarning: 'התוצאה המרכזית',
+    title: 'כוח קנייה ריאלי בעוד {years} שנים',
+    descriptionPositive: 'מתוך {contributions} שהפקדת יהיה לך שווה ערך ל־{result} בכסף של היום — זה {delta} יותר ממה שהשקעת, גם אחרי מס ואינפלציה.',
+    descriptionNegative: 'מתוך {contributions} שהפקדת יהיה לך שווה ערך ל־{result} בלבד בכסף של היום — זה {delta} פחות ממה שהשקעת. האינפלציה והמסים שחקו יותר ממה שההשקעה הרוויחה.',
+    descriptionNeutral: 'מתוך {contributions} שהפקדת יהיה לך שווה ערך לכ־{result} בכסף של היום — ההשקעה בקושי מכסה את ההפסד מהמסים ומהאינפלציה.',
+    totalReturn: 'תשואה כוללת',
+  },
+
+  metrics: {
+    cagrLabel: 'תשואה (CAGR)',
+    netEffectLabel: 'אפקט נטו',
+    rangeLabel: 'טווח',
+  },
+
+  satellites: {
+    totalContributions: 'סך ההפקדות',
+    nominalValue: 'ערך נומינלי',
+    nominalAfterTax: 'נומינלי אחרי מס',
+    withInflation: 'מותאם לאינפלציה',
+
+    subtitleContributions: 'הסכום הכולל שהושקע לאורך התקופה — הפקדה ראשונית וכל ההפקדות השוטפות.',
+    subtitleNominal: 'כמה ההשקעה הרוויחה לפני מס, במונחים נומינליים.',
+    subtitleAfterTax: 'רווח נטו (רווח נומינלי בניכוי מסים).',
+    subtitleInflation: 'הערך העתידי בכסף של היום. מראה כמה ההשקעה שלך תקנה בפועל לאחר התאמה לאינפלציה.',
+  },
+
+  deltas: {
+    nominalLine1: 'רווח ההשקעה: הכסף שלך הרוויח {delta} מעבר למה שהשקעת — זה {pct} מסך ההפקדות.',
+    nominalFormula: '{nominal} (נומינלי) − {contributions} (הפקדות) = {deltaSigned}',
+    nominalFormulaPercent: '{delta} ÷ {contributions} × 100 = {pct}',
+
+    taxLine1: 'השפעת המס: המסים הפחיתו מהסכום {delta} — זה {pct} מהערך הנומינלי.',
+    taxFormula: '{afterTax} (אחרי מס) − {nominal} (לפני מס) = {deltaSigned}',
+    taxFormulaPercent: '{delta} ÷ {nominal} × 100 = {pct}',
+
+    inflationLine1: 'השפעת האינפלציה: במשך {years} שנים באינפלציה של {rate}% הכסף איבד {delta} מכוח הקנייה — זה {pct} מהערך הנומינלי.',
+    inflationFormula: '{withInflation} (ערך ריאלי) − {nominal} (נומינלי) = {deltaSigned}',
+    inflationFormulaPercent: '{delta} ÷ {nominal} × 100 = {pct}',
+  },
+
+  heroReturn: {
+    positive: 'צמיחה ריאלית כוללת: ההפקדות שלך ({contributions}) צמחו ל־{result} בכסף של היום — זה {pct} רווח נטו אחרי מס ואינפלציה.',
+    negative: 'הפסד ריאלי כולל: ההפקדות שלך ({contributions}) יהיו שוות {result} בלבד בכסף של היום — זה {pct}. האינפלציה והמסים שחקו יותר ממה שההשקעה הרוויחה.',
+  },
+
+  chart: {
+    title: 'תרשים צמיחה',
+    scenarios: 'תרחישים',
+    nominal: 'נומינלי',
+    withInflation: 'מותאם לאינפלציה',
+    afterTaxAndInflation: 'אחרי מס ואינפלציה',
+    contributions: 'הפקדות',
+    rateRange: 'טווח תשואה',
+    optimistic: 'אופטימי',
+    pessimistic: 'פסימי',
+    disclaimer: 'החישובים הם הערכה והמחשה בלבד. התוצאות בפועל עשויות להיות שונות עקב שינויים בריביות, באינפלציה, בחקיקת המס, בעמלות ובגורמי שוק אחרים.',
+  },
+
+  donut: {
+    title: 'מבנה ההשקעה',
+    percent: 'אחוז',
+    amount: 'סכום',
+    initialDeposit: 'הפקדה ראשונית',
+    contributions: 'הפקדות שוטפות',
+    netProfit: 'רווח נטו אחרי מס',
+    taxesPaid: 'מסים ששולמו',
+    disclaimer: 'פילוח מקורב. הערכים בפועל תלויים במכשיר שנבחר, בשיעורי המס ובתנאים.',
+    warningNegativeProfit: '* הרווח נטו שלילי — ההשקעה לא כיסתה את האינפלציה במונחים ריאליים.',
+  },
+
+  table: {
+    yearLabel: 'שנה {n}',
+    monthLabel: 'חודש {n}',
+    start: 'התחלה',
+    title: 'טבלת תחזית',
+    monthly: 'חודשי',
+    yearly: 'שנתי',
+    expand: 'הרחבה',
+    showAll: 'הצג את כל {n} השורות',
+    hiddenRows: '{n} מוסתרות',
+    close: 'סגירה',
+    collapse: 'כיווץ',
+    period: 'תקופה',
+    contributions: 'הפקדות',
+    nominalValue: 'ערך נומינלי',
+    withInflation: 'מותאם לאינפלציה',
+    nominalAfterTax: 'נומינלי אחרי מס',
+    afterTaxAndInflation: 'אחרי מס ואינפלציה',
+    taxesPaid: 'מסים ששולמו',
+    min: 'מינ׳',
+    base: 'בסיס',
+    max: 'מקס׳',
+    swipeHint: '← החלק →',
+  },
+
+  warnings: {
+    inflationExceeds: 'התשואה אינה מכסה את האינפלציה.',
+    inflationExceedsDetail: 'בנתונים הנוכחיים (תשואה {rate}%, אינפלציה {inflation}%) ההשקעה שלך אינה צומחת במונחים ריאליים. שקול מכשירים בעלי תשואה גבוהה יותר או הפחת את האינפלציה הצפויה.',
+    negativeCagr: 'CAGR שלילי פירושו שהאינפלציה והמסים שוחקים יותר ממה שההשקעה מרוויחה.',
+    negativeRateRange: 'אתה מדמה תרחיש של הפסד בשוק. התוצאה הפסימית בתרשים תראה מה יקרה אם התשואה תרד ל־{minRate}% בשנה.',
+  },
+
+  disclaimer: {
+    title: 'על התוצאות',
+    text: 'המספרים שלמעלה מציגים את כוח הקנייה הריאלי המשוער של ההשקעה שלך לאחר תשלום מס הכנסה. החישובים הם מידע כללי ואינם מביאים בחשבון שינויים אפשריים בתנאי השוק, בריביות ובחקיקה.',
+    warning: 'זו אינה ייעוץ השקעות.',
+    pastResults: 'תוצאות העבר אינן ערובה לתוצאות העתיד.',
+  },
+
+  footer: {
+    developer: 'פותח על ידי',
+    copyright: '© {year} כל הזכויות שמורות.',
+    disclaimer: 'אינו ייעוץ פיננסי.',
+    privacy: 'פרטיות',
+    terms: 'תנאים',
+    methodology: 'מתודולוגיה',
+  },
+
+  tooltips: {
+    initialDeposit: 'הסכום שאתה משקיע בהתחלה.',
+    period: 'כמה שנים אתה מתכנן להחזיק בהשקעה.',
+    annualReturn: 'התשואה השנתית הצפויה באחוזים מההשקעה שלך.',
+    rateRange: 'הפעל כדי לדמות תרחישים אופטימיים ופסימיים בשיעורים שונים.',
+    compounding: 'באיזו תדירות הריבית שנצברה מתווספת ליתרה ומתחילה בעצמה לצבור ריבית.',
+    contributions: 'הפקדות נוספות קבועות מעבר להשקעה הראשונית.',
+    inflation: 'הקצב השנתי הצפוי שבו המחירים עולים והכסף מאבד מכוח הקנייה שלו.',
+    taxRate: 'אחוז הרווח מההשקעה שהולך למסים.',
+    taxation: 'מתי המס משולם: שנתי (מדי שנה על רווח אותה שנה) או בעת המשיכה (פעם אחת, כשאתה מושך את הכסף).',
+
+    totalContributions: 'הסכום הכולל שתשקיע: ההפקדה הראשונית וכל ההפקדות השוטפות לאורך התקופה.',
+    nominalValue: 'החיסכון שלך ללא מסים ואינפלציה. זו התוצאה הנקייה של ריבית דריבית — מה שהיה לך בעולם אידיאלי ללא עלויות.',
+    nominalAfterTax: 'מה שנשאר לאחר תשלום מס הכנסה. האינפלציה אינה נלקחת בחשבון — אלה מספרים נומינליים כפי שיופיעו בחשבון שלך.',
+    withInflation: 'כמה הכסף שלך יקנה בעוד {years} שנים, בהתאמה לאינפלציה. המסים אינם נלקחים בחשבון — השפעתם מוצגת בכרטיס הקודם.',
+
+    cagr: 'CAGR (שיעור צמיחה שנתי מורכב) — התשואה הריאלית הממוצעת לשנה אחרי מס ואינפלציה. הוא עונה על השאלה: "בכמה אחוזים גדל כוח הקנייה שלי בכל שנה?" CAGR שלילי פירושו שהאינפלציה שוחקת את הרווח מהר יותר משההשקעה מרוויחה אותו.',
+    netEffect: 'ההפרש בין כוח הקנייה הריאלי שלך בסוף לבין הסכום הכולל שהשקעת. במילים פשוטות: בכמה יותר (או פחות) "כסף של היום" יהיה לך בסוף לעומת מה שהכנסת.',
+    range: 'הגבולות האפשריים של התוצאה שלך: מהפסימי (שיעור נמוך) עד האופטימי (שיעור גבוה). עוזר להעריך את אי-הוודאות בתחזית — התוצאה בפועל תיפול ככל הנראה בטווח הזה.',
+    minReturn: 'התשואה השנתית הגרועה ביותר שאתה מצפה לה.',
+    maxReturn: 'התשואה השנתית הטובה ביותר שאתה מצפה לה.',
+  },
+
+  legal: {
+    backToCalculator: 'חזרה למחשבון',
+    privacyTitle: 'מדיניות פרטיות',
+    termsTitle: 'תנאי שימוש',
+    lastUpdated: 'עודכן לאחרונה: {date}',
+    contact: 'צור איתנו קשר בכתובת {email}.',
+  },
+};

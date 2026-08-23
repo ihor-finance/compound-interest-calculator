@@ -188,8 +188,6 @@ export const uk: TranslationKeys = {
     backToCalculator: 'Назад до калькулятора',
     privacyTitle: 'Політика конфіденційності',
     termsTitle: 'Умови використання',
-    cookiesTitle: 'Політика Cookie',
-    offerTitle: 'Публічна оферта',
     lastUpdated: 'Останнє оновлення: {date}',
     contact: 'Зверніться до нас через {email}.',
   },

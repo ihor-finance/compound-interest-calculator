@@ -169,8 +169,6 @@ export const da: TranslationKeys = {
     backToCalculator: 'Tilbage til beregner',
     privacyTitle: 'Privatlivspolitik',
     termsTitle: 'Brugsbetingelser',
-    cookiesTitle: 'Cookiepolitik',
-    offerTitle: 'Offentligt Tilbud',
     lastUpdated: 'Sidst opdateret: {date}',
     contact: 'Kontakt os på {email}.',
   },

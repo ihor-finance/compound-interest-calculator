@@ -233,8 +233,6 @@ export const fr: TranslationKeys = {
     backToCalculator: 'Retour à la calculatrice',
     privacyTitle: 'Politique de confidentialité',
     termsTitle: 'Conditions d\'utilisation',
-    cookiesTitle: 'Politique relative aux cookies',
-    offerTitle: 'Offre publique',
     lastUpdated: 'Dernière mise à jour : {date}',
     contact: 'Contactez-nous à {email}.',
   },

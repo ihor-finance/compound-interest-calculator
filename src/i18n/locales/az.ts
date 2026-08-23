@@ -1,0 +1,194 @@
+import type { TranslationKeys } from '../types';
+
+export const az: TranslationKeys = {
+  app: {
+    title: 'Mürəkkəb faiz',
+    subtitle: 'Kalkulyator',
+    calculator: 'Kalkulyator',
+    scenarios: 'Ssenarilər',
+    settings: 'Parametrlər',
+    theme: 'Mövzu',
+    themeLight: 'İşıqlı mövzu',
+    themeDark: 'Qaranlıq mövzu',
+    presets: 'Hazır dəstlər',
+    conservative: 'Konservativ',
+    balanced: 'Balanslaşdırılmış',
+    aggressive: 'Aqressiv',
+  },
+
+  form: {
+    noContribution: 'Əlavə ödənişsiz',
+    initialDeposit: 'İlkin depozit',
+    period: 'İnvestisiya müddəti',
+    years: 'il',
+    annualReturn: 'İllik gəlirlilik',
+    rateRange: 'Dərəcə aralığı',
+    minReturn: 'Min. gəlir',
+    maxReturn: 'Maks. gəlir',
+    compounding: 'Kapitallaşma tezliyi',
+    compoundingDaily: 'Gündəlik',
+    compoundingWeekly: 'Həftəlik',
+    compoundingMonthly: 'Aylıq',
+    compoundingQuarterly: 'Rüblük',
+    compoundingSemiannual: 'Yarımillik',
+    compoundingAnnually: 'İllik',
+    contributions: 'Əlavə ödənişlər',
+    contributionsMonthly: 'Aylıq',
+    inflation: 'İnflyasiya',
+    taxRate: 'Vergi dərəcəsi',
+    taxation: 'Vergitutma',
+    taxAnnual: 'İllik',
+    taxOnExit: 'Çıxışda',
+  },
+
+  hero: {
+    badge: 'Əsas nəticə',
+    badgeWarning: 'Əsas nəticə',
+    title: '{years} ildən sonra real alıcılıq qabiliyyəti',
+    descriptionPositive: 'Qoyduğunuz {contributions} vəsaitdən bugünkü pulla {result} ekvivalenti olacaq — bu, vergi və inflyasiyadan sonra belə, qoyduğunuzdan {delta} çoxdur.',
+    descriptionNegative: 'Qoyduğunuz {contributions} vəsaitdən bugünkü pulla cəmi {result} ekvivalenti olacaq — bu, qoyduğunuzdan {delta} azdır. İnflyasiya və vergilər investisiyanın qazandığından çoxunu yedi.',
+    descriptionNeutral: 'Qoyduğunuz {contributions} vəsaitdən bugünkü pulla təxminən {result} ekvivalenti olacaq — investisiya vergi və inflyasiyadan yaranan itkini güclə örtür.',
+    totalReturn: 'ümumi gəlirlilik',
+  },
+
+  metrics: {
+    cagrLabel: 'Gəlirlilik (CAGR)',
+    netEffectLabel: 'xalis effekt',
+    rangeLabel: 'Aralıq',
+  },
+
+  satellites: {
+    totalContributions: 'Ümumi qoyuluş',
+    nominalValue: 'Nominal dəyər',
+    nominalAfterTax: 'Vergidən sonrakı nominal',
+    withInflation: 'İnflyasiya nəzərə alınmaqla',
+
+    subtitleContributions: 'Dövr ərzində qoyulmuş ümumi məbləğ — ilkin depozit və bütün əlavə ödənişlər.',
+    subtitleNominal: 'İnvestisiyanın vergidən əvvəl qazandığı məbləğ, nominal ifadədə.',
+    subtitleAfterTax: 'Xalis mənfəət (nominal mənfəət çıxılmaqla vergilər).',
+    subtitleInflation: 'Gələcək dəyər bugünkü pulla. İnflyasiya nəzərə alınmaqla investisiyanızın nəyə çatacağını göstərir.',
+  },
+
+  deltas: {
+    nominalLine1: 'İnvestisiya mənfəəti: pulunuz qoyduğunuzdan {delta} çox qazandı — bu bütün qoyuluşların {pct} hissəsidir.',
+    nominalFormula: '{nominal} (nominal) − {contributions} (qoyuluşlar) = {deltaSigned}',
+    nominalFormulaPercent: '{delta} ÷ {contributions} × 100 = {pct}',
+
+    taxLine1: 'Verginin təsiri: vergilər ümumi məbləği {delta} azaltdı — bu nominal dəyərin {pct} hissəsidir.',
+    taxFormula: '{afterTax} (vergidən sonra) − {nominal} (vergidən əvvəl) = {deltaSigned}',
+    taxFormulaPercent: '{delta} ÷ {nominal} × 100 = {pct}',
+
+    inflationLine1: 'İnflyasiyanın təsiri: {years} il ərzində {rate}% inflyasiya ilə pul alıcılıq qabiliyyətinin {delta} hissəsini itirdi — bu nominal dəyərin {pct} hissəsidir.',
+    inflationFormula: '{withInflation} (real dəyər) − {nominal} (nominal) = {deltaSigned}',
+    inflationFormulaPercent: '{delta} ÷ {nominal} × 100 = {pct}',
+  },
+
+  heroReturn: {
+    positive: 'Ümumi real artım: qoyuluşlarınız ({contributions}) bugünkü pulla {result} səviyyəsinə çatdı — bu vergi və inflyasiyadan sonra {pct} xalis mənfəətdir.',
+    negative: 'Ümumi real itki: qoyuluşlarınız ({contributions}) bugünkü pulla cəmi {result} dəyərində olacaq — bu {pct}. İnflyasiya və vergilər investisiyanın qazandığından çoxunu yedi.',
+  },
+
+  chart: {
+    title: 'Artım qrafiki',
+    scenarios: 'Ssenarilər',
+    nominal: 'Nominal',
+    withInflation: 'İnflyasiya nəzərə alınmaqla',
+    afterTaxAndInflation: 'Vergi və inflyasiyadan sonra',
+    contributions: 'Qoyuluşlar',
+    rateRange: 'Dərəcə aralığı',
+    optimistic: 'Optimist',
+    pessimistic: 'Pessimist',
+    disclaimer: 'Hesablamalar təxminidir və izahedici xarakter daşıyır. Real nəticələr faiz dərəcələrinin, inflyasiyanın, vergi qanunvericiliyinin, komissiyaların və digər bazar amillərinin dəyişməsi səbəbindən fərqlənə bilər.',
+  },
+
+  donut: {
+    title: 'İnvestisiyanın strukturu',
+    percent: 'Faiz',
+    amount: 'Məbləğ',
+    initialDeposit: 'İlkin depozit',
+    contributions: 'Əlavə ödənişlər',
+    netProfit: 'Vergidən sonrakı xalis mənfəət',
+    taxesPaid: 'Ödənilmiş vergilər',
+    disclaimer: 'Təxmini bölgü. Real dəyərlər seçilmiş alətdən, vergi dərəcələrindən və şərtlərdən asılıdır.',
+    warningNegativeProfit: '* Xalis mənfəət mənfidir — investisiya real ifadədə inflyasiyanı örtmədi.',
+  },
+
+  table: {
+    yearLabel: '{n}-ci il',
+    monthLabel: '{n}-ci ay',
+    start: 'Başlanğıc',
+    title: 'Proqnoz cədvəli',
+    monthly: 'Aylıq',
+    yearly: 'İllik',
+    expand: 'Genişləndir',
+    showAll: 'Bütün {n} sətri göstər',
+    hiddenRows: '{n} gizlədilib',
+    close: 'Bağla',
+    collapse: 'Yığ',
+    period: 'Dövr',
+    contributions: 'Qoyuluşlar',
+    nominalValue: 'Nominal dəyər',
+    withInflation: 'İnflyasiya nəzərə alınmaqla',
+    nominalAfterTax: 'Vergidən sonrakı nominal',
+    afterTaxAndInflation: 'Vergi və inflyasiyadan sonra',
+    taxesPaid: 'Ödənilmiş vergilər',
+    min: 'Min',
+    base: 'Baza',
+    max: 'Maks',
+    swipeHint: '← sürüşdürün →',
+  },
+
+  warnings: {
+    inflationExceeds: 'Gəlirlilik inflyasiyanı örtmür.',
+    inflationExceedsDetail: 'Cari parametrlərdə (gəlirlilik {rate}%, inflyasiya {inflation}%) investisiyanız real ifadədə artmır. Daha yüksək gəlirli alətləri nəzərdən keçirin və ya gözlənilən inflyasiyanı azaldın.',
+    negativeCagr: 'Mənfi CAGR inflyasiya və vergilərin investisiyanın qazandığından çoxunu yediyini bildirir.',
+    negativeRateRange: 'Siz bazar itkisi ssenarisini modelləşdirirsiniz. Qrafikdəki pessimist nəticə dərəcə illik {minRate}% səviyyəsinə düşsə nə olacağını göstərəcək.',
+  },
+
+  disclaimer: {
+    title: 'Nəticələr haqqında',
+    text: 'Yuxarıdakı rəqəmlər gəlir vergisi ödənildikdən sonra investisiyanızın təxmini real alıcılıq qabiliyyətini göstərir. Hesablamalar məlumat xarakterlidir və bazar şəraitində, dərəcələrdə və qanunvericilikdə mümkün dəyişiklikləri nəzərə almır.',
+    warning: 'Bu investisiya məsləhəti deyil.',
+    pastResults: 'Keçmiş nəticələr gələcəyə zəmanət vermir.',
+  },
+
+  footer: {
+    developer: 'Hazırlayan',
+    copyright: '© {year} Bütün hüquqlar qorunur.',
+    disclaimer: 'Maliyyə məsləhəti deyil.',
+    privacy: 'Məxfilik',
+    terms: 'Şərtlər',
+    methodology: 'Metodologiya',
+  },
+
+  tooltips: {
+    initialDeposit: 'Başlanğıcda qoyduğunuz məbləğ.',
+    period: 'İnvestisiyanı neçə il saxlamağı planlaşdırırsınız.',
+    annualReturn: 'İnvestisiyanızdan gözlənilən illik faiz gəliri.',
+    rateRange: 'Fərqli dərəcələrlə optimist və pessimist ssenariləri modelləşdirmək üçün aktiv edin.',
+    compounding: 'Qazanılan faiz balansa nə qədər tez-tez əlavə olunur və özü də faiz qazanmağa başlayır.',
+    contributions: 'İlkin investisiyanın üzərinə müntəzəm əlavə qoyuluşlar.',
+    inflation: 'Qiymətlərin artması və pulun alıcılıq qabiliyyətini itirməsinin gözlənilən illik sürəti.',
+    taxRate: 'İnvestisiya mənfəətinin vergiyə gedən faizi.',
+    taxation: 'Vergi nə vaxt ödənilir: illik (hər il həmin ilin mənfəətindən) və ya çıxışda (bir dəfə, pulu çıxardıqda).',
+
+    totalContributions: 'İnvestisiya edəcəyiniz ümumi məbləğ: ilkin depozit və dövr ərzindəki bütün əlavə ödənişlər.',
+    nominalValue: 'Vergisiz və inflyasiyasız yığımınız. Bu mürəkkəb faizin xalis nəticəsidir — xərcsiz ideal dünyada olacaq məbləğ.',
+    nominalAfterTax: 'Gəlir vergisi ödənildikdən sonra qalan məbləğ. İnflyasiya NƏZƏRƏ ALINMAYIB — bu hesabınızda görünəcək nominal rəqəmlərdir.',
+    withInflation: 'İnflyasiya nəzərə alınmaqla pulunuzun {years} ildən sonra nəyə çatacağı. Vergilər NƏZƏRƏ ALINMAYIB — onların təsiri əvvəlki blokda göstərilib.',
+
+    cagr: 'CAGR (illik orta artım sürəti) — vergi və inflyasiyadan sonrakı orta illik real gəlirlilik. O bu suala cavab verir: «Alıcılıq qabiliyyətim hər il neçə faiz artdı?» Mənfi CAGR inflyasiyanın mənfəəti investisiyanın qazandığından sürətlə yediyini bildirir.',
+    netEffect: 'Dövrün sonundakı real alıcılıq qabiliyyətinizlə qoyulmuş ümumi məbləğ arasındakı fərq. Sadə dillə: sonda qoyduğunuzla müqayisədə «bugünkü pulunuz» nə qədər çox (və ya az) olacaq.',
+    range: 'Nəticənizin mümkün sərhədləri: pessimistdən (aşağı dərəcə) optimistə (yuxarı dərəcə). Proqnozun qeyri-müəyyənliyini qiymətləndirməyə kömək edir — real nəticə çox güman ki, bu aralıqda olacaq.',
+    minReturn: 'Gözlədiyiniz ən pis illik gəlir.',
+    maxReturn: 'Gözlədiyiniz ən yaxşı illik gəlir.',
+  },
+
+  legal: {
+    backToCalculator: 'Kalkulyatora qayıt',
+    privacyTitle: 'Məxfilik siyasəti',
+    termsTitle: 'İstifadə şərtləri',
+    lastUpdated: 'Son yenilənmə: {date}',
+    contact: 'Bizimlə {email} vasitəsilə əlaqə saxlayın.',
+  },
+};

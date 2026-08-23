@@ -233,8 +233,6 @@ export const sl: TranslationKeys = {
     backToCalculator: 'Nazaj na kalkulator',
     privacyTitle: 'Politika zasebnosti',
     termsTitle: 'Pogoji uporabe',
-    cookiesTitle: 'Politika piškotkov',
-    offerTitle: 'Javna ponudba',
     lastUpdated: 'Zadnja posodobitev: {date}',
     contact: 'Kontaktirajte nas na {email}.',
   },

@@ -169,8 +169,6 @@ export const sv: TranslationKeys = {
     backToCalculator: 'Tillbaka till kalkylatorn',
     privacyTitle: 'Integritetspolicy',
     termsTitle: 'Användarvillkor',
-    cookiesTitle: 'Cookiepolicy',
-    offerTitle: 'Offentligt erbjudande',
     lastUpdated: 'Senast uppdaterad: {date}',
     contact: 'Kontakta oss på {email}.',
   },

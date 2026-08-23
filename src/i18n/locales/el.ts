@@ -169,8 +169,6 @@ export const el: TranslationKeys = {
     backToCalculator: 'Επιστροφή στον υπολογιστή',
     privacyTitle: 'Πολιτική Απορρήτου',
     termsTitle: 'Όροι Χρήσης',
-    cookiesTitle: 'Πολιτική Cookies',
-    offerTitle: 'Δημόσια Προσφορά',
     lastUpdated: 'Τελευταία ενημέρωση: {date}',
     contact: 'Επικοινωνήστε μαζί μας στο {email}.',
   },

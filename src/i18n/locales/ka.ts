@@ -233,8 +233,6 @@ export const ka: TranslationKeys = {
     backToCalculator: 'კალკულატორზე დაბრუნება',
     privacyTitle: 'კონფიდენციალურობის პოლიტიკა',
     termsTitle: 'გამოყენების პირობები',
-    cookiesTitle: 'ქუქი ფაილების პოლიტიკა',
-    offerTitle: 'საჯარო შეთავაზება',
     lastUpdated: 'ბოლოს განახლდა: {date}',
     contact: 'დაგვიკავშირდით: {email}.',
   },

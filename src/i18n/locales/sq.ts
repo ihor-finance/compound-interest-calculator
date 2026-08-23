@@ -169,8 +169,6 @@ export const sq: TranslationKeys = {
     backToCalculator: 'Kthehu te kalkulatori',
     privacyTitle: 'Politika e Privatësisë',
     termsTitle: 'Kushtet e Përdorimit',
-    cookiesTitle: 'Politika e Cookies',
-    offerTitle: 'Oferta Publike',
     lastUpdated: 'Përditësuar së fundmi: {date}',
     contact: 'Na kontaktoni në {email}.',
   },

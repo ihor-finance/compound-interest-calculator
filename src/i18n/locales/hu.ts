@@ -169,8 +169,6 @@ export const hu: TranslationKeys = {
     backToCalculator: 'Vissza a kalkulátorhoz',
     privacyTitle: 'Adatvédelmi irányelvek',
     termsTitle: 'Felhasználási feltételek',
-    cookiesTitle: 'Süti szabályzat',
-    offerTitle: 'Nyilvános ajánlat',
     lastUpdated: 'Utolsó frissítés: {date}',
     contact: 'Lépj kapcsolatba velünk itt: {email}.',
   },

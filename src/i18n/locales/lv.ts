@@ -233,8 +233,6 @@ export const lv: TranslationKeys = {
     backToCalculator: 'Atpakaļ uz kalkulatoru',
     privacyTitle: 'Privātuma politika',
     termsTitle: 'Lietošanas noteikumi',
-    cookiesTitle: 'Sīkdatņu politika',
-    offerTitle: 'Publiskais piedāvājums',
     lastUpdated: 'Pēdējo reizi atjaunināts: {date}',
     contact: 'Sazinieties ar mums pa e-pastu {email}.',
   },

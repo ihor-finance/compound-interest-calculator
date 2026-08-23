@@ -231,8 +231,6 @@ export const en = {
     backToCalculator: 'Back to calculator',
     privacyTitle: 'Privacy Policy',
     termsTitle: 'Terms of Use',
-    cookiesTitle: 'Cookie Policy',
-    offerTitle: 'Public Offer',
     lastUpdated: 'Last updated: {date}',
     contact: 'Contact us at {email}.',
   },

@@ -233,8 +233,6 @@ export const ar: TranslationKeys = {
     backToCalculator: 'العودة إلى الحاسبة',
     privacyTitle: 'سياسة الخصوصية',
     termsTitle: 'شروط الاستخدام',
-    cookiesTitle: 'سياسة ملفات تعريف الارتباط',
-    offerTitle: 'العرض العام',
     lastUpdated: 'آخر تحديث: {date}',
     contact: 'تواصل معنا على {email}.',
   },

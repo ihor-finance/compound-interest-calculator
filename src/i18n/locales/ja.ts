@@ -169,8 +169,6 @@ export const ja: TranslationKeys = {
     backToCalculator: '計算機に戻る',
     privacyTitle: 'プライバシーポリシー',
     termsTitle: '利用規約',
-    cookiesTitle: 'クッキーポリシー',
-    offerTitle: '公開オファー',
     lastUpdated: '最終更新日: {date}',
     contact: 'お問い合わせは {email} まで。',
   },

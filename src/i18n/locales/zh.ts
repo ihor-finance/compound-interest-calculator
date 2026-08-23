@@ -233,8 +233,6 @@ export const zh: TranslationKeys = {
     backToCalculator: '返回计算器',
     privacyTitle: '隐私政策',
     termsTitle: '使用条款',
-    cookiesTitle: 'Cookie 政策',
-    offerTitle: '公开报价',
     lastUpdated: '最后更新: {date}',
     contact: '请通过 {email} 联系我们。',
   },

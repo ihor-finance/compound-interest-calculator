@@ -1,0 +1,194 @@
+import type { TranslationKeys } from '../types';
+
+export const uz: TranslationKeys = {
+  app: {
+    title: 'Murakkab foiz',
+    subtitle: 'Kalkulyator',
+    calculator: 'Kalkulyator',
+    scenarios: 'Ssenariylar',
+    settings: 'Sozlamalar',
+    theme: 'Mavzu',
+    themeLight: 'Yorugʻ mavzu',
+    themeDark: 'Qorongʻi mavzu',
+    presets: 'Tayyor sozlamalar',
+    conservative: 'Konservativ',
+    balanced: 'Muvozanatli',
+    aggressive: 'Agressiv',
+  },
+
+  form: {
+    noContribution: 'Toʻldirishlarsiz',
+    initialDeposit: 'Boshlangʻich depozit',
+    period: 'Investitsiya muddati',
+    years: 'yil',
+    annualReturn: 'Yillik daromadlilik',
+    rateRange: 'Stavka oraligʻi',
+    minReturn: 'Min. daromad',
+    maxReturn: 'Maks. daromad',
+    compounding: 'Kapitallashtirish chastotasi',
+    compoundingDaily: 'Har kuni',
+    compoundingWeekly: 'Har hafta',
+    compoundingMonthly: 'Har oy',
+    compoundingQuarterly: 'Har chorak',
+    compoundingSemiannual: 'Yarim yilda bir',
+    compoundingAnnually: 'Har yili',
+    contributions: 'Toʻldirishlar',
+    contributionsMonthly: 'Har oy',
+    inflation: 'Inflyatsiya',
+    taxRate: 'Soliq stavkasi',
+    taxation: 'Soliqqa tortish',
+    taxAnnual: 'Har yili',
+    taxOnExit: 'Chiqishda',
+  },
+
+  hero: {
+    badge: 'Asosiy natija',
+    badgeWarning: 'Asosiy natija',
+    title: '{years} yildan keyingi haqiqiy xarid qobiliyati',
+    descriptionPositive: 'Qoʻshgan {contributions} mablagʻingizdan bugungi pulda {result} ekvivalenti boʻladi — bu qoʻyganingizdan {delta} koʻp, hatto soliq va inflyatsiyadan keyin ham.',
+    descriptionNegative: 'Qoʻshgan {contributions} mablagʻingizdan bugungi pulda atigi {result} ekvivalenti boʻladi — bu qoʻyganingizdan {delta} kam. Inflyatsiya va soliqlar investitsiya topganidan koʻproq yedi.',
+    descriptionNeutral: 'Qoʻshgan {contributions} mablagʻingizdan bugungi pulda taxminan {result} ekvivalenti boʻladi — investitsiya soliq va inflyatsiyadan koʻrilgan zararni zoʻrgʻa qoplaydi.',
+    totalReturn: 'umumiy daromadlilik',
+  },
+
+  metrics: {
+    cagrLabel: 'Daromadlilik (CAGR)',
+    netEffectLabel: 'sof samara',
+    rangeLabel: 'Oraliq',
+  },
+
+  satellites: {
+    totalContributions: 'Jami qoʻyilma',
+    nominalValue: 'Nominal qiymat',
+    nominalAfterTax: 'Soliqdan keyingi nominal',
+    withInflation: 'Inflyatsiya hisobga olingan',
+
+    subtitleContributions: 'Davr davomida qoʻyilgan umumiy summa — boshlangʻich depozit va barcha toʻldirishlar.',
+    subtitleNominal: 'Investitsiya soliqqacha topgan summa, nominal koʻrinishda.',
+    subtitleAfterTax: 'Sof foyda (nominal foyda minus soliqlar).',
+    subtitleInflation: 'Kelajakdagi qiymat bugungi pulda. Inflyatsiya hisobga olinganda investitsiyangiz nimaga yetishini koʻrsatadi.',
+  },
+
+  deltas: {
+    nominalLine1: 'Investitsiya foydasi: pulingiz qoʻyganingizdan {delta} koʻproq topdi — bu barcha qoʻyilmalarning {pct} qismi.',
+    nominalFormula: '{nominal} (nominal) − {contributions} (qoʻyilmalar) = {deltaSigned}',
+    nominalFormulaPercent: '{delta} ÷ {contributions} × 100 = {pct}',
+
+    taxLine1: 'Soliq taʼsiri: soliqlar umumiy summani {delta} ga kamaytirdi — bu nominal qiymatning {pct} qismi.',
+    taxFormula: '{afterTax} (soliqdan keyin) − {nominal} (soliqqacha) = {deltaSigned}',
+    taxFormulaPercent: '{delta} ÷ {nominal} × 100 = {pct}',
+
+    inflationLine1: 'Inflyatsiya taʼsiri: {years} yil davomida {rate}% inflyatsiyada pul xarid qobiliyatining {delta} qismini yoʻqotdi — bu nominal qiymatning {pct} qismi.',
+    inflationFormula: '{withInflation} (haqiqiy qiymat) − {nominal} (nominal) = {deltaSigned}',
+    inflationFormulaPercent: '{delta} ÷ {nominal} × 100 = {pct}',
+  },
+
+  heroReturn: {
+    positive: 'Umumiy haqiqiy oʻsish: qoʻyilmalaringiz ({contributions}) bugungi pulda {result} gacha oʻsdi — bu soliq va inflyatsiyadan keyingi {pct} sof foyda.',
+    negative: 'Umumiy haqiqiy zarar: qoʻyilmalaringiz ({contributions}) bugungi pulda atigi {result} turadi — bu {pct}. Inflyatsiya va soliqlar investitsiya topganidan koʻproq yedi.',
+  },
+
+  chart: {
+    title: 'Oʻsish grafigi',
+    scenarios: 'Ssenariylar',
+    nominal: 'Nominal',
+    withInflation: 'Inflyatsiya hisobga olingan',
+    afterTaxAndInflation: 'Soliq va inflyatsiyadan keyin',
+    contributions: 'Qoʻyilmalar',
+    rateRange: 'Stavka oraligʻi',
+    optimistic: 'Optimistik',
+    pessimistic: 'Pessimistik',
+    disclaimer: 'Hisob-kitoblar taxminiy va illyustrativ xarakterga ega. Haqiqiy natijalar foiz stavkalari, inflyatsiya, soliq qonunchiligi, komissiyalar va boshqa bozor omillari oʻzgarishi sababli farq qilishi mumkin.',
+  },
+
+  donut: {
+    title: 'Investitsiya tuzilmasi',
+    percent: 'Foiz',
+    amount: 'Summa',
+    initialDeposit: 'Boshlangʻich depozit',
+    contributions: 'Toʻldirishlar',
+    netProfit: 'Soliqdan keyingi sof foyda',
+    taxesPaid: 'Toʻlangan soliqlar',
+    disclaimer: 'Taxminiy taqsimot. Haqiqiy qiymatlar tanlangan vosita, soliq stavkalari va shartlarga bogʻliq.',
+    warningNegativeProfit: '* Sof foyda manfiy — investitsiya haqiqiy koʻrinishda inflyatsiyani qoplamadi.',
+  },
+
+  table: {
+    yearLabel: '{n}-yil',
+    monthLabel: '{n}-oy',
+    start: 'Boshlanish',
+    title: 'Prognoz jadvali',
+    monthly: 'Har oy',
+    yearly: 'Har yili',
+    expand: 'Yoyish',
+    showAll: 'Barcha {n} qatorni koʻrsatish',
+    hiddenRows: '{n} ta yashirilgan',
+    close: 'Yopish',
+    collapse: 'Yigʻish',
+    period: 'Davr',
+    contributions: 'Qoʻyilmalar',
+    nominalValue: 'Nominal qiymat',
+    withInflation: 'Inflyatsiya hisobga olingan',
+    nominalAfterTax: 'Soliqdan keyingi nominal',
+    afterTaxAndInflation: 'Soliq va inflyatsiyadan keyin',
+    taxesPaid: 'Toʻlangan soliqlar',
+    min: 'Min',
+    base: 'Baza',
+    max: 'Maks',
+    swipeHint: '← suring →',
+  },
+
+  warnings: {
+    inflationExceeds: 'Daromadlilik inflyatsiyani qoplamaydi.',
+    inflationExceedsDetail: 'Joriy parametrlarda (daromadlilik {rate}%, inflyatsiya {inflation}%) investitsiyangiz haqiqiy koʻrinishda oʻsmaydi. Daromadliligi yuqoriroq vositalarni koʻrib chiqing yoki kutilayotgan inflyatsiyani kamaytiring.',
+    negativeCagr: 'Manfiy CAGR inflyatsiya va soliqlar investitsiya topganidan koʻproq yeyishini bildiradi.',
+    negativeRateRange: 'Siz bozor zarari ssenariysini modellashtiryapsiz. Grafikdagi pessimistik natija stavka yillik {minRate}% gacha tushsa nima boʻlishini koʻrsatadi.',
+  },
+
+  disclaimer: {
+    title: 'Natijalar haqida',
+    text: 'Yuqoridagi raqamlar daromad soligʻi toʻlangandan keyingi investitsiyangizning taxminiy haqiqiy xarid qobiliyatini koʻrsatadi. Hisob-kitoblar axborot xarakteriga ega va bozor sharoitlari, stavkalar hamda qonunchilikdagi mumkin boʻlgan oʻzgarishlarni hisobga olmaydi.',
+    warning: 'Bu investitsiya maslahati emas.',
+    pastResults: 'Oʻtmishdagi natijalar kelajakdagilarini kafolatlamaydi.',
+  },
+
+  footer: {
+    developer: 'Ishlab chiquvchi',
+    copyright: '© {year} Barcha huquqlar himoyalangan.',
+    disclaimer: 'Moliyaviy maslahat emas.',
+    privacy: 'Maxfiylik',
+    terms: 'Shartlar',
+    methodology: 'Metodologiya',
+  },
+
+  tooltips: {
+    initialDeposit: 'Boshida qoʻyadigan summangiz.',
+    period: 'Investitsiyani necha yil saqlashni rejalashtirasiz.',
+    annualReturn: 'Investitsiyangizdan kutilayotgan yillik foizli daromad.',
+    rateRange: 'Turli stavkalar bilan optimistik va pessimistik ssenariylarni modellashtirish uchun yoqing.',
+    compounding: 'Topilgan foiz balansga qanchalik tez-tez qoʻshilib, oʻzi ham foiz keltira boshlaydi.',
+    contributions: 'Boshlangʻich investitsiyaga qoʻshimcha muntazam qoʻyilmalar.',
+    inflation: 'Narxlar oʻsib, pul xarid qobiliyatini yoʻqotishining kutilayotgan yillik surʼati.',
+    taxRate: 'Investitsiya foydasining soliqqa ketadigan foizi.',
+    taxation: 'Soliq qachon toʻlanadi: har yili (har yili oʻsha yilgi foydadan) yoki chiqishda (bir marta, pulni olganingizda).',
+
+    totalContributions: 'Investitsiya qiladigan umumiy summa: boshlangʻich depozit va davr davomidagi barcha toʻldirishlar.',
+    nominalValue: 'Soliqsiz va inflyatsiyasiz jamgʻarmangiz. Bu murakkab foizning sof natijasi — xarajatlarsiz ideal dunyoda boʻladigan summa.',
+    nominalAfterTax: 'Daromad soligʻi toʻlangandan keyin qoladigan summa. Inflyatsiya HISOBGA OLINMAGAN — bu hisobingizda koʻrinadigan nominal raqamlar.',
+    withInflation: 'Inflyatsiya hisobga olinganda pulingiz {years} yildan keyin nimaga yetadi. Soliqlar HISOBGA OLINMAGAN — ularning taʼsiri oldingi blokda koʻrsatilgan.',
+
+    cagr: 'CAGR (yillik oʻrtacha oʻsish surʼati) — soliq va inflyatsiyadan keyingi oʻrtacha yillik haqiqiy daromadlilik. U shu savolga javob beradi: «Xarid qobiliyatim har yili necha foizga oʻsdi?» Manfiy CAGR inflyatsiya foydani investitsiya topganidan tezroq yeyayotganini bildiradi.',
+    netEffect: 'Muddat oxiridagi haqiqiy xarid qobiliyatingiz va qoʻyilgan umumiy summa oʻrtasidagi farq. Oddiy qilib aytganda: oxirida qoʻyganingizga nisbatan «bugungi pulingiz» qanchaga koʻp (yoki kam) boʻladi.',
+    range: 'Natijangizning mumkin boʻlgan chegaralari: pessimistikdan (past stavka) optimistikgacha (yuqori stavka). Prognoz noaniqligini baholashga yordam beradi — haqiqiy natija katta ehtimol bilan shu oraliqda boʻladi.',
+    minReturn: 'Kutilayotgan eng yomon yillik daromad.',
+    maxReturn: 'Kutilayotgan eng yaxshi yillik daromad.',
+  },
+
+  legal: {
+    backToCalculator: 'Kalkulyatorga qaytish',
+    privacyTitle: 'Maxfiylik siyosati',
+    termsTitle: 'Foydalanish shartlari',
+    lastUpdated: 'Oxirgi yangilanish: {date}',
+    contact: 'Biz bilan {email} orqali bogʻlaning.',
+  },
+};

@@ -169,8 +169,6 @@ export const bg: TranslationKeys = {
     backToCalculator: 'Назад към калкулатора',
     privacyTitle: 'Политика за поверителност',
     termsTitle: 'Условия за ползване',
-    cookiesTitle: 'Политика за бисквитки',
-    offerTitle: 'Общи условия',
     lastUpdated: 'Последна актуализация: {date}',
     contact: 'Свържете се с нас на {email}.',
   },

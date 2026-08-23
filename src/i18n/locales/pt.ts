@@ -169,8 +169,6 @@ export const pt: TranslationKeys = {
     backToCalculator: 'Voltar para a calculadora',
     privacyTitle: 'Política de Privacidade',
     termsTitle: 'Termos de Uso',
-    cookiesTitle: 'Política de Cookies',
-    offerTitle: 'Oferta Pública',
     lastUpdated: 'Última atualização: {date}',
     contact: 'Contate-nos em {email}.',
   },

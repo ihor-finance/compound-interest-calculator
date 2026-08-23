@@ -233,8 +233,6 @@ export const es: TranslationKeys = {
     backToCalculator: 'Volver a la calculadora',
     privacyTitle: 'Política de Privacidad',
     termsTitle: 'Términos de Uso',
-    cookiesTitle: 'Política de Cookies',
-    offerTitle: 'Oferta Pública',
     lastUpdated: 'Última actualización: {date}',
     contact: 'Contáctenos en {email}.',
   },

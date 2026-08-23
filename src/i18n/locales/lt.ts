@@ -233,8 +233,6 @@ export const lt: TranslationKeys = {
     backToCalculator: 'Atgal į skaičiuoklę',
     privacyTitle: 'Privatumo politika',
     termsTitle: 'Naudojimo sąlygos',
-    cookiesTitle: 'Slapukų politika',
-    offerTitle: 'Viešoji oferta',
     lastUpdated: 'Paskutinį kartą atnaujinta: {date}',
     contact: 'Susisiekite su mumis {email}.',
   },

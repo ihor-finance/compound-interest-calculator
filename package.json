@@ -10,7 +10,7 @@
     "lint": "eslint .",
     "test": "npm run test:calc && npm run test:i18n",
     "test:calc": "node --experimental-strip-types --no-warnings scripts/test-calculations.ts",
-    "test:i18n": "node scripts/verifyLocales.cjs",
+    "test:i18n": "node --experimental-strip-types --no-warnings scripts/test-locales.ts",
     "android:sync": "npm run build && npx cap sync android"
   },
   "dependencies": {

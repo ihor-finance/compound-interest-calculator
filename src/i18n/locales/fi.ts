@@ -169,8 +169,6 @@ export const fi: TranslationKeys = {
     backToCalculator: 'Takaisin laskuriin',
     privacyTitle: 'Tietosuojakäytäntö',
     termsTitle: 'Käyttöehdot',
-    cookiesTitle: 'Evästekäytäntö',
-    offerTitle: 'Julkinen tarjous',
     lastUpdated: 'Päivitetty viimeksi: {date}',
     contact: 'Ota yhteyttä {email}.',
   },

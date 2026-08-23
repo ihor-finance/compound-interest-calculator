@@ -169,8 +169,6 @@ export const nl: TranslationKeys = {
     backToCalculator: 'Terug naar rekenmachine',
     privacyTitle: 'Privacybeleid',
     termsTitle: 'Gebruiksvoorwaarden',
-    cookiesTitle: 'Cookiebeleid',
-    offerTitle: 'Openbaar Aanbod',
     lastUpdated: 'Laatst bijgewerkt: {date}',
     contact: 'Neem contact met ons op via {email}.',
   },

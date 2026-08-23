@@ -169,8 +169,6 @@ export const cs: TranslationKeys = {
     backToCalculator: 'Zpět na kalkulačku',
     privacyTitle: 'Zásady ochrany osobních údajů',
     termsTitle: 'Podmínky použití',
-    cookiesTitle: 'Zásady používání souborů cookie',
-    offerTitle: 'Veřejná nabídka',
     lastUpdated: 'Naposledy aktualizováno: {date}',
     contact: 'Kontaktujte nás na {email}.',
   },

@@ -233,8 +233,6 @@ export const no: TranslationKeys = {
     backToCalculator: 'Tilbake til kalkulatoren',
     privacyTitle: 'Personvernerklæring',
     termsTitle: 'Vilkår for bruk',
-    cookiesTitle: 'Informasjonskapsler',
-    offerTitle: 'Offentlig tilbud',
     lastUpdated: 'Sist oppdatert: {date}',
     contact: 'Kontakt oss på {email}.',
   },

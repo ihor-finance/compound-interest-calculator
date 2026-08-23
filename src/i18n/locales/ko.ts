@@ -169,8 +169,6 @@ export const ko: TranslationKeys = {
     backToCalculator: '계산기로 돌아가기',
     privacyTitle: '개인정보처리방침',
     termsTitle: '이용약관',
-    cookiesTitle: '쿠키 정책',
-    offerTitle: '공개 제안',
     lastUpdated: '최근 업데이트: {date}',
     contact: '문의: {email}.',
   },

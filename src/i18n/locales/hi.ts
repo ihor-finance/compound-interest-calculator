@@ -233,8 +233,6 @@ export const hi: TranslationKeys = {
     backToCalculator: 'कैलकुलेटर पर वापस',
     privacyTitle: 'गोपनीयता नीति',
     termsTitle: 'उपयोग की शर्तें',
-    cookiesTitle: 'कुकी नीति',
-    offerTitle: 'सार्वजनिक प्रस्ताव',
     lastUpdated: 'अंतिम अद्यतन: {date}',
     contact: 'हमसे {email} पर संपर्क करें।',
   },

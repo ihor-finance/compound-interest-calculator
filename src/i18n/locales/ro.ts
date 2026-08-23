@@ -169,8 +169,6 @@ export const ro: TranslationKeys = {
     backToCalculator: 'Înapoi la calculator',
     privacyTitle: 'Politica de confidențialitate',
     termsTitle: 'Termeni de utilizare',
-    cookiesTitle: 'Politica privind cookie-urile',
-    offerTitle: 'Ofertă Publică',
     lastUpdated: 'Ultima actualizare: {date}',
     contact: 'Contactează-ne la {email}.',
   },

@@ -169,8 +169,6 @@ export const sr: TranslationKeys = {
     backToCalculator: 'Nazad na kalkulator',
     privacyTitle: 'Politika privatnosti',
     termsTitle: 'Uslovi korišćenja',
-    cookiesTitle: 'Politika kolačića',
-    offerTitle: 'Javna ponuda',
     lastUpdated: 'Poslednje ažuriranje: {date}',
     contact: 'Kontaktirajte nas na {email}.',
   },

@@ -233,8 +233,6 @@ export const et: TranslationKeys = {
     backToCalculator: 'Tagasi kalkulaatorisse',
     privacyTitle: 'Privaatsuspoliitika',
     termsTitle: 'Kasutustingimused',
-    cookiesTitle: 'Küpsiste poliitika',
-    offerTitle: 'Avalik pakkumine',
     lastUpdated: 'Viimati uuendatud: {date}',
     contact: 'Võtke meiega ühendust aadressil {email}.',
   },

@@ -1,0 +1,194 @@
+import type { TranslationKeys } from '../types';
+
+export const vi: TranslationKeys = {
+  app: {
+    title: 'Lãi kép',
+    subtitle: 'Máy tính',
+    calculator: 'Máy tính',
+    scenarios: 'Kịch bản',
+    settings: 'Cài đặt',
+    theme: 'Giao diện',
+    themeLight: 'Giao diện sáng',
+    themeDark: 'Giao diện tối',
+    presets: 'Cài sẵn',
+    conservative: 'Thận trọng',
+    balanced: 'Cân bằng',
+    aggressive: 'Mạo hiểm',
+  },
+
+  form: {
+    noContribution: 'Không góp thêm',
+    initialDeposit: 'Số tiền ban đầu',
+    period: 'Thời gian đầu tư',
+    years: 'năm',
+    annualReturn: 'Lợi nhuận hằng năm',
+    rateRange: 'Khoảng lợi nhuận',
+    minReturn: 'Lợi nhuận tối thiểu',
+    maxReturn: 'Lợi nhuận tối đa',
+    compounding: 'Tần suất ghép lãi',
+    compoundingDaily: 'Hằng ngày',
+    compoundingWeekly: 'Hằng tuần',
+    compoundingMonthly: 'Hằng tháng',
+    compoundingQuarterly: 'Hằng quý',
+    compoundingSemiannual: 'Nửa năm',
+    compoundingAnnually: 'Hằng năm',
+    contributions: 'Góp thêm',
+    contributionsMonthly: 'Hằng tháng',
+    inflation: 'Lạm phát',
+    taxRate: 'Thuế suất',
+    taxation: 'Cách tính thuế',
+    taxAnnual: 'Hằng năm',
+    taxOnExit: 'Khi rút',
+  },
+
+  hero: {
+    badge: 'Kết quả chính',
+    badgeWarning: 'Kết quả chính',
+    title: 'Sức mua thực tế sau {years} năm',
+    descriptionPositive: 'Từ {contributions} bạn đã góp, bạn sẽ có tương đương {result} theo giá trị tiền hôm nay — nhiều hơn {delta} so với số bạn bỏ ra, ngay cả sau thuế và lạm phát.',
+    descriptionNegative: 'Từ {contributions} bạn đã góp, bạn chỉ có tương đương {result} theo giá trị tiền hôm nay — ít hơn {delta} so với số bạn bỏ ra. Lạm phát và thuế đã ăn nhiều hơn phần khoản đầu tư sinh ra.',
+    descriptionNeutral: 'Từ {contributions} bạn đã góp, bạn sẽ có tương đương khoảng {result} theo giá trị tiền hôm nay — khoản đầu tư chỉ vừa đủ bù lại thiệt hại từ thuế và lạm phát.',
+    totalReturn: 'tổng lợi nhuận',
+  },
+
+  metrics: {
+    cagrLabel: 'Lợi nhuận (CAGR)',
+    netEffectLabel: 'hiệu quả ròng',
+    rangeLabel: 'Khoảng',
+  },
+
+  satellites: {
+    totalContributions: 'Tổng số đã góp',
+    nominalValue: 'Giá trị danh nghĩa',
+    nominalAfterTax: 'Danh nghĩa sau thuế',
+    withInflation: 'Đã điều chỉnh lạm phát',
+
+    subtitleContributions: 'Tổng số tiền đã đầu tư trong kỳ — số ban đầu cộng tất cả các lần góp thêm.',
+    subtitleNominal: 'Khoản đầu tư sinh ra bao nhiêu trước thuế, theo giá trị danh nghĩa.',
+    subtitleAfterTax: 'Lợi nhuận ròng (lợi nhuận danh nghĩa trừ thuế).',
+    subtitleInflation: 'Giá trị tương lai quy về tiền hôm nay. Cho biết khoản đầu tư của bạn mua được bao nhiêu sau khi tính lạm phát.',
+  },
+
+  deltas: {
+    nominalLine1: 'Lợi nhuận đầu tư: tiền của bạn sinh thêm {delta} so với số đã bỏ ra — tương đương {pct} tổng số góp.',
+    nominalFormula: '{nominal} (danh nghĩa) − {contributions} (đã góp) = {deltaSigned}',
+    nominalFormulaPercent: '{delta} ÷ {contributions} × 100 = {pct}',
+
+    taxLine1: 'Tác động của thuế: thuế làm giảm tổng số đi {delta} — tương đương {pct} giá trị danh nghĩa.',
+    taxFormula: '{afterTax} (sau thuế) − {nominal} (trước thuế) = {deltaSigned}',
+    taxFormulaPercent: '{delta} ÷ {nominal} × 100 = {pct}',
+
+    inflationLine1: 'Tác động của lạm phát: trong {years} năm với lạm phát {rate}%, tiền mất {delta} sức mua — tương đương {pct} giá trị danh nghĩa.',
+    inflationFormula: '{withInflation} (giá trị thực) − {nominal} (danh nghĩa) = {deltaSigned}',
+    inflationFormulaPercent: '{delta} ÷ {nominal} × 100 = {pct}',
+  },
+
+  heroReturn: {
+    positive: 'Tổng tăng trưởng thực: số bạn góp ({contributions}) đã tăng lên {result} theo giá trị tiền hôm nay — tức {pct} lợi nhuận ròng sau thuế và lạm phát.',
+    negative: 'Tổng thiệt hại thực: số bạn góp ({contributions}) chỉ còn giá trị {result} theo tiền hôm nay — tức {pct}. Lạm phát và thuế đã ăn nhiều hơn phần khoản đầu tư sinh ra.',
+  },
+
+  chart: {
+    title: 'Biểu đồ tăng trưởng',
+    scenarios: 'Kịch bản',
+    nominal: 'Danh nghĩa',
+    withInflation: 'Đã điều chỉnh lạm phát',
+    afterTaxAndInflation: 'Sau thuế & lạm phát',
+    contributions: 'Đã góp',
+    rateRange: 'Khoảng lợi nhuận',
+    optimistic: 'Lạc quan',
+    pessimistic: 'Bi quan',
+    disclaimer: 'Các phép tính chỉ mang tính ước lượng và minh họa. Kết quả thực tế có thể khác do thay đổi lãi suất, lạm phát, luật thuế, phí và các yếu tố thị trường khác.',
+  },
+
+  donut: {
+    title: 'Cơ cấu khoản đầu tư',
+    percent: 'Phần trăm',
+    amount: 'Số tiền',
+    initialDeposit: 'Số tiền ban đầu',
+    contributions: 'Góp thêm',
+    netProfit: 'Lợi nhuận ròng sau thuế',
+    taxesPaid: 'Thuế đã nộp',
+    disclaimer: 'Phân bổ ước tính. Giá trị thực tế phụ thuộc vào công cụ được chọn, thuế suất và điều kiện áp dụng.',
+    warningNegativeProfit: '* Lợi nhuận ròng âm — khoản đầu tư không bù được lạm phát tính theo giá trị thực.',
+  },
+
+  table: {
+    yearLabel: 'Năm {n}',
+    monthLabel: 'Tháng {n}',
+    start: 'Bắt đầu',
+    title: 'Bảng dự báo',
+    monthly: 'Hằng tháng',
+    yearly: 'Hằng năm',
+    expand: 'Mở rộng',
+    showAll: 'Hiện toàn bộ {n} dòng',
+    hiddenRows: 'ẩn {n}',
+    close: 'Đóng',
+    collapse: 'Thu gọn',
+    period: 'Kỳ',
+    contributions: 'Đã góp',
+    nominalValue: 'Giá trị danh nghĩa',
+    withInflation: 'Đã điều chỉnh lạm phát',
+    nominalAfterTax: 'Danh nghĩa sau thuế',
+    afterTaxAndInflation: 'Sau thuế & lạm phát',
+    taxesPaid: 'Thuế đã nộp',
+    min: 'Thấp',
+    base: 'Cơ sở',
+    max: 'Cao',
+    swipeHint: '← vuốt →',
+  },
+
+  warnings: {
+    inflationExceeds: 'Lợi nhuận không bù được lạm phát.',
+    inflationExceedsDetail: 'Với thông số hiện tại (lợi nhuận {rate}%, lạm phát {inflation}%) khoản đầu tư của bạn không tăng trưởng theo giá trị thực. Hãy cân nhắc công cụ có lợi nhuận cao hơn hoặc giảm mức lạm phát dự kiến.',
+    negativeCagr: 'CAGR âm nghĩa là lạm phát và thuế ăn nhiều hơn phần khoản đầu tư sinh ra.',
+    negativeRateRange: 'Bạn đang mô phỏng kịch bản thua lỗ trên thị trường. Kết quả bi quan trên biểu đồ cho thấy điều gì xảy ra nếu lợi nhuận giảm còn {minRate}% mỗi năm.',
+  },
+
+  disclaimer: {
+    title: 'Về kết quả này',
+    text: 'Các con số ở trên cho thấy sức mua thực tế ước tính của khoản đầu tư sau khi nộp thuế thu nhập. Phép tính chỉ mang tính tham khảo và không tính đến những thay đổi có thể xảy ra về điều kiện thị trường, lãi suất và pháp luật.',
+    warning: 'Đây không phải lời khuyên đầu tư.',
+    pastResults: 'Kết quả trong quá khứ không đảm bảo kết quả tương lai.',
+  },
+
+  footer: {
+    developer: 'Phát triển bởi',
+    copyright: '© {year} Bảo lưu mọi quyền.',
+    disclaimer: 'Không phải lời khuyên tài chính.',
+    privacy: 'Quyền riêng tư',
+    terms: 'Điều khoản',
+    methodology: 'Phương pháp',
+  },
+
+  tooltips: {
+    initialDeposit: 'Số tiền bạn bỏ ra lúc bắt đầu.',
+    period: 'Bạn dự định giữ khoản đầu tư trong bao nhiêu năm.',
+    annualReturn: 'Tỷ lệ lợi nhuận hằng năm dự kiến của khoản đầu tư.',
+    rateRange: 'Bật để mô phỏng kịch bản lạc quan và bi quan với các mức lợi nhuận khác nhau.',
+    compounding: 'Tần suất lãi đã sinh được cộng vào số dư và bắt đầu tự sinh lãi.',
+    contributions: 'Các khoản góp thêm định kỳ ngoài số tiền đầu tư ban đầu.',
+    inflation: 'Tốc độ tăng giá hằng năm dự kiến, khiến tiền mất dần sức mua.',
+    taxRate: 'Phần trăm lợi nhuận đầu tư phải nộp thuế.',
+    taxation: 'Khi nào nộp thuế: hằng năm (mỗi năm trên lợi nhuận của năm đó) hoặc khi rút (một lần, lúc bạn rút tiền).',
+
+    totalContributions: 'Tổng số bạn sẽ đầu tư: số tiền ban đầu cộng tất cả các lần góp thêm trong kỳ.',
+    nominalValue: 'Số tiền tiết kiệm của bạn khi chưa tính thuế và lạm phát. Đây là kết quả thuần của lãi kép — số bạn sẽ có trong một thế giới lý tưởng không có chi phí.',
+    nominalAfterTax: 'Số còn lại sau khi nộp thuế thu nhập. KHÔNG tính lạm phát — đây là con số danh nghĩa như hiển thị trên tài khoản của bạn.',
+    withInflation: 'Tiền của bạn mua được bao nhiêu sau {years} năm, đã điều chỉnh lạm phát. KHÔNG tính thuế — tác động của thuế hiển thị ở ô trước.',
+
+    cagr: 'CAGR (tốc độ tăng trưởng kép hằng năm) — lợi nhuận thực trung bình mỗi năm sau thuế và lạm phát. Nó trả lời câu hỏi: "Sức mua của tôi tăng bao nhiêu phần trăm mỗi năm?" CAGR âm nghĩa là lạm phát ăn mòn lợi nhuận nhanh hơn tốc độ khoản đầu tư sinh ra.',
+    netEffect: 'Chênh lệch giữa sức mua thực của bạn ở cuối kỳ và tổng số bạn đã đầu tư. Nói đơn giản: cuối cùng bạn có nhiều hơn (hay ít hơn) bao nhiêu "tiền của hôm nay" so với số đã bỏ ra.',
+    range: 'Giới hạn khả dĩ của kết quả: từ bi quan (lợi nhuận thấp) đến lạc quan (lợi nhuận cao). Giúp đánh giá mức độ không chắc chắn của dự báo — kết quả thực nhiều khả năng nằm trong khoảng này.',
+    minReturn: 'Mức lợi nhuận hằng năm tệ nhất mà bạn dự kiến.',
+    maxReturn: 'Mức lợi nhuận hằng năm tốt nhất mà bạn dự kiến.',
+  },
+
+  legal: {
+    backToCalculator: 'Quay lại máy tính',
+    privacyTitle: 'Chính sách quyền riêng tư',
+    termsTitle: 'Điều khoản sử dụng',
+    lastUpdated: 'Cập nhật lần cuối: {date}',
+    contact: 'Liên hệ với chúng tôi qua {email}.',
+  },
+};

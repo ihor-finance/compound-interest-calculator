@@ -169,8 +169,6 @@ export const tr: TranslationKeys = {
     backToCalculator: 'Hesaplayıcıya dön',
     privacyTitle: 'Gizlilik Politikası',
     termsTitle: 'Kullanım Şartları',
-    cookiesTitle: 'Çerez Politikası',
-    offerTitle: 'Halka Açık Teklif',
     lastUpdated: 'Son güncelleme: {date}',
     contact: 'Bizimle {email} adresinden iletişime geçin.',
   },
