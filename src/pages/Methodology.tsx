@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from '../i18n/useTranslation';
 import { LegalPageLayout } from './LegalPageLayout';
 import { loadMethodology, en, type MethodologyContent } from './methodology-content';
+import { APP_VERSION } from '../version';
 import './methodology-content/methodology.css';
 
 /** Symbols used in the formulas. Identical in every language. */
@@ -39,7 +40,7 @@ export const Methodology = () => {
     <LegalPageLayout>
       <div dir={locale === 'ar' || locale === 'he' ? 'rtl' : 'ltr'}>
         <h1>{c.title}</h1>
-        <p className="last-updated">{c.updated}</p>
+        <p className="last-updated">{c.updated.replace('{version}', APP_VERSION)}</p>
 
         <div className="methodology-notice">
           <h2>{c.disclaimerTitle}</h2>

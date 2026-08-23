@@ -2,7 +2,7 @@ import type { MethodologyContent } from '../types';
 
 export const uk: MethodologyContent = {
   title: 'Методологія обчислень',
-  updated: 'Стосується версії 1.02',
+  updated: 'Стосується версії {version}',
 
   disclaimerTitle: 'Прочитайте спершу це',
   disclaimer: [

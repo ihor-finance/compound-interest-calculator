@@ -28,6 +28,22 @@ if (-not (Test-Path $env:ANDROID_HOME)) { throw "Android SDK not found at $env:A
 $projectRoot = Split-Path -Parent $PSScriptRoot
 Set-Location $projectRoot
 
+# The version appears in two places that must agree: versionName drives what
+# Google Play shows, APP_VERSION drives what the methodology page states it
+# describes. Catch the drift here rather than shipping a page that names the
+# wrong release.
+$gradleText = Get-Content 'android\app\build.gradle' -Raw
+$versionName = if ($gradleText -match 'versionName\s+"([^"]+)"') { $Matches[1] } else { $null }
+$versionText = Get-Content 'src\version.ts' -Raw
+$appVersion = if ($versionText -match "APP_VERSION\s*=\s*'([^']+)'") { $Matches[1] } else { $null }
+
+if (-not $versionName) { throw 'Could not read versionName from android\app\build.gradle' }
+if (-not $appVersion)  { throw 'Could not read APP_VERSION from src\version.ts' }
+if ($versionName -ne $appVersion) {
+    throw "Version mismatch: build.gradle says $versionName, src/version.ts says $appVersion"
+}
+Write-Host "==> Version $versionName" -ForegroundColor Cyan
+
 Write-Host '==> Building web bundle' -ForegroundColor Cyan
 npm run build
 if ($LASTEXITCODE -ne 0) { throw 'Web build failed' }
@@ -58,11 +74,9 @@ if ($Release) {
     cmd /c '.\gradlew.bat assembleDebug --no-daemon'
     if ($LASTEXITCODE -ne 0) { throw 'Gradle debug build failed' }
 
-    # Name the file after the version in build.gradle so old builds are never
-    # mistaken for new ones on the way to a phone.
-    $gradle = Get-Content 'app\build.gradle' -Raw
-    $version = if ($gradle -match 'versionName\s+"([^"]+)"') { $Matches[1] } else { 'unknown' }
-    $apkName = "CompoundInterestCalculator-$version-debug.apk"
+    # Name the file after the version so old builds are never mistaken for
+    # new ones on the way to a phone.
+    $apkName = "CompoundInterestCalculator-$versionName-debug.apk"
 
     Copy-Item 'app\build\outputs\apk\debug\app-debug.apk' (Join-Path $outputDir $apkName) -Force
     Write-Host "    $apkName"

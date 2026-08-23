@@ -2,7 +2,7 @@ import type { MethodologyContent } from './types';
 
 export const en: MethodologyContent = {
   title: 'Calculation methodology',
-  updated: 'Applies to version 1.02',
+  updated: 'Applies to version {version}',
 
   disclaimerTitle: 'Read this first',
   disclaimer: [
