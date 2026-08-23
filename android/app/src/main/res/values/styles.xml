@@ -3,7 +3,6 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
@@ -15,8 +14,16 @@
         <item name="android:background">@null</item>
     </style>
 
-
     <style name="AppTheme.NoActionBarLaunch" parent="Theme.SplashScreen">
         <item name="android:background">@drawable/splash</item>
+        <!--
+            Without these Android paints its own dark status bar above the app.
+            They cover the launch window only; once the web layer is up,
+            @capacitor/status-bar keeps the bar in step with the chosen theme
+            (see the theme effect in src/App.tsx). Matching the splash colour
+            here means no dark strip flashes before that happens.
+        -->
+        <item name="android:statusBarColor">@color/splashBackground</item>
+        <item name="android:windowLightStatusBar">true</item>
     </style>
 </resources>

@@ -2813,11 +2813,10 @@ img, svg, canvas, video, iframe {
 /* --- 14. Tooltips -------------------------------------------------------- */
 
 /* These rules used to live in a <style> block inside Tooltip.tsx, which React
-   rendered once per tooltip — nineteen identical copies in the document. Worse,
-   being in the body they came after this stylesheet, so `.tooltip-popup.top`
-   beat any same-specificity override written here. That is what broke the field
-   tooltips: `bottom` stayed applied alongside `top`, the browser resolved the
-   height from both, and the text spilled out of its own box onto the next field. */
+   rendered once per tooltip — nineteen identical copies in the document. Being
+   in the body they also came after this stylesheet, so they beat any
+   same-specificity override written here. Both problems go away by keeping the
+   styles in one place. */
 
 .tooltip-container {
   position: relative;
@@ -2845,8 +2844,11 @@ img, svg, canvas, video, iframe {
   text-align: left;
 }
 
-.tooltip-popup.top { bottom: calc(100% + 8px); }
-.tooltip-popup.bottom { top: calc(100% + 8px); }
+/* Exactly one of these is ever applied — Tooltip.tsx picks the side with room,
+   so the popup can never be cut off by the top or bottom of the screen. Setting
+   both at once is what previously collapsed the box to a fraction of its text. */
+.tooltip-popup--above { bottom: calc(100% + 8px); }
+.tooltip-popup--below { top: calc(100% + 8px); }
 
 .tooltip-arrow {
   position: absolute;
@@ -2856,46 +2858,14 @@ img, svg, canvas, video, iframe {
   border-style: solid;
 }
 
-.tooltip-arrow.top {
+.tooltip-arrow--above {
   top: 100%;
   border-color: var(--surface) transparent transparent transparent;
 }
 
-.tooltip-arrow.bottom {
+.tooltip-arrow--below {
   bottom: 100%;
   border-color: transparent transparent var(--surface) transparent;
-}
-
-/* In-flow variant, portalled to the end of an .input-group. It occupies real
-   space, so opening it pushes the rest of the form down instead of covering
-   anything. No stacking order to get wrong, and it behaves the same in portrait
-   and landscape. */
-.tooltip-popup--inline {
-  position: static;
-  display: block;
-  width: auto;
-  max-width: none;
-  margin-top: 8px;
-  transform: none;
-  box-shadow: none;
-  background-color: var(--primary-soft);
-  border-color: transparent;
-  border-left: 3px solid var(--primary);
-  border-radius: 0 10px 10px 0;
-  color: var(--text-secondary);
-}
-
-[data-theme="dark"] .tooltip-popup--inline {
-  background-color: var(--surface-muted);
-}
-
-/* The variance group is a flex row; the tooltip needs a line of its own. */
-.variance-toggle-group {
-  flex-wrap: wrap;
-}
-
-.variance-toggle-group .tooltip-popup--inline {
-  flex-basis: 100%;
 }
 
 /* --- 15. Projection table grows with its content -------------------------- */

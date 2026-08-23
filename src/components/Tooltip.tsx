@@ -1,75 +1,78 @@
-import { useState, useRef, useEffect } from 'react';
-import { createPortal } from 'react-dom';
+import { useState, useRef, useLayoutEffect } from 'react';
 import { Info } from 'lucide-react';
 import '../App.css';
 
 interface TooltipProps {
   content: string;
+  /** Preferred side. Flipped automatically when that side has no room. */
   position?: 'top' | 'bottom';
   children?: React.ReactNode;
 }
 
-/** Form groups whose tooltip opens in the flow rather than floating over them. */
-const FIELD_HOSTS = '.input-group, .variance-toggle-group';
+/** Keep this much clear of every screen edge. */
+const EDGE_PADDING = 16;
 
 export const Tooltip = ({ content, position = 'top', children }: TooltipProps) => {
   const [isVisible, setIsVisible] = useState(false);
-  const [fieldHost, setFieldHost] = useState<HTMLElement | null>(null);
+  const [side, setSide] = useState<'above' | 'below'>(position === 'bottom' ? 'below' : 'above');
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-  const tooltipRef = useRef<HTMLDivElement>(null);
+  const popupRef = useRef<HTMLDivElement>(null);
 
   const show = () => {
-    timer.current = setTimeout(() => {
-      // Resolved here rather than in an effect: both pieces of state settle in
-      // the same update, so opening a tooltip costs one render, not two.
-      setFieldHost(containerRef.current?.closest<HTMLElement>(FIELD_HOSTS) ?? null);
-      setIsVisible(true);
-    }, 150);
+    timer.current = setTimeout(() => setIsVisible(true), 150);
   };
 
   const hide = () => {
     if (timer.current) clearTimeout(timer.current);
     setIsVisible(false);
-    setFieldHost(null);
   };
 
-  useEffect(() => () => {
+  useLayoutEffect(() => () => {
     if (timer.current) clearTimeout(timer.current);
   }, []);
 
-  // Floating tooltips still need nudging away from the screen edge; in-flow ones
-  // span their group and can never reach it.
-  useEffect(() => {
-    if (!isVisible || fieldHost || !tooltipRef.current) return;
+  /**
+   * Positions the popup once it has been measured.
+   *
+   * Two independent corrections, both needed because the popup is anchored to a
+   * small icon that can sit anywhere on screen:
+   *  - vertical: use the preferred side unless it would run off the top or
+   *    bottom, in which case flip to the other one;
+   *  - horizontal: the popup is centred on the icon, so near either edge it is
+   *    nudged back inside and the arrow is shifted the opposite way to stay
+   *    pointing at the icon.
+   *
+   * Runs in a layout effect so the correction is applied before the browser
+   * paints, rather than the popup visibly jumping into place.
+   */
+  useLayoutEffect(() => {
+    const popup = popupRef.current;
+    const anchor = containerRef.current;
+    if (!isVisible || !popup || !anchor) return;
 
-    const rect = tooltipRef.current.getBoundingClientRect();
-    const padding = 16;
-    let leftShift = 0;
-    if (rect.left < padding) leftShift = padding - rect.left;
-    else if (rect.right > window.innerWidth - padding) leftShift = window.innerWidth - padding - rect.right;
+    popup.style.transform = '';
+    const arrow = popup.querySelector('.tooltip-arrow') as HTMLElement | null;
+    if (arrow) arrow.style.transform = '';
 
-    if (leftShift !== 0) {
-      tooltipRef.current.style.transform = `translateX(calc(-50% + ${leftShift}px))`;
-      const arrow = tooltipRef.current.querySelector('.tooltip-arrow') as HTMLElement | null;
-      if (arrow) arrow.style.transform = `translateX(${-leftShift}px)`;
+    const anchorRect = anchor.getBoundingClientRect();
+    const height = popup.offsetHeight;
+    const roomAbove = anchorRect.top - EDGE_PADDING;
+    const roomBelow = window.innerHeight - anchorRect.bottom - EDGE_PADDING;
+    const preferred = position === 'bottom' ? 'below' : 'above';
+    const fits = preferred === 'above' ? roomAbove >= height + 8 : roomBelow >= height + 8;
+    setSide(fits ? preferred : (preferred === 'above' ? 'below' : 'above'));
+
+    const rect = popup.getBoundingClientRect();
+    let shift = 0;
+    if (rect.left < EDGE_PADDING) shift = EDGE_PADDING - rect.left;
+    else if (rect.right > window.innerWidth - EDGE_PADDING) shift = window.innerWidth - EDGE_PADDING - rect.right;
+
+    if (shift !== 0) {
+      popup.style.transform = `translateX(calc(-50% + ${shift}px))`;
+      if (arrow) arrow.style.transform = `translateX(${-shift}px)`;
     }
-  }, [isVisible, fieldHost]);
-
-  // A tooltip on a form field is portalled to the end of its group so it takes up
-  // real space and pushes the rest of the form down. Floating it was the problem:
-  // anchored to the icon it covered the field being explained, and moved below
-  // the field it covered the next one.
-  const popup = isVisible ? (
-    <div
-      ref={tooltipRef}
-      role="tooltip"
-      className={fieldHost ? 'tooltip-popup tooltip-popup--inline' : `tooltip-popup ${position}`}
-    >
-      <div dangerouslySetInnerHTML={{ __html: content }} />
-      {!fieldHost && <div className={`tooltip-arrow ${position}`} />}
-    </div>
-  ) : null;
+  }, [isVisible, position, content]);
 
   return (
     <div
@@ -86,7 +89,13 @@ export const Tooltip = ({ content, position = 'top', children }: TooltipProps) =
           <Info size={16} />
         </button>
       )}
-      {popup && (fieldHost ? createPortal(popup, fieldHost) : popup)}
+
+      {isVisible && (
+        <div ref={popupRef} role="tooltip" className={`tooltip-popup tooltip-popup--${side}`}>
+          <div dangerouslySetInnerHTML={{ __html: content }} />
+          <div className={`tooltip-arrow tooltip-arrow--${side}`} />
+        </div>
+      )}
     </div>
   );
 };

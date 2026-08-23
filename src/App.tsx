@@ -1,5 +1,7 @@
 import { useState, useEffect, Suspense, lazy } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
+import { Capacitor } from '@capacitor/core';
+import { StatusBar, Style } from '@capacitor/status-bar';
 import { useTranslation } from './i18n/useTranslation';
 import type { CalculatorInput, CalculationResult } from './types';
 import { Layout } from './components/Layout';
@@ -57,6 +59,20 @@ function App() {
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
     localStorage.setItem('theme', theme);
+
+    if (!Capacitor.isNativePlatform()) return;
+
+    // Without this Android paints its own default bar above the app — a dark
+    // strip sitting on top of a white header. Reading --surface rather than
+    // repeating the hex keeps the bar in step with the palette in index.css.
+    const surface = getComputedStyle(document.documentElement)
+      .getPropertyValue('--surface').trim();
+
+    // Style.Light means dark icons for a light bar, and vice versa.
+    StatusBar.setStyle({ style: theme === 'dark' ? Style.Dark : Style.Light }).catch(() => {});
+    // A no-op on Android 15+, where edge-to-edge is enforced and the bar is
+    // always transparent; setStyle is what matters there.
+    if (surface) StatusBar.setBackgroundColor({ color: surface }).catch(() => {});
   }, [theme]);
 
   const { input, updateInput, results } = useCalculatorForm();
