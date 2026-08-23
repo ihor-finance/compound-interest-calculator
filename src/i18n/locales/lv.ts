@@ -10,6 +10,9 @@ export const lv: TranslationKeys = {
     calculator: 'Kalkulators',
     scenarios: 'Scenāriji',
     settings: 'Iestatījumi',
+    theme: 'Motīvs',
+    themeLight: 'Gaišs motīvs',
+    themeDark: 'Tumšs motīvs',
     presets: 'Sagataves',
     conservative: 'Konservatīvs',
     balanced: 'Sabalansēts',
@@ -194,8 +197,7 @@ export const lv: TranslationKeys = {
     disclaimer: 'Nav finanšu konsultācija.',
     privacy: 'Privātums',
     terms: 'Noteikumi',
-    cookies: 'Sīkdatnes',
-    offer: 'Piedāvājums',
+    methodology: 'Metodoloģija',
   },
 
   // =============================================

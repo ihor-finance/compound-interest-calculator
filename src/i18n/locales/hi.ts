@@ -10,6 +10,9 @@ export const hi: TranslationKeys = {
     calculator: 'कैलकुलेटर',
     scenarios: 'परिदृश्य',
     settings: 'सेटिंग्स',
+    theme: 'थीम',
+    themeLight: 'हल्की थीम',
+    themeDark: 'गहरी थीम',
     presets: 'प्रीसेट',
     conservative: 'रूढ़िवादी',
     balanced: 'संतुलित',
@@ -194,8 +197,7 @@ export const hi: TranslationKeys = {
     disclaimer: 'वित्तीय सलाह नहीं।',
     privacy: 'गोपनीयता',
     terms: 'शर्तें',
-    cookies: 'कुकीज़',
-    offer: 'प्रस्ताव',
+    methodology: 'कार्यप्रणाली',
   },
 
   // =============================================

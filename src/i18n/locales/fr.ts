@@ -10,6 +10,9 @@ export const fr: TranslationKeys = {
     calculator: 'Calculatrice',
     scenarios: 'Scénarios',
     settings: 'Paramètres',
+    theme: 'Thème',
+    themeLight: 'Thème clair',
+    themeDark: 'Thème sombre',
     presets: 'Préréglages',
     conservative: 'Prudent',
     balanced: 'Équilibré',
@@ -194,8 +197,7 @@ export const fr: TranslationKeys = {
     disclaimer: 'Ceci n\'est pas un conseil financier.',
     privacy: 'Confidentialité',
     terms: 'Conditions',
-    cookies: 'Cookies',
-    offer: 'Offre publique',
+    methodology: 'Méthodologie',
   },
 
   // =============================================

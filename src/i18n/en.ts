@@ -8,6 +8,9 @@ export const en = {
     calculator: 'Calculator',
     scenarios: 'Scenarios',
     settings: 'Settings',
+    theme: 'Theme',
+    themeLight: 'Light theme',
+    themeDark: 'Dark theme',
     presets: 'Presets',
     conservative: 'Conservative',
     balanced: 'Balanced',
@@ -192,8 +195,7 @@ export const en = {
     disclaimer: 'Not financial advice.',
     privacy: 'Privacy',
     terms: 'Terms',
-    cookies: 'Cookies',
-    offer: 'Offer',
+    methodology: 'Methodology',
   },
 
   // =============================================

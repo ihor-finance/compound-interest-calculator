@@ -10,8 +10,7 @@ import { AdSlot } from './components/AdSlot';
 import { Footer } from './components/Footer';
 import { PrivacyPolicy } from './pages/PrivacyPolicy';
 import { TermsOfUse } from './pages/TermsOfUse';
-import { CookiesPage } from './pages/CookiesPage';
-import { PublicOffer } from './pages/PublicOffer';
+import { Methodology } from './pages/Methodology';
 import './App.css';
 
 const ChartsSection = lazy(() => import('./components/ChartsSection').then(module => ({ default: module.ChartsSection })));
@@ -19,15 +18,15 @@ const TableSection = lazy(() => import('./components/TableSection').then(module 
 
 interface CalculatorAppProps {
   theme: 'light' | 'dark';
-  toggleTheme: () => void;
+  setTheme: (theme: 'light' | 'dark') => void;
   input: CalculatorInput;
   updateInput: (key: keyof CalculatorInput, value: number | string | boolean) => void;
   results: CalculationResult;
 }
 
-function CalculatorApp({ theme, toggleTheme, input, updateInput, results }: CalculatorAppProps) {
+function CalculatorApp({ theme, setTheme, input, updateInput, results }: CalculatorAppProps) {
   return (
-    <Layout theme={theme} toggleTheme={toggleTheme}>
+    <Layout theme={theme} setTheme={setTheme}>
       <div className="dashboard">
         <aside className="sidebar-left">
           <InputSection input={input} updateInput={updateInput} />
@@ -59,10 +58,6 @@ function App() {
     document.documentElement.setAttribute('data-theme', theme);
     localStorage.setItem('theme', theme);
   }, [theme]);
-
-  const toggleTheme = () => {
-    setTheme(t => t === 'light' ? 'dark' : 'light');
-  };
 
   const { input, updateInput, results } = useCalculatorForm();
 
@@ -107,11 +102,10 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/" element={<CalculatorApp theme={theme} toggleTheme={toggleTheme} input={input} updateInput={updateInput} results={results} />} />
+      <Route path="/" element={<CalculatorApp theme={theme} setTheme={setTheme} input={input} updateInput={updateInput} results={results} />} />
       <Route path="/privacy" element={<><PrivacyPolicy /><Footer variant="legal" /></>} />
       <Route path="/terms" element={<><TermsOfUse /><Footer variant="legal" /></>} />
-      <Route path="/cookies" element={<><CookiesPage /><Footer variant="legal" /></>} />
-      <Route path="/offer" element={<><PublicOffer /><Footer variant="legal" /></>} />
+      <Route path="/methodology" element={<><Methodology /><Footer variant="legal" /></>} />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );

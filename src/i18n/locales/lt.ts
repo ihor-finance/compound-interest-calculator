@@ -10,6 +10,9 @@ export const lt: TranslationKeys = {
     calculator: 'Skaičiuoklė',
     scenarios: 'Scenarijai',
     settings: 'Nustatymai',
+    theme: 'Tema',
+    themeLight: 'Šviesi tema',
+    themeDark: 'Tamsi tema',
     presets: 'Išankstiniai nustatymai',
     conservative: 'Konservatyvus',
     balanced: 'Subalansuotas',
@@ -194,8 +197,7 @@ export const lt: TranslationKeys = {
     disclaimer: 'Ne finansinis patarimas.',
     privacy: 'Privatumas',
     terms: 'Sąlygos',
-    cookies: 'Slapukai',
-    offer: 'Pasiūlymas',
+    methodology: 'Metodika',
   },
 
   // =============================================

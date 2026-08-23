@@ -10,6 +10,9 @@ export const et: TranslationKeys = {
     calculator: 'Kalkulaator',
     scenarios: 'Stsenaariumid',
     settings: 'Seaded',
+    theme: 'Teema',
+    themeLight: 'Hele teema',
+    themeDark: 'Tume teema',
     presets: 'Eelseaded',
     conservative: 'Konservatiivne',
     balanced: 'Tasakaalustatud',
@@ -194,8 +197,7 @@ export const et: TranslationKeys = {
     disclaimer: 'Ei ole finantsnõustamine.',
     privacy: 'Privaatsus',
     terms: 'Tingimused',
-    cookies: 'Küpsised',
-    offer: 'Pakkumine',
+    methodology: 'Metoodika',
   },
 
   // =============================================

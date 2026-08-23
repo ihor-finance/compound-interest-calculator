@@ -10,6 +10,9 @@ export const zh: TranslationKeys = {
     calculator: '计算器',
     scenarios: '场景',
     settings: '设置',
+    theme: '主题',
+    themeLight: '浅色主题',
+    themeDark: '深色主题',
     presets: '预设',
     conservative: '保守',
     balanced: '平衡',
@@ -194,8 +197,7 @@ export const zh: TranslationKeys = {
     disclaimer: '非财务建议。',
     privacy: '隐私政策',
     terms: '服务条款',
-    cookies: 'Cookies',
-    offer: '公开报价',
+    methodology: '计算方法',
   },
 
   // =============================================

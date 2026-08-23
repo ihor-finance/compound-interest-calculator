@@ -10,6 +10,9 @@ export const sl: TranslationKeys = {
     calculator: 'Kalkulator',
     scenarios: 'Scenariji',
     settings: 'Nastavitve',
+    theme: 'Tema',
+    themeLight: 'Svetla tema',
+    themeDark: 'Temna tema',
     presets: 'Prednastavitve',
     conservative: 'Konservativno',
     balanced: 'Uravnoteženo',
@@ -194,8 +197,7 @@ export const sl: TranslationKeys = {
     disclaimer: 'Ni finančni nasvet.',
     privacy: 'Zasebnost',
     terms: 'Pogoji',
-    cookies: 'Piškotki',
-    offer: 'Ponudba',
+    methodology: 'Metodologija',
   },
 
   // =============================================

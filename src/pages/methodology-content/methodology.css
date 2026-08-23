@@ -1,0 +1,138 @@
+/* Styling specific to the methodology page. Kept out of App.css because the
+   page is lazily loaded and nothing else on the site uses these rules. */
+
+.methodology-notice {
+  margin: 24px 0 32px;
+  padding: 18px 20px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: var(--surface-muted);
+  border-left: 4px solid var(--primary);
+}
+
+.methodology-notice h2 {
+  margin-top: 0;
+  font-size: 17px;
+}
+
+.methodology-notice p {
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.methodology-notice p:last-child {
+  margin-bottom: 0;
+}
+
+.methodology-notice--warning {
+  border-left-color: var(--danger);
+}
+
+/* Formulas are set apart from the prose and never wrap mid-expression; on a
+   narrow screen they scroll sideways inside their own box rather than forcing
+   the page to. */
+.formula {
+  margin: 18px 0;
+  padding: 14px 18px;
+  border-radius: 12px;
+  background: var(--surface-muted);
+  border: 1px solid var(--border);
+  font-family: 'Cambria Math', 'Times New Roman', Georgia, serif;
+  font-size: 17px;
+  line-height: 1.9;
+  color: var(--text-primary);
+  text-align: center;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  white-space: nowrap;
+  direction: ltr;
+}
+
+.formula sub,
+.formula sup {
+  font-size: 0.68em;
+}
+
+.methodology-table-wrap {
+  margin: 16px 0 24px;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+}
+
+.methodology-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.methodology-table th {
+  text-align: left;
+  padding: 10px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+.methodology-table td {
+  padding: 11px 12px;
+  vertical-align: top;
+  line-height: 1.6;
+  border-bottom: 1px solid var(--border);
+}
+
+.methodology-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* Symbols and amounts read as maths, not prose, and must not be broken up. */
+.methodology-table td.sym {
+  font-family: 'Cambria Math', 'Times New Roman', Georgia, serif;
+  font-size: 15px;
+  white-space: nowrap;
+  direction: ltr;
+}
+
+[dir='rtl'] .methodology-table th,
+[dir='rtl'] .methodology-table td {
+  text-align: right;
+}
+
+[dir='rtl'] .methodology-table td.sym {
+  text-align: left;
+}
+
+.methodology-steps,
+.methodology-list {
+  margin: 12px 0 24px;
+  padding-inline-start: 22px;
+}
+
+.methodology-steps li,
+.methodology-list li {
+  margin-bottom: 10px;
+  line-height: 1.65;
+}
+
+.methodology-steps li::marker {
+  font-weight: 600;
+  color: var(--primary-dark);
+}
+
+@media (max-width: 599px) {
+  .formula {
+    font-size: 15px;
+    padding: 12px 14px;
+    text-align: left;
+  }
+  .methodology-notice {
+    padding: 14px 16px;
+  }
+  .methodology-table th,
+  .methodology-table td {
+    padding: 9px 8px;
+  }
+}

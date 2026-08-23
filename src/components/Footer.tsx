@@ -33,8 +33,7 @@ const LegalPageFooter = () => {
           <div className="footer-links">
             <Link to="/privacy">{t.footer.privacy || 'Privacy Policy'}</Link>
             <Link to="/terms">{t.footer.terms || 'Terms of Use'}</Link>
-            <Link to="/cookies">{t.footer.cookies || 'Cookie Policy'}</Link>
-            <Link to="/offer">{t.footer.offer || 'Public Offer'}</Link>
+            <Link to="/methodology">{t.footer.methodology || 'Methodology'}</Link>
           </div>
           
           <div className="footer-legal">
@@ -68,9 +67,7 @@ const CalcFooter = () => {
         <span className="calc-footer__sep">·</span>
         <Link to="/terms">{t.footer.terms || 'Terms'}</Link>
         <span className="calc-footer__sep">·</span>
-        <Link to="/cookies">{t.footer.cookies || 'Cookies'}</Link>
-        <span className="calc-footer__sep">·</span>
-        <Link to="/offer">{t.footer.offer || 'Offer'}</Link>
+        <Link to="/methodology">{t.footer.methodology || 'Methodology'}</Link>
       </nav>
       
       <p className="calc-footer__note">{t.footer.disclaimer || 'Not financial advice.'}</p>

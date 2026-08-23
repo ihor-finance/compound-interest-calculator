@@ -10,6 +10,9 @@ export const es: TranslationKeys = {
     calculator: 'Calculadora',
     scenarios: 'Escenarios',
     settings: 'Ajustes',
+    theme: 'Tema',
+    themeLight: 'Tema claro',
+    themeDark: 'Tema oscuro',
     presets: 'Ajustes preestablecidos',
     conservative: 'Conservador',
     balanced: 'Equilibrado',
@@ -194,8 +197,7 @@ export const es: TranslationKeys = {
     disclaimer: 'No es asesoramiento financiero.',
     privacy: 'Privacidad',
     terms: 'Términos',
-    cookies: 'Cookies',
-    offer: 'Oferta',
+    methodology: 'Metodología',
   },
 
   // =============================================

@@ -10,6 +10,9 @@ export const ka: TranslationKeys = {
     calculator: 'კალკულატორი',
     scenarios: 'სცენარები',
     settings: 'პარამეტრები',
+    theme: 'თემა',
+    themeLight: 'ნათელი თემა',
+    themeDark: 'მუქი თემა',
     presets: 'წინასწარ დაყენებული',
     conservative: 'კონსერვატიული',
     balanced: 'ბალანსირებული',
@@ -194,8 +197,7 @@ export const ka: TranslationKeys = {
     disclaimer: 'არ წარმოადგენს ფინანსურ რჩევას.',
     privacy: 'კონფიდენციალურობა',
     terms: 'წესები',
-    cookies: 'ქუქიები',
-    offer: 'შეთავაზება',
+    methodology: 'მეთოდოლოგია',
   },
 
   // =============================================

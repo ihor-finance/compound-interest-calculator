@@ -10,6 +10,9 @@ export const ar: TranslationKeys = {
     calculator: 'الحاسبة',
     scenarios: 'السيناريوهات',
     settings: 'الإعدادات',
+    theme: 'السمة',
+    themeLight: 'السمة الفاتحة',
+    themeDark: 'السمة الداكنة',
     presets: 'إعدادات مسبقة',
     conservative: 'محافظ',
     balanced: 'متوازن',
@@ -194,8 +197,7 @@ export const ar: TranslationKeys = {
     disclaimer: 'ليست نصيحة مالية.',
     privacy: 'الخصوصية',
     terms: 'الشروط',
-    cookies: 'ملفات تعريف الارتباط',
-    offer: 'العرض العام',
+    methodology: 'المنهجية',
   },
 
   // =============================================

@@ -10,6 +10,9 @@ export const no: TranslationKeys = {
     calculator: 'Kalkulator',
     scenarios: 'Scenarioer',
     settings: 'Innstillinger',
+    theme: 'Tema',
+    themeLight: 'Lyst tema',
+    themeDark: 'Mørkt tema',
     presets: 'Forhåndsinnstillinger',
     conservative: 'Konservativ',
     balanced: 'Balansert',
@@ -194,8 +197,7 @@ export const no: TranslationKeys = {
     disclaimer: 'Ikke finansiell rådgivning.',
     privacy: 'Personvern',
     terms: 'Vilkår',
-    cookies: 'Informasjonskapsler',
-    offer: 'Tilbud',
+    methodology: 'Metodikk',
   },
 
   // =============================================

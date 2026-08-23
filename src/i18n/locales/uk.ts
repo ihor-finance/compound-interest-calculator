@@ -7,6 +7,9 @@ export const uk: TranslationKeys = {
     calculator: 'Калькулятор',
     scenarios: 'Сценарії',
     settings: 'Налаштування',
+    theme: 'Тема',
+    themeLight: 'Світла тема',
+    themeDark: 'Темна тема',
     presets: 'Пресет',
     conservative: 'Консервативний',
     balanced: 'Збалансований',
@@ -155,8 +158,7 @@ export const uk: TranslationKeys = {
     disclaimer: 'Не є фінансовою порадою.',
     privacy: 'Конфіденційність',
     terms: 'Умови',
-    cookies: 'Cookie',
-    offer: 'Оферта',
+    methodology: 'Методологія',
   },
 
   tooltips: {

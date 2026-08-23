@@ -36,6 +36,16 @@ export const SUPPORTED_LOCALES = [
   { code: 'sl', name: 'Slovenščina', flag: '🇸🇮', dir: 'ltr' },
   { code: 'lv', name: 'Latviešu', flag: '🇱🇻', dir: 'ltr' },
   { code: 'et', name: 'Eesti', flag: '🇪🇪', dir: 'ltr' },
+  { code: 'az', name: 'Azərbaycan', flag: '🇦🇿', dir: 'ltr' },
+  { code: 'be', name: 'Беларуская', flag: '🇧🇾', dir: 'ltr' },
+  { code: 'bn', name: 'বাংলা', flag: '🇧🇩', dir: 'ltr' },
+  { code: 'he', name: 'עברית', flag: '🇮🇱', dir: 'rtl' },
+  { code: 'id', name: 'Bahasa Indonesia', flag: '🇮🇩', dir: 'ltr' },
+  { code: 'kk', name: 'Қазақша', flag: '🇰🇿', dir: 'ltr' },
+  { code: 'th', name: 'ไทย', flag: '🇹🇭', dir: 'ltr' },
+  { code: 'tl', name: 'Filipino', flag: '🇵🇭', dir: 'ltr' },
+  { code: 'uz', name: 'Oʻzbek', flag: '🇺🇿', dir: 'ltr' },
+  { code: 'vi', name: 'Tiếng Việt', flag: '🇻🇳', dir: 'ltr' },
 ] as const;
 
 const loadedLocales: Partial<Record<string, TranslationKeys>> = { en };
