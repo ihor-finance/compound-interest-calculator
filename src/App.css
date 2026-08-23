@@ -2835,3 +2835,45 @@ img, svg, canvas, video, iframe {
     padding: 4px 8px;
   }
 }
+
+/* --- 14. Field tooltips sit below the field, not on top of it ------------- */
+
+/* The info icon lives inside the field's <label>, so a popup anchored to the
+   icon lands exactly where the input is and hides the value being explained.
+   Anchoring to the whole .input-group instead puts it under the field.
+   Tooltip.tsx detects this stretched form and skips its edge-clamping shift. */
+.input-group,
+.variance-toggle-group {
+  position: relative;
+}
+
+.input-group .tooltip-container,
+.variance-toggle-group .tooltip-container {
+  position: static;
+}
+
+.input-group .tooltip-popup,
+.variance-toggle-group .tooltip-popup {
+  top: calc(100% + 6px);
+  bottom: auto;
+  left: 0;
+  right: 0;
+  transform: none;
+  width: auto;
+  max-width: none;
+}
+
+/* The arrow points at the icon, which is no longer where the popup opens. */
+.input-group .tooltip-arrow,
+.variance-toggle-group .tooltip-arrow {
+  display: none;
+}
+
+/* --- 15. Projection table grows with its content -------------------------- */
+
+/* No vertical cap: a scroll area nested inside the page is awkward on touch,
+   and the row limit below already keeps the monthly view from getting silly.
+   Sideways scrolling for the seven columns stays. */
+.table-container {
+  max-height: none;
+}

@@ -35,7 +35,8 @@ export const TableSection = React.memo(({ results}: Props) => {
   // A 100-year monthly projection is 1200 rows × 7 cells. Rendering all of them
   // up front visibly stalls a mid-range phone, so hold back the tail until asked.
   const ROW_LIMIT = 120;
-  const isTruncated = !expanded && filteredData.length > ROW_LIMIT;
+  const canExpand = filteredData.length > ROW_LIMIT;
+  const isTruncated = canExpand && !expanded;
   const visibleData = isTruncated ? filteredData.slice(0, ROW_LIMIT) : filteredData;
 
   return (
@@ -65,9 +66,15 @@ export const TableSection = React.memo(({ results}: Props) => {
               <button className={periodType === 'monthly' ? 'active' : ''} onClick={() => setPeriodType('monthly')}>{t.form.compoundingMonthly}</button>
               <button className={periodType === 'yearly' ? 'active' : ''} onClick={() => setPeriodType('yearly')}>{t.form.compoundingAnnually}</button>
             </div>
-            <button className="expand-btn" onClick={() => setExpanded(!expanded)}>
-              {t.table.expand} <Maximize2 size={14} style={{ transform: expanded ? 'rotate(180deg)' : 'none' }} />
-            </button>
+            {/* The table is no longer height-capped, so this only controls the
+                row limit — which means it has nothing to do when every row of
+                the current view already fits. */}
+            {canExpand && (
+              <button className="expand-btn" onClick={() => setExpanded(!expanded)}>
+                {expanded ? (t.table.collapse || 'Collapse') : (t.table.expand || 'Expand')}
+                <Maximize2 size={14} style={{ transform: expanded ? 'rotate(180deg)' : 'none' }} />
+              </button>
+            )}
           </div>
         </div>
         

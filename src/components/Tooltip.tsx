@@ -30,6 +30,13 @@ export const Tooltip = ({ content, position = 'top', children }: TooltipProps) =
 
   useEffect(() => {
     if (isVisible && tooltipRef.current) {
+      // Inside a form field App.css stretches the popup between the group's
+      // edges instead of centring it on the icon, so it can never reach a screen
+      // edge and must not be nudged sideways. Testing the ancestor mirrors that
+      // rule directly — computed `left`/`right` resolve to pixels either way and
+      // cannot tell the two modes apart.
+      if (tooltipRef.current.closest('.input-group, .variance-toggle-group')) return;
+
       const rect = tooltipRef.current.getBoundingClientRect();
       const padding = 16; // Minimum distance from screen edge
       let leftShift = 0;
