@@ -1,7 +1,13 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">Compound Interest</string>
-    <string name="title_activity_main">Compound Interest</string>
+    <!--
+        Launcher label only. Deliberately short: "Compound Interest" is 17
+        characters and launchers truncate it to "Compound I..". This is not the
+        Play Store listing name, which stays "Compound Interest Calculator".
+        The % echoes the app icon.
+    -->
+    <string name="app_name">Compound %</string>
+    <string name="title_activity_main">Compound %</string>
     <string name="package_name">com.ihorfinance.compoundcalc</string>
     <string name="custom_url_scheme">com.ihorfinance.compoundcalc</string>
 </resources>
