@@ -2810,37 +2810,92 @@ img, svg, canvas, video, iframe {
   }
 }
 
-/* --- 14. Field tooltips sit below the field, not on top of it ------------- */
+/* --- 14. Tooltips -------------------------------------------------------- */
 
-/* The info icon lives inside the field's <label>, so a popup anchored to the
-   icon lands exactly where the input is and hides the value being explained.
-   Anchoring to the whole .input-group instead puts it under the field.
-   Tooltip.tsx detects this stretched form and skips its edge-clamping shift. */
-.input-group,
-.variance-toggle-group {
+/* These rules used to live in a <style> block inside Tooltip.tsx, which React
+   rendered once per tooltip — nineteen identical copies in the document. Worse,
+   being in the body they came after this stylesheet, so `.tooltip-popup.top`
+   beat any same-specificity override written here. That is what broke the field
+   tooltips: `bottom` stayed applied alongside `top`, the browser resolved the
+   height from both, and the text spilled out of its own box onto the next field. */
+
+.tooltip-container {
   position: relative;
+  display: inline-flex;
+  align-items: center;
+  margin-left: 4px;
 }
 
-.input-group .tooltip-container,
-.variance-toggle-group .tooltip-container {
+.tooltip-popup {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  width: max-content;
+  max-width: min(380px, calc(100vw - 32px));
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background-color: var(--surface);
+  color: var(--text-primary);
+  box-shadow: var(--shadow-elevated);
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 400;
+  text-align: left;
+}
+
+.tooltip-popup.top { bottom: calc(100% + 8px); }
+.tooltip-popup.bottom { top: calc(100% + 8px); }
+
+.tooltip-arrow {
+  position: absolute;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+}
+
+.tooltip-arrow.top {
+  top: 100%;
+  border-color: var(--surface) transparent transparent transparent;
+}
+
+.tooltip-arrow.bottom {
+  bottom: 100%;
+  border-color: transparent transparent var(--surface) transparent;
+}
+
+/* In-flow variant, portalled to the end of an .input-group. It occupies real
+   space, so opening it pushes the rest of the form down instead of covering
+   anything. No stacking order to get wrong, and it behaves the same in portrait
+   and landscape. */
+.tooltip-popup--inline {
   position: static;
-}
-
-.input-group .tooltip-popup,
-.variance-toggle-group .tooltip-popup {
-  top: calc(100% + 6px);
-  bottom: auto;
-  left: 0;
-  right: 0;
-  transform: none;
+  display: block;
   width: auto;
   max-width: none;
+  margin-top: 8px;
+  transform: none;
+  box-shadow: none;
+  background-color: var(--primary-soft);
+  border-color: transparent;
+  border-left: 3px solid var(--primary);
+  border-radius: 0 10px 10px 0;
+  color: var(--text-secondary);
 }
 
-/* The arrow points at the icon, which is no longer where the popup opens. */
-.input-group .tooltip-arrow,
-.variance-toggle-group .tooltip-arrow {
-  display: none;
+[data-theme="dark"] .tooltip-popup--inline {
+  background-color: var(--surface-muted);
+}
+
+/* The variance group is a flex row; the tooltip needs a line of its own. */
+.variance-toggle-group {
+  flex-wrap: wrap;
+}
+
+.variance-toggle-group .tooltip-popup--inline {
+  flex-basis: 100%;
 }
 
 /* --- 15. Projection table grows with its content -------------------------- */

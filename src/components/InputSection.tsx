@@ -246,7 +246,7 @@ export const InputSection = ({ input, updateInput }: Props) => {
       <div className="input-group">
         <label>
           {t.form.taxation}
-          <Tooltip content={t.tooltips.taxRate} />
+          <Tooltip content={t.tooltips.taxation} />
         </label>
         <div className="tax-mode-toggle" style={{ display: 'flex', width: '100%' }}>
           <button 
