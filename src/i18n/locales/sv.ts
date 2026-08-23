@@ -107,6 +107,8 @@ export const sv: TranslationKeys = {
     yearly: 'Årligen',
     expand: 'Expandera',
     showAll: 'Visa alla {n} rader',
+    hiddenRows: '{n} dolda',
+    close: 'Stäng',
     collapse: 'Fäll ihop',
     period: 'Period',
     contributions: 'Insättningar',

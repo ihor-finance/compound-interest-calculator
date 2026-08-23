@@ -149,6 +149,8 @@ export const ka: TranslationKeys = {
     yearly: 'წელიწადში',
     expand: 'გაშლა',
     showAll: 'ყველა {n} მწკრივის ჩვენება',
+    hiddenRows: '{n} დამალული',
+    close: 'დახურვა',
     collapse: 'აკეცვა',
     period: 'პერიოდი',
     contributions: 'შენატანები',

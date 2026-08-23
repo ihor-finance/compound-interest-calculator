@@ -58,9 +58,14 @@ if ($Release) {
     cmd /c '.\gradlew.bat assembleDebug --no-daemon'
     if ($LASTEXITCODE -ne 0) { throw 'Gradle debug build failed' }
 
-    Copy-Item 'app\build\outputs\apk\debug\app-debug.apk' `
-              (Join-Path $outputDir 'CompoundInterestCalculator-1.0-debug.apk') -Force
-    Write-Host '    CompoundInterestCalculator-1.0-debug.apk'
+    # Name the file after the version in build.gradle so old builds are never
+    # mistaken for new ones on the way to a phone.
+    $gradle = Get-Content 'app\build.gradle' -Raw
+    $version = if ($gradle -match 'versionName\s+"([^"]+)"') { $Matches[1] } else { 'unknown' }
+    $apkName = "CompoundInterestCalculator-$version-debug.apk"
+
+    Copy-Item 'app\build\outputs\apk\debug\app-debug.apk' (Join-Path $outputDir $apkName) -Force
+    Write-Host "    $apkName"
 }
 
 Set-Location $projectRoot

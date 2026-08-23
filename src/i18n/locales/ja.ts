@@ -107,6 +107,8 @@ export const ja: TranslationKeys = {
     yearly: '年次',
     expand: '展開',
     showAll: '{n}行すべてを表示',
+    hiddenRows: '{n}件を非表示',
+    close: '閉じる',
     collapse: '折りたたむ',
     period: '期間',
     contributions: '投資額',

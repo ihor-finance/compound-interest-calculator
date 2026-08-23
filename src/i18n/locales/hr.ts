@@ -107,6 +107,8 @@ export const hr: TranslationKeys = {
     yearly: 'Godišnje',
     expand: 'Proširi',
     showAll: 'Prikaži svih {n} redaka',
+    hiddenRows: '{n} skriveno',
+    close: 'Zatvori',
     collapse: 'Sažmi',
     period: 'Razdoblje',
     contributions: 'Uplate',

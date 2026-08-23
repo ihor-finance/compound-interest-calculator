@@ -107,6 +107,8 @@ export const sq: TranslationKeys = {
     yearly: 'Përvitë',
     expand: 'Zgjero',
     showAll: 'Shfaq të gjitha {n} rreshtat',
+    hiddenRows: '{n} të fshehura',
+    close: 'Mbyll',
     collapse: 'Palos',
     period: 'Periudha',
     contributions: 'Kontributet',

@@ -107,6 +107,8 @@ export const bg: TranslationKeys = {
     yearly: 'Годишно',
     expand: 'Разгъване',
     showAll: 'Покажи всички редове ({n})',
+    hiddenRows: '{n} скрити',
+    close: 'Затвори',
     collapse: 'Сгъване',
     period: 'Период',
     contributions: 'Вноски',

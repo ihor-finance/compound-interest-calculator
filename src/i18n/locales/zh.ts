@@ -149,6 +149,8 @@ export const zh: TranslationKeys = {
     yearly: '每年',
     expand: '展开',
     showAll: '显示全部 {n} 行',
+    hiddenRows: '隐藏 {n} 行',
+    close: '关闭',
     collapse: '收起',
     period: '期间',
     contributions: '投入',

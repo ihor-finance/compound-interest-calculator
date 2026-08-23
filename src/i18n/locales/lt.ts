@@ -149,6 +149,8 @@ export const lt: TranslationKeys = {
     yearly: 'Kasmet',
     expand: 'Išskleisti',
     showAll: 'Rodyti visas {n} eilutes',
+    hiddenRows: '{n} paslėpta',
+    close: 'Uždaryti',
     collapse: 'Suskleisti',
     period: 'Laikotarpis',
     contributions: 'Įmokos',

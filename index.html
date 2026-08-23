@@ -10,8 +10,93 @@
     <meta name="description" content="Free compound interest calculator with inflation, taxes and regular contributions. Real purchasing power, growth chart and year-by-year projection table." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
     <title>Compound Interest Calculator</title>
+    <!--
+      The splash lives in the HTML, not in React, so it paints on the very first
+      frame instead of waiting for the JS bundle. Its background matches the
+      native launch screen (android/app/src/main/res/drawable/splash.xml), which
+      makes the handover from the Android splash invisible. main.tsx fades it out.
+    -->
+    <style>
+      #app-splash {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 18px;
+        padding: 32px;
+        background: #f4f6f8;
+        font-family: 'Roboto', system-ui, -apple-system, 'Segoe UI', sans-serif;
+        text-align: center;
+        opacity: 1;
+        transition: opacity 0.35s ease;
+      }
+      #app-splash[data-leaving='true'] {
+        opacity: 0;
+        pointer-events: none;
+      }
+      #app-splash .splash-icon {
+        width: 96px;
+        height: 96px;
+        border-radius: 22px;
+        box-shadow: 0 10px 28px rgba(15, 27, 45, 0.16);
+      }
+      #app-splash .splash-title {
+        margin: 0;
+        font-size: 22px;
+        line-height: 28px;
+        font-weight: 700;
+        color: #0f1b2d;
+        letter-spacing: -0.2px;
+      }
+      #app-splash .splash-subtitle {
+        margin: 0;
+        font-size: 14px;
+        line-height: 20px;
+        color: #5b6776;
+      }
+      #app-splash .splash-brand {
+        position: absolute;
+        bottom: max(36px, env(safe-area-inset-bottom, 0px));
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+      #app-splash .splash-brand span {
+        font-size: 11px;
+        line-height: 14px;
+        letter-spacing: 1.4px;
+        text-transform: uppercase;
+        color: #8a95a3;
+      }
+      #app-splash .splash-brand img {
+        width: 116px;
+        height: auto;
+        opacity: 0.85;
+      }
+      /* Landscape phones have no room for a bottom-anchored brand block. */
+      @media (max-height: 460px) {
+        #app-splash { gap: 12px; }
+        #app-splash .splash-icon { width: 64px; height: 64px; border-radius: 15px; }
+        #app-splash .splash-title { font-size: 18px; line-height: 24px; }
+        #app-splash .splash-brand { position: static; margin-top: 6px; }
+        #app-splash .splash-brand img { width: 92px; }
+      }
+    </style>
   </head>
   <body>
+    <div id="app-splash">
+      <img class="splash-icon" src="./web-app-manifest-512x512.png" alt="" />
+      <h1 class="splash-title">Compound Interest Calculator</h1>
+      <p class="splash-subtitle">Inflation and taxes included</p>
+      <div class="splash-brand">
+        <span>Developed by</span>
+        <img src="./redempsly-logo.png" alt="Redempsly" />
+      </div>
+    </div>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

@@ -149,6 +149,8 @@ export const et: TranslationKeys = {
     yearly: 'Kord aastas',
     expand: 'Laienda',
     showAll: 'Näita kõiki {n} rida',
+    hiddenRows: '{n} peidetud',
+    close: 'Sulge',
     collapse: 'Ahenda',
     period: 'Periood',
     contributions: 'Sissemaksed',

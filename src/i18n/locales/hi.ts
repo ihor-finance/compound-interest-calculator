@@ -149,6 +149,8 @@ export const hi: TranslationKeys = {
     yearly: 'वार्षिक',
     expand: 'विस्तार करें',
     showAll: 'सभी {n} पंक्तियाँ दिखाएँ',
+    hiddenRows: '{n} छिपी हुई',
+    close: 'बंद करें',
     collapse: 'संक्षिप्त करें',
     period: 'अवधि',
     contributions: 'योगदान',

@@ -149,6 +149,8 @@ export const fr: TranslationKeys = {
     yearly: 'Annuel',
     expand: 'Développer',
     showAll: 'Afficher les {n} lignes',
+    hiddenRows: '{n} masquées',
+    close: 'Fermer',
     collapse: 'Réduire',
     period: 'Période',
     contributions: 'Versements',

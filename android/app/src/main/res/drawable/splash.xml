@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Android launch screen. Deliberately just the background colour plus the app
+    icon: it has to match the HTML splash in index.html so the handover from the
+    native screen to the web view is invisible. Anything richer would need a
+    bitmap per density and would still be on screen for well under a second.
+-->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@color/splashBackground" />
+    <item>
+        <bitmap
+            android:src="@mipmap/ic_launcher"
+            android:gravity="center" />
+    </item>
+</layer-list>

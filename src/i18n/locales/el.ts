@@ -107,6 +107,8 @@ export const el: TranslationKeys = {
     yearly: 'Ετησίως',
     expand: 'Ανάπτυξη',
     showAll: 'Εμφάνιση όλων των {n} γραμμών',
+    hiddenRows: '{n} κρυφές',
+    close: 'Κλείσιμο',
     collapse: 'Σύμπτυξη',
     period: 'Περίοδος',
     contributions: 'Εισφορές',

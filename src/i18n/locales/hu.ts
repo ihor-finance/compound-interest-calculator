@@ -107,6 +107,8 @@ export const hu: TranslationKeys = {
     yearly: 'Éves',
     expand: 'Kinyit',
     showAll: 'Mind a {n} sor megjelenítése',
+    hiddenRows: '{n} rejtett',
+    close: 'Bezárás',
     collapse: 'Összecsuk',
     period: 'Időszak',
     contributions: 'Befizetések',

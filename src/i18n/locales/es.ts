@@ -149,6 +149,8 @@ export const es: TranslationKeys = {
     yearly: 'Anual',
     expand: 'Expandir',
     showAll: 'Mostrar las {n} filas',
+    hiddenRows: '{n} ocultas',
+    close: 'Cerrar',
     collapse: 'Contraer',
     period: 'Período',
     contributions: 'Aportaciones',

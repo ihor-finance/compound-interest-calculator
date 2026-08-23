@@ -149,6 +149,8 @@ export const lv: TranslationKeys = {
     yearly: 'Reizi gadā',
     expand: 'Izvērst',
     showAll: 'Rādīt visas {n} rindas',
+    hiddenRows: '{n} paslēptas',
+    close: 'Aizvērt',
     collapse: 'Sakļaut',
     period: 'Periods',
     contributions: 'Iemaksas',

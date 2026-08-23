@@ -147,6 +147,8 @@ export const en = {
     yearly: 'Yearly',
     expand: 'Expand',
     showAll: 'Show all {n} rows',
+    hiddenRows: '{n} hidden',
+    close: 'Close',
     collapse: 'Collapse',
     period: 'Period',
     contributions: 'Contributions',

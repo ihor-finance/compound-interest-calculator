@@ -107,6 +107,8 @@ export const cs: TranslationKeys = {
     yearly: 'Ročně',
     expand: 'Rozbalit',
     showAll: 'Zobrazit všech {n} řádků',
+    hiddenRows: '{n} skrytých',
+    close: 'Zavřít',
     collapse: 'Sbalit',
     period: 'Období',
     contributions: 'Vklady',

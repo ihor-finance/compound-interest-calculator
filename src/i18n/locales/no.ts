@@ -149,6 +149,8 @@ export const no: TranslationKeys = {
     yearly: 'Årlig',
     expand: 'Utvid',
     showAll: 'Vis alle {n} rader',
+    hiddenRows: '{n} skjult',
+    close: 'Lukk',
     collapse: 'Skjul',
     period: 'Periode',
     contributions: 'Innskudd',

@@ -107,6 +107,8 @@ export const sr: TranslationKeys = {
     yearly: 'Godišnje',
     expand: 'Proširi',
     showAll: 'Prikaži svih {n} redova',
+    hiddenRows: '{n} skrivenih',
+    close: 'Zatvori',
     collapse: 'Skupi',
     period: 'Period',
     contributions: 'Uplate',

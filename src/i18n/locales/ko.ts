@@ -107,6 +107,8 @@ export const ko: TranslationKeys = {
     yearly: '매년',
     expand: '펼치기',
     showAll: '{n}개 행 모두 보기',
+    hiddenRows: '{n}개 숨김',
+    close: '닫기',
     collapse: '접기',
     period: '기간',
     contributions: '납입 금액',

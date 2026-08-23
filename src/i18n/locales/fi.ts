@@ -107,6 +107,8 @@ export const fi: TranslationKeys = {
     yearly: 'Vuosittain',
     expand: 'Laajenna',
     showAll: 'Näytä kaikki {n} riviä',
+    hiddenRows: '{n} piilotettu',
+    close: 'Sulje',
     collapse: 'Pienennä',
     period: 'Aika',
     contributions: 'Sijoitukset',

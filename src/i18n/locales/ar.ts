@@ -149,6 +149,8 @@ export const ar: TranslationKeys = {
     yearly: 'سنوي',
     expand: 'توسيع',
     showAll: 'عرض كل الصفوف ({n})',
+    hiddenRows: '{n} مخفية',
+    close: 'إغلاق',
     collapse: 'طي',
     period: 'الفترة',
     contributions: 'المساهمات',

@@ -107,6 +107,8 @@ export const pl: TranslationKeys = {
     yearly: 'Rocznie',
     expand: 'Rozwiń',
     showAll: 'Pokaż wszystkie wiersze ({n})',
+    hiddenRows: '{n} ukrytych',
+    close: 'Zamknij',
     collapse: 'Zwiń',
     period: 'Okres',
     contributions: 'Dopłaty',

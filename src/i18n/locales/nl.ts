@@ -107,6 +107,8 @@ export const nl: TranslationKeys = {
     yearly: 'Jaarlijks',
     expand: 'Uitvouwen',
     showAll: 'Alle {n} rijen tonen',
+    hiddenRows: '{n} verborgen',
+    close: 'Sluiten',
     collapse: 'Inklappen',
     period: 'Periode',
     contributions: 'Inleg',

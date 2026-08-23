@@ -107,6 +107,8 @@ export const ro: TranslationKeys = {
     yearly: 'Anual',
     expand: 'Extinde',
     showAll: 'Afișează toate cele {n} rânduri',
+    hiddenRows: '{n} ascunse',
+    close: 'Închide',
     collapse: 'Restrânge',
     period: 'Perioadă',
     contributions: 'Contribuții',

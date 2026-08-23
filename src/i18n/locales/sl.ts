@@ -149,6 +149,8 @@ export const sl: TranslationKeys = {
     yearly: 'Letno',
     expand: 'Razširi',
     showAll: 'Prikaži vseh {n} vrstic',
+    hiddenRows: '{n} skritih',
+    close: 'Zapri',
     collapse: 'Strni',
     period: 'Obdobje',
     contributions: 'Vplačila',
