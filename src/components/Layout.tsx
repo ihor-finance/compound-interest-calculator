@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, useMemo } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import type { ReactNode } from 'react';
 import { ChevronDown, Sun, Moon } from 'lucide-react';
 import { LogoIcon } from './LogoIcon';
@@ -52,15 +52,11 @@ export const Layout = ({ children, theme, setTheme }: LayoutProps) => {
   }, []);
   const logoText = { title: t.app.title || 'Compound Interest', subtitle: t.app.subtitle || 'Calculator' };
 
-  // Alphabetical by native name, with the language you are already using pinned
-  // to the top. With 43 entries, ordering by speaker count means reading the
-  // whole list — nobody knows where their language ranks.
-  const languages = useMemo(() => {
-    const collator = new Intl.Collator(undefined, { sensitivity: 'base' });
-    const sorted = [...SUPPORTED_LOCALES].sort((a, b) => collator.compare(a.name, b.name));
-    const current = sorted.find(l => l.code === lang);
-    return current ? [current, ...sorted.filter(l => l.code !== lang)] : sorted;
-  }, [lang]);
+  // Shown in SUPPORTED_LOCALES order, which is by speaker count worldwide, so
+  // English leads and the widely spoken languages are reachable without
+  // scrolling. The language in use is not pulled to the top — that would push
+  // English down — it is marked with the `active` class where it sits.
+  const languages = SUPPORTED_LOCALES;
 
   return (
     <div className="layout">

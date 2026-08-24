@@ -48,8 +48,28 @@ const DENSITIES = [
  */
 const GLYPH_FRACTION = 0.45;
 
-/** A pixel belongs to the glyph if it is bright; the gradient never exceeds ~150 red. */
-const isGlyph = (r, g, b) => r > 170 && g > 170 && b > 170;
+/**
+ * Saturation, 0 for any grey and 1 for a fully saturated hue.
+ *
+ * This is what separates the white glyph from the green tile. Brightness does
+ * not: the gradient's lightest band near the top of the tile reaches 160 red,
+ * above the 150 an earlier version assumed, so a red-channel threshold pulled a
+ * wide strip of pale green into the glyph layer. That strip both showed up as a
+ * haze over the icon and stretched the glyph's bounding box 61px upwards, which
+ * pushed the artwork visibly low once it was centred.
+ *
+ * Measured on the source the two groups do not overlap at all: every glyph pixel
+ * sits at or below 0.05, and the least saturated gradient pixel anywhere on the
+ * tile is 0.3478.
+ */
+const saturation = (r, g, b) => {
+  const max = Math.max(r, g, b);
+  return max === 0 ? 0 : (max - Math.min(r, g, b)) / max;
+};
+
+/** Below this a pixel is pure glyph; above GRADIENT_SAT it is pure tile. */
+const GLYPH_SAT = 0.12;
+const GRADIENT_SAT = 0.30;
 
 const raw = await sharp(source).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
 const { width: W, height: H, channels: C } = raw.info;
@@ -75,9 +95,12 @@ function tileBounds() {
 /**
  * Lifts the white glyph off the tile as a transparent PNG.
  *
- * The red channel separates them cleanly — the gradient tops out around 150, the
- * glyph sits near 250 — so ramping alpha between those preserves the original
- * anti-aliased edges instead of producing a jagged threshold cut.
+ * Ramping alpha across the saturation gap preserves the glyph's original
+ * anti-aliased edges — those pixels blend white into green, so their saturation
+ * lands between the two cutoffs — instead of producing a jagged threshold cut.
+ * The tile's own outer rim is excluded by opacity: it is the only part of the
+ * artwork that is partly transparent, and it fades towards white, which would
+ * otherwise read as unsaturated.
  */
 function extractGlyph() {
   const out = Buffer.alloc(W * H * 4);
@@ -86,7 +109,10 @@ function extractGlyph() {
   for (let y = 0; y < H; y++) {
     for (let x = 0; x < W; x++) {
       const i = at(x, y);
-      const alpha = Math.max(0, Math.min(255, Math.round(((data[i] - 150) / 100) * 255))) * (data[i + 3] / 255);
+      const opaque = data[i + 3] > 250 ? 1 : 0;
+      const s = saturation(data[i], data[i + 1], data[i + 2]);
+      const ramp = (GRADIENT_SAT - s) / (GRADIENT_SAT - GLYPH_SAT);
+      const alpha = Math.max(0, Math.min(1, ramp)) * 255 * opaque;
       const o = (y * W + x) * 4;
       out[o] = 255; out[o + 1] = 255; out[o + 2] = 255;
       out[o + 3] = Math.round(alpha);
@@ -123,7 +149,7 @@ function gradientColumn(bounds) {
     for (let x = bounds.left; x < bounds.left + bounds.width; x++) {
       const i = at(x, y);
       const [r, g, b, a] = [data[i], data[i + 1], data[i + 2], data[i + 3]];
-      if (a < 240 || isGlyph(r, g, b)) continue;
+      if (a < 240 || saturation(r, g, b) < GRADIENT_SAT) continue;
       reds.push(r); greens.push(g); blues.push(b);
     }
     if (reds.length) {

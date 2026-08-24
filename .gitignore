@@ -43,3 +43,12 @@ android/.gradle/
 
 # Local build artifacts
 release/
+
+# Generated store screenshots — 43 languages x 24 shots is ~90MB, and every one
+# of them is reproducible with `npm run assets:screenshots -- --locales <list>`.
+# The files stay on disk for uploading to Play; only the recipe is versioned.
+docs/store-assets/screenshots/
+
+# Generated Play cards — 43 languages x 7 cards of 24-bit PNG is ~140MB, and
+# every one is reproducible with `npm run assets:frames -- --locales <list>`.
+docs/store-assets/play-frames/
