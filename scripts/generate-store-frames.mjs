@@ -72,6 +72,13 @@ const CARDS = [
   { id: '7-methodology', front: 'methodology', back: 'table' },
 ];
 
+/**
+ * Stands in for `||` while a caption line is split on `|`. A control
+ * character, because anything printable could legitimately appear in a
+ * caption and would then be mangled on the way back.
+ */
+const BREAK = '\u0000';
+
 /** Used until a locale's listing file carries its own captions. */
 const FALLBACK = [
   ['See what your money||*really* buys', 'Inflation and taxes taken off the top.'],
@@ -140,8 +147,12 @@ function captionsFor(locale) {
   const lines = match[1].split('\n').map(l => l.trim()).filter(Boolean);
   if (lines.length !== CARDS.length) return FALLBACK;
   return lines.map(line => {
-    const [headline, subtitle = ''] = line.split('|').filter(p => p !== '');
-    return [headline, subtitle];
+    // `||` is the line break inside the headline and `|` separates headline
+    // from subtitle, so a plain split on `|` tears the break marker apart and
+    // the second half of the headline silently becomes the subtitle. Park the
+    // breaks somewhere the split cannot see them, then put them back.
+    const [headline = '', subtitle = ''] = line.replaceAll('||', BREAK).split('|');
+    return [headline.replaceAll(BREAK, '||'), subtitle];
   });
 }
 

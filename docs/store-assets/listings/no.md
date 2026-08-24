@@ -63,7 +63,7 @@ Appen er et lærings- og planleggingsverktøy. Den regner ut de matematiske føl
 
 ```
 Se hva pengene dine||*faktisk* kjøper|Inflasjon og skatt er allerede trukket fra.
-Din plan,||dine *tall*|Innskudd, innbetalinger, avkastning, rentetilskrivning, inflasjon, skatt.
+Din plan,||dine *tall*|Innskudd, innbetalinger, avkastning, rentetermin, inflasjon, skatt.
 Fire linjer,||*ett* ærlig bilde|Nominelt, etter skatt, etter inflasjon, og det du har skutt inn.
 Hvor mye er *ditt*,||hvor mye er vekst|Sluttbeløpet, delt opp etter hvor det kommer fra.
 Hvert år,||helt ned til *måneden*|Hele prognosetabellen, i fullskjerm.

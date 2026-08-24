@@ -116,7 +116,10 @@ for (const locale of locales) {
     problems.push(`${locale}: ${lines.length} screenshot captions, expected ${CARD_COUNT}`);
   }
   lines.forEach((line, i) => {
-    const [headline = '', subtitle = ''] = line.split('|').filter(part => part !== '');
+    // `||` is the headline's line break and `|` separates headline from
+    // subtitle, so the break has to be parked somewhere the split cannot see it.
+    const BREAK = '\u0000';
+    const [headline = '', subtitle = ''] = line.replaceAll('||', BREAK).split('|');
     const plain = headline.replace(/\*/g, '');
     if ([...plain].length > HEADLINE_MAX) {
       problems.push(`${locale}: caption ${i + 1} headline is ${[...plain].length} chars, limit is ${HEADLINE_MAX}`);
