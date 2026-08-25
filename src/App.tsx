@@ -10,8 +10,7 @@ import { InputSection } from './components/InputSection';
 import { ResultsSection } from './components/ResultsSection';
 import { AdSlot } from './components/AdSlot';
 import { Footer } from './components/Footer';
-import { PrivacyPolicy } from './pages/PrivacyPolicy';
-import { TermsOfUse } from './pages/TermsOfUse';
+import { PrivacyPolicy, TermsOfUse } from './pages/LegalDocument';
 import { Methodology } from './pages/Methodology';
 import './App.css';
 

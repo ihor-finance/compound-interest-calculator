@@ -8,14 +8,15 @@
     "build": "tsc -b && vite build",
     "preview": "vite preview",
     "lint": "eslint .",
-    "test": "npm run test:calc && npm run test:i18n && npm run test:listings",
+    "test": "npm run test:calc && npm run test:i18n && npm run test:listings && npm run test:legal",
     "test:calc": "node --experimental-strip-types --no-warnings scripts/test-calculations.ts",
     "test:i18n": "node --experimental-strip-types --no-warnings scripts/test-locales.ts",
     "android:sync": "npm run build && npx cap sync android",
     "assets:screenshots": "node scripts/capture-screenshots.mjs",
     "assets:icons": "node scripts/generate-android-icons.mjs",
     "test:listings": "node --experimental-strip-types --no-warnings scripts/test-listings.ts",
-    "assets:frames": "node --experimental-strip-types --no-warnings scripts/generate-store-frames.mjs"
+    "assets:frames": "node --experimental-strip-types --no-warnings scripts/generate-store-frames.mjs",
+    "test:legal": "node --experimental-strip-types --no-warnings scripts/test-legal.ts"
   },
   "dependencies": {
     "@capacitor/android": "^8.3.4",
