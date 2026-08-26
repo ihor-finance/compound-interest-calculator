@@ -144,6 +144,8 @@ export const pl: TranslationKeys = {
     privacy: 'Prywatność',
     terms: 'Warunki',
     methodology: 'Metodologia',
+    support: 'Wesprzyj projekt',
+    supportSoon: 'Wkrótce — dziękuję!',
   },
   tooltips: {
     initialDeposit: 'Kwota, którą inwestujesz na początku.',

@@ -144,6 +144,8 @@ export const ko: TranslationKeys = {
     privacy: '개인정보처리방침',
     terms: '이용약관',
     methodology: '계산 방법',
+    support: '프로젝트 후원하기',
+    supportSoon: '곧 제공됩니다 — 감사합니다!',
   },
   tooltips: {
     initialDeposit: '처음에 투자하는 금액입니다.',

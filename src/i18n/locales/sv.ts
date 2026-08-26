@@ -144,6 +144,8 @@ export const sv: TranslationKeys = {
     privacy: 'Integritet',
     terms: 'Villkor',
     methodology: 'Metodik',
+    support: 'Stöd projektet',
+    supportSoon: 'Snart — tack!',
   },
   tooltips: {
     initialDeposit: 'Beloppet du investerar i början.',

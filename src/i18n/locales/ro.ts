@@ -144,6 +144,8 @@ export const ro: TranslationKeys = {
     privacy: 'Confidențialitate',
     terms: 'Termeni',
     methodology: 'Metodologie',
+    support: 'Susține proiectul',
+    supportSoon: 'În curând — mulțumesc!',
   },
   tooltips: {
     initialDeposit: 'Suma pe care o investești la început.',

@@ -159,6 +159,8 @@ export const vi: TranslationKeys = {
     privacy: 'Quyền riêng tư',
     terms: 'Điều khoản',
     methodology: 'Phương pháp',
+    support: 'Ủng hộ dự án',
+    supportSoon: 'Sắp có — cảm ơn bạn!',
   },
 
   tooltips: {

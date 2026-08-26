@@ -159,6 +159,8 @@ export const be: TranslationKeys = {
     privacy: 'Прыватнасць',
     terms: 'Умовы',
     methodology: 'Метадалогія',
+    support: 'Падтрымаць праект',
+    supportSoon: 'Неўзабаве — дзякуй!',
   },
 
   tooltips: {

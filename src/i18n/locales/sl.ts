@@ -198,6 +198,8 @@ export const sl: TranslationKeys = {
     privacy: 'Zasebnost',
     terms: 'Pogoji',
     methodology: 'Metodologija',
+    support: 'Podprite projekt',
+    supportSoon: 'Kmalu — hvala!',
   },
 
   // =============================================

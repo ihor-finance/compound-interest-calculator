@@ -3,6 +3,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import type { CalculationResult, PeriodResult } from '../types';
 import { formatCurrency } from '../utils/formatting';
 import { Maximize2, ShieldCheck, X } from 'lucide-react';
+import { useBackInterceptor } from '../hooks/useAndroidBackButton';
 import '../App.css';
 
 interface Props {
@@ -27,6 +28,9 @@ export const TableSection = React.memo(({ results }: Props) => {
   };
 
   const closeFullTable = useCallback(() => setIsFullTableOpen(false), []);
+
+  // Android back closes the full table rather than leaving the calculator.
+  useBackInterceptor(isFullTableOpen, closeFullTable);
 
   // While the full table is up it owns the screen: the page behind must not
   // scroll, and Escape has to get you out.

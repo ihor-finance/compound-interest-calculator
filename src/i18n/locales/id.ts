@@ -159,6 +159,8 @@ export const id: TranslationKeys = {
     privacy: 'Privasi',
     terms: 'Ketentuan',
     methodology: 'Metodologi',
+    support: 'Dukung proyek ini',
+    supportSoon: 'Segera hadir — terima kasih!',
   },
 
   tooltips: {

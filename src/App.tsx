@@ -1,5 +1,6 @@
 import { useState, useEffect, Suspense, lazy } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
+import { useAndroidBackButton } from './hooks/useAndroidBackButton';
 import { Capacitor } from '@capacitor/core';
 import { StatusBar, Style } from '@capacitor/status-bar';
 import { useTranslation } from './i18n/useTranslation';
@@ -75,6 +76,9 @@ function App() {
   }, [theme]);
 
   const { input, updateInput, results } = useCalculatorForm();
+
+  // Android's back button: without this it closes the app from any inner page.
+  useAndroidBackButton();
 
   useEffect(() => {
     const titles: Record<string, string> = {

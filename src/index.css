@@ -20,6 +20,12 @@
   
   --border: #E5E9EE;
   --success-bg: #EAF7EE;
+
+  /* The brand green in a shade you can read as text. --primary-dark is a
+     darker green for hover *backgrounds* and stays that; using it for type as
+     well left dark-theme labels at about 2.5:1 against the surface. */
+  --primary-ink: #0F7A38;
+  --row-hover: rgba(231, 245, 236, 0.6);
   --danger: #E5484D;
   
   /* Typography */
@@ -46,6 +52,13 @@
   
   --border: #2A333E;
   --success-bg: #1A2E22;
+
+  /* Without these two the dark theme inherited the light palette's pale green
+     ground and its dark green type — a bright band across an otherwise dark
+     table, with the last row's text nearly unreadable. */
+  --primary-soft: #16301F;
+  --primary-ink: #6FD79B;
+  --row-hover: rgba(111, 215, 155, 0.07);
 }
 
 * {

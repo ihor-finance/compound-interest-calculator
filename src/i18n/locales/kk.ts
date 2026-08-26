@@ -159,6 +159,8 @@ export const kk: TranslationKeys = {
     privacy: 'Құпиялылық',
     terms: 'Шарттар',
     methodology: 'Әдістеме',
+    support: 'Жобаны қолдау',
+    supportSoon: 'Жақында — рақмет!',
   },
 
   tooltips: {

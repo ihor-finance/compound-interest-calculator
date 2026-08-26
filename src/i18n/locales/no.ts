@@ -198,6 +198,8 @@ export const no: TranslationKeys = {
     privacy: 'Personvern',
     terms: 'Vilkår',
     methodology: 'Metodikk',
+    support: 'Støtt prosjektet',
+    supportSoon: 'Snart — takk!',
   },
 
   // =============================================

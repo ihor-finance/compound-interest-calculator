@@ -2,6 +2,7 @@ import { useTranslation } from '../i18n/useTranslation';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { LogoIcon } from './LogoIcon';
+import { SupportButton } from './SupportButton';
 import '../App.css';
 
 interface Props {
@@ -27,6 +28,10 @@ const LegalPageFooter = () => {
           </div>
         </div>
         
+        <div className="footer-support">
+          <SupportButton />
+        </div>
+
         <div className="footer-divider"></div>
         
         <div className="footer-bottom">
@@ -62,6 +67,10 @@ const CalcFooter = () => {
         <span className="calc-footer__copy">© {year}</span>
       </div>
       
+      <div className="calc-footer__support">
+        <SupportButton />
+      </div>
+
       <nav className="calc-footer__links">
         <Link to="/privacy">{t.footer.privacy || 'Privacy'}</Link>
         <span className="calc-footer__sep">·</span>

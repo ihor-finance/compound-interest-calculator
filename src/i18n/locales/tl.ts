@@ -159,6 +159,8 @@ export const tl: TranslationKeys = {
     privacy: 'Privacy',
     terms: 'Mga tuntunin',
     methodology: 'Metodolohiya',
+    support: 'Suportahan ang proyekto',
+    supportSoon: 'Malapit na — salamat!',
   },
 
   tooltips: {

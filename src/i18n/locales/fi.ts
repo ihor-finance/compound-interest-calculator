@@ -144,6 +144,8 @@ export const fi: TranslationKeys = {
     privacy: 'Tietosuoja',
     terms: 'Käyttöehdot',
     methodology: 'Menetelmä',
+    support: 'Tue projektia',
+    supportSoon: 'Pian — kiitos!',
   },
   tooltips: {
     initialDeposit: 'Summa, jonka sijoitat aluksi.',

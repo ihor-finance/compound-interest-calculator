@@ -196,6 +196,8 @@ export const en = {
     privacy: 'Privacy',
     terms: 'Terms',
     methodology: 'Methodology',
+    support: 'Support the project',
+    supportSoon: 'Coming soon — thank you!',
   },
 
   // =============================================

@@ -144,6 +144,8 @@ export const hu: TranslationKeys = {
     privacy: 'Adatvédelem',
     terms: 'Feltételek',
     methodology: 'Módszertan',
+    support: 'Támogasd a projektet',
+    supportSoon: 'Hamarosan — köszönöm!',
   },
   tooltips: {
     initialDeposit: 'Az összeg, amit az elején befektetsz.',

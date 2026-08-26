@@ -198,6 +198,8 @@ export const ka: TranslationKeys = {
     privacy: 'კონფიდენციალურობა',
     terms: 'წესები',
     methodology: 'მეთოდოლოგია',
+    support: 'მხარი დაუჭირეთ პროექტს',
+    supportSoon: 'მალე — გმადლობთ!',
   },
 
   // =============================================

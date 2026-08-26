@@ -94,7 +94,7 @@
 }
 
 .custom-dropdown-item:hover {
-  background-color: var(--hover-bg);
+  background-color: var(--surface-muted);
 }
 
 .custom-dropdown-item.active {
@@ -273,7 +273,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--primary-dark);
+  color: var(--primary-ink);
   margin-left: -8px;
   margin-right: 8px;
 }
@@ -411,7 +411,7 @@
 
 .primary-badge {
   background-color: var(--primary-soft);
-  color: var(--primary-dark);
+  color: var(--primary-ink);
   font-size: 12px;
   font-weight: 600;
   padding: 4px 10px;
@@ -516,7 +516,7 @@
 }
 .table-toggle button.active {
   background-color: var(--surface);
-  color: var(--primary-dark);
+  color: var(--primary-ink);
   box-shadow: var(--shadow-card);
 }
 .table-toggle button.tax-mode-btn.active {
@@ -605,15 +605,25 @@ td {
   color: var(--text-primary);
 }
 
+/* Every row states a background, because the pinned first column inherits it.
+   Left transparent, the pinned cell would let the scrolling columns show
+   through; hardcoded to --surface, it punched a plain hole in the highlighted
+   last row — which is exactly what "Year 15 is not the same colour as its row"
+   was. */
+.table-container tbody tr,
+.table-modal__body tbody tr {
+  background-color: var(--surface);
+}
+
 tbody tr:hover {
-  background-color: rgba(231, 245, 236, 0.6); /* --primary-soft with opacity */
+  background-color: var(--row-hover);
 }
 
 tbody tr:last-child {
   background-color: var(--primary-soft);
 }
 tbody tr:last-child td {
-  color: var(--primary-dark);
+  color: var(--primary-ink);
   font-weight: 600;
   border-bottom: none;
 }
@@ -678,7 +688,7 @@ tbody tr:last-child td {
   position: relative;
 }
 .nav-item.active {
-  color: var(--primary-dark);
+  color: var(--primary-ink);
 }
 .nav-item.active::before {
   content: '';
@@ -1252,7 +1262,7 @@ tbody tr:last-child td {
   font-style: italic;
   line-height: 1.4;
   padding-top: 16px;
-  border-top: 1px solid var(--border-light);
+  border-top: 1px solid var(--border);
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
@@ -1611,6 +1621,7 @@ tbody tr:last-child td {
 /* 1. Global Overflow Protection */
 body {
   overflow-x: hidden;
+  overflow-x: clip;
 }
 
 .hero-card,
@@ -1804,15 +1815,6 @@ body {
     padding: 8px 10px;
     font-size: 13px;
     white-space: nowrap;
-  }
-  
-  .table-container th:first-child,
-  .table-container td:first-child {
-    position: sticky;
-    left: 0;
-    background: var(--surface);
-    z-index: 2;
-    box-shadow: 2px 0 4px rgba(0,0,0,0.05);
   }
 }
 
@@ -2016,23 +2018,26 @@ body {
     max-width: 400px;
   }
 }
-\n
 /* =========================================
    LEGAL PAGES
    ========================================= */
+/* These pages were written before the dark theme existed and had every colour
+   hardcoded light, so switching the app to dark left the policy, terms and
+   methodology pages a sheet of white. Same tokens as the rest of the app now. */
 .legal-page-container {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: #ffffff; /* White background as requested */
-  color: #1a202c;
+  background-color: var(--bg);
+  color: var(--text-primary);
   font-family: 'Roboto', sans-serif;
 }
 
 .legal-header {
-  border-bottom: 1px solid #e2e8f0;
-  padding: 16px 24px;
-  background-color: #ffffff;
+  border-bottom: 1px solid var(--border);
+  padding: 12px 24px;
+  padding-top: max(12px, env(safe-area-inset-top, 0px));
+  background-color: var(--surface);
   position: sticky;
   top: 0;
   z-index: 10;
@@ -2046,17 +2051,32 @@ body {
   align-items: center;
 }
 
+/* A tap target, not a line of text: on a phone this is the only way back to
+   the calculator, and it was a bare 14px link losing a fight with the brand
+   name beside it. */
 .back-button {
-  color: #4a5568;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-primary);
   text-decoration: none;
   font-size: 14px;
-  font-weight: 500;
-  transition: color 0.2s;
-  padding: 8px 0;
+  font-weight: 600;
+  padding: 8px 14px 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface-muted);
+  /* No transition on these three. They are all theme tokens, and a transition
+     on a var()-derived colour can stall: switching theme left this button
+     painted in the old palette indefinitely while every token around it had
+     already flipped. index.css makes the same call for `body`, for the same
+     reason — the theme switch itself is what animates. */
 }
 
-.back-button:hover {
-  color: #000000;
+.back-button:hover,
+.back-button:focus-visible {
+  color: var(--primary-ink);
+  border-color: var(--primary);
 }
 
 .legal-brand {
@@ -2065,7 +2085,7 @@ body {
   gap: 8px;
   font-weight: 700;
   font-size: 16px;
-  color: #1a202c;
+  color: var(--text-primary);
 }
 
 .legal-main {
@@ -2091,7 +2111,7 @@ body {
   font-weight: 600;
   margin-top: 32px;
   margin-bottom: 16px;
-  color: #2d3748;
+  color: var(--text-primary);
 }
 
 .legal-content-wrapper h3 {
@@ -2099,18 +2119,18 @@ body {
   font-weight: 600;
   margin-top: 24px;
   margin-bottom: 12px;
-  color: #4a5568;
+  color: var(--text-secondary);
 }
 
 .legal-content-wrapper p {
   margin-bottom: 16px;
-  color: #4a5568;
+  color: var(--text-secondary);
 }
 
 .legal-content-wrapper ul {
   margin-bottom: 16px;
   padding-left: 24px;
-  color: #4a5568;
+  color: var(--text-secondary);
 }
 
 .legal-content-wrapper li {
@@ -2126,24 +2146,24 @@ body {
 
 .legal-content-wrapper th,
 .legal-content-wrapper td {
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--border);
   padding: 12px;
   text-align: left;
 }
 
 .legal-content-wrapper th {
-  background-color: #f7fafc;
+  background-color: var(--surface-muted);
   font-weight: 600;
-  color: #2d3748;
+  color: var(--text-primary);
 }
 
 .legal-content-wrapper strong {
   font-weight: 600;
-  color: #2d3748;
+  color: var(--text-primary);
 }
 
 .last-updated {
-  color: #718096;
+  color: var(--text-muted);
   font-size: 14px;
   margin-bottom: 32px !important;
 }
@@ -2151,9 +2171,12 @@ body {
 /* Minimalist Inline Footer */
 .calc-footer {
   margin-top: 48px;
-  padding: 24px 16px 32px;
+  padding: 28px 16px 32px;
   text-align: center;
-  border-top: 1px solid var(--border-color);
+  /* Was var(--border-color), which is defined nowhere — border-color then falls
+     back to currentColor, drawing this rule in near-black on the light theme
+     and near-white on the dark one instead of a hairline. */
+  border-top: 1px solid var(--border);
 }
 
 .calc-footer__main {
@@ -2183,7 +2206,7 @@ body {
 }
 
 .calc-footer__sep {
-  color: var(--border-color);
+  color: var(--text-muted);
   user-select: none;
 }
 
@@ -2222,7 +2245,7 @@ body {
   
   .calc-footer__main {
     flex-direction: column;
-    gap: 2px;
+    gap: 5px;
   }
   
   .calc-footer__main .calc-footer__sep {
@@ -2237,6 +2260,71 @@ body {
   .calc-footer__links .calc-footer__sep {
     display: none;
   }
+}
+
+/* =========================================
+   SUPPORT BUTTON
+   ========================================= */
+
+/* Outlined rather than filled: --primary is the one brand colour that reads
+   correctly on both themes, while --primary-soft is only defined for the light
+   palette, so a filled pill would come out as a pale green block in dark mode.
+   Own row in both footers — dropping it into .footer-bottom would make it a
+   third flex child and rearrange that row on desktop. */
+.support-button {
+  display: inline-flex;
+  /* Shared by the <a> and the <button> form. A button inherits neither the page
+     font nor its own box sizing, so both have to be stated or the inert version
+     renders in the browser's default UI font at a different size. */
+  font-family: inherit;
+  appearance: none;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 18px;
+  border: 1px solid var(--primary);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--primary);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color 0.15s, color 0.15s;
+}
+
+.support-button:hover,
+.support-button:focus-visible {
+  background: var(--primary);
+  color: #FFFFFF;
+}
+
+/* Inert until the support page exists. Grey rather than green so it reads as
+   "not yet" at a glance, but --text-secondary rather than --text-muted so the
+   label stays legible in both themes — a disabled look should not mean an
+   unreadable one. It still takes a tap, which swaps the label for a thank-you;
+   the cursor says so by not turning into a pointer. */
+.support-button--soon {
+  border-color: var(--border);
+  color: var(--text-secondary);
+  cursor: default;
+}
+
+.support-button--soon:hover,
+.support-button--soon:focus-visible {
+  background: transparent;
+  color: var(--text-secondary);
+}
+
+.calc-footer__support {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 14px;
+}
+
+.footer-support {
+  display: flex;
+  margin-top: 24px;
 }
 
 .brand-icon {
@@ -2316,7 +2404,17 @@ body {
 /* --- 1. No horizontal page scrolling, ever -------------------------------- */
 
 html, body {
+  /* `clip`, not `hidden`. Both stop sideways scrolling, but `hidden` makes the
+     element a scroll container, which forces overflow-y to compute to `auto` —
+     and a sticky descendant then anchors to a box that never scrolls, so it
+     never sticks. That silently disabled every sticky header in the app: the
+     calculator's toolbar and the "Back to calculator" bar on the legal and
+     methodology pages all scrolled away, leaving a 10,000px page with the only
+     way back at the very top. `clip` creates no scroll container, so
+     overflow-y stays `visible` and sticky works.
+     The `hidden` line stays first as a fallback for engines without `clip`. */
   overflow-x: hidden;
+  overflow-x: clip;
   width: 100%;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
@@ -2624,14 +2722,26 @@ img, svg, canvas, video, iframe {
     padding: 8px 6px;
     white-space: nowrap;
   }
-  /* Keep the period column pinned so a scrolled row is still identifiable. */
-  .table-container th:first-child,
+  /* Keep the period column pinned so a scrolled row is still identifiable.
+     `inherit` takes the row's own background, so the pinned cell stays the
+     colour of the row it belongs to — including the highlighted last one.
+     The separator is an inset shadow rather than a drop shadow: a black shadow
+     is invisible against a dark surface, a border line is not. */
   .table-container td:first-child {
     position: sticky;
     left: 0;
-    background: var(--surface);
+    background: inherit;
     z-index: 2;
-    box-shadow: 2px 0 4px rgba(0, 0, 0, 0.06);
+    box-shadow: inset -1px 0 0 var(--border);
+  }
+  /* Above the other headers, which sit at 10 — otherwise "Contributions"
+     slides over "Period" and covers the very label the pinning exists for. */
+  .table-container th:first-child {
+    position: sticky;
+    left: 0;
+    background: var(--surface);
+    z-index: 11;
+    box-shadow: inset -1px 0 0 var(--border);
   }
   .table-header {
     flex-direction: column;
@@ -2901,7 +3011,7 @@ img, svg, canvas, video, iframe {
 }
 
 .table-gap-row__btn:hover {
-  color: var(--primary-dark);
+  color: var(--primary-ink);
   background: var(--primary-soft);
 }
 
@@ -3049,16 +3159,19 @@ img, svg, canvas, video, iframe {
     padding: 8px 6px;
     white-space: nowrap;
   }
-  .table-modal__body th:first-child,
   .table-modal__body td:first-child {
     position: sticky;
     left: 0;
     z-index: 2;
-    background: var(--surface);
-    box-shadow: 2px 0 4px rgba(0, 0, 0, 0.06);
+    background: inherit;
+    box-shadow: inset -1px 0 0 var(--border);
   }
   .table-modal__body thead th:first-child {
+    position: sticky;
+    left: 0;
     z-index: 4;
+    background: var(--surface);
+    box-shadow: inset -1px 0 0 var(--border);
   }
 }
 

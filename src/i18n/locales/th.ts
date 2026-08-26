@@ -159,6 +159,8 @@ export const th: TranslationKeys = {
     privacy: 'ความเป็นส่วนตัว',
     terms: 'ข้อกำหนด',
     methodology: 'วิธีคำนวณ',
+    support: 'สนับสนุนโปรเจกต์',
+    supportSoon: 'เร็ว ๆ นี้ — ขอบคุณ!',
   },
 
   tooltips: {

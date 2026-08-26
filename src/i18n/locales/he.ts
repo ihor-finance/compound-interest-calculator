@@ -159,6 +159,8 @@ export const he: TranslationKeys = {
     privacy: 'פרטיות',
     terms: 'תנאים',
     methodology: 'מתודולוגיה',
+    support: 'תמכו בפרויקט',
+    supportSoon: 'בקרוב — תודה!',
   },
 
   tooltips: {

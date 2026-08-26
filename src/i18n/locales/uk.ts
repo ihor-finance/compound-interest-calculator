@@ -159,6 +159,8 @@ export const uk: TranslationKeys = {
     privacy: 'Конфіденційність',
     terms: 'Умови',
     methodology: 'Методологія',
+    support: 'Підтримати проєкт',
+    supportSoon: 'Згодом, дякую!',
   },
 
   tooltips: {

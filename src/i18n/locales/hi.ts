@@ -198,6 +198,8 @@ export const hi: TranslationKeys = {
     privacy: 'गोपनीयता',
     terms: 'शर्तें',
     methodology: 'कार्यप्रणाली',
+    support: 'प्रोजेक्ट का समर्थन करें',
+    supportSoon: 'जल्द आ रहा है — धन्यवाद!',
   },
 
   // =============================================

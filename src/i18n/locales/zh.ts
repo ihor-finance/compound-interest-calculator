@@ -198,6 +198,8 @@ export const zh: TranslationKeys = {
     privacy: '隐私政策',
     terms: '服务条款',
     methodology: '计算方法',
+    support: '支持这个项目',
+    supportSoon: '即将推出，谢谢！',
   },
 
   // =============================================

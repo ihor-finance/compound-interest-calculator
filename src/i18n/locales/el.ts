@@ -144,6 +144,8 @@ export const el: TranslationKeys = {
     privacy: 'Απόρρητο',
     terms: 'Όροι',
     methodology: 'Μεθοδολογία',
+    support: 'Υποστηρίξτε το έργο',
+    supportSoon: 'Σύντομα — ευχαριστώ!',
   },
   tooltips: {
     initialDeposit: 'Το ποσό που επενδύετε στην αρχή.',

@@ -198,6 +198,8 @@ export const es: TranslationKeys = {
     privacy: 'Privacidad',
     terms: 'Términos',
     methodology: 'Metodología',
+    support: 'Apoyar el proyecto',
+    supportSoon: 'Pronto — ¡gracias!',
   },
 
   // =============================================

@@ -159,6 +159,8 @@ export const uz: TranslationKeys = {
     privacy: 'Maxfiylik',
     terms: 'Shartlar',
     methodology: 'Metodologiya',
+    support: 'Loyihani qoʻllab-quvvatlash',
+    supportSoon: 'Tez orada — rahmat!',
   },
 
   tooltips: {

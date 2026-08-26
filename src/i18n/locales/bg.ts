@@ -144,6 +144,8 @@ export const bg: TranslationKeys = {
     privacy: 'Поверителност',
     terms: 'Условия',
     methodology: 'Методология',
+    support: 'Подкрепете проекта',
+    supportSoon: 'Скоро — благодаря!',
   },
   tooltips: {
     initialDeposit: 'Сумата, която инвестирате в началото.',

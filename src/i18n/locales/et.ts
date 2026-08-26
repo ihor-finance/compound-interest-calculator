@@ -198,6 +198,8 @@ export const et: TranslationKeys = {
     privacy: 'Privaatsus',
     terms: 'Tingimused',
     methodology: 'Metoodika',
+    support: 'Toeta projekti',
+    supportSoon: 'Peagi — aitäh!',
   },
 
   // =============================================

@@ -198,6 +198,8 @@ export const lt: TranslationKeys = {
     privacy: 'Privatumas',
     terms: 'Sąlygos',
     methodology: 'Metodika',
+    support: 'Paremti projektą',
+    supportSoon: 'Netrukus — ačiū!',
   },
 
   // =============================================

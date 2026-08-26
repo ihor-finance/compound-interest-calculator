@@ -144,6 +144,8 @@ export const ja: TranslationKeys = {
     privacy: 'プライバシー',
     terms: '利用規約',
     methodology: '計算方法',
+    support: 'プロジェクトを支援する',
+    supportSoon: '近日公開 — ありがとう！',
   },
   tooltips: {
     initialDeposit: '最初に投資する金額。',

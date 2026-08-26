@@ -144,6 +144,8 @@ export const sq: TranslationKeys = {
     privacy: 'Privatësia',
     terms: 'Kushtet',
     methodology: 'Metodologjia',
+    support: 'Mbështet projektin',
+    supportSoon: 'Së shpejti — faleminderit!',
   },
   tooltips: {
     initialDeposit: 'Shuma që investoni në fillim.',

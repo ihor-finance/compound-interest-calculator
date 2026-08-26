@@ -144,6 +144,8 @@ export const tr: TranslationKeys = {
     privacy: 'Gizlilik',
     terms: 'Şartlar',
     methodology: 'Metodoloji',
+    support: 'Projeyi destekle',
+    supportSoon: 'Yakında — teşekkürler!',
   },
   tooltips: {
     initialDeposit: 'Başlangıçta yatırdığınız miktar.',

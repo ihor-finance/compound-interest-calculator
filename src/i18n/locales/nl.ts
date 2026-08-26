@@ -144,6 +144,8 @@ export const nl: TranslationKeys = {
     privacy: 'Privacy',
     terms: 'Voorwaarden',
     methodology: 'Methodologie',
+    support: 'Steun het project',
+    supportSoon: 'Binnenkort — bedankt!',
   },
   tooltips: {
     initialDeposit: 'Het bedrag dat u aan het begin inlegt.',

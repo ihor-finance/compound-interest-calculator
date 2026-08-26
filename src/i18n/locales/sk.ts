@@ -144,6 +144,8 @@ export const sk: TranslationKeys = {
     privacy: 'Súkromie',
     terms: 'Podmienky',
     methodology: 'Metodika',
+    support: 'Podporiť projekt',
+    supportSoon: 'Čoskoro — ďakujem!',
   },
   tooltips: {
     initialDeposit: 'Suma, ktorú investujete na začiatku.',

@@ -144,6 +144,8 @@ export const da: TranslationKeys = {
     privacy: 'Privatliv',
     terms: 'Vilkår',
     methodology: 'Metode',
+    support: 'Støt projektet',
+    supportSoon: 'Snart — tak!',
   },
   tooltips: {
     initialDeposit: 'Det beløb, du investerer i starten.',

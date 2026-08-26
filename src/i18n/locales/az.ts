@@ -159,6 +159,8 @@ export const az: TranslationKeys = {
     privacy: 'Məxfilik',
     terms: 'Şərtlər',
     methodology: 'Metodologiya',
+    support: 'Layihəni dəstəklə',
+    supportSoon: 'Tezliklə — təşəkkürlər!',
   },
 
   tooltips: {

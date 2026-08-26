@@ -198,6 +198,8 @@ export const ar: TranslationKeys = {
     privacy: 'الخصوصية',
     terms: 'الشروط',
     methodology: 'المنهجية',
+    support: 'ادعم المشروع',
+    supportSoon: 'قريبًا — شكرًا لك!',
   },
 
   // =============================================

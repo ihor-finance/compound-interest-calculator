@@ -198,6 +198,8 @@ export const lv: TranslationKeys = {
     privacy: 'Privātums',
     terms: 'Noteikumi',
     methodology: 'Metodoloģija',
+    support: 'Atbalstīt projektu',
+    supportSoon: 'Drīzumā — paldies!',
   },
 
   // =============================================

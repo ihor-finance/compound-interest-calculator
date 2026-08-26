@@ -159,6 +159,8 @@ export const bn: TranslationKeys = {
     privacy: 'গোপনীয়তা',
     terms: 'শর্তাবলি',
     methodology: 'পদ্ধতি',
+    support: 'প্রকল্পকে সমর্থন করুন',
+    supportSoon: 'শীঘ্রই আসছে — ধন্যবাদ!',
   },
 
   tooltips: {
