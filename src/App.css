@@ -2035,12 +2035,23 @@ body {
 
 .legal-header {
   border-bottom: 1px solid var(--border);
-  padding: 12px 24px;
-  padding-top: max(12px, env(safe-area-inset-top, 0px));
+  padding: 10px 16px;
+  padding-top: max(10px, env(safe-area-inset-top, 0px));
   background-color: var(--surface);
   position: sticky;
   top: 0;
   z-index: 10;
+  /* Transform only. Colour transitions on theme tokens stall — see the note on
+     .back-button — but a transform has nothing to do with the palette. */
+  transition: transform 0.22s ease;
+}
+
+.legal-header--hidden {
+  transform: translateY(-100%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .legal-header { transition: none; }
 }
 
 .legal-header-content {
@@ -2049,14 +2060,18 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 12px;
 }
 
 /* A tap target, not a line of text: on a phone this is the only way back to
    the calculator, and it was a bare 14px link losing a fight with the brand
-   name beside it. */
+   name beside it. Never wraps — two lines inside a pill is what made the bar
+   look broken on a 360px screen. */
 .back-button {
   display: inline-flex;
   align-items: center;
+  flex-shrink: 0;
+  white-space: nowrap;
   gap: 6px;
   color: var(--text-primary);
   text-decoration: none;
@@ -2083,9 +2098,25 @@ body {
   display: flex;
   align-items: center;
   gap: 8px;
+  min-width: 0;
   font-weight: 700;
   font-size: 16px;
   color: var(--text-primary);
+}
+
+.legal-brand .brand-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Narrow screens keep the mark and drop the wordmark. The page's own <h1> says
+   which document this is, so the name in the bar is the one thing here that can
+   go — and it is what was pushing the bar into two ragged lines. */
+@media (max-width: 599px) {
+  .legal-brand .brand-name {
+    display: none;
+  }
 }
 
 .legal-main {
@@ -2473,23 +2504,63 @@ img, svg, canvas, video, iframe {
 
 @media (min-width: 768px) {
   .main-content { padding: 20px; }
-  .dashboard { grid-template-columns: 260px minmax(0, 1fr); gap: 20px; }
+  .dashboard { grid-template-columns: 280px minmax(0, 1fr); gap: 20px; }
+  /* Keep the form in view while the results scroll. This belongs with the
+     two-column layout, not with the desktop breakpoint: a tablet held upright
+     is 768–1023px wide, so it got the two columns but not the pinned form —
+     the whole point of which is that the inputs stay reachable while you read
+     the results beside them. 70px header + the page padding. */
+  .sidebar-left {
+    position: sticky;
+    top: 90px;
+    max-height: calc(100vh - 110px);
+    overflow-y: auto;
+  }
 }
 
 @media (min-width: 1024px) {
   .main-content { padding: 24px; }
   .dashboard { grid-template-columns: 300px minmax(0, 1fr); gap: 24px; }
-  /* Keep the form in view while the results scroll. */
   .sidebar-left {
-    position: sticky;
     top: 94px;
     max-height: calc(100vh - 118px);
-    overflow-y: auto;
   }
 }
 
 @media (min-width: 1280px) {
   .dashboard { grid-template-columns: 320px minmax(0, 1fr); }
+}
+
+/* Amount plus how often. The frequency select was a hardcoded 140px inline,
+   which inside the 280px sidebar left the amount about 60px — a piggy bank
+   icon and one visible digit. Side by side while there is room for both,
+   stacked when there is not. */
+.contributions-row {
+  display: flex;
+  gap: 8px;
+}
+
+.contributions-row__amount {
+  flex: 1;
+  min-width: 0;
+}
+
+.contributions-row__frequency {
+  width: 140px;
+  flex-shrink: 0;
+}
+
+/* Side by side only where the form spans the screen. Once it becomes the
+   left column it is 280–320px wide, and 140px of that going to the frequency
+   select leaves the amount about 65px — enough for "1000" and not for
+   "100000". Stacked, both get the full width of the column. */
+@media (min-width: 768px) {
+  .contributions-row {
+    flex-direction: column;
+  }
+  .contributions-row__frequency {
+    width: 100%;
+  }
 }
 
 /* --- 3. Input form -------------------------------------------------------- */

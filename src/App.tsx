@@ -2,6 +2,8 @@ import { useState, useEffect, Suspense, lazy } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { useAndroidBackButton } from './hooks/useAndroidBackButton';
 import { Capacitor } from '@capacitor/core';
+import type { PluginListenerHandle } from '@capacitor/core';
+import { App as CapacitorApp } from '@capacitor/app';
 import { StatusBar, Style } from '@capacitor/status-bar';
 import { useTranslation } from './i18n/useTranslation';
 import type { CalculatorInput, CalculationResult } from './types';
@@ -17,6 +19,31 @@ import './App.css';
 
 const ChartsSection = lazy(() => import('./components/ChartsSection').then(module => ({ default: module.ChartsSection })));
 const TableSection = lazy(() => import('./components/TableSection').then(module => ({ default: module.TableSection })));
+
+/**
+ * How the Android status bar is dressed for each theme.
+ *
+ * These are literals, and they must stay literals. The colour used to be read
+ * back out of the computed style — `getPropertyValue('--surface')` — which is
+ * fine in the source, where index.css says #FFFFFF, and broken in a release
+ * build, where the CSS minifier shortens that to #fff. Android's
+ * Color.parseColor accepts #RRGGBB and #AARRGGBB and throws on three-digit hex,
+ * so setBackgroundColor rejected the light theme's colour while the dark
+ * theme's #161d25 sailed through.
+ *
+ * The failure was silent and one-sided: switching to dark worked, switching
+ * back to light left the bar dark while setStyle went ahead and put the light
+ * theme's dark icons on it. Black icons on a black bar — the clock and the
+ * battery simply vanished. A TypeScript string is not something the CSS
+ * minifier can reach.
+ *
+ * Keep these in step with --surface in index.css by hand, and keep them six
+ * digits. Style.Light means dark icons for a light bar, and vice versa.
+ */
+const STATUS_BAR = {
+  light: { background: '#FFFFFF', style: Style.Light },
+  dark: { background: '#161D25', style: Style.Dark },
+} as const;
 
 interface CalculatorAppProps {
   theme: 'light' | 'dark';
@@ -59,20 +86,44 @@ function App() {
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
     localStorage.setItem('theme', theme);
+  }, [theme]);
 
+  useEffect(() => {
     if (!Capacitor.isNativePlatform()) return;
+    const bar = STATUS_BAR[theme];
 
-    // Without this Android paints its own default bar above the app — a dark
-    // strip sitting on top of a white header. Reading --surface rather than
-    // repeating the hex keeps the bar in step with the palette in index.css.
-    const surface = getComputedStyle(document.documentElement)
-      .getPropertyValue('--surface').trim();
+    const apply = async () => {
+      try {
+        // Re-asserted every time rather than left to the config. The background
+        // colour only takes on a bar the app actually owns; once anything has
+        // put the window back into overlay mode, setBackgroundColor becomes a
+        // silent no-op and the old colour stays put.
+        await StatusBar.setOverlaysWebView({ overlay: false });
+        // Background before style, so the icons are chosen for the colour that
+        // is already there rather than the one on its way.
+        await StatusBar.setBackgroundColor({ color: bar.background });
+        await StatusBar.setStyle({ style: bar.style });
+      } catch {
+        // Android 15+ enforces edge-to-edge and refuses the background outright.
+        // The icon style is the half that still lands, so it gets its own try.
+        StatusBar.setStyle({ style: bar.style }).catch(() => {});
+      }
+    };
 
-    // Style.Light means dark icons for a light bar, and vice versa.
-    StatusBar.setStyle({ style: theme === 'dark' ? Style.Dark : Style.Light }).catch(() => {});
-    // A no-op on Android 15+, where edge-to-edge is enforced and the bar is
-    // always transparent; setStyle is what matters there.
-    if (surface) StatusBar.setBackgroundColor({ color: surface }).catch(() => {});
+    apply();
+
+    // Returning from the background can hand the bar back to the system.
+    let handle: PluginListenerHandle | undefined;
+    let cancelled = false;
+    CapacitorApp.addListener('resume', apply).then(registered => {
+      if (cancelled) registered.remove();
+      else handle = registered;
+    });
+
+    return () => {
+      cancelled = true;
+      handle?.remove();
+    };
   }, [theme]);
 
   const { input, updateInput, results } = useCalculatorForm();
