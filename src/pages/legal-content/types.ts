@@ -32,5 +32,5 @@ export interface LegalContent {
 }
 
 /** Sections each document must have, in order. Used by the test. */
-export const PRIVACY_SECTIONS = 8;
+export const PRIVACY_SECTIONS = 9;
 export const TERMS_SECTIONS = 9;

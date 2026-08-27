@@ -21,6 +21,14 @@ export const az: LegalContent = {
         ],
       },
       {
+        heading: 'Reklam yoxdur və bu necə maliyyələşir',
+        lead: 'Bu tətbiqdə reklam yoxdur və olmayacaq.',
+        paragraphs: [
+          'Bu, şüurlu seçimdir, hələ görülməmiş iş deyil. Öz pulunuz haqqında düşünmək üçün istifadə etdiyiniz kalkulyator eyni zamanda diqqətiniz uğrunda yarışmamalıdır. Burada reklam identifikatorları və izləyicilər yoxdur, sizin haqqınızda satmağa da bir şey yoxdur, çünki heç nə toplanmır.',
+          'Tətbiq pulsuzdur və belə də qalacaq. Faydalı olduğunu düşünürsünüzsə, tətbiqin aşağısında bu işi dəstəkləyə biləcəyiniz səhifəyə keçid var — bir dəfə və ya hər ay, sizə necə rahatdırsa. O, tətbiqdən kənarda, brauzerinizdə açılır və heç nəyi açmır: nə gizli funksiya, nə də götürülən məhdudiyyət. Bura qədər oxuduğunuz üçün təşəkkür edirəm.',
+        ],
+      },
+      {
         heading: 'Cihazınızda nə saxlanılır',
         paragraphs: [
           'Tətbiq dayandığınız yerdən davam edə bilsin deyə, brauzer və ya tətbiq yaddaşında aşağıdakıları saxlayır:',

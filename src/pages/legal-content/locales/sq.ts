@@ -21,6 +21,14 @@ export const sq: LegalContent = {
         ],
       },
       {
+        heading: 'Pa reklama, dhe si mbahet kjo',
+        lead: 'Ky aplikacion nuk ka reklama dhe nuk do të ketë.',
+        paragraphs: [
+          'Kjo është një zgjedhje e vetëdijshme, jo diçka e lënë përgjysmë. Një kalkulator me të cilin mendoni për paratë tuaja nuk duhet njëkohësisht të garojë për vëmendjen tuaj. Këtu nuk ka identifikues reklamash dhe nuk ka gjurmues, dhe nuk ka çfarë të shitet për ju, sepse nuk mblidhet asgjë.',
+          'Aplikacioni është falas dhe mbetet falas. Nëse ju vlen, në fund të tij ka një lidhje drejt një faqeje ku mund ta mbështetni këtë punë — një herë ose çdo muaj, si t’ju vijë më mirë. Hapet në shfletuesin tuaj, jashtë aplikacionit, dhe nuk shkyç asgjë: pa funksione të fshehura, pa kufij të hequr. Faleminderit që lexuat deri këtu.',
+        ],
+      },
+      {
         heading: 'Çfarë ruhet në pajisjen tuaj',
         paragraphs: [
           'Që aplikacioni të vazhdojë nga aty ku e latë, ruan në memorien e shfletuesit ose të aplikacionit:',

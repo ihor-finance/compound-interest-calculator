@@ -21,6 +21,14 @@ export const et: LegalContent = {
         ],
       },
       {
+        heading: 'Reklaame ei ole ja millest see kinni makstakse',
+        lead: 'Selles rakenduses ei ole reklaame ja neid ka ei tule.',
+        paragraphs: [
+          'See on teadlik valik, mitte midagi tegemata jäänut. Kalkulaator, millega mõtled oma raha üle, ei peaks samal ajal sinu tähelepanu pärast võistlema. Siin ei ole reklaamitunnuseid ega jälgijaid ja sinu kohta pole ka midagi müüa, sest midagi ei koguta.',
+          'Rakendus on tasuta ja jääb tasuta. Kui sellest on sulle kasu, on rakenduse allservas link lehele, kus saad seda tööd toetada — ühe korra või iga kuu, nagu sulle sobib. See avaneb sinu brauseris, rakendusest väljaspool, ega ava midagi juurde: ei peidetud funktsioone ega kaotatud piiranguid. Aitäh, et lugesid siiani.',
+        ],
+      },
+      {
         heading: 'Mida teie seadmesse salvestatakse',
         paragraphs: [
           'Et rakendus saaks jätkata sealt, kus pooleli jäite, salvestab ta brauseri või rakenduse mällu järgmise:',

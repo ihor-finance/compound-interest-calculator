@@ -21,6 +21,14 @@ export const da: LegalContent = {
         ],
       },
       {
+        heading: 'Ingen reklamer, og hvordan det her hænger sammen',
+        lead: 'Denne app har ingen reklamer, og den kommer ikke til at få nogen.',
+        paragraphs: [
+          'Det er et bevidst valg og ikke noget, der mangler at blive lavet. En lommeregner, du bruger til at tænke over dine egne penge, skal ikke samtidig kæmpe om din opmærksomhed. Der er ingen reklame-id’er og ingen sporing her, og der er intet om dig at sælge, fordi der slet ikke indsamles noget.',
+          'Appen er gratis og forbliver gratis. Hvis du har gavn af den, er der nederst i appen et link til en side, hvor du kan støtte arbejdet — én gang eller hver måned, som du har lyst. Det åbner i din browser, uden for appen, og låser ikke noget op: ingen skjulte funktioner, ingen fjernede begrænsninger. Tak fordi du læste med hertil.',
+        ],
+      },
+      {
         heading: 'Hvad der gemmes på din enhed',
         paragraphs: [
           'For at appen kan fortsætte, hvor du slap, gemmer den følgende i browserens eller appens lager:',

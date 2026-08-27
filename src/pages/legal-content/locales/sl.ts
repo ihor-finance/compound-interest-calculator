@@ -21,6 +21,14 @@ export const sl: LegalContent = {
         ],
       },
       {
+        heading: 'Brez oglasov in iz česa se to pokriva',
+        lead: 'Ta aplikacija nima oglasov in jih ne bo imela.',
+        paragraphs: [
+          'To je zavestna odločitev, ne nekaj, kar bi še manjkalo. Računalo, s katerim razmišljate o svojem denarju, se hkrati ne bi smelo boriti za vašo pozornost. Tu ni oglaševalskih identifikatorjev ne sledilnikov, prav tako ni česa prodati o vas, ker se nič ne zbira.',
+          'Aplikacija je brezplačna in taka bo ostala. Če vam koristi, je na dnu aplikacije povezava do strani, kjer lahko podprete to delo — enkrat ali mesečno, kakor vam ustreza. Odpre se v vašem brskalniku, zunaj aplikacije, in ne odklene ničesar: ni skritih funkcij ne odpravljenih omejitev. Hvala, da ste prebrali do sem.',
+        ],
+      },
+      {
         heading: 'Kaj se shrani na vaši napravi',
         paragraphs: [
           'Da lahko aplikacija nadaljuje tam, kjer ste končali, v shrambo brskalnika ali aplikacije shrani naslednje:',

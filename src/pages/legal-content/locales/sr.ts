@@ -21,6 +21,14 @@ export const sr: LegalContent = {
         ],
       },
       {
+        heading: 'Bez reklama, i od čega se ovo izdržava',
+        lead: 'Ova aplikacija nema reklame, i neće ih imati.',
+        paragraphs: [
+          'To je svesna odluka, a ne nešto što je ostalo nedovršeno. Kalkulator u kome razmišljate o sopstvenom novcu ne treba istovremeno da se bori za vašu pažnju. Ovde nema reklamnih identifikatora ni pratilaca, niti ima šta da se proda o vama, jer se ništa i ne prikuplja.',
+          'Aplikacija je besplatna i takva ostaje. Ako vam koristi, na dnu aplikacije stoji veza ka stranici na kojoj možete podržati ovaj rad — jednokratno ili mesečno, kako vam odgovara. Otvara se u vašem pregledaču, izvan aplikacije, i ne otključava ništa: nema skrivenih funkcija ni ukinutih ograničenja. Hvala što ste pročitali dovde.',
+        ],
+      },
+      {
         heading: 'Šta se čuva na tvom uređaju',
         paragraphs: [
           'Da bi aplikacija nastavila odakle si stao, u memoriji pregledača ili aplikacije čuva sledeće:',

@@ -21,6 +21,14 @@ export const tl: LegalContent = {
         ],
       },
       {
+        heading: 'Walang ad, at kung paano ito natutustusan',
+        lead: 'Walang advertising ang app na ito, at hindi rin magkakaroon.',
+        paragraphs: [
+          'Sinadya ito, hindi ito bagay na hindi pa natatapos. Ang calculator na ginagamit mo para pag-isipan ang sarili mong pera ay hindi dapat sabay na nakikipagkumpitensya sa atensyon mo. Walang advertising identifier at walang tracker dito, at wala ring maibebenta tungkol sa iyo, dahil wala namang kinokolekta.',
+          'Libre ang app at mananatiling libre. Kung nakakatulong ito sa iyo, may link sa ibaba ng app papunta sa pahinang maaari mong suportahan ang gawaing ito — minsan, o buwan-buwan, kung alin ang bagay sa iyo. Bumubukas ito sa iyong browser, sa labas ng app, at wala itong binubuksang anuman: walang tagong feature, walang inaalis na limitasyon. Salamat sa pagbabasa hanggang dito.',
+        ],
+      },
+      {
         heading: 'Ano ang nakaimbak sa device ninyo',
         paragraphs: [
           'Upang makapagpatuloy ang app kung saan kayo huminto, ini-imbak nito ang sumusunod sa storage ng browser o app:',

@@ -21,6 +21,14 @@ export const ro: LegalContent = {
         ],
       },
       {
+        heading: 'Fără reclame și din ce se susține',
+        lead: 'Această aplicație nu are reclame și nu va avea.',
+        paragraphs: [
+          'Este o decizie asumată, nu ceva rămas nefăcut. Un calculator cu care te gândești la banii tăi nu ar trebui să îți dispute în același timp atenția. Aici nu există identificatori publicitari și nici urmăritori, iar despre tine nu e nimic de vândut, pentru că nu se colectează nimic.',
+          'Aplicația este gratuită și rămâne gratuită. Dacă îți este utilă, în partea de jos a aplicației există un link către o pagină unde poți sprijini această muncă — o dată sau lunar, cum îți convine. Se deschide în browserul tău, în afara aplicației, și nu deblochează nimic: nicio funcție ascunsă, nicio limită ridicată. Mulțumesc că ai citit până aici.',
+        ],
+      },
+      {
         heading: 'Ce se păstrează pe dispozitivul tău',
         paragraphs: [
           'Pentru ca aplicația să poată relua de unde ai rămas, salvează următoarele în stocarea browserului sau a aplicației:',

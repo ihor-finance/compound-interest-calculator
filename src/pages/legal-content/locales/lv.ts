@@ -21,6 +21,14 @@ export const lv: LegalContent = {
         ],
       },
       {
+        heading: 'Nav reklāmu — un no kā tas pastāv',
+        lead: 'Šajā lietotnē nav reklāmu, un to arī nebūs.',
+        paragraphs: [
+          'Tā ir apzināta izvēle, nevis kaut kas vēl nepaveikts. Kalkulatoram, ar kuru domājat par savu naudu, vienlaikus nevajadzētu sacensties par jūsu uzmanību. Šeit nav reklāmas identifikatoru un nav izsekotāju, un par jums nav ko pārdot, jo nekas netiek vākts.',
+          'Lietotne ir bez maksas un tāda arī paliks. Ja tā jums noder, lietotnes lejasdaļā ir saite uz lapu, kurā varat atbalstīt šo darbu — vienreiz vai katru mēnesi, kā jums ērtāk. Tā atveras jūsu pārlūkā, ārpus lietotnes, un neatslēdz neko: nav slēptu funkciju, nav atceltu ierobežojumu. Paldies, ka izlasījāt līdz šejienei.',
+        ],
+      },
+      {
         heading: 'Kas tiek saglabāts jūsu ierīcē',
         paragraphs: [
           'Lai lietotne varētu turpināt no vietas, kur pārtraucāt, tā pārlūka vai lietotnes krātuvē saglabā:',

@@ -21,6 +21,14 @@ export const tr: LegalContent = {
         ],
       },
       {
+        heading: 'Reklam yok, peki bu nasıl ayakta duruyor',
+        lead: 'Bu uygulamada reklam yok ve olmayacak.',
+        paragraphs: [
+          'Bu bilinçli bir tercih, yapılmayı bekleyen bir iş değil. Kendi paranız üzerine düşünmek için kullandığınız bir hesap makinesi, aynı anda dikkatiniz için yarışmamalı. Burada reklam tanımlayıcıları ve izleyiciler yok; satılacak bir şeyiniz de yok, çünkü hiçbir şey toplanmıyor.',
+          'Uygulama ücretsiz ve öyle kalacak. İşinize yarıyorsa, uygulamanın altında bu çalışmayı destekleyebileceğiniz bir sayfaya bağlantı var — bir kez ya da her ay, size nasıl uyuyorsa. Bağlantı uygulamanın dışında, tarayıcınızda açılır ve hiçbir şeyin kilidini açmaz: gizli özellik yok, kaldırılan sınır yok. Buraya kadar okuduğunuz için teşekkürler.',
+        ],
+      },
+      {
         heading: 'Cihazınızda ne saklanır',
         paragraphs: [
           'Uygulamanın kaldığınız yerden devam edebilmesi için tarayıcı veya uygulama deposunda şunları kaydeder:',

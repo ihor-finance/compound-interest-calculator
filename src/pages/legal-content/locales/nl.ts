@@ -21,6 +21,14 @@ export const nl: LegalContent = {
         ],
       },
       {
+        heading: 'Geen advertenties, en waar dit van betaald wordt',
+        lead: 'Deze app bevat geen advertenties, en die komen er ook niet.',
+        paragraphs: [
+          'Dat is een bewuste keuze en niet iets wat nog moet gebeuren. Een rekenmachine waarmee je over je eigen geld nadenkt, hoort niet tegelijk om je aandacht te vechten. Er zijn hier geen advertentie-ID’s en geen trackers, en er valt niets over je te verkopen, want er wordt niets verzameld.',
+          'De app is gratis en blijft gratis. Als je er iets aan hebt, staat onderaan de app een link naar een pagina waar je dit werk kunt steunen — eenmalig of maandelijks, net wat je wilt. Hij opent in je browser, buiten de app, en ontgrendelt niets: geen verborgen functies, geen opgeheven limieten. Bedankt voor het lezen tot hier.',
+        ],
+      },
+      {
         heading: 'Wat er op je toestel wordt bewaard',
         paragraphs: [
           'Zodat de app verder kan waar je gebleven was, bewaart ze het volgende in de opslag van de browser of de app:',

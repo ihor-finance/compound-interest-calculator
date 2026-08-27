@@ -32,6 +32,14 @@ export const en: LegalContent = {
         ],
       },
       {
+        heading: 'No ads, and how this is paid for',
+        lead: 'This app carries no advertising, and it is not going to.',
+        paragraphs: [
+          'That is a deliberate choice, not something left unbuilt. A calculator you use to think about your own money should not also be competing for your attention. There are no advertising identifiers and no trackers here, and nothing about you to sell, because nothing is collected in the first place.',
+          'The app is free and stays free. If you find it useful, there is a link at the bottom of the app to a page where you can support the work — once, or monthly, whichever suits you. It opens in your browser, outside the app, and it unlocks nothing: no hidden features, no removed limits. Thank you for reading this far.',
+        ],
+      },
+      {
         heading: 'What is stored on your device',
         paragraphs: [
           'So the app can pick up where you left off, it saves the following in your browser or app storage:',

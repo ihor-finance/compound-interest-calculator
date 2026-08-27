@@ -21,6 +21,14 @@ export const hu: LegalContent = {
         ],
       },
       {
+        heading: 'Nincs reklám, és akkor miből van ez',
+        lead: 'Ebben az alkalmazásban nincs reklám, és nem is lesz.',
+        paragraphs: [
+          'Ez tudatos döntés, nem pedig valami, ami még hiányzik. Egy számológép, amellyel a saját pénzedről gondolkodsz, ne versengjen közben a figyelmedért. Nincsenek itt hirdetési azonosítók és nyomkövetők, és nincs is mit eladni rólad, mert semmit nem gyűjtünk.',
+          'Az alkalmazás ingyenes, és az is marad. Ha hasznosnak találod, az alkalmazás alján találsz egy hivatkozást egy oldalra, ahol támogathatod ezt a munkát — egyszer vagy havonta, ahogy neked jó. A böngésződben nyílik meg, az alkalmazáson kívül, és semmit nem old fel: nincs rejtett funkció, nincs feloldott korlát. Köszönöm, hogy idáig elolvastad.',
+        ],
+      },
+      {
         heading: 'Mi tárolódik az eszközödön',
         paragraphs: [
           'Hogy az alkalmazás onnan folytathassa, ahol abbahagytad, a böngésző vagy az alkalmazás tárolójában elmenti a következőket:',

@@ -21,6 +21,14 @@ export const pl: LegalContent = {
         ],
       },
       {
+        heading: 'Bez reklam — i z czego to się utrzymuje',
+        lead: 'W tej aplikacji nie ma reklam i nie będzie.',
+        paragraphs: [
+          'To świadoma decyzja, a nie coś, czego jeszcze nie zrobiono. Kalkulator, w którym myślisz o własnych pieniądzach, nie powinien jednocześnie walczyć o twoją uwagę. Nie ma tu identyfikatorów reklamowych ani trackerów, nie ma też czego o tobie sprzedawać, bo nic nie jest zbierane.',
+          'Aplikacja jest bezpłatna i taka pozostanie. Jeśli okaże się przydatna, na dole aplikacji znajdziesz link do strony, na której możesz wesprzeć tę pracę — jednorazowo albo co miesiąc, jak wolisz. Otwiera się w twojej przeglądarce, poza aplikacją, i niczego nie odblokowuje: żadnych ukrytych funkcji, żadnych zdjętych ograniczeń. Dziękuję, że doczytałeś do tego miejsca.',
+        ],
+      },
+      {
         heading: 'Co jest zapisywane na twoim urządzeniu',
         paragraphs: [
           'Aby aplikacja mogła wrócić do miejsca, w którym skończyłeś, zapisuje w pamięci przeglądarki lub aplikacji:',

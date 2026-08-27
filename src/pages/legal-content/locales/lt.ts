@@ -21,6 +21,14 @@ export const lt: LegalContent = {
         ],
       },
       {
+        heading: 'Jokių reklamų — ir iš ko tai laikosi',
+        lead: 'Šioje programėlėje reklamos nėra ir nebus.',
+        paragraphs: [
+          'Tai sąmoningas pasirinkimas, o ne kažkas, ko dar nepadaryta. Skaičiuoklė, su kuria galvojate apie savo pinigus, neturėtų tuo pačiu metu varžytis dėl jūsų dėmesio. Čia nėra reklamos identifikatorių nei sekiklių, ir nėra ko apie jus parduoti, nes niekas nerenkama.',
+          'Programėlė nemokama ir tokia liks. Jei ji jums naudinga, apačioje rasite nuorodą į puslapį, kuriame galite paremti šį darbą — vieną kartą arba kas mėnesį, kaip jums patogiau. Ji atsidaro jūsų naršyklėje, už programėlės ribų, ir nieko neatrakina: jokių paslėptų funkcijų, jokių panaikintų apribojimų. Ačiū, kad perskaitėte iki čia.',
+        ],
+      },
+      {
         heading: 'Kas saugoma jūsų įrenginyje',
         paragraphs: [
           'Kad programėlė galėtų tęsti nuo ten, kur baigėte, naršyklės ar programėlės saugykloje ji išsaugo:',

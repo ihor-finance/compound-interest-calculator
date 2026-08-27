@@ -21,6 +21,14 @@ export const no: LegalContent = {
         ],
       },
       {
+        heading: 'Ingen annonser, og hvordan dette går rundt',
+        lead: 'Denne appen har ingen annonser, og kommer ikke til å få noen.',
+        paragraphs: [
+          'Det er et bevisst valg, ikke noe som gjenstår å lage. En kalkulator du bruker til å tenke på dine egne penger, skal ikke samtidig kjempe om oppmerksomheten din. Her finnes ingen annonse-ID-er og ingen sporere, og det er ingenting om deg å selge, for ingenting samles inn.',
+          'Appen er gratis og forblir gratis. Hvis du har nytte av den, ligger det nederst i appen en lenke til en side der du kan støtte arbeidet — én gang, eller hver måned, som du vil. Den åpnes i nettleseren din, utenfor appen, og låser ikke opp noe: ingen skjulte funksjoner, ingen fjernede begrensninger. Takk for at du leste helt hit.',
+        ],
+      },
+      {
         heading: 'Hva som lagres på enheten din',
         paragraphs: [
           'For at appen skal kunne fortsette der du slapp, lagrer den følgende i nettleserens eller appens lagring:',

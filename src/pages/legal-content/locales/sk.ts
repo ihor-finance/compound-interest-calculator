@@ -21,6 +21,14 @@ export const sk: LegalContent = {
         ],
       },
       {
+        heading: 'Žiadne reklamy a z čoho sa to platí',
+        lead: 'V tejto aplikácii nie sú reklamy a ani nebudú.',
+        paragraphs: [
+          'Je to vedomé rozhodnutie, nie niečo, čo ešte chýba. Kalkulačka, v ktorej premýšľate o vlastných peniazoch, by zároveň nemala súperiť o vašu pozornosť. Nie sú tu reklamné identifikátory ani sledovače a niet čo o vás predávať, pretože sa nič nezbiera.',
+          'Aplikácia je zadarmo a zadarmo aj zostane. Ak vám je užitočná, dole v aplikácii je odkaz na stránku, kde môžete túto prácu podporiť — jednorazovo alebo mesačne, ako vám vyhovuje. Otvorí sa vo vašom prehliadači, mimo aplikácie, a nič neodomyká: žiadne skryté funkcie, žiadne zrušené limity. Ďakujem, že ste dočítali až sem.',
+        ],
+      },
+      {
         heading: 'Čo sa ukladá v tvojom zariadení',
         paragraphs: [
           'Aby aplikácia mohla nadviazať tam, kde si skončil, ukladá do úložiska prehliadača alebo aplikácie toto:',

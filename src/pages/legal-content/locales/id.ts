@@ -21,6 +21,14 @@ export const id: LegalContent = {
         ],
       },
       {
+        heading: 'Tanpa iklan, dan bagaimana ini dibiayai',
+        lead: 'Aplikasi ini tidak memuat iklan, dan tidak akan memuatnya.',
+        paragraphs: [
+          'Ini pilihan yang disengaja, bukan sesuatu yang belum sempat dibuat. Kalkulator yang Anda pakai untuk memikirkan uang Anda sendiri tidak seharusnya sekaligus memperebutkan perhatian Anda. Di sini tidak ada pengenal iklan dan tidak ada pelacak, dan tidak ada apa pun tentang Anda untuk dijual, karena memang tidak ada yang dikumpulkan.',
+          'Aplikasi ini gratis dan akan tetap gratis. Jika bermanfaat bagi Anda, di bagian bawah aplikasi ada tautan ke halaman tempat Anda dapat mendukung pekerjaan ini — sekali, atau setiap bulan, sesuai keinginan Anda. Tautan itu terbuka di peramban Anda, di luar aplikasi, dan tidak membuka apa pun: tidak ada fitur tersembunyi, tidak ada batasan yang dicabut. Terima kasih sudah membaca sampai di sini.',
+        ],
+      },
+      {
         heading: 'Apa yang tersimpan di perangkat Anda',
         paragraphs: [
           'Agar aplikasi dapat melanjutkan dari tempat Anda berhenti, ia menyimpan hal berikut di penyimpanan peramban atau aplikasi:',

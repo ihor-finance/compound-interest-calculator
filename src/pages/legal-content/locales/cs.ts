@@ -21,6 +21,14 @@ export const cs: LegalContent = {
         ],
       },
       {
+        heading: 'Žádné reklamy a z čeho se to platí',
+        lead: 'V této aplikaci nejsou reklamy a nebudou.',
+        paragraphs: [
+          'Je to vědomé rozhodnutí, ne něco, co ještě chybí. Kalkulačka, ve které přemýšlíte o vlastních penězích, by zároveň neměla soupeřit o vaši pozornost. Nejsou tu reklamní identifikátory ani sledovače a není o vás co prodávat, protože se nic nesbírá.',
+          'Aplikace je zdarma a zdarma zůstane. Pokud vám je užitečná, dole v aplikaci je odkaz na stránku, kde můžete tuto práci podpořit — jednorázově, nebo měsíčně, jak vám vyhovuje. Otevře se ve vašem prohlížeči, mimo aplikaci, a nic neodemyká: žádné skryté funkce, žádné zrušené limity. Děkuji, že jste dočetli až sem.',
+        ],
+      },
+      {
         heading: 'Co se ukládá ve tvém zařízení',
         paragraphs: [
           'Aby aplikace mohla navázat tam, kde jsi skončil, ukládá do úložiště prohlížeče nebo aplikace toto:',

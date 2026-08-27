@@ -21,6 +21,14 @@ export const uz: LegalContent = {
         ],
       },
       {
+        heading: 'Reklama yoʻq va bu qanday qoplanadi',
+        lead: 'Bu ilovada reklama yoʻq va boʻlmaydi ham.',
+        paragraphs: [
+          'Bu ongli tanlov, hali qilinmagan ish emas. Oʻz pulingiz haqida oʻylash uchun ishlatadigan kalkulyator ayni paytda diqqatingiz uchun kurashmasligi kerak. Bu yerda reklama identifikatorlari ham, kuzatuvchilar ham yoʻq, sotadigan maʼlumot ham yoʻq, chunki hech narsa toʻplanmaydi.',
+          'Ilova bepul va shunday qoladi. Foydali deb topsangiz, ilovaning pastida bu ishni qoʻllab-quvvatlash mumkin boʻlgan sahifaga havola bor — bir marta yoki har oy, oʻzingizga qulay tarzda. U ilovadan tashqarida, brauzeringizda ochiladi va hech narsani ochmaydi: yashirin imkoniyat ham, olib tashlanadigan cheklov ham yoʻq. Shu yergacha oʻqiganingiz uchun rahmat.',
+        ],
+      },
+      {
         heading: 'Qurilmangizda nima saqlanadi',
         paragraphs: [
           'Ilova siz to‘xtagan joydan davom etishi uchun brauzer yoki ilova xotirasida quyidagilarni saqlaydi:',

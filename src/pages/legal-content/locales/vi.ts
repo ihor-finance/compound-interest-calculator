@@ -21,6 +21,14 @@ export const vi: LegalContent = {
         ],
       },
       {
+        heading: 'Không quảng cáo, và ứng dụng này sống bằng gì',
+        lead: 'Ứng dụng này không có quảng cáo, và sẽ không có.',
+        paragraphs: [
+          'Đây là lựa chọn có chủ ý, không phải thứ còn dang dở. Một công cụ tính toán mà bạn dùng để nghĩ về tiền của chính mình thì không nên đồng thời giành giật sự chú ý của bạn. Ở đây không có mã định danh quảng cáo, không có trình theo dõi, và cũng không có gì về bạn để bán, bởi vì không có gì được thu thập cả.',
+          'Ứng dụng miễn phí và sẽ tiếp tục miễn phí. Nếu thấy hữu ích, ở cuối ứng dụng có một liên kết dẫn tới trang nơi bạn có thể ủng hộ công việc này — một lần, hoặc hằng tháng, tùy bạn. Liên kết mở trong trình duyệt của bạn, bên ngoài ứng dụng, và không mở khóa bất cứ điều gì: không có tính năng ẩn, không có giới hạn nào được gỡ. Cảm ơn bạn đã đọc đến đây.',
+        ],
+      },
+      {
         heading: 'Những gì lưu trên thiết bị của bạn',
         paragraphs: [
           'Để ứng dụng có thể tiếp tục từ chỗ bạn dừng lại, nó lưu những mục sau trong bộ nhớ trình duyệt hoặc ứng dụng:',

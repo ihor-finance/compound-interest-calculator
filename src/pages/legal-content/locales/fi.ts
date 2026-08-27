@@ -21,6 +21,14 @@ export const fi: LegalContent = {
         ],
       },
       {
+        heading: 'Ei mainoksia — ja millä tämä sitten pyörii',
+        lead: 'Tässä sovelluksessa ei ole mainoksia, eikä niitä tule.',
+        paragraphs: [
+          'Se on tietoinen valinta eikä jotain vielä tekemättä olevaa. Laskurin, jolla mietit omia rahojasi, ei pidä samalla kilpailla huomiostasi. Täällä ei ole mainostunnisteita eikä seuraimia, eikä sinusta ole mitään myytävää, koska mitään ei kerätä.',
+          'Sovellus on ilmainen ja pysyy ilmaisena. Jos siitä on sinulle hyötyä, sovelluksen alalaidassa on linkki sivulle, jolla voit tukea tätä työtä — kerran tai kuukausittain, miten itsellesi sopii. Se avautuu selaimessasi sovelluksen ulkopuolella eikä avaa mitään lisää: ei piilotettuja ominaisuuksia eikä poistettuja rajoituksia. Kiitos, että luit tänne asti.',
+        ],
+      },
+      {
         heading: 'Mitä laitteellesi tallennetaan',
         paragraphs: [
           'Jotta sovellus voi jatkaa siitä mihin jäit, se tallentaa selaimen tai sovelluksen tallennustilaan seuraavat:',

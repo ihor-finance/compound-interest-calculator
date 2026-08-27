@@ -21,6 +21,14 @@ export const it: LegalContent = {
         ],
       },
       {
+        heading: 'Nessuna pubblicità, e come si sostiene tutto questo',
+        lead: 'Questa applicazione non contiene pubblicità, e non ne avrà.',
+        paragraphs: [
+          'È una scelta deliberata, non qualcosa rimasto da fare. Una calcolatrice con cui ragioni sui tuoi soldi non dovrebbe allo stesso tempo contenderti l’attenzione. Qui non ci sono identificatori pubblicitari né tracciatori, e non c’è nulla di tuo da vendere, perché non viene raccolto niente.',
+          'L’applicazione è gratuita e resta gratuita. Se la trovi utile, in fondo all’app c’è un collegamento a una pagina dove puoi sostenere il lavoro — una volta sola o ogni mese, come preferisci. Si apre nel tuo browser, fuori dall’app, e non sblocca nulla: nessuna funzione nascosta, nessun limite rimosso. Grazie per aver letto fin qui.',
+        ],
+      },
+      {
         heading: 'Che cosa viene salvato sul tuo dispositivo',
         paragraphs: [
           'Perché l’app possa riprendere da dove avevi lasciato, salva quanto segue nella memoria del browser o dell’app:',

@@ -21,6 +21,14 @@ export const de: LegalContent = {
         ],
       },
       {
+        heading: 'Keine Werbung, und wie das finanziert wird',
+        lead: 'Diese App enthält keine Werbung, und sie wird auch keine bekommen.',
+        paragraphs: [
+          'Das ist eine bewusste Entscheidung und nicht etwas, das noch fehlt. Ein Rechner, mit dem Sie über Ihr eigenes Geld nachdenken, sollte nicht gleichzeitig um Ihre Aufmerksamkeit kämpfen. Es gibt hier keine Werbe-IDs und keine Tracker, und es gibt nichts über Sie zu verkaufen, weil überhaupt nichts erhoben wird.',
+          'Die App ist kostenlos und bleibt es. Wenn sie Ihnen nützt, finden Sie unten in der App einen Link zu einer Seite, auf der Sie die Arbeit unterstützen können — einmalig oder monatlich, ganz wie Sie mögen. Er öffnet sich in Ihrem Browser, außerhalb der App, und schaltet nichts frei: keine versteckten Funktionen, keine aufgehobenen Grenzen. Danke fürs Lesen bis hierher.',
+        ],
+      },
+      {
         heading: 'Was auf Ihrem Gerät gespeichert wird',
         paragraphs: [
           'Damit die App dort weitermachen kann, wo Sie aufgehört haben, speichert sie Folgendes im Browser- oder App-Speicher:',
