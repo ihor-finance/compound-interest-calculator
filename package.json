@@ -1,7 +1,7 @@
 {
   "name": "compound-interest-calculator",
   "private": true,
-  "version": "1.1.5",
+  "version": "1.1.6",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -15,6 +15,7 @@
     "assets:screenshots": "node scripts/capture-screenshots.mjs",
     "assets:icons": "node scripts/generate-android-icons.mjs",
     "test:listings": "node --experimental-strip-types --no-warnings scripts/test-listings.ts",
+    "assets:legal-pages": "node --experimental-strip-types --no-warnings scripts/generate-legal-pages.mjs",
     "assets:frames": "node --experimental-strip-types --no-warnings scripts/generate-store-frames.mjs",
     "test:legal": "node --experimental-strip-types --no-warnings scripts/test-legal.ts"
   },

@@ -119,6 +119,24 @@ for (const locale of locales) {
   checkDocument(locale, 'terms', content?.terms, TERMS_SECTIONS);
 }
 
+// ── The published copies ─────────────────────────────────────────────────────
+// public/privacy.html is the URL Google Play is given, and it is generated from
+// the same source as the app. Generated files go stale silently: edit a policy
+// here, forget to regenerate, and the app says one thing while the address on
+// the store listing says another. Rebuild them in memory and compare.
+const { buildPages } = await import('./generate-legal-pages.mjs');
+const expected: Record<string, string> = await buildPages();
+for (const [name, html] of Object.entries(expected)) {
+  const file = path.join(root, 'public', name);
+  if (!fs.existsSync(file)) {
+    problems.push(`public/${name} is missing — run: npm run assets:legal-pages`);
+    continue;
+  }
+  if (fs.readFileSync(file, 'utf8') !== html) {
+    problems.push(`public/${name} is out of date — run: npm run assets:legal-pages`);
+  }
+}
+
 console.log('─'.repeat(60));
 if (problems.length) {
   console.error(`✗ ${problems.length} problem(s) in the legal pages:\n`);
@@ -127,3 +145,4 @@ if (problems.length) {
   process.exit(1);
 }
 console.log(`✓ Privacy policy and terms complete in all ${checked} languages.`);
+console.log(`✓ public/privacy.html and public/terms.html match that text.`);
