@@ -48,6 +48,17 @@ Write-Host '==> Building web bundle' -ForegroundColor Cyan
 npm run build
 if ($LASTEXITCODE -ne 0) { throw 'Web build failed' }
 
+# public/ is copied into dist/ by Vite and from there into the Android assets by
+# Capacitor. The standalone legal pages belong on the website, not in the app:
+# the app renders those documents from src/pages/legal-content already, so
+# shipping them again as loose HTML adds about 260 KB of duplicate text to every
+# download. The website build is untouched — this only prunes the Android copy.
+Write-Host '==> Dropping the website-only legal pages from the app bundle' -ForegroundColor Cyan
+foreach ($page in 'privacy.html', 'terms.html') {
+    $stale = Join-Path $projectRoot "dist\$page"
+    if (Test-Path $stale) { Remove-Item $stale -Force }
+}
+
 Write-Host '==> Syncing into the Android project' -ForegroundColor Cyan
 npx cap sync android
 if ($LASTEXITCODE -ne 0) { throw 'Capacitor sync failed' }
