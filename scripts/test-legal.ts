@@ -126,13 +126,19 @@ for (const locale of locales) {
 // the store listing says another. Rebuild them in memory and compare.
 const { buildPages } = await import('./generate-legal-pages.mjs');
 const expected: Record<string, string> = await buildPages();
+// Line endings are normalised before comparing. The generator writes LF; git is
+// configured with core.autocrlf on this machine, so a checkout hands the same
+// file back with CRLF and a byte comparison calls it stale on every fresh
+// clone. Only the words are being checked here.
+const normalise = (s: string) => s.replace(/\r\n/g, '\n');
+
 for (const [name, html] of Object.entries(expected)) {
   const file = path.join(root, 'public', name);
   if (!fs.existsSync(file)) {
     problems.push(`public/${name} is missing — run: npm run assets:legal-pages`);
     continue;
   }
-  if (fs.readFileSync(file, 'utf8') !== html) {
+  if (normalise(fs.readFileSync(file, 'utf8')) !== normalise(html)) {
     problems.push(`public/${name} is out of date — run: npm run assets:legal-pages`);
   }
 }
