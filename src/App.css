@@ -2531,6 +2531,39 @@ img, svg, canvas, video, iframe {
   .dashboard { grid-template-columns: 320px minmax(0, 1fr); }
 }
 
+/* --- 2a. The pinned form on a short screen --------------------------------
+   With the rate range open the form is about 870px tall. A laptop gives around
+   950px of viewport, and 118px of that goes to the header and the page padding,
+   so it misses fitting by roughly 40px — and the pinned column answers by
+   growing its own scrollbar inside the page's, which reads as broken rather
+   than as a design.
+
+   The spacing is where the height is: 36px between groups (a 20px column gap
+   plus a 16px margin) across nine of them is 288px of the 870. Tightening it
+   only where the screen is short buys back about 86px, which is enough, and
+   leaves a desktop monitor exactly as it was. */
+@media (min-width: 768px) and (max-height: 1000px) {
+  .sidebar-left {
+    gap: 14px;
+    padding: 18px;
+  }
+  .sidebar-left .input-group {
+    margin-bottom: 6px;
+  }
+}
+
+/* Below this no amount of tightening fits, so stop pinning altogether and let
+   the form scroll with the page, the way it does on a phone. One scrollbar
+   doing an obvious thing beats two competing. The older max-height: 520px rule
+   further down only caught a phone held sideways. */
+@media (min-width: 768px) and (max-height: 900px) {
+  .sidebar-left {
+    position: static;
+    max-height: none;
+    overflow: visible;
+  }
+}
+
 /* Amount plus how often. The frequency select was a hardcoded 140px inline,
    which inside the 280px sidebar left the amount about 60px — a piggy bank
    icon and one visible digit. Side by side while there is room for both,
