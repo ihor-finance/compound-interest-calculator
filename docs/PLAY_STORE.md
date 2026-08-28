@@ -14,7 +14,7 @@
 |---|---|
 | Назва застосунку | `Compound Interest Calculator` (28 із 30 дозволених символів) |
 | Package name | `com.ihorfinance.compoundcalc` — **змінити після публікації неможливо** |
-| Версія | `1.09` (versionCode `10`) |
+| Версія | `1.0` (versionCode `1`) |
 | Категорія | Finance (Фінанси) |
 | Теги | calculator, investing, savings, finance |
 | Тип | Безкоштовний, без покупок усередині |
