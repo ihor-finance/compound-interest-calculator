@@ -24,7 +24,7 @@ const LegalPageFooter = () => {
           </div>
           <div className="footer-developer">
             <span className="dev-label">{t.footer.developer || 'Developed by'}</span>
-            <a href="https://redempsly.com" target="_blank" rel="noopener noreferrer" className="dev-link">Redempsly</a>
+            <span className="dev-name">Redempsly</span>
           </div>
         </div>
         
@@ -61,7 +61,7 @@ const CalcFooter = () => {
         <span className="calc-footer__brand">{t.app.title || 'Compound Interest'}</span>
         <span className="calc-footer__sep">·</span>
         <span className="calc-footer__dev">
-          {t.footer.developer || 'Developed by'} <a href="https://redempsly.com" target="_blank" rel="noopener noreferrer">Redempsly</a>
+          {t.footer.developer || 'Developed by'} <span className="dev-name">Redempsly</span>
         </span>
         <span className="calc-footer__sep">·</span>
         <span className="calc-footer__copy">© {year}</span>

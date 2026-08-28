@@ -1952,16 +1952,12 @@ body {
   color: var(--text-secondary);
 }
 
-.dev-link {
+/* The brand name, not a link. redempsly.com does not serve a site, and a dead
+   link in the footer is worse than no link — a store reviewer clicks it. Turn it
+   back into an <a> the day the domain answers. */
+.dev-name {
   color: var(--text-primary);
   font-weight: 500;
-  text-decoration: none;
-  transition: color 0.2s;
-}
-
-.dev-link:hover {
-  color: var(--primary);
-  text-decoration: underline;
 }
 
 .footer-divider {
@@ -2226,14 +2222,9 @@ body {
   color: var(--text-primary);
 }
 
-.calc-footer__dev a {
-  color: var(--primary);
-  text-decoration: none;
+.calc-footer__dev .dev-name {
+  color: var(--text-primary);
   font-weight: 500;
-}
-
-.calc-footer__dev a:hover {
-  text-decoration: underline;
 }
 
 .calc-footer__sep {
