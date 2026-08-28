@@ -131,17 +131,32 @@ function extractGlyph() {
     .png().toBuffer();
 }
 
+/** Rows either side of each sample averaged into it; see gradientProfile. */
+const SMOOTH_RADIUS = 12;
+
 /**
- * Rebuilds the tile's gradient without the glyph on it.
+ * The tile's gradient as a smooth float profile, one entry per source row.
  *
- * Measured on the source, the gradient is vertical: at a fixed row the left and
- * right edges differ by about 4/255. So each row is reduced to the median of its
- * own green pixels — real sampled colour, not an approximation — and the result
- * is a one-pixel-wide column that can be stretched to any size.
+ * The gradient is vertical: at a fixed row the left and right edges differ by
+ * about 4/255. So each row reduces to the median of its own tile-coloured
+ * pixels — real sampled colour, not an approximation.
+ *
+ * Those medians are then smoothed, and that step is the whole point. A median
+ * is an integer, and the source changes by well under 1/255 per row, so the raw
+ * medians come out as a staircase: long flat runs with a sudden step between
+ * them. Stretching that to the launcher's size widened every step until the
+ * finished icon had visible horizontal bands across it — measured at 22px of
+ * dead-flat colour on the 432px icon. Rows crossed by the glyph make it worse,
+ * because a median taken over 205 pixels lands somewhere different from one
+ * taken over 306.
+ *
+ * Smoothing averages both away while following the real curve, which matters:
+ * the gradient is close to a straight line but not one, and fitting a line
+ * instead would have moved the middle of the tile by up to 20/255.
  */
-function gradientColumn(bounds) {
-  const column = Buffer.alloc(bounds.height * 3);
-  let previous = [0, 0, 0];
+function gradientProfile(bounds) {
+  // null means the row sampled nothing — it lies inside the squircle's curve.
+  const sampled = [];
 
   for (let row = 0; row < bounds.height; row++) {
     const y = bounds.top + row;
@@ -152,18 +167,79 @@ function gradientColumn(bounds) {
       if (a < 240 || saturation(r, g, b) < GRADIENT_SAT) continue;
       reds.push(r); greens.push(g); blues.push(b);
     }
-    if (reds.length) {
-      const median = arr => arr.sort((p, q) => p - q)[arr.length >> 1];
-      previous = [median(reds), median(greens), median(blues)];
-    }
-    column[row * 3] = previous[0];
-    column[row * 3 + 1] = previous[1];
-    column[row * 3 + 2] = previous[2];
+    const median = arr => arr.sort((p, q) => p - q)[arr.length >> 1];
+    // A row has to cross a decent width of tile before its median means
+    // anything. The first and last few rows clip only the squircle's rim, which
+    // is anti-aliased and reads lighter than the tile behind it — trusting them
+    // put a 24/255 pale cast on the top of the gradient.
+    sampled.push(reds.length >= bounds.width * 0.5
+      ? [median(reds), median(greens), median(blues)]
+      : null);
   }
 
-  // Rows at the very top are inside the squircle's curve and may have sampled
-  // nothing; fill them from the first row that did.
-  return sharp(column, { raw: { width: 1, height: bounds.height, channels: 3 } }).png().toBuffer();
+  const known = sampled.findIndex(v => v !== null);
+  if (known === -1) throw new Error('No tile pixels found — has the source icon changed?');
+  // Corner rows borrow from the nearest row that saw the tile, in both
+  // directions. Carrying a running value forward instead would have left the
+  // first rows holding the initial black and dragged the whole top down.
+  for (let row = known - 1; row >= 0; row--) sampled[row] = sampled[known];
+  for (let row = known + 1; row < sampled.length; row++) {
+    if (sampled[row] === null) sampled[row] = sampled[row - 1];
+  }
+
+  /**
+   * Reflected oddly about the edge: value(-k) reads as 2·value(0) − value(k).
+   * A window that merely shrinks at the ends averages the top row only with the
+   * darker rows beneath it, which dragged the top of the tile 25/255 darker than
+   * the artwork. Odd reflection is exact for a straight ramp and close enough
+   * for this one, so the ends keep the colour they were sampled at.
+   */
+  const value = (k, c) => {
+    const last = sampled.length - 1;
+    if (k < 0) return 2 * sampled[0][c] - sampled[Math.min(-k, last)][c];
+    if (k > last) return 2 * sampled[last][c] - sampled[Math.max(2 * last - k, 0)][c];
+    return sampled[k][c];
+  };
+
+  // A guard, not a fix: the reflection extrapolates a slope, so where the
+  // gradient flattens near an end it can run past the colours the tile was
+  // actually sampled at. Everything Android shows sits well inside this.
+  const limits = [0, 1, 2].map(c => {
+    const all = sampled.map(v => v[c]);
+    return [Math.min(...all), Math.max(...all)];
+  });
+
+  return sampled.map((_, row) => [0, 1, 2].map(c => {
+    let total = 0;
+    for (let k = row - SMOOTH_RADIUS; k <= row + SMOOTH_RADIUS; k++) total += value(k, c);
+    const mean = total / (2 * SMOOTH_RADIUS + 1);
+    return Math.min(limits[c][1], Math.max(limits[c][0], mean));
+  }));
+}
+
+/**
+ * Paints the profile straight onto a `size`×`size` canvas.
+ *
+ * Rendered at the final size rather than stretched up from a one-pixel column:
+ * interpolating in floats and rounding once is what keeps each output row free
+ * to differ from its neighbour by a single level, which is as fine as 8-bit
+ * gets and far below what the eye picks up at icon size.
+ */
+function gradientCanvas(profile, size) {
+  const raw = Buffer.alloc(size * size * 3);
+  for (let y = 0; y < size; y++) {
+    const t = (y / (size - 1)) * (profile.length - 1);
+    const i = Math.min(profile.length - 2, Math.floor(t));
+    const f = t - i;
+    const rgb = [0, 1, 2].map(c =>
+      Math.round(profile[i][c] + (profile[i + 1][c] - profile[i][c]) * f));
+    for (let x = 0; x < size; x++) {
+      const o = (y * size + x) * 3;
+      raw[o] = rgb[0]; raw[o + 1] = rgb[1]; raw[o + 2] = rgb[2];
+    }
+  }
+  return sharp(raw, { raw: { width: size, height: size, channels: 3 } })
+    .png({ compressionLevel: 9 }).toBuffer();
 }
 
 /** Centres `glyph`, scaled to `targetWidth`, on a `size` canvas. */
@@ -188,7 +264,7 @@ async function write(dir, name, buffer) {
 
 const bounds = tileBounds();
 const glyph = await extractGlyph();
-const column = await gradientColumn(bounds);
+const profile = gradientProfile(bounds);
 
 // The untouched artwork, trimmed of its transparent margin.
 const tile = await sharp(source).extract(bounds).png().toBuffer();
@@ -212,9 +288,7 @@ for (const { dir, scale } of DENSITIES) {
       .png({ compressionLevel: 9 }).toBuffer());
 
   await write(`mipmap-${dir}`, 'ic_launcher_background.png',
-    await sharp(column)
-      .resize(adaptive, adaptive, { fit: 'fill', kernel: 'cubic' })
-      .png({ compressionLevel: 9 }).toBuffer());
+    await gradientCanvas(profile, adaptive));
 }
 
 // Play Store listing icon, kept in step with the launcher.
