@@ -52,3 +52,13 @@ docs/store-assets/screenshots/
 # Generated Play cards — 43 languages x 7 cards of 24-bit PNG is ~140MB, and
 # every one is reproducible with `npm run assets:frames -- --locales <list>`.
 docs/store-assets/play-frames/
+
+# Internal working notes. They stay on this machine — the repository is public,
+# and these are project reasoning (donations, taxes, ФОП, trademark, store prep),
+# not part of the calculator. docs/store-assets/listings stays tracked: the
+# test:listings validator reads it.
+docs/ADS.md
+docs/DONATIONS.md
+docs/HANDOFF.md
+docs/PLAY_STORE.md
+docs/TRADEMARK.md
