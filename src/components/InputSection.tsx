@@ -116,7 +116,13 @@ export const InputSection = ({ input, updateInput }: Props) => {
       </div>
 
       <div className="variance-toggle-group" style={{ marginBottom: '16px' }}>
-        <label style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontSize: '14px', fontWeight: 500, color: 'var(--text-secondary)' }}>
+        {/* Deliberately a div, not a label. A label with no htmlFor takes the
+            first labelable descendant as its control, and the only one here is
+            the tooltip's info button -- so a tap anywhere in the row, the
+            switch included, was forwarded to it and popped the tooltip open
+            over the field above. Nothing in this row is a form control the
+            label could correctly point at. */}
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontSize: '14px', fontWeight: 500, color: 'var(--text-secondary)' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
             {t.form.rateRange}
             <Tooltip content={t.tooltips.rateRange} />
@@ -124,7 +130,7 @@ export const InputSection = ({ input, updateInput }: Props) => {
           <div className={`switch-toggle ${input.varianceEnabled ? 'on' : 'off'}`} onClick={() => updateInput('varianceEnabled', !input.varianceEnabled as any)}>
             <div className="switch-knob"></div>
           </div>
-        </label>
+        </div>
       </div>
 
       {input.varianceEnabled && (
