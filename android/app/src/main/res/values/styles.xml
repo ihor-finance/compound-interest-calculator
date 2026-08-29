@@ -11,7 +11,16 @@
     <style name="AppTheme.NoActionBar" parent="Theme.AppCompat.DayNight.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <!--
+            android:background stays @null: it is the default background for
+            views, and leaving it unset avoids drawing under an opaque WebView.
+            windowBackground is a different thing, and it was the one missing.
+            When the keyboard opens, Android shrinks the WebView and whatever is
+            behind it shows through in the gap — with no window background that
+            came out black on a light screen. Reported on a OnePlus 7 Pro.
+        -->
         <item name="android:background">@null</item>
+        <item name="android:windowBackground">@color/windowBackground</item>
     </style>
 
     <style name="AppTheme.NoActionBarLaunch" parent="Theme.SplashScreen">

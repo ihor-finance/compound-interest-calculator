@@ -5,4 +5,7 @@
     <color name="colorAccent">#86C95E</color>
     <!-- Must stay equal to #app-splash's background in index.html. -->
     <color name="splashBackground">#F4F6F8</color>
+    <!-- What shows in the strip the keyboard leaves when it resizes the
+         WebView. Matches --bg in src/index.css; values-night has the dark one. -->
+    <color name="windowBackground">#F4F6F8</color>
 </resources>
