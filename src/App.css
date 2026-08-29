@@ -24,6 +24,24 @@
   z-index: 100;
 }
 
+/* The height of the sticky header above, status-bar inset included.
+   Every .top-header height rule further down redefines it; keep them in step. */
+:root {
+  --header-h: calc(70px + env(safe-area-inset-top, 0px));
+}
+
+/* When the on-screen keyboard opens the visible viewport shrinks, and Chrome
+   scrolls the focused field back into view -- to the very top of the scrollport,
+   which is exactly where .top-header sits. The field and its cursor ended up
+   hidden behind the header (reported on a Galaxy A36). scroll-margin-top keeps
+   that much room free, so the field lands just below the header instead. */
+input,
+select,
+textarea {
+  scroll-margin-top: calc(var(--header-h) + 12px);
+  scroll-margin-bottom: 16px;
+}
+
 .logo-section {
   display: flex;
   align-items: center;
@@ -2887,6 +2905,10 @@ img, svg, canvas, video, iframe {
 /* Structure stays as the width rules decided; only vertical space is rationed.
    A 70px sticky header eats a fifth of a 360px-tall screen, so it stops sticking. */
 @media (max-height: 520px) and (min-width: 600px) {
+  /* The header is static here, so it scrolls away and covers nothing. */
+  :root {
+    --header-h: 0px;
+  }
   .top-header {
     position: static;
     height: calc(52px + env(safe-area-inset-top, 0px));
@@ -2997,6 +3019,9 @@ img, svg, canvas, video, iframe {
 /* "Compound Interest" wrapped to two lines on a 300px viewport and, with the
    subtitle underneath, the header ate ~120px before any content appeared. */
 @media (max-width: 479px) {
+  :root {
+    --header-h: calc(56px + env(safe-area-inset-top, 0px));
+  }
   .top-header {
     height: auto;
     min-height: calc(56px + env(safe-area-inset-top, 0px));
