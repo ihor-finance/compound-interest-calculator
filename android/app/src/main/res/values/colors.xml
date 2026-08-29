@@ -6,6 +6,8 @@
     <!-- Must stay equal to #app-splash's background in index.html. -->
     <color name="splashBackground">#F4F6F8</color>
     <!-- What shows in the strip the keyboard leaves when it resizes the
-         WebView. Matches --bg in src/index.css; values-night has the dark one. -->
+         WebView. Matches the bg token in src/index.css; values-night carries
+         the dark one. Keep double hyphens out of XML comments: they are not
+         legal, and the resource merger fails the build on them. -->
     <color name="windowBackground">#F4F6F8</color>
 </resources>

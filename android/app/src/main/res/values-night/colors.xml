@@ -1,9 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <!-- Dark counterpart of windowBackground, matching --bg in the dark block of
-         src/index.css. The theme is DayNight, so this applies when the *system*
-         is dark. The app's own light/dark choice is made in the web layer and
-         Android cannot see it — a mismatch is only ever visible in the strip the
-         keyboard leaves, which is why following the system is close enough. -->
+    <!-- Dark counterpart of windowBackground, matching the bg token in the dark
+         block of src/index.css. The theme is DayNight, so this applies when the
+         *system* is dark. The app's own light/dark choice is made in the web
+         layer and Android cannot see it; a mismatch is only ever visible in the
+         strip the keyboard leaves, which is why following the system is close
+         enough. -->
     <color name="windowBackground">#0E1419</color>
 </resources>
