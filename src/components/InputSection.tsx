@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import type { CalculatorInput } from '../types';
 import { useTranslation } from '../i18n/useTranslation';
 import { Tooltip } from './Tooltip';
+import { formatInputValue } from '../utils/formatting';
 import { DollarSign, Calendar, TrendingUp, PiggyBank, Percent, Landmark, Info } from 'lucide-react';
 import '../App.css';
 
@@ -11,8 +12,9 @@ interface Props {
 }
 
 export const InputSection = ({ input, updateInput }: Props) => {
-  const { t } = useTranslation();
+  const { t, locale: lang } = useTranslation();
   const [errors, setErrors] = useState<Partial<Record<keyof CalculatorInput, boolean>>>({});
+  const [editing, setEditing] = useState<keyof CalculatorInput | null>(null);
 
   const validateAndParse = (key: keyof CalculatorInput, value: string, min?: number, max?: number) => {
     let num = parseFloat(value);
@@ -42,7 +44,18 @@ export const InputSection = ({ input, updateInput }: Props) => {
     updateInput(key, val);
   };
 
+  /* 10000 is hard to read at a glance, 10 000 is not. The grouped form is only
+     shown while the field is idle: the one being typed into keeps the raw text,
+     so no separator ever reaches handleInputChange and the caret cannot be
+     shoved around mid-word. */
+  const display = (key: keyof CalculatorInput) =>
+    editing === key ? String(input[key]) : formatInputValue(input[key] as number | string, lang);
+
+  const handleFocus = (key: keyof CalculatorInput) => () => setEditing(key);
+
   const handleBlur = (key: keyof CalculatorInput, min?: number, max?: number) => (e: React.FocusEvent<HTMLInputElement>) => {
+    setEditing(null);
+    // Reads the raw text, not the grouped one: the field still has focus here.
     validateAndParse(key, e.target.value, min, max);
   };
 
@@ -58,8 +71,9 @@ export const InputSection = ({ input, updateInput }: Props) => {
         <div className={`input-field-wrapper ${errors.initialDeposit ? 'error' : ''}`}>
           <div className="input-icon"><DollarSign size={16} /></div>
           <input dir="ltr" type="text" inputMode="decimal"
-            value={input.initialDeposit} 
-            onChange={handleInputChange('initialDeposit')} 
+            value={display('initialDeposit')}
+            onChange={handleInputChange('initialDeposit')}
+            onFocus={handleFocus('initialDeposit')}
             onBlur={handleBlur('initialDeposit', 0)}
           />
         </div>
@@ -74,8 +88,9 @@ export const InputSection = ({ input, updateInput }: Props) => {
         <div className={`input-field-wrapper ${errors.years ? 'error' : ''}`}>
           <div className="input-icon"><Calendar size={16} /></div>
           <input dir="ltr" type="text" inputMode="numeric"
-            value={input.years} 
-            onChange={handleInputChange('years')} 
+            value={display('years')}
+            onChange={handleInputChange('years')}
+            onFocus={handleFocus('years')}
             onBlur={handleBlur('years', 1, 100)}
           />
           <span className="suffix">{t.form.years}</span>
@@ -91,8 +106,9 @@ export const InputSection = ({ input, updateInput }: Props) => {
         <div className={`input-field-wrapper ${errors.annualRate ? 'error' : ''}`}>
           <div className="input-icon"><TrendingUp size={16} /></div>
           <input dir="ltr" type="text" inputMode="decimal"
-            value={input.annualRate} 
-            onChange={handleInputChange('annualRate')} 
+            value={display('annualRate')}
+            onChange={handleInputChange('annualRate')}
+            onFocus={handleFocus('annualRate')}
             onBlur={handleBlur('annualRate', -100, 1000)}
           />
           <span className="suffix">%</span>
@@ -120,8 +136,9 @@ export const InputSection = ({ input, updateInput }: Props) => {
             </label>
             <div className={`input-field-wrapper ${errors.minReturnPct || input.minReturnPct > input.maxReturnPct ? 'error' : ''}`} style={{ height: '36px' }}>
               <input dir="ltr" type="text" inputMode="decimal"
-                value={input.minReturnPct} 
-                onChange={handleInputChange('minReturnPct')} 
+                value={display('minReturnPct')}
+                onChange={handleInputChange('minReturnPct')}
+                onFocus={handleFocus('minReturnPct')}
                 onBlur={handleBlur('minReturnPct', -100, 1000)}
               />
               <span className="suffix">%</span>
@@ -135,8 +152,9 @@ export const InputSection = ({ input, updateInput }: Props) => {
             </label>
             <div className={`input-field-wrapper ${errors.maxReturnPct || input.minReturnPct > input.maxReturnPct ? 'error' : ''}`} style={{ height: '36px' }}>
               <input dir="ltr" type="text" inputMode="decimal"
-                value={input.maxReturnPct} 
-                onChange={handleInputChange('maxReturnPct')} 
+                value={display('maxReturnPct')}
+                onChange={handleInputChange('maxReturnPct')}
+                onFocus={handleFocus('maxReturnPct')}
                 onBlur={handleBlur('maxReturnPct', -100, 1000)}
               />
               <span className="suffix">%</span>
@@ -186,8 +204,9 @@ export const InputSection = ({ input, updateInput }: Props) => {
           <div className={`input-field-wrapper contributions-row__amount ${errors.monthlyContribution ? 'error' : ''} ${input.contributionFrequency === 'none' ? 'disabled' : ''}`} style={{ opacity: input.contributionFrequency === 'none' ? 0.5 : 1, pointerEvents: input.contributionFrequency === 'none' ? 'none' : 'auto' }}>
             <div className="input-icon"><PiggyBank size={16} /></div>
             <input dir="ltr" type="text" inputMode="decimal"
-              value={input.monthlyContribution} 
-              onChange={handleInputChange('monthlyContribution')} 
+              value={display('monthlyContribution')}
+              onChange={handleInputChange('monthlyContribution')}
+              onFocus={handleFocus('monthlyContribution')}
               onBlur={handleBlur('monthlyContribution', 0)}
               disabled={input.contributionFrequency === 'none'}
             />
@@ -219,8 +238,9 @@ export const InputSection = ({ input, updateInput }: Props) => {
         <div className={`input-field-wrapper ${errors.inflationRate ? 'error' : ''}`}>
           <div className="input-icon"><Percent size={16} /></div>
           <input dir="ltr" type="text" inputMode="decimal"
-            value={input.inflationRate} 
-            onChange={handleInputChange('inflationRate')} 
+            value={display('inflationRate')}
+            onChange={handleInputChange('inflationRate')}
+            onFocus={handleFocus('inflationRate')}
             onBlur={handleBlur('inflationRate', 0, 100)}
           />
           <span className="suffix">%</span>
@@ -235,8 +255,9 @@ export const InputSection = ({ input, updateInput }: Props) => {
         <div className={`input-field-wrapper ${errors.taxRate ? 'error' : ''}`}>
           <div className="input-icon"><Landmark size={16} /></div>
           <input dir="ltr" type="text" inputMode="decimal"
-            value={input.taxRate} 
-            onChange={handleInputChange('taxRate')} 
+            value={display('taxRate')}
+            onChange={handleInputChange('taxRate')}
+            onFocus={handleFocus('taxRate')}
             onBlur={handleBlur('taxRate', 0, 100)}
           />
           <span className="suffix">%</span>
