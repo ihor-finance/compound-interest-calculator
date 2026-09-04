@@ -1,4 +1,4 @@
-import { useState, useRef, useLayoutEffect } from 'react';
+import { useState, useRef, useEffect, useLayoutEffect } from 'react';
 import { Info } from 'lucide-react';
 import '../App.css';
 
@@ -33,6 +33,26 @@ export const Tooltip = ({ content, position = 'top', children }: TooltipProps) =
   }, []);
 
   /**
+   * Closes the popup when the next tap lands anywhere else.
+   *
+   * A touch screen fires no mouseleave, so before this the only way to close a
+   * tapped-open tooltip was to tap the same icon again -- and until you did, it
+   * sat over the form covering the very field it describes. Listening on
+   * pointerdown rather than click means it is gone before the tap it reacts to
+   * has focused an input and raised the keyboard.
+   */
+  useEffect(() => {
+    if (!isVisible) return;
+    const dismiss = (event: Event) => {
+      if (containerRef.current?.contains(event.target as Node)) return;
+      if (timer.current) clearTimeout(timer.current);
+      setIsVisible(false);
+    };
+    document.addEventListener('pointerdown', dismiss, true);
+    return () => document.removeEventListener('pointerdown', dismiss, true);
+  }, [isVisible]);
+
+  /**
    * Positions the popup once it has been measured.
    *
    * Two independent corrections, both needed because the popup is anchored to a
@@ -53,7 +73,7 @@ export const Tooltip = ({ content, position = 'top', children }: TooltipProps) =
 
     popup.style.transform = '';
     const arrow = popup.querySelector('.tooltip-arrow') as HTMLElement | null;
-    if (arrow) arrow.style.transform = '';
+    if (arrow) arrow.style.removeProperty('--arrow-shift');
 
     const anchorRect = anchor.getBoundingClientRect();
     const height = popup.offsetHeight;
@@ -70,7 +90,9 @@ export const Tooltip = ({ content, position = 'top', children }: TooltipProps) =
 
     if (shift !== 0) {
       popup.style.transform = `translateX(calc(-50% + ${shift}px))`;
-      if (arrow) arrow.style.transform = `translateX(${-shift}px)`;
+      // Not style.transform: the arrow is a rotated square, and assigning to
+      // transform here would drop the rotation that gives it its shape.
+      if (arrow) arrow.style.setProperty('--arrow-shift', `${-shift}px`);
     }
   }, [isVisible, position, content]);
 

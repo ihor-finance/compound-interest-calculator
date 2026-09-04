@@ -3063,6 +3063,22 @@ img, svg, canvas, video, iframe {
    same-specificity override written here. Both problems go away by keeping the
    styles in one place. */
 
+/* The popup is an elevated surface, and --surface is the colour of the card it
+   floats over. In the light theme the shadow still separates the two; in the
+   dark theme it does not, and the popup read as a borderless smudge with no
+   visible arrow. Dark elevation has to go *lighter*, not darker. */
+:root {
+  --tooltip-bg: var(--surface);
+  --tooltip-border: var(--border);
+  --tooltip-shadow: var(--shadow-elevated);
+}
+
+[data-theme="dark"] {
+  --tooltip-bg: #212B36;
+  --tooltip-border: #3C4855;
+  --tooltip-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
+}
+
 .tooltip-container {
   position: relative;
   display: inline-flex;
@@ -3077,12 +3093,14 @@ img, svg, canvas, video, iframe {
   z-index: 1000;
   width: max-content;
   max-width: min(380px, calc(100vw - 32px));
-  padding: 12px 14px;
-  border-radius: 12px;
-  border: 1px solid var(--border);
-  background-color: var(--surface);
+  /* Kept wide on purpose. A narrower box is a taller box, and height is what
+     covers the fields underneath. */
+  padding: 8px 11px;
+  border-radius: 10px;
+  border: 1px solid var(--tooltip-border);
+  background-color: var(--tooltip-bg);
   color: var(--text-primary);
-  box-shadow: var(--shadow-elevated);
+  box-shadow: var(--tooltip-shadow);
   font-size: 12px;
   line-height: 16px;
   font-weight: 400;
@@ -3095,22 +3113,39 @@ img, svg, canvas, video, iframe {
 .tooltip-popup--above { bottom: calc(100% + 8px); }
 .tooltip-popup--below { top: calc(100% + 8px); }
 
+/* A rotated square, not a CSS border-triangle. A triangle is a solid block of
+   one colour and cannot carry an outline, so in the dark theme it vanished into
+   the card behind it. This straddles the popup's edge: the half inside is
+   hidden by the matching fill, the half outside is the arrow, and the two edges
+   that show carry the same border as the popup.
+
+   --arrow-shift is set by Tooltip.tsx when a popup near a screen edge has been
+   nudged sideways, so the arrow can stay pointing at its icon. */
 .tooltip-arrow {
   position: absolute;
   left: 50%;
+  width: 10px;
+  height: 10px;
   margin-left: -5px;
-  border-width: 5px;
-  border-style: solid;
+  background-color: var(--tooltip-bg);
+  border: 1px solid var(--tooltip-border);
+  transform: translateX(var(--arrow-shift, 0px)) rotate(45deg);
 }
 
+/* Rotating 45° turns the right and bottom edges downwards, and the top and
+   left edges upwards; each arrow keeps the pair that faces its icon. */
 .tooltip-arrow--above {
   top: 100%;
-  border-color: var(--surface) transparent transparent transparent;
+  margin-top: -5px;
+  border-top-color: transparent;
+  border-left-color: transparent;
 }
 
 .tooltip-arrow--below {
   bottom: 100%;
-  border-color: transparent transparent var(--surface) transparent;
+  margin-bottom: -5px;
+  border-bottom-color: transparent;
+  border-right-color: transparent;
 }
 
 /* --- 15. Projection table grows with its content -------------------------- */
