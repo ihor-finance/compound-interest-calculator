@@ -36,6 +36,7 @@ const outFile = path.join(root, 'docs/store-assets/listings.csv');
 const PLAY_LOCALE = {
   en: 'en-US',
   zh: 'zh-CN',
+  'zh-TW': 'zh-TW',
   hi: 'hi-IN',
   es: 'es-ES',
   ar: 'ar',

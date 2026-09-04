@@ -50,7 +50,7 @@ NAPRAVLJENO DA TI NE SMETA
 • Radi potpuno oflajn. Nema servera; svaki proračun se izvršava na tvom uređaju.
 • Bez naloga, bez registracije, bez imejla.
 • Ne prikuplja podatke. Ono što uneseš ostaje na telefonu i nikada ga ne napušta.
-• 43 jezika, sa formatiranjem brojeva po pravilima svakog.
+• 44 jezika, sa formatiranjem brojeva po pravilima svakog.
 • Svetla i tamna tema.
 • Napravljeno za telefone i tablete, uspravno i položeno.
 
@@ -67,6 +67,6 @@ Tvoj plan,||tvoji *brojevi*|Ulog, uplate, prinos, pripis kamate, inflacija, pore
 Četiri linije,||*jedna* poštena slika|Nominalno, posle poreza, posle inflacije, i tvoje uplate.
 Koliko je *tvoje*,||a koliko je rast|Konačan iznos, razložen po poreklu.
 Svaka godina,||sve do *meseca*|Puna tabela projekcije, preko celog ekrana.
-*43 jezika*,||stvarno prevedena|Izvorna imena i format brojeva svakog od njih.
+*44 jezika*,||stvarno prevedena|Izvorna imena i format brojeva svakog od njih.
 Proveri svaku cifru||*ručno*|Svaka formula, redom, sa rešenim primerom.
 ```

@@ -50,7 +50,7 @@ PADARYTA TAIP, KAD NETRUKDYTŲ
 • Veikia visiškai neprisijungus. Serverio nėra; kiekvienas skaičiavimas vyksta jūsų įrenginyje.
 • Be paskyros, be registracijos, be el. pašto.
 • Duomenys nerenkami. Tai, ką įvedate, lieka telefone ir niekur neišsiunčiama.
-• 43 kalbos, su kiekvienos jų skaičių formatu.
+• 44 kalbos, su kiekvienos jų skaičių formatu.
 • Šviesi ir tamsi tema.
 • Telefonams ir planšetėms, vertikaliai ir horizontaliai.
 
@@ -67,6 +67,6 @@ Jūsų planas,||jūsų *skaičiai*|Įnašas, papildymai, grąža, kapitalizavima
 Keturios linijos,||*vienas* sąžiningas vaizdas|Nominalus, po mokesčių, po infliacijos ir jūsų įnašai.
 Kiek *jūsų*,||o kiek — augimas|Galutinė suma, išskaidyta pagal kilmę.
 Kiekvieni metai,||iki *mėnesio*|Visa prognozės lentelė, per visą ekraną.
-*43 kalbos*,||tikrai išverstos|Savi pavadinimai ir kiekvienos skaičių formatas.
+*44 kalbos*,||tikrai išverstos|Savi pavadinimai ir kiekvienos skaičių formatas.
 Patikrinkite kiekvieną||skaičių *ranka*|Kiekviena formulė iš eilės, su išspręstu pavyzdžiu.
 ```

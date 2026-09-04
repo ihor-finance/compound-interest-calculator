@@ -9,7 +9,7 @@ const TRANSLATED = new Set([
   'ar', 'az', 'be', 'bg', 'bn', 'cs', 'da', 'de', 'el', 'es', 'et', 'fi', 'fr',
   'he', 'hi', 'hr', 'hu', 'id', 'it', 'ja', 'ka', 'kk', 'ko', 'lt', 'lv', 'nl',
   'no', 'pl', 'pt', 'ro', 'sk', 'sl', 'sq', 'sr', 'sv', 'th', 'tl', 'tr', 'uk',
-  'uz', 'vi', 'zh',
+  'uz', 'vi', 'zh', 'zh-TW',
 ]);
 
 const loaded: Record<string, MethodologyContent> = { en };

@@ -50,7 +50,7 @@ NAREJENO, DA VAM NE BO NAPOTI
 • Deluje povsem brez povezave. Strežnika ni; vsak izračun teče na vaši napravi.
 • Brez računa, brez registracije, brez e-pošte.
 • Podatki se ne zbirajo. Kar vnesete, ostane v telefonu in ga nikoli ne zapusti.
-• 43 jezikov, z zapisom številk po pravilih vsakega.
+• 44 jezikov, z zapisom številk po pravilih vsakega.
 • Svetla in temna tema.
 • Za telefone in tablice, pokončno in ležeče.
 
@@ -67,6 +67,6 @@ Vaš načrt,||vaše *številke*|Vplačilo, dodatki, donos, obrestovanje, inflaci
 Štiri črte,||*ena* poštena slika|Nominalno, po davku, po inflaciji in vaša vplačila.
 Koliko je *vašega*,||koliko je rast|Končni znesek, razdeljen po izvoru.
 Vsako leto,||vse do *meseca*|Celotna napovedna tabela, čez cel zaslon.
-*43 jezikov*,||zares prevedenih|Lastna imena in zapis številk vsakega od njih.
+*44 jezikov*,||zares prevedenih|Lastna imena in zapis številk vsakega od njih.
 Preverite vsako številko||*na roko*|Vsaka formula po vrsti, z rešenim primerom.
 ```

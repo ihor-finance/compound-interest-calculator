@@ -50,7 +50,7 @@ VEIDOTS TĀ, LAI NETRAUCĒTU
 • Darbojas pilnībā bezsaistē. Servera nav; katrs aprēķins notiek jūsu ierīcē.
 • Bez konta, bez reģistrācijas, bez e-pasta.
 • Dati netiek vākti. Tas, ko ievadāt, paliek tālrunī un nekad to nepamet.
-• 43 valodas, ar katras skaitļu formatējumu.
+• 44 valodas, ar katras skaitļu formatējumu.
 • Gaišā un tumšā tēma.
 • Tālruņiem un planšetēm, vertikāli un horizontāli.
 
@@ -67,6 +67,6 @@ Jūsu plāns,||jūsu *skaitļi*|Iemaksa, papildinājumi, ienesīgums, kapitaliz�
 Četras līnijas,||*viena* godīga aina|Nomināli, pēc nodokļa, pēc inflācijas un jūsu iemaksas.
 Cik ir *jūsu*,||un cik ir pieaugums|Galīgā summa, sadalīta pēc izcelsmes.
 Katrs gads,||līdz pat *mēnesim*|Pilna prognozes tabula, pa visu ekrānu.
-*43 valodas*,||īsti iztulkotas|Pašu nosaukumi un katras skaitļu formatējums.
+*44 valodas*,||īsti iztulkotas|Pašu nosaukumi un katras skaitļu formatējums.
 Pārbaudiet katru||skaitli *ar roku*|Katra formula pēc kārtas, ar izrēķinātu piemēru.
 ```

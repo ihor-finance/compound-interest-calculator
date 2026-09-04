@@ -50,7 +50,7 @@ FĂCUTĂ SĂ NU TE ÎNCURCE
 • Funcționează complet offline. Nu există server; fiecare calcul rulează pe dispozitivul tău.
 • Fără cont, fără înregistrare, fără e-mail.
 • Nu se colectează date. Ce introduci rămâne pe telefon și nu pleacă nicăieri.
-• 43 de limbi, cu formatarea numerelor proprie fiecăreia.
+• 44 de limbi, cu formatarea numerelor proprie fiecăreia.
 • Teme deschisă și închisă.
 • Gândită pentru telefoane și tablete, pe verticală și pe orizontală.
 
@@ -67,6 +67,6 @@ Planul tău,||*cifrele* tale|Depozit, contribuții, randament, capitalizare, inf
 Patru linii,||*o* imagine onestă|Nominal, după impozit, după inflație și ce ai contribuit.
 Cât e *al tău*,||cât e creștere|Suma finală, împărțită după origine.
 Fiecare an,||până la *lună*|Tabelul complet de proiecție, pe tot ecranul.
-*43 de limbi*,||traduse ca lumea|Nume native și formatul numeric al fiecăreia.
+*44 de limbi*,||traduse ca lumea|Nume native și formatul numeric al fiecăreia.
 Verifică fiecare cifră||*de mână*|Fiecare formulă, în ordine, cu exemplu rezolvat.
 ```

@@ -33,7 +33,7 @@ const outDir = path.join(root, 'public');
 function supportedLocales() {
   const source = fs.readFileSync(path.join(root, 'src/i18n/index.ts'), 'utf8');
   const block = source.slice(source.indexOf('SUPPORTED_LOCALES'), source.indexOf('] as const;'));
-  const pattern = /code: '([a-z-]+)', name: '([^']+)', flag: '[^']*', dir: '(ltr|rtl)'/g;
+  const pattern = /code: '([a-zA-Z-]+)', name: '([^']+)', flag: '[^']*', dir: '(ltr|rtl)'/g;
   return [...block.matchAll(pattern)].map(([, code, name, dir]) => ({ code, name, dir }));
 }
 

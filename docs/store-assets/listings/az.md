@@ -50,7 +50,7 @@ YOLUNUZA ÇIXMAMAQ ÜÇÜN
 • Tam oflayn işləyir. Server yoxdur; bütün hesablamalar cihazınızda aparılır.
 • Hesab yoxdur, qeydiyyat yoxdur, e-poçt yoxdur.
 • Heç bir məlumat toplanmır. Daxil etdikləriniz telefonda qalır və oradan çıxmır.
-• 43 dil, hər birinin öz rəqəm formatı ilə.
+• 44 dil, hər birinin öz rəqəm formatı ilə.
 • İşıqlı və qaranlıq mövzular.
 • Telefon və planşetlər üçün, şaquli və üfüqi vəziyyətdə.
 
@@ -67,6 +67,6 @@ Sizin planınız,||sizin *rəqəmləriniz*|Qoyuluş, ödəniş, gəlir, kapitall
 Dörd xətt,||*bir* dürüst mənzərə|Nominal, vergidən sonra, inflyasiyadan sonra və qoyuluşunuz.
 Nə qədəri *sizin*,||nə qədəri artım|Son məbləğ, mənbəyinə görə bölünmüş.
 Hər il,||*aya* qədər|Tam proqnoz cədvəli, tam ekranda açılır.
-*43 dil*,||əsl tərcümə ilə|Öz adları və hər dilin rəqəm formatı.
+*44 dil*,||əsl tərcümə ilə|Öz adları və hər dilin rəqəm formatı.
 Hər rəqəmi||*əllə* yoxlayın|Hər düstur, sıra ilə, həll edilmiş nümunə ilə.
 ```

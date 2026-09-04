@@ -50,7 +50,7 @@ TEHTUD NII, ET EI SEGAKS
 • Töötab täiesti võrguühenduseta. Serverit ei ole; iga arvutus käib teie seadmes.
 • Ei mingit kontot, registreerimist ega e-posti.
 • Andmeid ei koguta. See, mille sisestate, jääb telefoni ega lahku sealt kunagi.
-• 43 keelt, igaühe oma arvuvorminguga.
+• 44 keelt, igaühe oma arvuvorminguga.
 • Hele ja tume kujundus.
 • Telefonidele ja tahvelarvutitele, püst- ja rõhtpaigutuses.
 
@@ -67,6 +67,6 @@ Teie plaan,||teie *arvud*|Sissemakse, lisandused, tootlus, liitmine, inflatsioon
 Neli joont,||*üks* aus pilt|Nominaalne, pärast maksu, pärast inflatsiooni ja teie sissemaksed.
 Kui palju on *teie oma*,||kui palju on kasv|Lõppsumma, jaotatud päritolu järgi.
 Iga aasta,||kuni *kuuni* välja|Täielik prognoositabel, täisekraanil.
-*43 keelt*,||päriselt tõlgitud|Omakeelsed nimed ja iga keele arvuvorming.
+*44 keelt*,||päriselt tõlgitud|Omakeelsed nimed ja iga keele arvuvorming.
 Kontrollige iga arv||*käsitsi* üle|Iga valem järjekorras, lahendatud näitega.
 ```

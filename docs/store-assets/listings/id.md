@@ -50,7 +50,7 @@ DIBUAT AGAR TIDAK MENGGANGGU
 • Berjalan sepenuhnya luring. Tidak ada server; semua perhitungan berjalan di perangkat Anda.
 • Tanpa akun, tanpa pendaftaran, tanpa email.
 • Tidak ada data yang dikumpulkan. Yang Anda masukkan tersimpan di ponsel dan tidak pernah keluar.
-• 43 bahasa, dengan format angka yang mengikuti masing-masing bahasa.
+• 44 bahasa, dengan format angka yang mengikuti masing-masing bahasa.
 • Tema terang dan gelap.
 • Dirancang untuk ponsel dan tablet, dalam mode potret maupun lanskap.
 
@@ -67,6 +67,6 @@ Rencana Anda,||angka *Anda*|Setoran, tambahan, imbal hasil, bunga majemuk, infla
 Empat garis,||*satu* gambaran jujur|Nominal, setelah pajak, setelah inflasi, dan setoran Anda.
 Berapa *milik Anda*,||berapa pertumbuhan|Jumlah akhir, dipecah menurut asalnya.
 Setiap tahun,||sampai per *bulan*|Tabel proyeksi lengkap, terbuka satu layar penuh.
-*43 bahasa*,||diterjemahkan sungguhan|Nama asli dan format angka sesuai masing-masing.
+*44 bahasa*,||diterjemahkan sungguhan|Nama asli dan format angka sesuai masing-masing.
 Periksa setiap angka||*sendiri*|Setiap rumus, berurutan, dengan contoh lengkap.
 ```

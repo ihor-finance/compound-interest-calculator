@@ -50,7 +50,7 @@ NDËRTUAR PËR TË MOS TË PENGUAR
 • Punon plotësisht pa internet. Nuk ka server; çdo llogaritje kryhet në pajisjen tënde.
 • Pa llogari, pa regjistrim, pa email.
 • Nuk mblidhen të dhëna. Ajo që fut mbetet në telefon dhe nuk del kurrë.
-• 43 gjuhë, me formatimin e numrave të secilës.
+• 44 gjuhë, me formatimin e numrave të secilës.
 • Temë e çelët dhe e errët.
 • Për telefona dhe tableta, vertikalisht dhe horizontalisht.
 
@@ -67,6 +67,6 @@ Plani yt,||*shifrat* e tua|Depozitë, kontribute, kthim, kapitalizim, inflacion,
 Katër linja,||*një* pamje e ndershme|Nominale, pas tatimit, pas inflacionit, dhe kontributet.
 Sa është *e jotja*,||sa është rritje|Shuma përfundimtare, ndarë sipas origjinës.
 Çdo vit,||deri te *muaji*|Tabela e plotë e parashikimit, në ekran të plotë.
-*43 gjuhë*,||përkthyer si duhet|Emrat në origjinal dhe formati i numrave i secilës.
+*44 gjuhë*,||përkthyer si duhet|Emrat në origjinal dhe formati i numrave i secilës.
 Kontrollo çdo shifër||*me dorë*|Çdo formulë, me radhë, me shembull të zgjidhur.
 ```

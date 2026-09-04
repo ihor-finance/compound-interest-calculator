@@ -50,7 +50,7 @@ UDĚLÁNO TAK, ABY NEPŘEKÁŽELO
 • Funguje plně offline. Není žádný server; každý výpočet běží na tvém zařízení.
 • Bez účtu, bez registrace, bez e-mailu.
 • Nesbírá se žádná data. Co zadáš, zůstane v telefonu a nikdy ho neopustí.
-• 43 jazyků, s formátem čísel podle každého z nich.
+• 44 jazyků, s formátem čísel podle každého z nich.
 • Světlý a tmavý motiv.
 • Pro telefony i tablety, na výšku i na šířku.
 
@@ -67,6 +67,6 @@ Tvůj plán,||tvoje *čísla*|Vklad, přidávání, výnos, připisování, infl
 Čtyři linie,||*jeden* poctivý obrázek|Nominálně, po dani, po inflaci, a co jsi vložil.
 Kolik je *tvoje*,||kolik je růst|Konečná částka, rozložená podle původu.
 Každý rok,||až po *měsíc*|Úplná tabulka projekce, na celou obrazovku.
-*43 jazyků*,||opravdu přeložených|Vlastní názvy a formát čísel každého z nich.
+*44 jazyků*,||opravdu přeložených|Vlastní názvy a formát čísel každého z nich.
 Ověř si každé číslo||*ručně*|Každý vzorec, popořadě, s dopočítaným příkladem.
 ```

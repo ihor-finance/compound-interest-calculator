@@ -50,7 +50,7 @@ GEMAAKT OM NIET IN DE WEG TE LOPEN
 • Werkt volledig offline. Er is geen server; elke berekening draait op je eigen toestel.
 • Geen account, geen registratie, geen e-mailadres.
 • Er worden geen gegevens verzameld. Wat je invult blijft op je telefoon en gaat er nooit vanaf.
-• 43 talen, met de getalnotatie die bij elke taal hoort.
+• 44 talen, met de getalnotatie die bij elke taal hoort.
 • Licht en donker thema.
 • Gemaakt voor telefoons en tablets, staand en liggend.
 
@@ -67,6 +67,6 @@ Jouw plan,||jouw *cijfers*|Inleg, bijstortingen, rendement, rentefrequentie, inf
 Vier lijnen,||*één* eerlijk beeld|Nominaal, na belasting, na inflatie, en je eigen inleg.
 Hoeveel is *van jou*,||hoeveel is groei|Het eindbedrag, uitgesplitst naar herkomst.
 Elk jaar,||tot op de *maand*|De volledige prognosetabel, schermvullend.
-*43 talen*,||echt vertaald|Eigen namen en de getalnotatie van elke taal.
+*44 talen*,||echt vertaald|Eigen namen en de getalnotatie van elke taal.
 Reken elk cijfer||*zelf* na|Elke formule, op volgorde, met uitgewerkt voorbeeld.
 ```

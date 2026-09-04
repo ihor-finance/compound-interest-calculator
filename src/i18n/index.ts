@@ -32,6 +32,7 @@ export const SUPPORTED_LOCALES = [
   { code: 'pl', name: 'Polski', flag: '🇵🇱', dir: 'ltr' },             // 41M
   { code: 'uk', name: 'Українська', flag: '🇺🇦', dir: 'ltr' },         // 39M
   { code: 'uz', name: 'Oʻzbek', flag: '🇺🇿', dir: 'ltr' },             // 36M
+  { code: 'zh-TW', name: '繁體中文', flag: '🇹🇼', dir: 'ltr' },         // 30M readers
   { code: 'ro', name: 'Română', flag: '🇷🇴', dir: 'ltr' },             // 25M
   { code: 'nl', name: 'Nederlands', flag: '🇳🇱', dir: 'ltr' },         // 25M
   { code: 'az', name: 'Azərbaycan', flag: '🇦🇿', dir: 'ltr' },         // 24M

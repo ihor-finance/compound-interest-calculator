@@ -50,7 +50,7 @@ GINAWA PARA HINDI MAKAABALA
 • Gumagana nang lubos na offline. Walang server; bawat kalkulasyon ay tumatakbo sa inyong device.
 • Walang account, walang sign-up, walang email.
 • Walang kinokolektang datos. Ang inilalagay ninyo ay naka-imbak sa telepono at hindi kailanman lumalabas.
-• 43 wika, na may format ng numero na sumusunod sa bawat isa.
+• 44 wika, na may format ng numero na sumusunod sa bawat isa.
 • Maliwanag at madilim na tema.
 • Para sa mga telepono at tablet, pahaba man o pahalang.
 
@@ -67,6 +67,6 @@ Plano ninyo,||*numero* ninyo|Deposito, hulog, kita, compounding, implasyon, buwi
 Apat na linya,||*isang* totoong larawan|Nominal, matapos ang buwis at implasyon, at ang hulog.
 Magkano ang *inyo*,||magkano ang paglago|Ang panghuling halaga, hinati ayon sa pinanggalingan.
 Bawat taon,||hanggang sa *buwan*|Buong talahanayan, bumubukas sa buong screen.
-*43 wika*,||tunay na isinalin|Sariling pangalan at format ng numero ng bawat isa.
+*44 wika*,||tunay na isinalin|Sariling pangalan at format ng numero ng bawat isa.
 Suriin ang bawat bilang||*sa kamay*|Bawat pormula, sunod-sunod, may halimbawa.
 ```

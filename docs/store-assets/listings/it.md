@@ -50,7 +50,7 @@ FATTO PER NON INTRALCIARTI
 • Funziona del tutto offline. Non c'è alcun server: ogni calcolo gira sul tuo dispositivo.
 • Nessun account, nessuna registrazione, nessuna email.
 • Nessun dato raccolto. Quello che inserisci resta sul telefono e non esce mai.
-• 43 lingue, con la formattazione dei numeri propria di ciascuna.
+• 44 lingue, con la formattazione dei numeri propria di ciascuna.
 • Tema chiaro e scuro.
 • Pensato per telefoni e tablet, in verticale e in orizzontale.
 
@@ -67,6 +67,6 @@ Il tuo piano,||i tuoi *numeri*|Deposito, versamenti, rendimento, capitalizzazion
 Quattro linee,||*un’*immagine onesta|Nominale, al netto di tasse e inflazione, e i versamenti.
 Quanto è *tuo*,||quanto è crescita|L’importo finale, scomposto per provenienza.
 Ogni anno,||fino al *mese*|La tabella completa, a tutto schermo.
-*43 lingue*,||tradotte sul serio|Nomi originali e formato numerico di ciascuna.
+*44 lingue*,||tradotte sul serio|Nomi originali e formato numerico di ciascuna.
 Verifica ogni cifra||*a mano*|Ogni formula, in ordine, con esempio svolto.
 ```

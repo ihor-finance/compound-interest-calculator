@@ -50,7 +50,7 @@ BYGGD FÖR ATT INTE VARA I VÄGEN
 • Fungerar helt offline. Det finns ingen server; varje beräkning körs på din enhet.
 • Inget konto, ingen registrering, ingen e-post.
 • Inga data samlas in. Det du skriver in stannar i telefonen och lämnar den aldrig.
-• 43 språk, med den sifferformatering som hör till vart och ett.
+• 44 språk, med den sifferformatering som hör till vart och ett.
 • Ljust och mörkt tema.
 • Gjord för telefoner och surfplattor, i både stående och liggande läge.
 
@@ -67,6 +67,6 @@ Din plan,||dina *siffror*|Insättning, tillskott, avkastning, ränteperiod, infl
 Fyra linjer,||*en* ärlig bild|Nominellt, efter skatt, efter inflation, och det du satt in.
 Hur mycket är *ditt*,||hur mycket är tillväxt|Slutbeloppet, uppdelat efter varifrån det kommer.
 Varje år,||ner till *månaden*|Hela prognostabellen, i helskärm.
-*43 språk*,||ordentligt översatta|Egna namn och varje språks sifferformat.
+*44 språk*,||ordentligt översatta|Egna namn och varje språks sifferformat.
 Kontrollera varje siffra||*för hand*|Varje formel, i ordning, med räknat exempel.
 ```

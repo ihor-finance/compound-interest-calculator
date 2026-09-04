@@ -50,7 +50,7 @@ FEITA PARA NÃO ATRAPALHAR
 • Funciona totalmente offline. Não há servidor: tudo é calculado no seu dispositivo.
 • Sem conta, sem registo, sem e-mail.
 • Não recolhe dados. O que introduz fica guardado no telemóvel e nunca sai de lá.
-• 43 idiomas, com a formatação numérica própria de cada um.
+• 44 idiomas, com a formatação numérica própria de cada um.
 • Temas claro e escuro.
 • Feita para telemóveis e tablets, na vertical e na horizontal.
 
@@ -67,6 +67,6 @@ O seu plano,||os seus *números*|Depósito, aportes, retorno, capitalização, i
 Quatro linhas,||*uma* imagem honesta|Nominal, após impostos, após inflação, e o que aportou.
 Quanto é *seu*,||quanto é crescimento|O montante final, dividido pela sua origem.
 Cada ano,||até ao *mês*|A tabela completa, em ecrã inteiro.
-*43 idiomas*,||traduzidos a sério|Nomes nativos e formatação numérica de cada um.
+*44 idiomas*,||traduzidos a sério|Nomes nativos e formatação numérica de cada um.
 Verifique cada número||*à mão*|Cada fórmula, por ordem, com exemplo resolvido.
 ```

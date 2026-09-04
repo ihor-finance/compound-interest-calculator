@@ -50,7 +50,7 @@ BUILT TO STAY OUT OF YOUR WAY
 • Works fully offline. There is no server; every calculation runs on your device.
 • No account, no sign-up, no email.
 • No data collected. Your inputs are saved on your phone and never leave it.
-• 43 languages, with number formatting that follows each one.
+• 44 languages, with number formatting that follows each one.
 • Light and dark themes.
 • Built for phones and tablets, in both portrait and landscape.
 
@@ -67,6 +67,6 @@ Your plan,||your *numbers*|Deposit, top-ups, rate, compounding, inflation and ta
 Four lines,||*one* honest picture|Nominal, after tax, after inflation, and what you put in.
 How much is *yours*,||how much is growth|The final pot, split into where each part came from.
 Every year,||down to the *month*|The full projection table, expandable to full screen.
-*43 languages*,||properly translated|Native names, and number formatting that follows each one.
+*44 languages*,||properly translated|Native names, and number formatting that follows each one.
 Check every||figure *by hand*|Every formula, in order, with a worked example.
 ```

@@ -50,7 +50,7 @@ GEBAUT, UM NICHT ZU STÖREN
 • Funktioniert komplett offline. Es gibt keinen Server; jede Berechnung läuft auf Ihrem Gerät.
 • Kein Konto, keine Anmeldung, keine E-Mail-Adresse.
 • Keine Datenerhebung. Ihre Eingaben bleiben auf dem Telefon und verlassen es nie.
-• 43 Sprachen, mit der Zahlenformatierung der jeweiligen Sprache.
+• 44 Sprachen, mit der Zahlenformatierung der jeweiligen Sprache.
 • Helles und dunkles Design.
 • Für Smartphones und Tablets, im Hoch- wie im Querformat.
 
@@ -67,6 +67,6 @@ Ihr Plan,||Ihre *Zahlen*|Einlage, Einzahlungen, Rendite, Zinsperiode, Inflation,
 Vier Linien,||*ein* ehrliches Bild|Nominal, nach Steuern, nach Inflation, und Ihre Einzahlungen.
 Wie viel ist *Ihres*,||wie viel ist Zuwachs|Der Endbetrag, nach Herkunft aufgeschlüsselt.
 Jedes Jahr,||bis auf den *Monat*|Die vollständige Prognosetabelle, bildschirmfüllend.
-*43 Sprachen*,||richtig übersetzt|Eigennamen und die Zahlenformate der jeweiligen Sprache.
+*44 Sprachen*,||richtig übersetzt|Eigennamen und die Zahlenformate der jeweiligen Sprache.
 Jede Zahl||*von Hand* prüfen|Jede Formel, der Reihe nach, mit durchgerechnetem Beispiel.
 ```

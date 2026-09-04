@@ -143,6 +143,7 @@ function App() {
       pt: 'Calculadora de juros compostos',
       tr: 'Bileşik Faiz Hesaplayıcı',
       zh: '复利计算器',
+      'zh-TW': '複利計算機',
       ja: '複利計算機',
       ko: '복리 계산기',
       hi: 'चक्रवृद्धि ब्याज कैलकुलेटर',

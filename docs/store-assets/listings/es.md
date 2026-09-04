@@ -50,7 +50,7 @@ HECHA PARA NO ESTORBAR
 • Funciona completamente sin conexión. No hay servidor: todo se calcula en tu dispositivo.
 • Sin cuenta, sin registro, sin correo electrónico.
 • No se recopilan datos. Lo que introduces se guarda en tu teléfono y nunca sale de él.
-• 43 idiomas, con el formato numérico propio de cada uno.
+• 44 idiomas, con el formato numérico propio de cada uno.
 • Tema claro y oscuro.
 • Diseñada para teléfonos y tabletas, en vertical y en horizontal.
 
@@ -67,6 +67,6 @@ Tu plan,||tus *cifras*|Depósito, aportes, tasa, capitalización, inflación e i
 Cuatro líneas,||*una* imagen honesta|Nominal, tras impuestos, tras inflación y lo aportado.
 Cuánto es *tuyo*,||cuánto es ganancia|El total final, desglosado por su origen.
 Cada año,||hasta el *mes*|La tabla completa, ampliable a pantalla entera.
-*43 idiomas*,||bien traducidos|Nombres nativos y formato numérico de cada uno.
+*44 idiomas*,||bien traducidos|Nombres nativos y formato numérico de cada uno.
 Comprueba cada cifra||*a mano*|Cada fórmula, en orden, con un ejemplo resuelto.
 ```

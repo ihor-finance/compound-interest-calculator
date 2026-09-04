@@ -88,7 +88,7 @@ for (const file of methodologyFiles) {
 // type-stripping loader does not. A zero-match result is treated as a failure so
 // this cannot silently stop checking if the file is restructured.
 const localeSource = fs.readFileSync(path.join(root, 'src/i18n/index.ts'), 'utf8');
-const offered = [...localeSource.matchAll(/\{\s*code:\s*'([a-z-]+)'/g)]
+const offered = [...localeSource.matchAll(/\{\s*code:\s*'([a-zA-Z-]+)'/g)]
   .map(m => m[1])
   .filter(c => c !== 'en');
 if (offered.length === 0) failures.push('could not read SUPPORTED_LOCALES from src/i18n/index.ts');

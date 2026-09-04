@@ -315,7 +315,7 @@ export const ChartsSection = React.memo(({ results, theme  }: Props) => {
           title: function(items: any[]) {
             // Returning an array gives Chart.js one line per entry. Shrinking
             // the font would only hold until the next translation: at one line
-            // the longest of the 43 labels ran to 248px inside a doughnut that
+            // the longest of the 44 labels ran to 248px inside a doughnut that
             // is 220px wide on a phone, and Chart.js clips rather than wraps.
             // Two short lines cannot overflow whatever the language. The
             // longest single word in any of these labels is 17 characters, so

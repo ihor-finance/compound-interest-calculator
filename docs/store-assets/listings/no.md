@@ -50,7 +50,7 @@ LAGET FOR IKKE Å VÆRE I VEIEN
 • Virker helt uten nett. Det finnes ingen server; hver beregning kjøres på enheten din.
 • Ingen konto, ingen registrering, ingen e-post.
 • Ingen data samles inn. Det du skriver inn blir liggende på telefonen og forlater den aldri.
-• 43 språk, med tallformatet som hører til hvert av dem.
+• 44 språk, med tallformatet som hører til hvert av dem.
 • Lyst og mørkt tema.
 • For telefoner og nettbrett, både stående og liggende.
 
@@ -67,6 +67,6 @@ Din plan,||dine *tall*|Innskudd, innbetalinger, avkastning, rentetermin, inflasj
 Fire linjer,||*ett* ærlig bilde|Nominelt, etter skatt, etter inflasjon, og det du har skutt inn.
 Hvor mye er *ditt*,||hvor mye er vekst|Sluttbeløpet, delt opp etter hvor det kommer fra.
 Hvert år,||helt ned til *måneden*|Hele prognosetabellen, i fullskjerm.
-*43 språk*,||ordentlig oversatt|Egne navn og tallformatet til hvert språk.
+*44 språk*,||ordentlig oversatt|Egne navn og tallformatet til hvert språk.
 Etterregn hvert tall||*for hånd*|Hver formel, i rekkefølge, med gjennomregnet eksempel.
 ```

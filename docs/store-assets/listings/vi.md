@@ -50,7 +50,7 @@ BẠN NHẬN ĐƯỢC
 • Chạy hoàn toàn ngoại tuyến. Không có máy chủ; mọi phép tính đều chạy trên thiết bị của bạn.
 • Không tài khoản, không đăng ký, không email.
 • Không thu thập dữ liệu. Những gì bạn nhập được lưu trên điện thoại và không bao giờ rời khỏi đó.
-• 43 ngôn ngữ, với định dạng số theo từng ngôn ngữ.
+• 44 ngôn ngữ, với định dạng số theo từng ngôn ngữ.
 • Giao diện sáng và tối.
 • Dành cho điện thoại và máy tính bảng, cả chiều dọc lẫn chiều ngang.
 
@@ -67,6 +67,6 @@ Kế hoạch của bạn,||*con số* của bạn|Vốn, nộp thêm, lợi nhu�
 Bốn đường,||*một* bức tranh thật|Danh nghĩa, sau thuế, sau lạm phát, và tiền bạn nộp.
 Bao nhiêu là *của bạn*,||bao nhiêu là tăng thêm|Số cuối cùng, chia theo nguồn gốc.
 Từng năm,||đến từng *tháng*|Bảng dự báo đầy đủ, mở toàn màn hình.
-*43 ngôn ngữ*,||dịch tử tế|Tên bản ngữ và định dạng số theo từng thứ tiếng.
+*44 ngôn ngữ*,||dịch tử tế|Tên bản ngữ và định dạng số theo từng thứ tiếng.
 Kiểm tra từng con số||*bằng tay*|Mọi công thức, theo thứ tự, kèm ví dụ giải.
 ```

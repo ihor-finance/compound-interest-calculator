@@ -50,7 +50,7 @@ ZROBIONY TAK, ŻEBY NIE PRZESZKADZAĆ
 • Działa w pełni offline. Nie ma serwera — każde obliczenie wykonuje twoje urządzenie.
 • Bez konta, bez rejestracji, bez adresu e-mail.
 • Nie zbiera danych. To, co wpiszesz, zostaje w telefonie i nigdy go nie opuszcza.
-• 43 języki, z formatowaniem liczb właściwym dla każdego.
+• 44 języki, z formatowaniem liczb właściwym dla każdego.
 • Motyw jasny i ciemny.
 • Zaprojektowany na telefony i tablety, w pionie i w poziomie.
 
@@ -67,6 +67,6 @@ Twój plan,||twoje *liczby*|Wpłata, dopłaty, stopa, kapitalizacja, inflacja, p
 Cztery linie,||*jeden* uczciwy obraz|Nominalnie, po podatku, po inflacji i twoje wpłaty.
 Ile jest *twoje*,||a ile to wzrost|Końcowa kwota, rozbita na źródła.
 Każdy rok,||co do *miesiąca*|Pełna tabela prognozy, na cały ekran.
-*43 języki*,||porządnie przetłumaczone|Nazwy własne i format liczb każdego z nich.
+*44 języki*,||porządnie przetłumaczone|Nazwy własne i format liczb każdego z nich.
 Sprawdź każdą liczbę||*ręcznie*|Każdy wzór, po kolei, z rozpisanym przykładem.
 ```

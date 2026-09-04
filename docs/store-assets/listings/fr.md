@@ -50,7 +50,7 @@ CONÇU POUR SE FAIRE OUBLIER
 • Fonctionne totalement hors ligne. Il n'y a aucun serveur : tout est calculé sur votre appareil.
 • Pas de compte, pas d'inscription, pas d'e-mail.
 • Aucune donnée collectée. Ce que vous saisissez reste sur votre téléphone et n'en sort jamais.
-• 43 langues, avec le format des nombres propre à chacune.
+• 44 langues, avec le format des nombres propre à chacune.
 • Thèmes clair et sombre.
 • Pensé pour les téléphones et les tablettes, en portrait comme en paysage.
 
@@ -67,6 +67,6 @@ Votre plan,||vos *chiffres*|Dépôt, versements, rendement, capitalisation, infl
 Quatre courbes,||*une* image honnête|Nominal, après impôt, après inflation, et vos versements.
 Ce qui est *à vous*,||ce qui est croissance|Le montant final, décomposé par origine.
 Chaque année,||jusqu’au *mois*|Le tableau complet, en plein écran.
-*43 langues*,||vraiment traduites|Noms natifs et format des nombres propre à chacune.
+*44 langues*,||vraiment traduites|Noms natifs et format des nombres propre à chacune.
 Vérifiez chaque chiffre||*à la main*|Chaque formule, dans l’ordre, avec un exemple résolu.
 ```

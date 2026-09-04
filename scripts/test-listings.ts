@@ -27,7 +27,7 @@ const LIMITS = { title: 30, short: 80, full: 4000 };
 function supportedLocales(): string[] {
   const source = fs.readFileSync(path.join(root, 'src/i18n/index.ts'), 'utf8');
   const block = source.slice(source.indexOf('SUPPORTED_LOCALES'), source.indexOf('] as const;'));
-  return [...block.matchAll(/code: '([a-z]+)'/g)].map(m => m[1]);
+  return [...block.matchAll(/code: '([a-zA-Z-]+)'/g)].map(m => m[1]);
 }
 
 interface Listing { title: string; short: string; full: string; captions: string; }

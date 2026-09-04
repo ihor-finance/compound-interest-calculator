@@ -50,7 +50,7 @@ XALAQIT BERMASLIK UCHUN QILINGAN
 • To‘liq oflayn ishlaydi. Server yo‘q — barcha hisoblar qurilmangizda bajariladi.
 • Hisob yo‘q, ro‘yxatdan o‘tish yo‘q, elektron pochta yo‘q.
 • Hech qanday ma’lumot yig‘ilmaydi. Kiritganingiz telefonda qoladi va hech qayerga ketmaydi.
-• 43 ta til, har birining o‘z raqam formati bilan.
+• 44 ta til, har birining o‘z raqam formati bilan.
 • Yorug‘ va qorong‘i mavzular.
 • Telefon va planshetlar uchun, tik va yotiq holatda.
 
@@ -67,6 +67,6 @@ Sizning rejangiz,||sizning *raqamlaringiz*|Badal, qo‘shimcha, daromad, kapital
 To‘rt chiziq,||*bitta* halol manzara|Nominal, soliqdan keyin, inflyatsiyadan keyin va badalingiz.
 Qanchasi *sizniki*,||qanchasi o‘sish|Yakuniy summa, kelib chiqishi bo‘yicha bo‘lingan.
 Har yil,||*oyigacha*|To‘liq prognoz jadvali, to‘liq ekranga ochiladi.
-*43 ta til*,||chinakam tarjima|O‘z nomlari va har birining raqam formati.
+*44 ta til*,||chinakam tarjima|O‘z nomlari va har birining raqam formati.
 Har bir raqamni||*qo‘lda* tekshiring|Har bir formula, tartib bilan, yechilgan misol bilan.
 ```

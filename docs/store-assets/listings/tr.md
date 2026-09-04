@@ -50,7 +50,7 @@ YOLUNUZA ÇIKMAMAK İÇİN TASARLANDI
 • Tamamen çevrimdışı çalışır. Sunucu yoktur; her hesaplama cihazınızda yapılır.
 • Hesap yok, kayıt yok, e-posta yok.
 • Hiçbir veri toplanmaz. Girdikleriniz telefonunuzda saklanır ve oradan hiç çıkmaz.
-• 43 dil, her birinin kendi sayı biçimlendirmesiyle.
+• 44 dil, her birinin kendi sayı biçimlendirmesiyle.
 • Açık ve koyu tema.
 • Telefonlar ve tabletler için, dikey ve yatay kullanımda.
 
@@ -67,6 +67,6 @@ Sizin planınız,||sizin *sayılarınız*|Yatırım, katkı, getiri, bileşik d�
 Dört çizgi,||*tek* dürüst tablo|Nominal, vergi sonrası, enflasyon sonrası ve katkınız.
 Ne kadarı *sizin*,||ne kadarı büyüme|Son tutar, kaynağına göre ayrılmış.
 Her yıl,||*aya* kadar|Tam projeksiyon tablosu, tam ekran açılır.
-*43 dil*,||gerçekten çevrilmiş|Kendi adlarıyla ve her dilin sayı biçimiyle.
+*44 dil*,||gerçekten çevrilmiş|Kendi adlarıyla ve her dilin sayı biçimiyle.
 Her rakamı||*elle* doğrulayın|Her formül, sırasıyla, çözülmüş örnekle.
 ```

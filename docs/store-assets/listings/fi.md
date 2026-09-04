@@ -50,7 +50,7 @@ TEHTY OLEMAAN TIELLÄ MAHDOLLISIMMAN VÄHÄN
 • Toimii täysin offline-tilassa. Palvelinta ei ole; jokainen laskenta tapahtuu laitteellasi.
 • Ei tiliä, ei rekisteröitymistä, ei sähköpostia.
 • Tietoja ei kerätä. Syöttämäsi tiedot pysyvät puhelimessa eivätkä koskaan poistu siitä.
-• 43 kieltä, kunkin kielen omalla lukumuotoilulla.
+• 44 kieltä, kunkin kielen omalla lukumuotoilulla.
 • Vaalea ja tumma teema.
 • Puhelimille ja tableteille, sekä pysty- että vaakasuunnassa.
 
@@ -67,6 +67,6 @@ Sinun suunnitelmasi,||sinun *lukusi*|Pääoma, lisäykset, tuotto, korkojakso, i
 Neljä viivaa,||*yksi* rehellinen kuva|Nimellisesti, verojen jälkeen, inflaation jälkeen ja oma osuutesi.
 Kuinka paljon on *sinun*,||kuinka paljon kasvua|Loppusumma jaoteltuna alkuperän mukaan.
 Joka vuosi,||aina *kuukauteen* asti|Koko ennustetaulukko, koko näytöllä.
-*43 kieltä*,||kunnolla käännettynä|Omat nimet ja kunkin kielen lukumuotoilu.
+*44 kieltä*,||kunnolla käännettynä|Omat nimet ja kunkin kielen lukumuotoilu.
 Tarkista jokainen luku||*käsin*|Jokainen kaava järjestyksessä, laskettu esimerkki mukana.
 ```

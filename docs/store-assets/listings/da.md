@@ -50,7 +50,7 @@ BYGGET TIL IKKE AT VÆRE I VEJEN
 • Virker helt offline. Der er ingen server; hver beregning kører på din enhed.
 • Ingen konto, ingen tilmelding, ingen e-mail.
 • Der indsamles ingen data. Det, du indtaster, bliver på telefonen og forlader den aldrig.
-• 43 sprog, med den talformatering der hører til hvert enkelt.
+• 44 sprog, med den talformatering der hører til hvert enkelt.
 • Lyst og mørkt tema.
 • Til telefoner og tablets, både stående og liggende.
 
@@ -67,6 +67,6 @@ Din plan,||dine *tal*|Indskud, indbetalinger, afkast, rentetilskrivning, inflati
 Fire linjer,||*ét* ærligt billede|Nominelt, efter skat, efter inflation, og det du har indbetalt.
 Hvor meget er *dit*,||hvor meget er vækst|Slutbeløbet, opdelt efter hvor det kommer fra.
 Hvert år,||helt ned til *måneden*|Hele prognosetabellen, i fuld skærm.
-*43 sprog*,||ordentligt oversat|Egne navne og hvert sprogs talformat.
+*44 sprog*,||ordentligt oversat|Egne navne og hvert sprogs talformat.
 Efterregn hvert tal||*i hånden*|Hver formel, i rækkefølge, med gennemregnet eksempel.
 ```

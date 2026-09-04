@@ -26,7 +26,7 @@ export const formatNumber = (value: number, locale: string = 'en-US', maxDecimal
  *
  * Only ever used for display while that field does *not* have focus. The moment
  * it does, InputSection puts the raw text back, so the separators added here are
- * never read back in — which is what makes this safe across 43 locales, where
+ * never read back in — which is what makes this safe across 44 locales, where
  * the grouping and decimal characters are all different.
  *
  * Digits are forced to Latin even in locales that would default to their own

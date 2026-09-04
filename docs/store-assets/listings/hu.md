@@ -50,7 +50,7 @@ MIT KAPSZ
 • Teljesen offline működik. Nincs szerver; minden számítás a te eszközödön fut.
 • Nincs fiók, nincs regisztráció, nincs e-mail.
 • Nem gyűjt adatot. Amit beírsz, a telefonon marad, és soha nem hagyja el.
-• 43 nyelv, mindegyik saját számformátumával.
+• 44 nyelv, mindegyik saját számformátumával.
 • Világos és sötét téma.
 • Telefonra és táblagépre, álló és fekvő helyzetben egyaránt.
 
@@ -67,6 +67,6 @@ A te terved,||a te *számaid*|Befizetés, hozzátétel, hozam, kamatozás, infl�
 Négy vonal,||*egy* őszinte kép|Névértéken, adó után, infláció után, és a befizetéseid.
 Mennyi a *tiéd*,||mennyi a növekmény|A végösszeg, eredet szerint bontva.
 Minden év,||egészen a *hónapig*|A teljes előrejelzési tábla, teljes képernyőn.
-*43 nyelv*,||rendesen lefordítva|Saját nevek és mindegyik számformátuma.
+*44 nyelv*,||rendesen lefordítva|Saját nevek és mindegyik számformátuma.
 Ellenőrizz minden számot||*kézzel*|Minden képlet, sorrendben, kiszámolt példával.
 ```
