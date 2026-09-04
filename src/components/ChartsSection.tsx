@@ -291,16 +291,59 @@ export const ChartsSection = React.memo(({ results, theme  }: Props) => {
       legend: {
         display: false // We will build a custom HTML legend
       },
+      /* Chart.js draws its tooltip onto the canvas and clips it at the canvas
+         edge rather than shrinking or moving it. The body used to repeat the
+         slice label that the title already carries, so a long name like "Чистий
+         прибуток після податків" made the box wider than the doughnut and the
+         value fell off the right-hand side. The body is now the number alone,
+         and the colour swatch is gone for the same reason: you already know
+         which slice you are touching. */
       tooltip: {
+        backgroundColor: tooltipBg,
+        titleColor: tooltipTextTitle,
+        bodyColor: tooltipTextBody,
+        borderColor: tooltipBorder,
+        borderWidth: 1,
+        padding: 8,
+        displayColors: false,
+        // `as const` because doughnutOptions is passed to <Doughnut> untyped-
+        // cast, unlike the line chart's `as any`, so a widened `string` here is
+        // a compile error.
+        titleFont: { family: "'Roboto', sans-serif", size: 12, weight: 'bold' as const },
+        bodyFont: { family: "'Roboto', sans-serif", size: 13 },
         callbacks: {
+          title: function(items: any[]) {
+            // Returning an array gives Chart.js one line per entry. Shrinking
+            // the font would only hold until the next translation: at one line
+            // the longest of the 43 labels ran to 248px inside a doughnut that
+            // is 220px wide on a phone, and Chart.js clips rather than wraps.
+            // Two short lines cannot overflow whatever the language. The
+            // longest single word in any of these labels is 17 characters, so
+            // the limit never has to break one.
+            const label = String(items[0]?.label ?? '');
+            const LIMIT = 22;
+            if (label.length <= LIMIT) return label;
+            const lines: string[] = [];
+            let line = '';
+            for (const word of label.split(' ')) {
+              if (line && `${line} ${word}`.length > LIMIT) {
+                lines.push(line);
+                line = word;
+              } else {
+                line = line ? `${line} ${word}` : word;
+              }
+            }
+            if (line) lines.push(line);
+            return lines;
+          },
           label: function(context: any) {
             const val = context.parsed;
             if (donutMode === 'percentage') {
               const base = totalForDonut;
-              const pct = base > 0 ? (val / base) * 100 : 0;
-              return `${context.label}: ${pct.toFixed(1)}%`;
+              if (base <= 0) return '—';
+              return `${((val / base) * 100).toFixed(1)}%`;
             }
-            return `${context.label}: ${formatCurrency(val, lang)}`;
+            return formatCurrency(val, lang);
           }
         }
       }
