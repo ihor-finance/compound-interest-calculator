@@ -7,7 +7,7 @@ import { useTranslation } from '../i18n/useTranslation';
 import type { Locale } from '../i18n/types';
 import { SUPPORTED_LOCALES } from '../i18n';
 import '../App.css';
-import { GB, CN, IN, ES, SA, FR, PT, JP, DE, TR, KR, IT, UA, PL, NL, RO, HU, GR, CZ, SE, RS, BG, AL, DK, HR, FI, SK, NO, GE, LT, SI, LV, EE, AZ, BY, BD, IL, ID, KZ, TH, PH, UZ, VN } from 'country-flag-icons/react/3x2';
+import { GB, CN, TW, IN, ES, SA, FR, PT, JP, DE, TR, KR, IT, UA, PL, NL, RO, HU, GR, CZ, SE, RS, BG, AL, DK, HR, FI, SK, NO, GE, LT, SI, LV, EE, AZ, BY, BD, IL, ID, KZ, TH, PH, UZ, VN } from 'country-flag-icons/react/3x2';
 
 interface LayoutProps {
   children: ReactNode;
@@ -35,6 +35,9 @@ const FLAGS: Record<string, React.ReactElement> = {
   th: <TH className="flag-icon" />, tl: <PH className="flag-icon" />, tr: <TR className="flag-icon" />,
   uk: <UA className="flag-icon" />, uz: <UZ className="flag-icon" />, vi: <VN className="flag-icon" />,
   zh: <CN className="flag-icon" />,
+  // Every language the picker offers needs a row here, or it shows no flag at
+  // all — which is exactly how zh-TW shipped in the first build that had it.
+  'zh-TW': <TW className="flag-icon" />,
 };
 export const Layout = ({ children, theme, setTheme }: LayoutProps) => {
   const { locale: lang, setLocale: setLang, t } = useTranslation();

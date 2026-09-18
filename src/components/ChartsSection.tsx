@@ -29,14 +29,33 @@ ChartJS.register(
   Filler
 );
 
-(ChartTooltip.positioners as any).mobileBottom = function(this: any, elements: any[], eventPosition: any) {
-  if (window.innerWidth < 768) {
-    return {
-      x: this.chart.chartArea.left + (this.chart.chartArea.right - this.chart.chartArea.left) / 2,
-      y: this.chart.chartArea.bottom - 40 // Fixed near the bottom of chart area
-    };
+/**
+ * Keeps the tooltip off the column being read.
+ *
+ * On a phone the box is nearly as tall as the plot (six rows), so wherever it
+ * goes it covers something. What it must not cover is the vertical guide and
+ * the six points the reader is actually looking at — which is exactly what the
+ * previous positioner did, by pinning the box dead centre regardless of where
+ * the finger was. Now it goes to the corner diagonally opposite the touch.
+ * Every line starts low on the left and rises to the right, so the points
+ * being read are low-left in the early years and high-right in the late ones:
+ * touch the left half and the box goes top-right, touch the right half and it
+ * goes bottom-left. Either way the column under the finger stays clear. The
+ * box is nearly as wide as the plot, so it is the vertical choice that does
+ * the work. The fill is also translucent (see tooltipBg) so whatever does end
+ * up underneath still shows through. Desktop has room and keeps Chart.js's
+ * own placement.
+ */
+(ChartTooltip.positioners as any).awayFromPoint = function(this: any, elements: any[], eventPosition: any) {
+  if (window.innerWidth >= 768) {
+    return (ChartTooltip.positioners as any).average.call(this, elements, eventPosition);
   }
-  return (ChartTooltip.positioners as any).average.call(this, elements, eventPosition);
+  const { left, right, top, bottom } = this.chart.chartArea;
+  const x = elements[0]?.element?.x ?? eventPosition.x;
+  const onLeft = x < (left + right) / 2;
+  return onLeft
+    ? { x: right, y: top, xAlign: 'right', yAlign: 'top' }
+    : { x: left, y: bottom, xAlign: 'left', yAlign: 'bottom' };
 };
 
 interface Props {
@@ -90,7 +109,8 @@ export const ChartsSection = React.memo(({ results, theme  }: Props) => {
   const colorNeutral = '#9AA3AE';
 
   const gridColor = theme === 'dark' ? '#2A333E' : '#F4F6F8';
-  const tooltipBg = theme === 'dark' ? '#1C242E' : '#FFFFFF';
+  // Slightly see-through, so a line under the box is dimmed rather than gone.
+  const tooltipBg = theme === 'dark' ? 'rgba(28, 36, 46, 0.92)' : 'rgba(255, 255, 255, 0.92)';
   const tooltipTextTitle = theme === 'dark' ? '#F2F4F7' : '#0F1B2D';
   const tooltipTextBody = theme === 'dark' ? '#A6B0BC' : '#5B6776';
   const tooltipBorder = theme === 'dark' ? '#2A333E' : '#E5E9EE';
@@ -203,7 +223,8 @@ export const ChartsSection = React.memo(({ results, theme  }: Props) => {
         display: false // Using custom HTML legend
       },
       tooltip: {
-        position: 'mobileBottom',
+        position: 'awayFromPoint',
+        caretSize: 0,
         backgroundColor: tooltipBg,
         titleColor: tooltipTextTitle,
         bodyColor: tooltipTextBody,
