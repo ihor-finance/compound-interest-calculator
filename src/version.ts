@@ -10,4 +10,4 @@
  * package.json carries the same release as 1.0.0, because npm insists on three
  * parts. The number users see comes from here and from versionName.
  */
-export const APP_VERSION = '1.2';
+export const APP_VERSION = '1.3';
